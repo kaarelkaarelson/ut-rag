@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: llama-index-embeddings-fastembed
+Version: 0.1.4
+Summary: llama-index embeddings fastembed integration
+License: MIT
+Author: Your Name
+Author-email: you@example.com
+Requires-Python: >=3.8.1,<3.12
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: fastembed (>=0.2.2,<0.3.0)
+Requires-Dist: llama-index-core (>=0.10.11.post1,<0.11.0)
+Description-Content-Type: text/markdown
+
+# LlamaIndex Embeddings Integration: Fastembed
+
