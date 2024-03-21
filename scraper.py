@@ -2,7 +2,7 @@
 import requests as req
 from bs4 import BeautifulSoup as bs
 
-def get_links_from_page(url, viewed=set()):
+def get_links_from_page(url):
     r = req.get(url)
     soup = bs(r.text, 'html.parser')
     tags = soup.find_all('a')
