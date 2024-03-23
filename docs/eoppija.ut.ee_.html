@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/x-mathjax-config">MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+    processEscapes: true
+  },
+  asciimath2jax: {
+    delimiters: [['$','$']]
+  }
+});</script><link rel="next" href="https://eoppija.ut.ee/tekstiroboti-kasutamisest" />
+<link rel="shortcut icon" href="https://eoppija.ut.ee/profiles/openscholar/themes/os_basetheme/favicon.png" />
+<meta name="generator" content="OpenScholar for Drupal 7 (http://theopenscholar.org)" />
+<link rel="canonical" href="https://eoppija.ut.ee/avaleht" />
+<link rel="shortlink" href="https://eoppija.ut.ee/node/29229" />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="E-õppija käsiraamat" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="E-õppija käsiraamat" />
+        <title>E-õppija käsiraamat</title>
+        <meta name="keywords" content="õppija, e-õpe">
+  
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://sisu.ut.ee/profiles/openscholar/themes/ut_bootstrap/js/jquery.min.js"></script>        
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://sisu.ut.ee/profiles/openscholar/themes/ut_bootstrap/js/bootstrap.min.js"></script>
+                <style type="text/css">
+            /* Custom Fonts */
+            @import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+            @import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin,latin-ext);
+        </style>
+        <style type="text/css" media="all">
+@import url("https://eoppija.ut.ee/modules/system/system.base.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/system/system.menus.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/system/system.messages.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/system/system.theme.css?sas0cd");
+</style>
+<style type="text/css" media="screen">
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/tipsy/stylesheets/tipsy.css?sas0cd");
+</style>
+<style type="text/css" media="all">
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.core.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.theme.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.accordion.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.button.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.resizable.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.dialog.min.css?sas0cd");
+</style>
+<style type="text/css" media="all">
+@import url("https://eoppija.ut.ee/modules/book/book.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/calendar/css/calendar_multiday.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/comment/comment.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/date/date_api/date.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/date/date_popup/themes/datepicker.1.7.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/date/date_repeat_field/date_repeat_field.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/field/theme/field.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jcaption/jcaption.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/node/node.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/os/modules/os_slideshow/os_slideshow.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/quiz/quiz.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/quiz/question_types/quiz_ddlines/theme/quiz_ddlines.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/search/search.css?sas0cd");
+@import url("https://eoppija.ut.ee/modules/user/user.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/views/css/views.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/protected_node/protected_node.css?sas0cd");
+</style>
+<style type="text/css" media="all">
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/colorbox/styles/default/colorbox_style.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/ctools/css/ctools.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/uglossary/uglossary.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/biblio/biblio.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/contrib/uglossify/uglossify.css?sas0cd");
+</style>
+<style type="text/css" media="screen">
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/bootstrap.min.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/ut_bootstrap.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/ut_jquery_ui.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/nav.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/slideshow.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/ut_quiz.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/media.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/node-person.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/css/upgrade_102_styles.css?sas0cd");
+@import url("https://eoppija.ut.ee/profiles/openscholar/themes/ut_project/css/ut_project.css?sas0cd");
+</style>
+<style type="text/css" media="all">
+@import url("https://eoppija.ut.ee/profiles/openscholar/modules/os/theme/os_dismiss.css?sas0cd");
+@import url("https://eoppija.ut.ee/sites/default/files/sweaver/sweaver_ut_project_763_live.css?sas0cd");
+</style>
+  
+    </head>
+    <body class="html front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-29229 node-type-page og-context og-context-node og-context-node-29228 i18n-et navbar-off">
+                <!--FLEXIBLE ADMIN HEADER FOR USE BY SELECT GROUPS USING OS-->
+
+<div id="page" class="page os_pages-section-29229 header-first content-top footer-none">
+    <div id="page-wrapper">
+        <!-- <div id="logo" class="container clearfix">
+            <div class="logo-placeholder container clearfix">
+                <div id="ut-logo"></div>
+            </div>
+        </div> -->
+                            <!--header regions beg-->
+            <header id="header" class="container clearfix" role="banner">
+                <div id="header-container">
+                    <div id="header-panels" class="at-panel gpanel panel-display three-col clearfix">
+                                                      <div class="region region-header-first  col-md-12">
+    <div id="block-boxes-header-widget" class="block block-boxes block-boxes-simple header-widget" module="boxes" delta="header_widget">
+
+    
+  <div class="content" ng-non-bindable="">
+    <div id='boxes-box-header_widget' class='boxes-box'><div class="boxes-box-content"><p style="text-align:center"> </p><h2 style="text-align:center"> <br />E-õppija käsiraamat<br /> </h2></div></div>  </div>
+</div>
+<div id="block-boxes-1598426153" class="block block-boxes block-boxes-os_boxes_html" module="boxes" delta="1598426153">
+
+    
+  <div class="content" ng-non-bindable="">
+    <div id='boxes-box-1598426153' class='boxes-box'><div class="boxes-box-content"><p style="text-align:right">
+	<a href="https://eoppija.ut.ee" title=""><img height="128" width="128" style="width: 30px; height: 30px;" alt="EST" class="media-element file-default" src="https://eoppija.ut.ee/sites/default/files/eoppija/files/estonia-icon.png" title="" /></a>    <a href="https://eoppija.ut.ee/book/elearner" title=""><img style="width: 30px; height: 30px;" alt="ENG" class="media-element file-default " src="https://eoppija.ut.ee/sites/default/files/eoppija/files/united-kingdom-icon.png" width="128" height="128" title="" /></a> <br /> 
+</p>
+
+
+</div></div>  </div>
+</div>
+  </div>
+                                                                                                    </div>
+                 </div>
+            </header>
+            <!--header regions end-->
+        
+        
+        
+        <div id="columns" class="container clearfix">
+            <div class="row hg-container">
+                <div id="content-column" class="col-md-9" role="main">
+                    <div class="content-inner">
+                        
+                                                                                            
+                                
+                                                                        <!--front panel regions beg-->
+                                        <div id="content-panels" class="at-panel gpanel panel-display content clearfix">
+                                              <div class="region region-content-top  ">
+    <div id="block-os-pages-main-content" class="block block-os-pages" module="os_pages" delta="main_content">
+
+    
+  <div class="content" ng-non-bindable="">
+    <div id="node-29229" class="node node-page clearfix">
+
+  
+      
+  
+  <div class="content" ng-non-bindable="">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h5>
+	E-õppija käsiraamatus saad ülevaate TÜ e-õppe võimaluste kasutamisest. 
+</h5>
+
+<p>
+	E-õpe ehk digiõpe on õppetöö, mis toimub osaliselt või täielikult digitehnoloogiliste vahendite abil. Tartu Ülikoolis õppides võid kokku puutuda järgmiste e-õppe võimalustega:
+</p>
+
+<ul><li>
+		e-kursustega Moodle'i õpikeskkonnas <a href="http://moodle.ut.ee/" target="_blank">https://moodle.ut.ee</a>
+	</li>
+	<li>
+		elektrooniliste õppematerjalidega Sisu@UT keskkonnas <a href="http://sisu.ut.ee/" target="_blank">https://sisu.ut.ee</a>, TÜ arvutiteaduse instituudi keskkonnas <a href="https://courses.cs.ut.ee/" rel="nofollow" target="_blank">https://courses.cs.ut.ee</a>, TÜ matemaatika ja statistika instituudi keskkonnas <a href="https://courses.ms.ut.ee/" rel="nofollow" target="_blank">https://courses.ms.ut.ee</a>
+	</li>
+	<li>
+		audio- ja/või videokonverentsidega Moodle'is, BBBs <a href="https://button.ut.ee" target="_blank" title="">https://button.ut.ee</a>, Teamsis või Zoomis
+	</li>
+	<li>
+		audio- ja /või videoloengutega (Moodle'is, Panoptos <a href="https://panopto.ut.ee" target="_blank" title="">https://panopto.ut.ee</a>, Tartu Ülikooli Televisioonis <a href="http://uttv.ee/" target="_blank">https://uttv.ee/</a>, YouTube'is)
+	</li>
+	<li>
+		MOOCidega, mis on kõigile soovijatele avatud tasuta veebipõhised täiendusõppekursused (ingl <em>massive open online course</em>) <a href="https://moocs.ut.ee" target="_blank" title="">https://moocs.ut.ee</a>. Eelnevalt uuri oma instituudi õppekorralduse spetsialistilt või VÕTA nõustajalt (<a href="https://ut.ee/et/sisu/vota-noustajad" target="_blank" title="">https://ut.ee/et/sisu/vota-noustajad</a>), kas saad läbitud MOOCi ainepunktid VÕTA kaudu enda õpingutesse üle kanda.
+	</li>
+</ul><p>
+	</p><div id="accordion" class="accordion"><h3><a href="#">Vaata videosid Digivahendid õppetöös ja Digiõppe ja -töö juhised üliõpilasele</a></h3><div>
+
+
+<p>
+	</p><div class="media media-element-container media-default"><div class="field field-name-field-html-code field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><iframe src="https://panopto.ut.ee/Panopto/Pages/Embed.aspx?id=ac11ca4f-25f6-4cf0-917c-ad8e00f97506&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=false&amp;start=0&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay"></iframe></div></div></div></div>
+
+
+<p>
+	</p><div class="media media-element-container media-default"><div class="field field-name-field-html-code field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><iframe src="https://panopto.ut.ee/Panopto/Pages/Embed.aspx?id=a8c3d1ad-b591-45fa-8a95-ac86007b3345&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=false&amp;showbrand=false&amp;start=0&amp;interactivity=all" width="720" height="500" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay"></iframe></div></div></div></div>
+
+
+<p>
+	</p></div></div><p></p>
+
+
+<p>
+	<a class="colorbox" href="https://sisu.ut.ee/sites/default/files/eoppija/files/joonis3.png" title="E-õppe keskkonnad"><img height="719" width="1149" style="width: 1149px; height: 719px;" alt="e-õppe keskkonnad" class="media-element file-default cbox cboxElement" src="https://eoppija.ut.ee/sites/default/files/eoppija/files/joonis3.png" title="" /></a>
+</p>
+
+<ul></ul><h5>
+	TÜ üliõpilased sisenevad e-õppe keskkondadesse TÜ arvutivõrgu kontoga. 
+</h5>
+
+<p>
+	TÜ e-õppe keskkondadesse saad siseneda TÜ arvutivõrgu kasutajatunnuse ning parooliga (sama, millega sisened ÕISi). Moodle'i õpikeskkonda pead sisenema nupu TÜ arvutivõrgu konto (OpenID) abil ning sisestama kasutajatunnuse kujul <a href="mailto:kasutajatunnus@ut.ee">kasutajatunnus@ut.ee</a>. Oma konto parooli saad vahetada ID-kaardiga sisenedes aadressil <a href="https://parool.ut.ee" target="_blank" title="">https://parool.ut.ee</a>.
+</p>
+
+<h5>
+	Enamikku e-õppe keskkondadest saab kasutada ka mobiilses nutiseadmes.
+</h5>
+
+<h3>
+	Milliseid vahendeid on e-õppeks vaja?
+</h3>
+
+<p>
+	Tartu Ülikooli e-õppe keskkondade/rakenduste kasutamiseks piisab tavaliselt internetti ühendatud arvutist ja veebilehitsejast. Enamikku neist saab kasutada ka mobiilses nutiseadmes. Videosuhtluseks, veebiseminarideks/praktikumideks, rühmatöödeks on vaja mikrofoni, kõrvaklappe ja kaamerat. Videoloengute vaatamiseks/kuulamiseks piisab kõrvaklappidest/kõlaritest.
+</p>
+
+<h3>
+	Kus hoiustada enda faile?
+</h3>
+
+<p>
+	Kõigil Tartu Ülikooli tudengitel on olemas ülikooli kasutajatunnusega seotud OneDrive konto. Teenust on võimalik kasutada nii veebibrauseris (nt Mozilla Firefox või Chrome) kui ka arvutisse paigaldatud rakenduse kaudu. Kõigis Windows 10 operatsioonisüsteemiga arvutites on OneDrive juba paigaldatud.
+</p>
+
+<p>
+	Mac arvutitesse saab OneDrive-i paigaldades O365 komplekti või eraldi installeerides.
+</p>
+
+<p>
+	Vaata juhiseid: <a href="https://wiki.ut.ee/display/AA/Microsoft+OneDrive" target="_blank" title="">https://wiki.ut.ee/display/AA/Microsoft+OneDrive</a>
+</p>
+
+<h3>
+	Kust saab abi?
+</h3>
+
+<ul><li>
+		Kui oled unustanud TÜ arvutivõrgu kasutajatunnuse ja/või salasõna, siis pöördu arvutiabi kasutajatoe telefonil 737 5500 või e-posti aadressil <a href="mailto:arvutiabi@ut.ee" rel="nofollow" target="_blank">arvutiabi@ut.ee</a>.
+	</li>
+	<li>
+		E-kursusi ja õppetööd puudutavate sisuliste küsimuste ja hindamisega seoses võta ühendust kursuse õppejõududega.
+	</li>
+	<li>
+		E-keskkondade kasutamisega seotud <a href="javascript:void(0);" class="uglossify-link" data-tip="&lt;p&gt;Takistuste kõrvaldamiseks ja probleemide lahendamiseks digivahendite kasutamisel on olulisim aktiivne hoiak rakendamaks varasemaid analoogseid isiklikke kogemusi või oskus probleem sõnastada nii, et sellele on võimalik välist nõu leida. Kuidas seda teha, uuri siit:&amp;nbsp;&lt;a data-auth=&quot;NotApplicable&quot; href=&quot;https://sisu.ut.ee/digipadevus/book/isiklik-digiareng&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://sisu.ut.ee/digipadevus/book/isiklik-digiareng&lt;/a&gt;&lt;/p&gt;">tehnilised probleemid</a> edasta oma valdkonna õppedisainerile (vt <a href="https://ut.ee/et/opetamisoskuste-konsultandid-oppedisainerid" target="_blank" title="">https://ut.ee/et/opetamisoskuste-konsultandid-oppedisainerid</a>) või <a href="mailto:eope@ut.ee" rel="nofollow" target="_blank">eope@ut.ee</a>.
+	</li>
+	<li>
+		Infot e-õppe teemadel leiad TÜ kodulehelt aadressil <a href="https://ut.ee/et/e-oppe-voimalused" target="_blank" title="">https://ut.ee/et/e-oppe-voimalused</a>.
+	</li>
+	<li>
+		Kasulik <a href="javascript:void(0);" class="uglossify-link" data-tip="&lt;p&gt;Info sirvimine, otsimine ja sortimine on üks peamine oluline digipädevus ning enamike teiste oluline komponent - suhtlus hõlmab tavaliselt mingi info edastamist või vastuvõttu, sisuloome seisneb uue info loomises või taaskasutuses jne. Hinda ja kujunda oma infotöötlemise oskuseid siin:&amp;nbsp;&lt;a data-auth=&quot;NotApplicable&quot; href=&quot;https://sisu.ut.ee/digipadevus/BOOK/informatsioon&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;https://sisu.ut.ee/digipadevus/BOOK/informatsioon&lt;/a&gt;&lt;/p&gt;">info</a> üliõpilaste infokirjas <a href="https://sisu.ut.ee/infokiri/kasulik-info" target="_blank" title="">https://sisu.ut.ee/infokiri/kasulik-info</a>.
+	</li>
+</ul><h3>
+	Käsiraamatu koostajad
+</h3>
+
+<p>
+	E-õppija käsiraamatu on koostanud TÜ õppeosakonna elukestva õppe keskuse õppedisainer Triin Marandi ja haridustehnoloogia peaspetsialist Lehti Pilt. Autoriõiguste peatüki loomisel oli abiks TÜ intellektuaalse omandi valdkonna jurist Reet Adamsoo ja andmekaitse peatüki loomisel andis nõu TÜ andmekaitse peaspetsialist Terje Mäesalu.
+</p>
+
+<h3 style="text-align:center">
+	2020
+</h3>
+</div></div></div>  </div>
+
+  
+  
+</div>
+  </div>
+</div>
+  </div>
+                                                                                                                                                                                                                        </div>
+                                        <!--front panel regions end-->
+                                                            
+                                                                            </div>
+                </div>
+
+                
+                                    <!--sidebar second region beg-->
+                      <div class="region region-sidebar-second  col-md-3">
+    <div id="block-boxes-shield" class="block block-boxes block-boxes-os_shields_box" module="boxes" delta="shield">
+
+    
+  <div class="content" ng-non-bindable="">
+    <div id='boxes-box-shield' class='boxes-box'><div class="boxes-box-content"><div id="scholar-shield"><img src="https://eoppija.ut.ee/sites/default/files/os_shields/ut_must.png" alt="Shield" /></div></div></div>  </div>
+</div>
+<div id="block-os-search-db-site-search" class="block block-os-search-db" module="os_search_db" delta="site-search">
+
+    
+  <div class="content" ng-non-bindable="">
+    <form action="/" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Otsinguvorm</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Otsi </label>
+ <input title="Sisesta märksõnad, mida soovid otsida." ng-non-bindable="" placeholder="Otsi" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Otsi" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-MKzuzhbT7RvEstVuLN6Oto4Y5Ku-NMW5sOc9PLhxL2Q" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+</div>
+<ul class="menu sidebar nav nav-pills nav-stacked"><div id="block-os-primary-menu" class="block block-os" module="os" delta="primary-menu">
+
+    
+  <div class="content" ng-non-bindable="">
+    <li class="first leaf active-trail menu-depth-1 menu-item-121187 active"><a href="https://eoppija.ut.ee/avaleht"  class="active active">Avaleht</a></li><li class="leaf menu-depth-1 menu-item-121696"><a href="https://eoppija.ut.ee/book/%C3%B5pioskused-e-%C3%B5ppeks"  title="">Õpioskused e-õppeks</a></li><li class="leaf menu-depth-1 menu-item-121698"><a href="https://eoppija.ut.ee/book/%C3%B5ppimine-e-kursusel-moodle"  title="">Õppimine e-kursusel Moodle’is</a></li><li class="leaf menu-depth-1 menu-item-182704"><a href="https://eoppija.ut.ee/coursera-kasutamine"  title="">Coursera kasutamine</a></li><li class="leaf menu-depth-1 menu-item-123223"><a href="https://eoppija.ut.ee/book/videoloengute-vaatamine-ja-videote-salvestamine"  title="">Videoloengute vaatamine ja videote salvestamine</a></li><li class="leaf menu-depth-1 menu-item-121700"><a href="https://eoppija.ut.ee/book/osalemine-e-r%C3%BChmat%C3%B6%C3%B6s"  title="">Osalemine e-rühmatöös</a></li><li class="leaf menu-depth-1 menu-item-121702"><a href="https://eoppija.ut.ee/book/osalemine-veebiseminarilpraktikumis"  title="">Osalemine veebiseminaril/praktikumis</a></li><li class="leaf menu-depth-1 menu-item-121706"><a href="https://eoppija.ut.ee/book/autori%C3%B5igustest"  title="">Autoriõigustest</a></li><li class="leaf menu-depth-1 menu-item-121708"><a href="https://eoppija.ut.ee/book/plagiaadituvastus"  title="">Plagiaadituvastus</a></li><li class="leaf menu-depth-1 menu-item-124908"><a href="https://eoppija.ut.ee/book/andmekaitse"  title="">Andmekaitsest</a></li><li class="leaf menu-depth-1 menu-item-228500"><a href="https://eoppija.ut.ee/tekstiroboti-kasutamisest"  title="">Tekstiroboti kasutamine</a></li><li class="collapsed menu-depth-1 menu-item-121710"><a href="https://eoppija.ut.ee/book/e-eksamid-ja-e-arvestused"  title="">E-eksamid ja e-arvestused <span class="caret"></span></a></li><li class="leaf menu-depth-1 menu-item-121712"><a href="https://eoppija.ut.ee/book/e-kaitsmised"  title="">E-kaitsmised</a></li><li class="leaf menu-depth-1 menu-item-121704"><a href="https://eoppija.ut.ee/book/e-portfoolio-loomine-maharas"  title="">E-portfoolio loomine Maharas</a></li><li class="last leaf menu-depth-1 menu-item-121713"><a href="https://eoppija.ut.ee/book/k%C3%BCsitluste-loomine-ja-l%C3%A4biviimine-limesurveys"  title="">Küsitluste loomine ja läbiviimine LimeSurveys</a></li>  </div>
+</div>
+</ul><div id="block-os-digi" class="block block-os os-custom-menu" module="os" delta="digi">
+
+    
+  <div class="content" ng-non-bindable="">
+    <ul class="menu"><li class="first last leaf menu-depth-1 menu-item-131827"><a href="https://eoppija.ut.ee/uglossary/digip%C3%A4devus"  title="">Digipädevuse sõnastik</a></li></ul>  </div>
+</div>
+  </div>
+                    <!--sidebar second region end-->
+                
+            </div>
+        </div>
+        <!-- footer region begin -->
+        <footer id="footer" class="container clearfix">
+                <div id="powerby-login">
+            <div id="powered-by"><a href="https://sisu.ut.ee" title="Sisu@UT">Sisu@UT</a><a href="/user/login?destination="  id="footer-login-button">Login</a></div>        </div>
+        </footer>
+    </div>
+</div><!-- page area ends -->
+
+<div id="extradiv"></div>
+
+        <script type="text/javascript" src="https://eoppija.ut.ee/sites/all/libraries/respondjs/respond.min.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js?v=1.8.3"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/jquery-extend-3.4.0.js?v=1.8.3"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/jquery-html-prefilter-3.5.0-backport.js?v=1.8.3"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/drupal.js?sas0cd"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ut_project","theme_token":"ajgsku0eCwRH0hxyxK6-p_oqo10EKJzRb6HalKvnd_g"},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"320px"},"jcaption":{"jcaption_selectors":["#columns .node-content div img","#columns .content div.field img"],"jcaption_alt_title":"title","jcaption_requireText":1,"jcaption_copyStyle":1,"jcaption_removeStyle":1,"jcaption_removeClass":1,"jcaption_removeAlign":1,"jcaption_copyAlignmentToClass":1,"jcaption_copyFloatToClass":1,"jcaption_copyClassToClass":1,"jcaption_autoWidth":1,"jcaption_keepLink":0,"jcaption_styleMarkup":"font-size: 14px; color: #888888; margin-top: 5px; word-wrap: break-word; text-align: center;","jcaption_animate":0,"jcaption_showDuration":"200","jcaption_hideDuration":"200"},"jcarousel":{"ajaxPath":"https:\/\/eoppija.ut.ee\/jcarousel\/ajax\/views"},"tipsy":{"custom_selectors":[{"selector":"a.uglossify-link","options":{"fade":1,"gravity":"autoNS","trigger":"hover","delayIn":"0","delayOut":"1200","opacity":"1","offset":"0","html":1,"tooltip_content":{"source":"attribute","selector":"data-tip"}}}]},"spaces":{"id":"29228","path":"E-\u00f5ppija k\u00e4siraamat"},"os_ga":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|docx?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xlsx?|xml|z|zip"},"urlIsAjaxTrusted":{"\/":true},"ogContext":{"groupType":"node","gid":"29228"},"password":{"strengthTitle":"Parooli tugevus:"},"type":"setting"});
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/tipsy/javascripts/jquery.tipsy.js?v=0.1.7"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/tipsy/javascripts/tipsy.js?v=0.1.7"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.core.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.widget.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.accordion.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.button.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.mouse.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.draggable.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.position.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/ui/jquery.ui.position-1.13.0-backport.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.resizable.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jquery_update/replace/ui/ui/minified/jquery.ui.dialog.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/misc/ui/jquery.ui.dialog-1.13.0-backport.js?v=1.10.2"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/quiz/question_types/quiz_ddlines/js/raphael-min.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/quiz/question_types/quiz_ddlines/js/colorwheel.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/quiz/question_types/quiz_ddlines/js/quiz_ddlines.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/sites/default/files/languages/et_ABYkiT7VDtAfHDENIhdVOy-97O3oKfsXMzY9ANZAZPM.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/os/theme/os_colorbox.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/libraries/colorbox/jquery.colorbox-min.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/colorbox/js/colorbox.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/colorbox/styles/default/colorbox_style.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/colorbox/js/colorbox_load.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/colorbox/js/colorbox_inline.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/insertFrame/insertFrame.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/contrib/jcaption/jcaption.js?sas0cd"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(e){Drupal.behaviors.accordion={attach:function(t,n){e(".accordion").accordion({collapsible:true,animated:"swing",duration:50,active:false,autoHeight:false})}}})(jQuery)
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(e){Drupal.behaviors.jpopup={attach:function(t,n){jwidth_arr=[];e(".jpopup_dialog").each(function(t,n){function o(){var t=e(".ui-dialog:visible");var n=String(jwidth_arr.length).length;if(!t.attr("aria-labelledby")){return false}var r=t.attr("aria-labelledby");var i=r.charAt(r.length-n);var o=jwidth_arr[i-1];t.each(function(){var t=e(this);var n=(e(window).width()-o)/2>0?(e(window).width()-o)/2:0;var r=document.documentElement.scrollTop?document.documentElement.scrollTop:e("body").scrollTop();e(this).css({width:"100%","max-width":(e(window).width()<o?e(window).width()-20:o)+"px","margin-left":"7px","margin-right":"10px","overflow-y":"auto",left:n,top:(e(window).height()-s)/2+r})})}e(n).attr("href","javascript:void(0);");var r=e(n).attr("id");var i=e("."+r+"_width").attr("id");i=i?i.slice(7):480;var s=e("."+r+"_height").attr("id");s=s?s.slice(8):300;jwidth_arr.push(i);e("span."+r+"").dialog({modal:true,autoOpen:false,title:e(n).attr("title"),width:"100%",resizable:false,draggable:false,open:function(t,n){var r=(e(window).width()-i)/2>0?(e(window).width()-i)/2:0;var o=document.documentElement.scrollTop?document.documentElement.scrollTop:e("body").scrollTop();if(r==0){e(this).parent().css({"max-width":(e(window).width()<i?e(window).width()-20:i)+"px",left:r,top:(e(window).height()-s)/2+o})}else{e(this).parent().css({"max-width":i+"px",left:r,top:(e(window).height()-s)/2+o})}e(this).parent().css({height:s+"px","margin-left":"7px","margin-right":"10px","overflow-y":"auto"});e(this).css({display:"block","word-wrap":"break-word"})}});e("span#"+r+"").dialog({modal:true,autoOpen:false,title:e(n).attr("title"),width:"100%",draggable:false,resizable:false,open:function(t,n){var r=(e(window).width()-i)/2>0?(e(window).width()-i)/2:0;var o=document.documentElement.scrollTop?document.documentElement.scrollTop:e("body").scrollTop();if(r==0){e(this).parent().css({"max-width":(e(window).width()<i?e(window).width()-20:i)+"px",left:r,top:(e(window).height()-s)/2+o})}else{e(this).parent().css({"max-width":i+"px",left:r,top:(e(window).height()-s)/2+o})}e(this).parent().css({height:s+"px","margin-left":"7px","margin-right":"10px","overflow-y":"auto"});e(this).css({display:"block","word-wrap":"break-word"})}});e("div#"+r+"").dialog({modal:true,autoOpen:false,title:e(n).attr("title"),width:480,height:300,draggable:false});e(window).resize(function(){o()})});e(".jpopup_dialog").click(function(){var t=e(this).attr("id");e("span."+t+"").dialog("open");e("span#"+t+"").dialog("open");e("div#"+t+"").dialog("open")})}}})(jQuery)
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.CKEDITOR_BASEPATH = '/profiles/openscholar/libraries/ckeditor/'
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/os/modules/os_ga/os_ga.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/os/js/responsive_menu.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/os/theme/os_dismiss.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/modules/os/js/os_tinymce_init.js?sas0cd"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/themes/ut_bootstrap/js/ut_bootstrap.js?sas0cd"></script>
+<script type="text/javascript" src="https://eoppija.ut.ee/profiles/openscholar/themes/ut_project/js/ut_project.js?sas0cd"></script>
+        <script src="https://sisu.ut.ee/profiles/openscholar/themes/ut_bootstrap/js/jquery-migrate-1.2.1.js"></script>
+    </body>
+</html>
