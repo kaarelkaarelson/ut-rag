@@ -23,14 +23,26 @@ def get_links_from_page(url):
 
     return links 
 
-def sanitize_filename(url):
+def sanitize_link(url):
     """
-    Sanitizes the URL to be used as a valid filename by removing or replacing invalid characters.
+    Sanitizes the URL to be used as a valid filename by removing the scheme (http, https) 
+    and replaces invalid characters (like backslashes) with underscores
     """
-    # Remove the scheme (http, https) and replace invalid characters with underscores
-    sanitized = re.sub(r'https?://', '', url)  # Remove scheme
-    sanitized = re.sub(r'[^a-zA-Z0-9\-_\.]', '_', sanitized)  # Replace invalid chars with underscore
+    sanitized = re.sub(r'https?://', '', url) 
+    sanitized = re.sub(r'[^a-zA-Z0-9\-_\.]', '_', sanitized) 
     return sanitized
+
+def extract_text_content(html):
+    """
+    Removes all the html tags and keeps only text from the html page
+    """
+ 
+    soup = bs(html, "html.parser")
+ 
+    for data in soup(['style', 'script']):
+        data.decompose()
+ 
+    return ' '.join(soup.stripped_strings)
 
 def download_pages(links):
     if not os.path.exists('docs'):
@@ -39,14 +51,17 @@ def download_pages(links):
     for link in links:
         try:
             response = req.get(link)
-            sanitized_link = sanitize_filename(link)
-            file_name = sanitized_link + '.html'
-            with open(f'docs/{file_name}', 'w', encoding='utf-8') as file:
-                file.write(response.text)
+            html = response.text
+            preprocessed_html = extract_text_content(html) # Choose if you extract_text_content() or remove_tags()
+
+            sanitized_link = sanitize_link(link)
+            file_name = sanitized_link + '.txt'
+            with open(f'docs_unstructured/{file_name}', 'w', encoding='utf-8') as file:
+                file.write(preprocessed_html)
         except Exception as e:
             print(f"Failed to download {link}: {e}")
 
-links = get_links_from_page('https://www.ut.ee')
-download_pages(links)
-print(links)
-
+if __name__ == '__main__':
+    links = get_links_from_page('https://www.ut.ee')
+    download_pages(links)
+    print(links)
