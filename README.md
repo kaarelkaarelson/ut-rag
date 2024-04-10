@@ -30,7 +30,7 @@ Install all packages
 
 **Run**
 
-`py <file-name>.py`
+`python -m streamlit run .\app.py`
 
 ## Tutorials
 

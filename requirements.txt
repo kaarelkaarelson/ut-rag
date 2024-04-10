@@ -4,8 +4,9 @@ qdrant_client
 llama-index-vector-stores-qdrant 
 llama-index-readers-file 
 llama-index-embeddings-ollama
-langchain-community
-langchain-groq
+llama_index-vector_stores-chroma 
 llama-index-llms-openai 
 llama-index 
 openai
+chromadb
+langchain
