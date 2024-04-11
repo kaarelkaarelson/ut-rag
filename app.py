@@ -30,7 +30,7 @@ st.header("UT RAG 🎓🐬")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything"}
+        {"role": "assistant", "avatar": "🐬", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything"}
     ]
 
 user_prompt = ""
@@ -47,29 +47,28 @@ with col3:
     if st.button(options[2]["title"]):
         user_prompt = options[2]["title"]
 
-
 if "current_response" not in st.session_state:
     st.session_state.current_response = ""
 
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
+    with st.chat_message(message["role"], avatar=message['avatar']):
         st.markdown(message["content"])
 
 if user_prompt := st.chat_input("Ask question here", key="user_input") or user_prompt:
 
     st.session_state.messages.append(
-        {"role": "user", "content": user_prompt}
+        {"role": "user", "avatar":"🎓", "content": user_prompt}
     )
 
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="🎓"):
         st.markdown(user_prompt)
 
     response = prompt(index, user_prompt) 
 
     st.session_state.messages.append(
-        {"role": "assistant", "content": response}
+        {"role": "assistant", "avatar":"🐬", "content": response}
     )
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="🐬"):
         st.markdown(response)
 
