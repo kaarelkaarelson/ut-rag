@@ -1,19 +1,18 @@
 from langchain_core.callbacks import BaseCallbackManager
 import streamlit as st
-from langchain.prompts import PromptTemplate
 
-from rag import get_or_create_index, prompt
+from chatbot_ut import ChatbotUT
 
-index = get_or_create_index()
+chatbot_ut = ChatbotUT().get_chat()
 
-class StreamHandler(BaseCallbackManager): 
+class StreamHandler(BaseCallbackManager):
     def __init__(self, container, initial_text=""):
         self.container = container
         self.text = initial_text
 
     def on_llm_new_token(self, token: str, **kwargs) -> None:
         self.text += token
-        self.container.markdown(self.text)
+        self.container.write_stream()
 
 # Define the possible options for the user to select from
 options = [
@@ -30,7 +29,7 @@ st.header("UT RAG 🎓🐬")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "avatar": "🐬", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything"}
+        {"role": "assistant", "avatar": "🐬", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything!"}
     ]
 
 user_prompt = ""
@@ -56,19 +55,18 @@ for message in st.session_state.messages:
 
 if user_prompt := st.chat_input("Ask question here", key="user_input") or user_prompt:
 
+    with st.chat_message("user", avatar="🎓"):
+        st.markdown(user_prompt)
+
     st.session_state.messages.append(
         {"role": "user", "avatar":"🎓", "content": user_prompt}
     )
 
-    with st.chat_message("user", avatar="🎓"):
-        st.markdown(user_prompt)
-
-    response = prompt(index, user_prompt) 
+    streaming_response = chatbot_ut.stream_chat(user_prompt)
+    with st.chat_message("assistant", avatar="🐬"): 
+        st.write_stream(streaming_response.response_gen)
 
     st.session_state.messages.append(
-        {"role": "assistant", "avatar":"🐬", "content": response}
+        {"role": "assistant", "avatar":"🐬", "content": streaming_response}
     )
-
-    with st.chat_message("assistant", avatar="🐬"):
-        st.markdown(response)
 
