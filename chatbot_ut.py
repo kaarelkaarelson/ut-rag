@@ -25,44 +25,29 @@ qa_prompt_str = (
     "{context_str}\n"
     "---------------------\n"
     "Given the context information and not prior knowledge, "
-    "answer the question: {query_str}\n"
-    "Answer it in the same language as the question."
-)
-
-refine_prompt_str = (
-    "We have the opportunity to refine the original answer "
-    "(only if needed) with some more context below.\n"
-    "------------\n"
-    "{context_msg}\n"
-    "------------\n"
-    "Given the new context, refine the original answer to better "
-    "answer the question: {query_str}. "
-    "Answer it in the same language as the question."
-    "If the context isn't useful, output the original answer again.\n"
-    "Original Answer: {existing_answer}"
+    "answer in the same language as the query\n"
+    "Query: {query_str}\n"
+    "Answer: "
 )
 
 # Text QA Prompt
 chat_text_qa_msgs = [
     (
         "system",
-        "If context isn't helpful for answering the question, say that you don't have access to the information \
-        If you don't understand users question, ask them to rephrase it.",
+        "You are an expert Q&A system that highly trusted in University of Tartu.\n"
+        "Always answer the query using the provided context information, "
+        "and not prior knowledge.\n"
+        "Some rules to follow:\n"
+        "1. Avoid statements like 'Based on the context, ...' or "
+        "'The context information ...' or anything along \n "
+        "those lines.",
+        "2. If you are unable to find any information from context to answer the question, then say you are unable to find any infromation about that.\n"
+
     ),
     ("user", qa_prompt_str),
 ]
 text_qa_template = ChatPromptTemplate.from_messages(chat_text_qa_msgs)
 
-# Refine Prompt
-chat_refine_msgs = [
-    (
-        "system",
-        "If context isn't helpful for answering the question, say that you don't have access to the information \
-        If you don't understand users question, ask them to rephrase it.",
-    ),
-    ("user", refine_prompt_str),
-]
-refine_template = ChatPromptTemplate.from_messages(chat_refine_msgs)
 
 class ChatbotUT:
     def __init__(self):
@@ -84,8 +69,7 @@ class ChatbotUT:
                 self.vector_store, storage_context=self.storage_context
             )
         
-        self.chat_engine = self.index.as_chat_engine(chat_mode="condense_question", text_qa_template = text_qa_template, refine_template = refine_template, verbose=True)
 
     def get_chat(self):
-        return self.index.as_chat_engine(chat_mode="condense_question", verbose=True)
+        return self.index.as_chat_engine(chat_mode="condense_question", text_qa_template = text_qa_template, verbose=True)
 
