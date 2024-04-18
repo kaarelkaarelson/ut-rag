@@ -10,3 +10,4 @@ llama-index
 openai
 chromadb
 langchain
+scrapy
