@@ -34,14 +34,10 @@ Install all packages
 
 ## Tutorials
 
-Qdrant setup:
-
-https://qdrant.tech/documentation/quick-start/
-
-Llamaindex with Qdrant:
-
-https://docs.llamaindex.ai/en/stable/examples/vector_stores/QdrantIndexDemo.html
-
 Run open-source models with Ollama using free GPU
 
 [https://github.com/kaarelkaarelson/colab_ollama](https://github.com/kaarelkaarelson/colab_ollama)
+
+## Documents
+
+NB! There are .pdf and .docx as sites in ut.ee domain.
