@@ -32,6 +32,12 @@ Install all packages
 
 `python -m streamlit run .\app.py`
 
+## Spider
+
+`cd ut`
+
+`scrapy crawl quotes`
+
 ## Tutorials
 
 Run open-source models with Ollama using free GPU
