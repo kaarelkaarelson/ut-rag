@@ -1,6 +1,6 @@
-# ut_rag
+# UT RAG
 
-RAG Application for ut.ee domain.
+Retrieval Augmented Generation Chatbot for the University of Tartu domain
 
 ## Setup
 
@@ -33,9 +33,12 @@ Install all packages
 `python -m streamlit run .\app.py`
 
 ## Spider
-
+Navigate to the spider folder
 `cd ut`
 
+Clean the ut/ut_links.txt file
+
+Activate the spider (NB! Only activate with supervision, check the 'ut/ut_links.txt file')
 `scrapy crawl quotes`
 
 ## Tutorials
