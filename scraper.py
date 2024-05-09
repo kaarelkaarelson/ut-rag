@@ -2,11 +2,7 @@ import requests as req
 from bs4 import BeautifulSoup as bs
 import os
 import re
-
-def normalize_url(url):
-    if "https://www." in url:
-        return url.replace("https://www.", "https://")
-    return url
+from utils.url import normalize_url
 
 def get_links_from_page(url):
     r = req.get(url)

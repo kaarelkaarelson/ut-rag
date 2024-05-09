@@ -34,12 +34,6 @@ Install all packages
 
 ## Spider
 
-Navigate to the spider folder
-
-`cd ut`
-
-Clean the ut_links.txt file
-
 Activate the spider (NB! Only activate with supervision, check the 'ut/ut_links.txt file')
 
 `scrapy crawl quotes`
