@@ -15,21 +15,22 @@ def normalize_url(url):
     else: 
         return url_norm
 
-SUBDOMAINS = ["cs.ut.ee"]
+SUBDOMAINS = []
 FORBIDDEN_SUBDOMAINS = []
 
-# with open('subdomains.txt', 'r') as f:
-#     SUBDOMAINS = [line.strip() for line in f.readlines()]
+with open('subdomains.txt', 'r') as f:
+    SUBDOMAINS = [line.strip() for line in f.readlines()]
 
 with open('forbidden_subdomains.txt', 'r') as f:
     FORBIDDEN_SUBDOMAINS = [line.strip() for line in f.readlines()]
 
-class UrlChecker:
+class SubdomainUrlChecker:
 
-    forbidden_subdomains = FORBIDDEN_SUBDOMAINS
-
-    forbidden_query_params = []
-    forbidden_paths = []
+    def __init__(self, subdomain):
+        self.forbidden_subdomains = FORBIDDEN_SUBDOMAINS
+        self.subdomain = subdomain 
+        self.forbidden_query_params = []
+        self.forbidden_paths = []
 
     def is_allowed_url(self, abs_url):
         if "mailto:" in abs_url or "tel:" in abs_url:
@@ -46,8 +47,8 @@ class UrlChecker:
             return False
         if self.contains_forbidden_query(query): # if any of the forbidden query params are present
             return False
-        if "ut.ee" in abs_url or 
-
+        if not ("ut.ee" in abs_url or self.subdomain in abs_url):
+            return False
 
         return True
 
@@ -84,7 +85,6 @@ class UrlChecker:
 
         return False
 
-url_checker = UrlChecker()
 class QuotesSpider(scrapy.Spider):
     name = "subdomains"
 
@@ -94,18 +94,24 @@ class QuotesSpider(scrapy.Spider):
         print("SUBDOMAINS", subdomains)
         for subdomain in subdomains:
             url = normalize_url(subdomain)
+            url_checker = SubdomainUrlChecker(subdomain)
             folder_name = subdomain.replace('.', '_')
             folder_path = f"links/{folder_name}"
 
-            yield scrapy.Request(url=url, callback=self.parse, cb_kwargs={'folder_path': folder_path, 'subdomain': subdomain, "depth": 0})
+            yield scrapy.Request(url=url, 
+                                 callback=self.parse, 
+                                 cb_kwargs={'folder_path': folder_path, 
+                                            "url_checker": url_checker,
+                                            "depth": 0, 
+                                            "max_depth": 1 })
 
-    def download_url(self):
+    def download_url(self): # modify function here
         # url = response.url.split("/")[-2] 
         # filename = f"ut-{url}.html"
         # Path(filename).write_bytes(response.body)
         pass
 
-    def parse(self, response, folder_path, depth):
+    def parse(self, response, folder_path, url_checker, depth, max_depth):
         abs_url = response.url
 
         if not url_checker.is_allowed_url(abs_url): 
@@ -124,7 +130,7 @@ class QuotesSpider(scrapy.Spider):
 
         links = response.css("a::attr(href)").getall()
 
-        if depth < 1:
+        if depth < max_depth:
             for link in links:
                 if link is not None:
                     abs_url = response.urljoin(link)
@@ -135,5 +141,10 @@ class QuotesSpider(scrapy.Spider):
                     with open(f"{folder_path}/forbidden_links.txt", 'a') as file:
                         file.write(abs_url + '\n')
                     continue     
-
-                yield scrapy.Request(url=abs_url, callback=self.parse, cb_kwargs={'folder_path': folder_path, "depth": depth+1})
+                
+                yield scrapy.Request(url=abs_url, 
+                                     callback=self.parse, 
+                                     cb_kwargs={'folder_path': folder_path, 
+                                                "url_checker": url_checker,
+                                                "depth": depth+1, 
+                                                "max_depth": max_depth })
