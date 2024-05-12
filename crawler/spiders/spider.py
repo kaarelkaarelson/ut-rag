@@ -91,19 +91,24 @@ class QuotesSpider(scrapy.Spider):
     def start_requests(self):
         subdomains = SUBDOMAINS
         
-        print("SUBDOMAINS", subdomains)
+        subdomain_max_depth= {
+            "courses.cs.ut.ee": 2,
+        }
+
         for subdomain in subdomains:
             url = normalize_url(subdomain)
             url_checker = SubdomainUrlChecker(subdomain)
             folder_name = subdomain.replace('.', '_')
             folder_path = f"links/{folder_name}"
+            max_depth = subdomain_max_depth[subdomain] if subdomain_max_depth.get(subdomain) else 1
 
-            yield scrapy.Request(url=url, 
-                                 callback=self.parse, 
-                                 cb_kwargs={'folder_path': folder_path, 
-                                            "url_checker": url_checker,
-                                            "depth": 0, 
-                                            "max_depth": 1 })
+            yield scrapy.Request(url=normalize_url(subdomain), 
+                                     callback=self.parse, 
+                                     cb_kwargs={'folder_path': folder_path, 
+                                                "url_checker": url_checker,
+                                                "depth": 0, 
+                                                "max_depth": max_depth})
+        print("SUBDOMAINS", subdomains)
 
     def download_url(self): # modify function here
         # url = response.url.split("/")[-2] 

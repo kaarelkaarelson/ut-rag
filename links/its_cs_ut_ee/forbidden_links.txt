@@ -1,0 +1,4 @@
+https://nuxt.com
+https://tailwindcss.com
+https://element-plus.org/en-US/
+https://www.flaticon.com
