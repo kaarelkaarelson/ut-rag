@@ -17,12 +17,16 @@ def normalize_url(url):
 
 SUBDOMAINS = []
 FORBIDDEN_SUBDOMAINS = []
+VISITED_SITES = []
 
-with open('subdomains.txt', 'r') as f:
+with open('subdomains2.txt', 'r') as f:
     SUBDOMAINS = [line.strip() for line in f.readlines()]
 
 with open('forbidden_subdomains.txt', 'r') as f:
     FORBIDDEN_SUBDOMAINS = [line.strip() for line in f.readlines()]
+
+#with open('./links/courses_cs_ut_ee/links.txt', 'r') as f:
+#    VISITED_SITES = [line.strip() for line in f.readlines()]
 
 class SubdomainUrlChecker:
 
@@ -31,6 +35,7 @@ class SubdomainUrlChecker:
         self.subdomain = subdomain 
         self.forbidden_query_params = []
         self.forbidden_paths = []
+#       self.visited = VISITED_SITES
 
     def is_allowed_url(self, abs_url):
         if "mailto:" in abs_url or "tel:" in abs_url:
@@ -41,6 +46,8 @@ class SubdomainUrlChecker:
         path = parsed_url.path
         query = parsed_url.query
 
+#       if self.is_visited_site(abs_url): #For courses.cs.ut.ee or when required to scrape already scraped urls
+#           return False
         if self.contains_forbidden_subdomains(netloc):
             return False
         if self.contains_forbidden_path(path):
@@ -51,6 +58,14 @@ class SubdomainUrlChecker:
             return False
 
         return True
+
+    """
+    def is_visited_site(self, site):
+        for visited_site in self.visited:
+            if site == visited_site:
+                return True
+        return False
+    """
 
     def contains_forbidden_path(self, path):
         for forbidden_path in self.forbidden_paths:
@@ -134,7 +149,7 @@ class QuotesSpider(scrapy.Spider):
             file.write(abs_url + '\n')
 
         links = response.css("a::attr(href)").getall()
-
+        
         if depth < max_depth:
             for link in links:
                 if link is not None:

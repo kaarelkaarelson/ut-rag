@@ -1,14 +1,14 @@
 https://infosec.cs.ut.ee
 https://infosec.cs.ut.ee/Main/Archive
 https://courses.cs.ut.ee/2023/turve/spring/Main/Loengud
-https://cs.ut.ee/en/content/estonia-and-south-moravia-are-teaming-support-european-unions-safe-transition-digital
 https://infosec.cs.ut.ee/Main/HomePage?action=login
-https://infosec.cs.ut.ee/Main/ThesisTopics
 https://infosec.cs.ut.ee/Main/Contacts
 https://infosec.cs.ut.ee/Main/Events
 https://infosec.cs.ut.ee/Main/Education
+https://infosec.cs.ut.ee/Main/ThesisTopics
 https://infosec.cs.ut.ee/Main/Research
 https://infosec.cs.ut.ee/Main/HomePage
 https://infosec.cs.ut.ee/Main/Members
 https://infosec.cs.ut.ee/Main/Projects
 https://cs.ut.ee/et/sisu/kuberinnovatsioon-2023-tartu
+https://cs.ut.ee/en/content/estonia-and-south-moravia-are-teaming-support-european-unions-safe-transition-digital

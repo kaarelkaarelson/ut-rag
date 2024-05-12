@@ -1,0 +1,24 @@
+Jobs – Mobile & Cloud Computing Laboratory Skip to content Menu Home Research Projects Publications Theses Defended theses Teaching People Jobs IoT Lab Wiki Jobs Postdoctoral Researcher Position – RADON @ Mobile &
+Cloud Lab Institute of
+Computer Science, University of Tartu, Estonia Posted on: 3 rd March 2020 The Mobile & Cloud Lab at Institute of Computer Science, University of Tartu (UT), is inviting applications for a Postdoctoral Researcher position for one year to undertake research in the cloud computing domain, as part of our EU funded H2020 project, RADON . UT is the oldest and largest Estonian University (17000 students and 1800 academic staff) and the highest-ranked University in the Baltic States according to both the Times Higher Education and the QS World University rankings. UT’s Institute of Computer Science (ICS) has 80 academic and research staff and 60 PhD students, and participates in a broad range of research projects. The
+Mobile & Cloud Lab conducts research and teaching in the cloud computing,
+mobile computing, and Internet of Things (IoT) domains. Our research topics
+include cloud computing, large-scale data analytics, mobile cloud, mobile web
+services, Internet of Things, fog computing, and migrating scientific computing
+and enterprise applications to the cloud. RADON
+(Rational decomposition and orchestration for serverless computing) project is
+aimed at creating a DevOps framework to create and manage microservices-based
+applications that can optimally exploit serverless computing technologies.
+University of Tartu is specifically interested in developing tools that
+facilitate in designing and orchestrating data pipeline applications that
+involve serverless entities. In
+addition to participating in the RADON project and responsible for deliverables
+of the project, the candidate is also expected to successfully apply for
+research funding and performing R&D contracts. The
+successful applicant for the position should have: A PhD degree in Computer Science A strong research track record and
+international publication record Research profile relevant to cloud computing
+and/or distributed computing Experience or inclination in collaborative
+research with external partners Strong software engineering skills Excellent communication skills and proficiency
+in English Prior experience in working with a EU H2020
+project or a similar joint funded project is a plus Please send your curriculum vitae and statement of interest in the proposed research to Prof. Satish Srirama (email: srirama@ut.ee ), with subject, “Application for Researcher Position – RADON”. You also have to make a formal application with all the relevant required documents at the University Jobs site ( https://www.ut.ee/en/welcome/job-offer/research-fellow-cloud-computing-0 ). Note: The position is formally advertised at UT jobs site: https://www.ut.ee/en/welcome/job-offer/research-fellow-cloud-computing-0 . Applications will be accepted until 4 th May 2020 . Successful applicants are preferred to start before June 2020, but can be negotiated. Depending on the qualifications and track record of the candidate, the gross monthly salary is up to 2600€, which is competitive against the sectoral salaries and the living cost in Estonia. The employment arrangement includes access to the Estonian public healthcare system. All
+the information relevant for an incoming researcher to Estonia is available at: https://www.euraxess.ee/estonia/information-assistance Satish Narayana Srirama, PhD Research Professor Head of Mobile & Cloud Lab Institute of Computer Science, University of Tartu Narva mnt 18 – 3039, Tartu 51009, Estonia satish.srirama@ut.ee Ph: +372 737 6422 http://math.ut.ee/~srirama/ Contact: Pelle Jakovits Acting Head of Mobile & Cloud Lab Tel: +372 737 6419 Narva mnt 18, Room 3040 Tartu 51009, Estonia Dr. Satish Srirama Honorary Head of Mobile & Cloud Lab Institute of Computer Science , University of Tartu Quick Links RADON Data Pipeline Webinar Institute Logo & Powerpoint template UT’s Data Repository Meta Log in Entries feed Comments feed WordPress.org © 2024 Mobile & Cloud Computing Laboratory • Powered by GeneratePress Scroll back to top

@@ -1,0 +1,24 @@
+Prof. Dr. Satish Narayana Srirama – Mobile & Cloud Computing Laboratory Skip to content Menu Home Research Projects Publications Theses Defended theses Teaching People Jobs IoT Lab Wiki Prof. Dr. Satish Narayana Srirama Research Professor Head of Mobile & Cloud Lab Institute of Computer Science University of Tartu , Estonia Address: Institute of Computer Science University of  Tartu Narva mnt 18- 3039 Tartu 51009, Estonia Telephone: +372 737 6422 Fax: +372 737 5468 E-mail: satish(DOT)srirama(AT)ut(DOT)ee Short Bio Mobile Cloud Lab is headed by Prof. Dr. Satish Narayana Srirama. He 
+deals with research and training around the cloud computing and mobile 
+application development domains. He is also the principle investigator 
+of several European Commission projects and leads the collaborative 
+research with several international research institutions and companies.
+ He received his PhD in computer science and Masters in Software Systems
+ Engineering from RWTH Aachen University, Germany and Bachelors degree 
+in Computer Science and Systems Engineering from Andhra University, 
+Visakhapatnam, India. Prior to joining UT he worked as PostDoc at RWTH 
+Aachen University. He has also been a visiting researcher at Ericsson 
+Research, Aachen, Germany (2003 – 2008). Dr. Srirama has co-authored 
+around 110 refereed publications in international conferences and 
+journals. He is also a program committee member of several international
+ conferences and workshops. He was adjudged the “ Researcher of the year – 2011 ” by Institute of Computer Science, University of Tartu. His current research focuses at cloud
+ computing,  mobile application development,  mobile cloud, mobile web 
+services,  Internet of Things and migrating scientific computing  and 
+enterprise  applications to the cloud. Teaching Basics of Grid and Cloud  Computing (Spring 2012) Mobile Application  Development – Projects (MTAT.03.266) (Spring 2012) Seminar on Distributed  Systems (Spring 2012) Mobile  Application Development – MTAT.03.262 (Fall 2011) Projects REMICS SciCloud Stratus D2CM MCM Mobile Cloud Applications Mobile Host Mobile Web Service Discovery etc Finished Projects ROBO M. D. SITIO Theses Pelle Jakovits, Reducing Scientific Computing Problems to Cloud  
+Computing Based Frameworks, PhD Student, University of Tartu. (2010 – ) Vladimir Shor, Distributed troubleshooting for cloud based  applications, PhD Student, University of Tartu. (2009 – ) Huber Flores, Scalability, Integrability and Provisioning of  
+context-aware services using the Mobile Cloud Middleware, PhD Student,  
+University of Tartu. (2011 – ) Jurmo Mehine, Migrating Relational Database Systems to Cloud Scale  Solutions, PhD Student, University of Tartu. (2011 – ) Briti Deb, Migrating Data Mining and Machine Learning Based  
+Applications Using Databases and Social Networks to Clouds, PhD Student,
+  University of Tartu. (2011 – ) Chii Chang, Web Service-Oriented Mobile Social Network in  
+Proximity, PhD Student, Faculty of Information Technology, Monash  
+University. (2011 – ) A detailed list of supervised theses Publications A detailed list of publications My detailed Homepage Contact: Pelle Jakovits Acting Head of Mobile & Cloud Lab Tel: +372 737 6419 Narva mnt 18, Room 3040 Tartu 51009, Estonia Dr. Satish Srirama Honorary Head of Mobile & Cloud Lab Institute of Computer Science , University of Tartu Quick Links RADON Data Pipeline Webinar Institute Logo & Powerpoint template UT’s Data Repository Meta Log in Entries feed Comments feed WordPress.org © 2024 Mobile & Cloud Computing Laboratory • Powered by GeneratePress Scroll back to top

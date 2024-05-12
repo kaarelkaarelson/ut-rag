@@ -1,0 +1,72 @@
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 8 Dünaamiline mäluhaldus III 8.1 Kodutöö 8.2 Harjutused 8.3 Videolingid 9. STL andmestruktuurid I 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Kodused ülesanded Funktsioonid NB! Loodud funktsioonid lisa vastavalt failidesse andmed.h ja andmed.cpp ning main funktsioon kirjuta eraldi faili kodu8.cpp. Kõikide funktsioonide koostamisel kasuta toorviitade ( raw pointer ) asemel tarku viitasid ( smart pointers ). 1. Kirjuta kaks funktsiooni unique_ptr<int[]> loo_andmed_u(int) , unique_ptr<int[]> tootle_andmeid(unique_ptr<int[]>, int) , mis töötavad järgmiselt: Funktsioon loo_andmed loob etteantud täisarvu pikkuse täisarvumassiivi kuhjamälus, täidab selle juhuslike täisarvudega ning tagastab loodud massiivi. Ühest väiksema pikkuse korral ei tohi funktsioon massiivi luua ning peab tagastama NULL-viida ( nullptr ). Funktsioon tootle_andmeid arvutab andmete summa ja keskmise ning kuvab need ekraanile. Peale kuvamist muudab funktsioon massiivi elemendid negatiivseks ja tagastab massiivi. NULL-viida puhul ei tohi funktsioon midagi teha. 2. Kirjuta kaks funktsiooni shared_ptr<vector<int>> loo_andmed_s(int) , shared_ptr<vector<int>> tootle_andmeid(shared_ptr<vector<int>>) , mis töötavad analoogiliselt eelmise ülesandega. 3. Loo kaks funktsiooni unique_ptr<int> genereeri_arv() ja void proovi_arvu(weak_ptr<int>) , mis töötavad järgmiselt: Funktsioon genereeri_arv tagastab unikaalse viida arvule, mis on täidetud juhusliku arvuga vahemikus 0 <= arv <= 100 . Gerereerimiseks: https://en.cppreference.com/w/cpp/numeric/random/uniform_int_distribution . Funktsioon proovi_arvu väljastab nõrgas viidas antud arvu juhul kui viit ei ole ära kustutatud. Vastasel juhul väljastab funktsioon "ei eksisteeri". Näide main funktsioonist tööst. Alguses on funktsiooni nime/parameetrite kontroll kasutades static_asserte. Täpsemate static_assert veateadete jaoks kasutada vajadusel lippu -fconcepts-diagnostics-depth=2. Kompilaator peaks seda soovitama ka. #include "andmed.h"
+
+template <typename Int, typename Ptr>
+concept Yl1 = requires(Int i, Ptr s) {
+  { loo_andmed_u(Int{}) } -> std::same_as<Ptr>;
+  { tootle_andmeid(Ptr{}, i) } -> std::same_as<Ptr>;
+};
+
+static_assert(Yl1<int, std::unique_ptr<int[]>>);
+
+template <typename Int, typename Ptr>
+concept Yl2 = requires(Int i, Ptr s) {
+  { loo_andmed_s(Int{}) } -> std::same_as<Ptr>;
+  { tootle_andmeid(Ptr{}) } -> std::same_as<Ptr>;
+};
+
+static_assert(Yl2<int, std::shared_ptr<std::vector<int>>>);
+
+template <typename Int, typename U_Ptr, typename W_Ptr, typename S_Ptr>
+concept Yl3 = requires(Int i, U_Ptr u, W_Ptr w, S_Ptr s) {
+  { genereeri_arv() } -> std::same_as<U_Ptr>;
+  { proovi_arvu(W_Ptr{}) } -> std::same_as<void>;
+};
+
+static_assert(
+    Yl3<int, std::unique_ptr<int>, std::weak_ptr<int>, std::shared_ptr<int>>);
+
+#ifndef VPL_TEST
+int main(int argc, char *argv[]) {
+  auto ptr = loo_andmed_u(5);
+
+  auto arv = genereeri_arv();
+  std::cout << *arv << '\n';
+  arv = genereeri_arv();
+  std::cout << *arv << '\n';
+
+  auto eksisteerivArv = std::make_shared<int>(1);
+  proovi_arvu(
+      eksisteerivArv);  // jagatud viidast tehakse automaatselt nõrk viit
+
+  std::weak_ptr<int> wp;
+  proovi_arvu(wp);
+
+  auto andmed = loo_andmed_u(10);
+  for (int i = 0; i < 10; i++) {
+    std::cout << andmed[i] << ' ';
+  }
+  std::cout << '\n';
+  // https://en.cppreference.com/w/cpp/utility/move
+  // Või küsi oma sõbralikult naabruskonna praksijuhendajalt
+  andmed = tootle_andmeid(std::move(andmed), 10);
+
+  for (int i = 0; i < 10; i++) {
+    std::cout << andmed[i] << ' ';
+  }
+  std::cout << '\n';
+
+  auto andmed2 = loo_andmed_s(10);
+  for (int i = 0; i < 10; i++) {
+    std::cout << (*andmed2)[i] << ' ';
+  }
+  std::cout << '\n';
+  andmed2 = tootle_andmeid(andmed2);
+
+  for (int i = 0; i < 10; i++) {
+    std::cout << (*andmed2)[i] << ' ';
+  }
+  std::cout << '\n';
+
+  return 0;
+}
+#endif Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

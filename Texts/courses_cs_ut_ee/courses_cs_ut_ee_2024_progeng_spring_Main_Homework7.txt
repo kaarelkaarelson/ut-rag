@@ -1,0 +1,44 @@
+Programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine (LTAT.03.001) EN Logi sisse Programmeerimine 2023/24 kevad Home Homework for Week 7 After this week you can Create lists by adding elements Select elements form a list by index Loop through a list Split a string into a list of strings Lists A list is a data structure that allows the program to process a sequence of similar values in a uniform way. The elements in a list have a fixed order, and each element has a unique index inside the list. A list variable refers to the whole list; the values inside have no names and can be accessed by index. A convenient way to go through all elements of a list is a definite (for) loop. In many respects, lists are a generalization of strings, and as with strings, there are many standard functions that operate on lists. Watch the videos: Slides in English Textbook in English Quiz Go to Moodle and solve the quiz on the video lectures. Examples List of shoe sizes The following program reads the foot lengths from the file footlengths.txt , calculates shoe sizes for all numeric foot lengths, and prints the shoe sizes, adding the results in a list. After the file is read, the program prompts the user for shoe size, counts how many people in the list have the same shoe size as the size entered, and prints the result. fh = open("footlengths.txt")
+
+shoesizes = []
+
+for foot in fh:
+    try:
+        f = float(foot)
+    except:
+        print("Invalid input:", foot.strip())
+    else:
+        size = int(round(3/2 * f + 2))
+        print("Foot length:", f, "- Suitable shoe size is", size)
+        shoesizes.append(size)
+
+while True:
+    try:
+        size = int(input("Please enter shoe size: "))
+    except:
+        print("Please enter a number")
+    else:
+        number = shoesizes.count(size)
+        print(number, "people have the same shoe size")
+        break The first loop reads the shoe sizes from the file into a list. The second loop performs a lookup in the list, prompting the user for a number until the user enters a suitable value. Days of the week The next program repeatedly asks for the number of the day of the week and prints the name of the day until the user enters 'done' instead of a number. def day_of_week(n):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return days[n-1]
+
+while True:
+    line = input("Enter number of day of the week or word 'done': ")
+    if line == 'done':
+        break
+    try:
+        number = int(line)
+    except:
+        print("Please enter a number")
+    else:        
+        if number < 1 or number > 7:
+            print("The number of the day of the week must be in the range 1-7")
+        else:
+            print("The name of this day of the week is", day_of_week(number)) A list is a convenient place to store different values that are naturally ordered (like month names). Then we can retrieve the values from the list by index. Exercises 1. Calculation of sales prices Write a function calculate_prices , which takes a sequence of prices and markup percentage as its arguments. All prices and the percentage are floating-point numbers. The function returns a new sequence of prices of the same length, where the initial prices have been increased by the markup percentage, and after that, 20% VAT is added to all prices. Example >>> calculate_prices([100.0, 1200.0], 10.0) [132.0, 1584.0] Explanation. Add the markup percentage: 100.0 + 10% = 110.0. Add the VAT: 110.0 + 20% = 132.0. 2. List of films In the text file films.txt , there is a list of films and their genres, where each line contains the name and genre of one film. The elements in the lines are separated by spaces and hyphens (' - '). For example, the content of the file films.txt could be: Shrek - cartoon
+ Avengers: Endgame - action
+ A Quiet Place - horror
+ Spider-Man - action
+ Moana - cartoon
+ The Conjuring 3 - horror To facilitate the management of films, create a Python file film.py and add the following functions to it: The function list_films takes one string type argument, the genre, and returns a list with the names of all films of the given genre that exist in the file films.txt . The function add_film has two arguments: the first argument is the name, and the second is the genre. The function adds the desired film to the file films.txt in the format name - genre . For example: Spider-Man - action . The function delete_film takes the name of the film as an argument and deletes it from the file films.txt . For example, on the file films.txt from above, the function list_films must behave as follows: >>> list_films("action") ['Avengers: Endgame', 'Spider-Man'] 3. Juku's film database Juku is a big lover of films, but he only has a little time to watch them. So he decided to create a program to help him keep track of good films so that he wouldn't forget them. Since Juku is always in a hurry, he hopes that he doesn't have to write the entire code of the program from scratch and can reuse as many existing functions as possible. Help Juku and write a program that allows him to select films by genre. The program should import the required functions from the module film (file film.py ) created in the previous task. The program must allow adding films if desired. After choosing a film to watch, the program must delete it from the text file. If there are no films of the desired genre in the database, the program must inform about that and give another opportunity to make a choice. First, create a function, process_command , with two parameters: a command letter (string) and a list containing the command's arguments (list of strings). The function must accept the following commands: D - display the list of films of the given genre on the screen A - add a film with the given genre and name to the database W - watch the film and delete it from the database E - exit the program. The function should return True for the first three commands and False for the command E . Then, create the main program, where the user can repeatedly enter four commands in the following format: D <genre> ​A <genre> <film name> W <film name> ​E It can be assumed that the name of the genre does not contain spaces. On entering the command E, the program terminates. An example of the program's work >>> %Run name.py === FILM DATABASE === Display films: D <genre> Add film: A <genre> <film name> Watch film: W <film name> Exit: E === > D action Possible films are: Avengers: Endgame Spider-Man > A comedy Borat Film added! > W Avengers: Endgame Film deleted from the database! Happy viewing! > E >>> Submit your solutions Go to Moodle and submit your solutions of exercises as files home1.py , film.py , home3.py . Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

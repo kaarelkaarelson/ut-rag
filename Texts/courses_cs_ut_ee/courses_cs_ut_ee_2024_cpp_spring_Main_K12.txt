@@ -1,0 +1,56 @@
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 9. STL andmestruktuurid I 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 12 OOP II Pärilus ja polümorfism 12.1 Kodutöö 12.2 Harjutused 12.3 Videolingid 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Kodused ülesanded Mitte jätta sisse käsureale printimist, see võib veateated ära peita. 1. Minu täisarv Koosta klass MinuTaisarv , mis hoiab privaatselt täisarvu. Klassis peab olema ühe parameetriga konstruktor ja get-set funktsioonid ( int getArv() ja void setArv(int) ) täisarvu pärimiseks ja seadmiseks. Defineeri üle operaator [] selliselt, et indeks i korral tagastatakse i -ndal kohal olev number, kus i = 0 on üheliste koht. Näiteks, kui arv on MinuTaisarv tüüpi ja täisarvuks on seatud 215, siis arv[0] tagastab 5, arv[1] tagastab 1, arv[2] tagastab 2 ja arv[3] tagastab -1. Defineeri üle operaator << arvu kuvamiseks ekraanil nt MinuTaisarv: 215 .  
+Programm peab hakkama saama ka juhuga, kus objekt luuakse vaikekonstruktoriga, st hoitavaks arvuks on 0. Koosta ka klass Algarv , mis on MinuTaisarv alamklass. Klassil on ühe parameetriga konstruktor ja lisaks privaatne isendiväli (täisarv), mis näitab, mitmes algarv see arv on. Luua vastav get-funktsioon. Näiteks, 2 on esimene, 3 on teine, 5 on kolmas algarv jne. Ülemklassis olevat täisarvu hoidvat muutujat mitte üle defineerida. Negatiivsed arvud on algarvude piirist väljas, kuid peab neid arvestama kui kasutaja vigast sisendit. Kui konstruktor ei saa valiidset algarvu, siis algarvu isendimuutuja väärtus on -1. Siin on üks static funktsioon mõistlik teha. Defineeri üle operaator << arvu enda ja mitmes algarv ta on, kuvamiseks ekraanil. Näiteks arvuga 5  Algarv isendi korral saadetakse väljundvoogu Arv 5 on 3. algarv . Defineeri üle operaatorid ++ ( post-increment ) ja -- ( post-decrement ) (signatuurid on Algarv operator++(int) ja Algarv operator--(int) ). Need siis muudavad ülemklassi muutuja väärtust kas madalamaks või kõrgemaks, kui see saab olla algarv. Järgnev koodilõik: int main() {
+    Algarv arv(5);
+    Algarv uusArv = arv++;
+    cout << arv << '\n';
+    cout << uusArv << '\n'; 
+    return 0;
+} annab järgneva väljundi: Arv 7 on 4. algarv
+Arv 5 on 3. algarv Koosta funktsioon loeArv , mis saab argumendiks täisarvu. Kui sisestatud arv on algarv, siis funktsioon loob klassi Algarv objekti, vastasel juhul klassi MinuTaisarv objekti. Funktsioon tagastab arvu numbrite summa (ristsumma). Kood kirjutada failidesse arvud.h ja arvud.cpp. Vihje. Täisarvu numbreid on mugav hoida vektoris vector<int> . Kontrollkood: template <typename MT, typename A>
+concept Yl1 = requires(MT& mt, A& a, std::ostream& os) {
+  { MT(1) };
+  { A(1) };
+
+  { mt.getArv() } -> std::same_as<int>;
+  { a.getMitmes() } -> std::same_as<int>;
+  { mt.setArv(1) } -> std::same_as<void>;
+
+  { mt[0] } -> std::same_as<int>;
+
+  { a++ } -> std::same_as<A>;
+  { a-- } -> std::same_as<A>;
+
+  { os << mt } -> std::same_as<decltype(os)>;
+  { os << a } -> std::same_as<decltype(os)>;
+
+  { loeArv(1) } -> std::same_as<int>;
+};
+
+static_assert(std::is_base_of<MinuTaisarv, Algarv>());
+static_assert(Yl1<MinuTaisarv, Algarv>); 2. Toidukuller Toidukuller pakub võimalust klientidele erinevaid toite koju tellida. Toidud on failis järgmisel kujul: Risotto,5.00,10,
+Sushi,19.00,
+Vürtsikas porgandikook,6.50,15,
+Veiselihapasta seentega,11.50, Iga rida algab toidu nimetusega. Nimetusele järgneb hind. Kui tegu on kampaaniapakkumisega, siis nimetusele ja hinnale järgneb soodustuse protsent (täisarv). Eraldajaks on koma (ka rea lõpus). Programm peab sisaldama klasse Toit ja KampaaniaToit . Klasside kõik isendiväljad peavad olema privaatsed. 1. Klassis Toit peavad olema privaatsed isendiväljad toidu nimetuse ( string ) ja hinna ( float ) jaoks. 2. Klassis peab olema vaikekonstruktor ja kahe parameetriga konstruktor isendiväljade määramiseks. 3. Klassis peavad olema funktsioonid isendiväljade seadmiseks ja pärimiseks. Hinna pärimiseks on virtuaalne funktsioon getHind . 4. Klassis defineeritakse üle operaator << , mille abil on võimalik infot mõistlikult kuvada. 5. Klassis defineeritakse üle operaator <=> , mille abil on võimalik objekte võrrelda. Võrdlemine toimub hinna alusel. Klass KampaaniaToit on klassi Toit alamklass. Ülemklassis olemasolevaid isendivälju siin uuesti mitte kirjeldada. Lisaks peab olema privaatne isendiväli soodustuse protsendi (int) jaoks. 1. Klassis peab olema vaikekonstruktor ja kolme parameetriga konstruktor, mille abil saab määrata toidu nimetuse, hinna ja soodustuse protsendi. 2. Klassis defineeritakse üle getHind , mis arvutab hinna arvestades soodustuse protsendiga. 3. Klassis defineeritakse üle operaator << , mille abil on võimalik infot mõistlikult kuvada. 4. Klassis defineeritakse üle operaator <=> , mille abil on võimalik objekte võrrelda. Võrdlemine toimub hinna alusel. Koosta funktsioon loe_toidud , mis saab argumendiks sõnena faili nime ja viite andmestruktuurile vector<unique_ptr<Toit>> . Funktsioon loeb failist toidud ja lisab vektorisse. Funktsioon tagastab toitude kogumaksumuse. Programmi vormistamisel panna päisefaili toit.h deklaratsioonid ja lähtekoodifaili toit.cpp definitsioonid. Et ei tekiks UB'd (undefined behaviour) https://www.geeksforgeeks.org/virtual-destructor/ Kontrollkood: template <typename T, typename KT>
+concept Yl2 = requires(T& t, KT& kt, std::ostream& os, std::string file,
+                       std::vector<std::unique_ptr<Toit>>& toidud,
+                       std::string food, float price, int percent) {
+  { T() };
+  { KT() };
+  { T(food, price) };
+  { KT(food, price, percent) };
+
+  { t <=> T() };
+  { kt <=> KT() };
+
+  { t.getHind() } -> std::same_as<float>;
+  { kt.getHind() } -> std::same_as<float>;
+
+  { os << t } -> std::same_as<decltype(os)>;
+  { os << kt } -> std::same_as<decltype(os)>;
+
+  { loe_toidud(file, toidud) } -> std::same_as<float>;
+};
+
+static_assert(std::has_virtual_destructor<Toit>());
+static_assert(std::is_base_of<Toit, KampaaniaToit>());
+static_assert(Yl2<Toit, KampaaniaToit>); 3. Oma klassid Mõtle välja oma ülesanne, kus on klasside hierarhia vähemalt kahe või kolme tasemega, nt Vanem<-Laps<-Lapselaps (Parent<-Child<-Grandchild). Igas klassis peavad olema isendiväljad, konstruktorid, operaatorite üledefineerimised ja funktsioonid andmetega opereerimiseks. Funktsioonis main testida loodud klasse. Klasside ja funktsioonide deklaratsioonid paigutada päisefaili ja definitsioonid lähtekoodifaili. Ülesande tekst peab olema eraldi failis. Failinimi ilma tühikuteta ja erisümbolitega. NB! Häid ja sisukaid ülesandeid premeeritakse lisapunktiga. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

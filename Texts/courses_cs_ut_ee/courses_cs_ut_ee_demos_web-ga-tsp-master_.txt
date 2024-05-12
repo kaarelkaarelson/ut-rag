@@ -1,0 +1,1 @@
+Toggle navigation Web Genetic TSP Simulation Poster Contribute Generate points Amount Selection Type: Tournament Roulette wheel Crossover Type: Two point crossover One point crossover Rate: Mutation Rate: Save the best: Start Stop Iterations: Fitness:

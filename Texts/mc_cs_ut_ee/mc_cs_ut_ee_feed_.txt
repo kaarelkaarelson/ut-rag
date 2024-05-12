@@ -1,0 +1,557 @@
+Mobile & Cloud Computing Laboratory https://mc.cs.ut.ee Fri, 07 Feb 2020 09:00:14 +0000 en-GB hourly 1 https://wordpress.org/?v=5.4.15 RADON https://mc.cs.ut.ee/projects/radon/ admin Fri, 07 Feb 2020 09:00:12 +0000 Projects https://mc.cs.ut.ee/?p=475 Rational decomposition and orchestration for serverless computing ( RADON ) project is aimed at creating a DevOps framework to create and manage microservices-based applications that can optimally exploit serverless computing technologies. University of Tartu is specifically interested in developing tools that facilitate in designing and orchestrating data pipeline applications that involve serverless entities. <p>Emerging serverless computing technologies, such as  function-as-a-service (FaaS) offerings, enable developers to virtualize  the internal logic of an application, simplifying management of cloud  native applications and allowing cost savings through billing and  scaling at the level of individual function calls. Serverless computing  is therefore rapidly shifting the attention of software vendors to the  problem of developing cloud applications that can use these platforms.</p>
+
+
+
+<p>Rational decomposition and orchestration for serverless computing ( RADON ) aims at creating a DevOps framework to create and manage  microservices-based applications that can optimally exploit serverless  computing technologies. RADON applications will include fine-grained and  independently deployable microservices that can efficiently exploit  FaaS and container technologies. The end goal is to broaden the adoption  of serverless computing technologies within the European software  industry. The methodology will strive to tackle complexity, harmonize  the abstraction and actuation of action-trigger rules, avoid FaaS  lock-in, and optimize decomposition and reuse through model-based  FaaS-enabled development and orchestration.</p>
+
+
+
+<p>The project’s kickoff meeting was held in London during 17-18<sup>th</sup>
+ January, at Imperial College London, UK, which is the coordinator for 
+the project. The consortium project has 8 partners for several EU member
+ states.</p>
+
+
+
+<figure class="wp-block-table"><table class=""><thead><tr><th scope="col">
+				<strong>Participant </strong>
+				<strong>organization name</strong></th><th scope="col"><strong>Country</strong></th></tr></thead><tbody><tr><td>Imperial College of Science, Medicine, and Technology</td><td>UK</td></tr><tr><td>Stichting Katholieke Universiteit Brabant</td><td>NL</td></tr><tr><td>University of Tartu</td><td>EE</td></tr><tr><td>XLAB razvoj programske opreme in svetovanje d.o.o</td><td>SI</td></tr><tr><td>Athens Technology Center SA</td><td>GR</td></tr><tr><td>Engineering Ingegneria Informatica</td><td>IT</td></tr><tr><td>Universität Stuttgart</td><td>DE</td></tr><tr><td>Praqma A/S</td><td>DK</td></tr></tbody></table></figure> Internet of Things https://mc.cs.ut.ee/research/internet-of-things/ admin Thu, 06 Feb 2020 12:47:05 +0000 Research https://mc.cs.ut.ee/?p=421 The goal of this research is to overcome the challenges of cyber-physical systems in the Internet of Things. The challenges include: interoperability, autonomous machine-to-machine communication, automatic configuration, energy efficiency, trustworthiness etc. Today, a common vision of Internet of Things (IoT) represents a global network interconnected with various electronic devices in a meaningful manner. The devices ... <a title="Internet of Things" class="read-more" href="https://mc.cs.ut.ee/research/internet-of-things/">Read more <span class="screen-reader-text">Internet of Things</span></a> <p>The goal of this research is to overcome the  challenges of cyber-physical systems in the Internet of Things. The  challenges include: interoperability, autonomous machine-to-machine  communication, automatic configuration, energy efficiency,  trustworthiness etc.                                                                                                                                                                                                                </p>
+
+
+
+<p>Today, a common vision of Internet of Things (IoT) 
+represents a global network interconnected with various electronic 
+devices in a meaningful manner. The devices consist of Radio Frequency 
+Identification (RFID)-attached objects, EPCGlobal Network-connected 
+objects and a variety of internet-enabled objects such as mobile phones,
+ smart watches, vehicles, sensors, home appliance and so on. As 
+described by European Commission Information Society and Media (2009), 
+the fundamental idea of IoT is to allow &#8220;<em>people and things to be connected Anytime, Anyplace, with Anything and Anyone, ideally using Any path/network and Any service</em>&#8220;. The US National Intelligence Council has predicted that &#8220;<em>by 2025 Internet nodes may reside in everyday things–food packages, furniture, paper documents, and more</em>&#8220;.</p>
+
+
+
+<p>IoT technologies can be applied in various scenarios. E.g., combining
+ the augmented reality technology with IoT, a system can help disabled 
+people to perform many daily activities such as travel, shopping, 
+operating appliances etc. In the enterprise domain, the EPCGlobal 
+Network system provides a convenient way for product transporting and 
+tracking processes. Other scenarios include the domains in 
+transportation, healthcare, smart environment, social networking and so 
+on.</p>
+
+
+
+<p>Although various IoT projects are progressing, there are still many challenges remain unsolved.</p>
+
+
+
+<ol><li><strong><em>Interoperability</em></strong>. Most existing IoT 
+solutions were built in isolation. Currently, the IoT environment still 
+lack a feasible solution to enable the interaction among these 
+heterogeneous fragments in a highly distributed environment. Assumption 
+such as centralised mediation services are inapplicable and unrealistic.
+ </li><li><strong><em>Autonomous Machine-to-Machine (M2M) communication</em></strong>.
+ Autonomous M2M communication enables the cyber-physical systems to 
+provide self-managed services to ease people’s daily life. However, such
+ systems face service discovery challenges because existing Web-based 
+service discovery mechanisms were not designed for resource constrained 
+devices, which are major entities in IoT environments. </li><li><strong><em>Automatic Configuration</em></strong>. Most existing IoT 
+solutions were proposed for domain specific applications. They cannot be
+ directly applied to different scenarios. It is due to the lack of 
+automatic configuration mechanism. Furthermore, the autonomous system 
+also require self-management, self-healing and self-optimisation 
+mechanisms. </li><li><em><strong>Energy Efficient Service Provisioning</strong></em>. 
+Resource constrained devices such as sensors, actuators and mobile 
+devices, which rely on battery power, are the major objects of IoT. In 
+order to interact with these devices in the autonomous M2M manner, they 
+need to provide some forms of networked services. However, the existing 
+SOA-based service provisioning approaches such as HTTP-based REST or 
+SOAP were fundamentally not designed for resource constrained IoT 
+devices, and are considered as heavyweight in terms of energy 
+consumption. </li><li><em><strong>Trustworthiness</strong></em>. Classic security strategies
+ for Web services face the challenges in IoT because the limitations in 
+terms of: (1) hard to control the identification of IoT participants; 
+(2) centralised control is unrealistic; (3) heavy data transmission and 
+overhead. One trend of improving IoT security is to apply the 
+trust-based strategies. Trust strategies can be categorised into two 
+types: (1) service requester aspect; (2) service provider aspect. 
+Existing trust strategies for IoT were proposed only for the service 
+requester aspect. There is still lack of a proper trust solution for 
+preventing malicious service requesters from public accessible &#8216;Things&#8217;.
+ </li></ol>
+
+
+
+<h2>Current Projects</h2>
+
+
+
+<h3>Middleware</h3>
+
+
+
+<ul><li>Energy-efficient Things Framework</li><li>Mobile-hosted Things Middleware (MHTM)</li><li>Mobile-hosted Cloud Middleware (MHCM)</li><li>Mobile Resource Composition Mediation Framework (MRCMF)</li></ul>
+
+
+
+<h3>Trust</h3>
+
+
+
+<ul><li>Trustworthy Internet of Things</li></ul>
+
+
+
+<h3>Application</h3>
+
+
+
+<ul><li>Realtime Augmented Reality using Context-aware Cloud services with Mobile Hosts</li></ul>
+
+
+
+<h2>Research Staff</h2>
+
+
+
+<ul><li><a rel="noreferrer noopener" href="http://math.ut.ee/~srirama/" target="_blank">Satish Narayana Srirama</a></li><li><a rel="noreferrer noopener" href="http://math.ut.ee/~chang/" target="_blank">Chii Chang</a></li><li>Mohan Liyanage (formerly)</li><li>Jakob Mass</li></ul> Energy-Efficient Internet of Things https://mc.cs.ut.ee/projects/energy-efficient-internet-of-things/ https://mc.cs.ut.ee/projects/energy-efficient-internet-of-things/#respond admin Tue, 21 Jan 2020 15:50:32 +0000 Projects https://mc.cs.ut.ee/?p=283 Interconnecting the physical things to IoT systems in an energy-efficient manner. <p>Internet of Things (IoT)  represents a cyber-physical world where physical things are  interconnected on the Web. This research proposes an architecture  designed for Energy-efficient Inter-organizational wireless sensor data  collection Framework (EnIF). Environmental monitoring and urban sensing  are two major application scenarios in IoT. Different from the  traditional sensor environments, environmental sensing in IoT may  require battery-powered nodes to perform the sensing tasks. Such a  requirement raises a critical challenge to ensure that sensor data  gathering can be collected in a timely and energy-efficient manner.  Although numerous energy-efficient approaches for IoT scenarios have  been proposed, previous works assumed the entire network was managed by a  single organization in which the network establishment and  communication have been pre-configured. This assumption is inconsistent  with the fact that IoT is established in a federated network with  heterogeneous devices controlled by different organizations. The aim of  the framework is to enable a dynamic inter-organizational collaborative  topology towards saving energy from data transmissions using a  service-oriented architecture. </p>
+
+
+
+<p></p>
+
+
+
+<p><strong>People</strong></p>
+
+
+
+<ul><li><a href="http://kodu.ut.ee/~chang/" target="_blank" rel="noreferrer noopener">Chii Chang</a></li><li><a href="http://kodu.ut.ee/~srirama/" target="_blank" rel="noreferrer noopener">Satish Narayana Srirama</a></li><li>Mohan Liyanage</li><li><a href="https://sites.google.com/site/sengwloke/home" target="_blank" rel="noreferrer noopener">Seng W. Loke</a>, Pervasive Computing Laboratory,&nbsp;Department of Computer Science and Information Technology, La Trobe University, Australia.</li><li><a href="https://sites.google.com/site/dongdrhai/" target="_blank" rel="noreferrer noopener">Hai Dong</a>,
+ Sensors, Clouds, and Services Laboratory (SCSLab),&nbsp;Department of 
+Computer Science and Information Technology, RMIT University, Australia.</li><li><a href="http://florasalim.com" target="_blank" rel="noreferrer noopener">Flora Salim</a>, Department of Computer Science and Information Technology, RMIT University, Australia.</li><li><a href="http://www.csse.monash.edu.au/~sling/" target="_blank" rel="noreferrer noopener">Sea Ling</a>, Faculty of Information Technology, Monash University, Australia.</li></ul>
+
+
+
+<p><strong>Publication</strong></p>
+
+
+
+<ul><li>Chii Chang, Seng W. Loke, Hai Dong, Flora Salim, Satish N. 
+Srirama, Mohan Liyanage and Sea Ling. An Energy-Efficient 
+Inter-organizational Wireless Sensor Data Collection Framework. In 
+Proceedings of the 22nd IEEE International Conference on Web Services 
+(ICWS 2015). pp:639-646. June 27 &#8211; July 2, 2015, New York, USA.</li></ul> https://mc.cs.ut.ee/projects/energy-efficient-internet-of-things/feed/ 0 Middleware, Trust and IoT Applications https://mc.cs.ut.ee/projects/middleware-trust-and-iot-applications/ https://mc.cs.ut.ee/projects/middleware-trust-and-iot-applications/#respond admin Tue, 21 Jan 2020 15:49:26 +0000 Projects https://mc.cs.ut.ee/?p=277 The goal of this project is to overcome the challenges of cyber-physical systems in the Internet of Things. The challenges include: interoperability, autonomous machine-to-machine communication, automatic configuration, energy efficiency, trustworthiness etc. <p>The goal of this research is to overcome the  challenges of cyber-physical systems in the Internet of Things. The  challenges include: interoperability, autonomous machine-to-machine  communication, automatic configuration, energy efficiency,  trustworthiness etc.                                                                                                                                                                                                                </p>
+
+
+
+<p>Today, a common vision of Internet of Things (IoT) 
+represents a global network interconnected with various electronic 
+devices in a meaningful manner. The devices consist of Radio Frequency 
+Identification (RFID)-attached objects, EPCGlobal Network-connected 
+objects and a variety of internet-enabled objects such as mobile phones,
+ smart watches, vehicles, sensors, home appliance and so on. As 
+described by European Commission Information Society and Media (2009), 
+the fundamental idea of IoT is to allow &#8220;<em>people and things to be connected Anytime, Anyplace, with Anything and Anyone, ideally using Any path/network and Any service</em>&#8220;. The US National Intelligence Council has predicted that &#8220;<em>by 2025 Internet nodes may reside in everyday things–food packages, furniture, paper documents, and more</em>&#8220;.</p>
+
+
+
+<p>IoT technologies can be applied in various scenarios. E.g., combining
+ the augmented reality technology with IoT, a system can help disabled 
+people to perform many daily activities such as travel, shopping, 
+operating appliances etc. In the enterprise domain, the EPCGlobal 
+Network system provides a convenient way for product transporting and 
+tracking processes. Other scenarios include the domains in 
+transportation, healthcare, smart environment, social networking and so 
+on.</p>
+
+
+
+<p>Although various IoT projects are progressing, there are still many challenges remain unsolved.</p>
+
+
+
+<ol><li><strong><em>Interoperability</em></strong>. Most existing IoT 
+solutions were built in isolation. Currently, the IoT environment still 
+lack a feasible solution to enable the interaction among these 
+heterogeneous fragments in a highly distributed environment. Assumption 
+such as centralised mediation services are inapplicable and unrealistic.
+ </li><li><strong><em>Autonomous Machine-to-Machine (M2M) communication</em></strong>.
+ Autonomous M2M communication enables the cyber-physical systems to 
+provide self-managed services to ease people’s daily life. However, such
+ systems face service discovery challenges because existing Web-based 
+service discovery mechanisms were not designed for resource constrained 
+devices, which are major entities in IoT environments. </li><li><strong><em>Automatic Configuration</em></strong>. Most existing IoT 
+solutions were proposed for domain specific applications. They cannot be
+ directly applied to different scenarios. It is due to the lack of 
+automatic configuration mechanism. Furthermore, the autonomous system 
+also require self-management, self-healing and self-optimisation 
+mechanisms. </li><li><em><strong>Energy Efficient Service Provisioning</strong></em>. 
+Resource constrained devices such as sensors, actuators and mobile 
+devices, which rely on battery power, are the major objects of IoT. In 
+order to interact with these devices in the autonomous M2M manner, they 
+need to provide some forms of networked services. However, the existing 
+SOA-based service provisioning approaches such as HTTP-based REST or 
+SOAP were fundamentally not designed for resource constrained IoT 
+devices, and are considered as heavyweight in terms of energy 
+consumption. </li><li><em><strong>Trustworthiness</strong></em>. Classic security strategies
+ for Web services face the challenges in IoT because the limitations in 
+terms of: (1) hard to control the identification of IoT participants; 
+(2) centralised control is unrealistic; (3) heavy data transmission and 
+overhead. One trend of improving IoT security is to apply the 
+trust-based strategies. Trust strategies can be categorised into two 
+types: (1) service requester aspect; (2) service provider aspect. 
+Existing trust strategies for IoT were proposed only for the service 
+requester aspect. There is still lack of a proper trust solution for 
+preventing malicious service requesters from public accessible &#8216;Things&#8217;.
+ </li></ol>
+
+
+
+<h2>Current Projects</h2>
+
+
+
+<h3>Middleware</h3>
+
+
+
+<ul><li>Energy-efficient Things Framework</li><li>Mobile-hosted Things Middleware (MHTM)</li><li>Mobile-hosted Cloud Middleware (MHCM)</li><li>Mobile Resource Composition Mediation Framework (MRCMF)</li></ul>
+
+
+
+<h3>Trust</h3>
+
+
+
+<ul><li>Trustworthy Internet of Things</li></ul>
+
+
+
+<h3>Application</h3>
+
+
+
+<ul><li>Realtime Augmented Reality using Context-aware Cloud services with Mobile Hosts</li></ul>
+
+
+
+<h2>Research Staff</h2>
+
+
+
+<ul><li><a href="http://math.ut.ee/~srirama/" target="_blank" rel="noreferrer noopener">Satish Narayana Srirama</a></li><li><a href="http://math.ut.ee/~chang/" target="_blank" rel="noreferrer noopener">Chii Chang</a></li><li>Mohan Liyanage</li><li>Jakob Mass</li></ul> https://mc.cs.ut.ee/projects/middleware-trust-and-iot-applications/feed/ 0 Big Data Internet of Things https://mc.cs.ut.ee/projects/big-data-internet-of-things/ https://mc.cs.ut.ee/projects/big-data-internet-of-things/#respond admin Tue, 21 Jan 2020 15:47:25 +0000 Projects https://mc.cs.ut.ee/?p=259 Investigate, develop and validate an adaptive middleware-based management system that can provide a reliable, scalable and cost-efficient linkage to leverage IoT with Big Data cloud.
+
+As part of the project we are participating in Estonian Centre of Excellence in ICT Research (EXCITE). <p><em>Investigate, develop and validate an adaptive  middleware-based management system that can provide a reliable, scalable  and cost-efficient linkage to leverage IoT with Big Data cloud.  </em>                                                                                                                                                                                                               </p>
+
+
+
+<h1><strong><em>Involved Projects</em></strong></h1>
+
+
+
+<h3><a href="https://www.excite.it.ee/"><strong>Estonian Centre of Excellence in ICT Research (EXCITE) </strong></a></h3>
+
+
+
+<h4>Theme 2: Adaptive Middleware for Reliable Cyber-Physical Systems</h4>
+
+
+
+<p>Supporting reliability and scalability in Cyber-Physical Systems 
+(CPS) for the Internet of Things (IoT) requires a large amount of 
+additional resource usage for encoding/decoding additional data and 
+signals; and additional wireless network communication to monitor and 
+manage the processes, which results in a high cost in terms of both 
+lifetime of the front line battery-powered machines (e.g. sensors, 
+robots) and the bandwidth cost of wireless network usage that is 
+required to enable the communication between the machines and the 
+backend controller systems. Although there exist a fair number of 
+software middleware frameworks for IoT, they did not fully address the 
+challenges in reliability, scalability and cost-efficiency together.</p>
+
+
+
+<p>The goal of this project is to develop a reliable, scalable, 
+cost-efficient middleware that will hasten the development of IoT 
+applications for both academia and industry. Domain-specific scientists 
+can also benefit from the middleware platform for performing real-world 
+testing in the IoT environments without spending significant time on 
+setting up the experimental environment.</p>
+
+
+
+<p>The proposed middleware consists of context-aware ubiquitous 
+computing schemes, and platform-independent process management schemes. 
+The system can clearly identify the reliability and efficiency of each 
+IoT task execution towards providing self-adaptation and 
+self-optimisation. The software components of the middleware will be 
+designed based on the plug-and-play concept in which the system can 
+dynamically modify and adjust its processes at runtime. A prototype will
+ be implemented and tested on a real-world IoT established by wireless 
+network-connected portable machines and cloud services. The machines are
+ able to collaborate autonomously (e.g. for data acquisition) under the 
+governance of the cloud systems.</p>
+
+
+
+<p>More details at <a href="https://www.excite.it.ee/">https://www.excite.it.ee/</a></p>
+
+
+
+<figure class="wp-block-image"><img src="https://static.wixstatic.com/media/cdee2a_c3a712fdea5e4eb48867cb335b5cb178%7Emv2.png/v1/fill/w_425,h_115,al_c,usm_0.66_1.00_0.01/cdee2a_c3a712fdea5e4eb48867cb335b5cb178%7Emv2.png" alt=""/></figure>
+
+
+
+<h2><strong>Distributed Business Process Management System for IoT</strong></h2>
+
+
+
+<p>Big Data in IoT represents a vast volume of data generated from the 
+IoT networks and organisations can make use of them, which is not 
+available before. Ideally, organisations will gain benefit from the Big 
+Data to improve and enhance their business process more efficiently and 
+more intelligently. In order to realise the vision, Business Process 
+Management System for IoT (BPMS4IoT) needs to address the challenge of 
+varying forms of data. The data of IoT comes in various formats from 
+different co-existing objects in IoT networks. The information system 
+can utilise machine-learning mechanism to identify the correlation 
+between the data from different objects and generate the meaningful 
+information. However, processing the various formats of data may not be a
+ swift task. For example, in order to identify a suspicious activity in 
+an outdoor environment, the system may integrate the video data and 
+temperature data from different sensors and then either utilise an 
+external third party cloud service for the analysis processes or invoke 
+the external database service to retrieve the related data and analyse 
+them in the intra-organisational information system. The challenge is if
+ such a need is on-demand, how does the system generate the result in 
+time because it involves the data transmission time in different 
+networks and the large volume of data processing. One promising solution
+ is to apply the distributed BPMS model in which the processes can be 
+handled at the self-organised edge network of IoT.</p>
+
+
+
+<h3>Publications</h3>
+
+
+
+<ol><li>Chii Chang, Satish Narayana Srirama, and Rajkumar Buyya. ACM DL 
+Author-ize serviceMobile Cloud Business Process Management System for 
+the Internet of Things: A Survey. ACM Computing Surveys. Volume 49, 
+Issue 4, December 2016, Article No. 70. ACM Press, New York, USA. ISSN 
+0360-0300, DOI: 10.1145/3012000.</li><li>Jakob Mass, Chii Chang and Satish N. Srirama. WiseWare: A 
+Device-to-Device-based Business Process Management System for Industrial
+ Internet of Things. In Proceedings of the 9th IEEE International 
+Conference on Internet of Things (iThings 2016), Dec. 16-19, Chengdu, 
+China, 2016, pp. 269-275.</li></ol>
+
+
+
+<h2><strong>Fog and Edge Computing</strong></h2>
+
+
+
+<p>Big data services rely on the Internet of Things (IoT) systems to 
+integrate heterogeneous devices and to deliver data to the central 
+server for analytics. However, the increasing number of connected 
+devices and the various networking issues (e.g. network latency, 
+unstable bandwidth, unstable connectivity etc.) will influence the 
+overall performance of the system. Especially when the big data service 
+needs to provide the timely responses. Therefore, the system needs 
+fog/edge computing (F/EC) architecture, which distributes certain 
+computational tasks to the devices at the edge network of IoT, where the
+ data source devices located at, towards enhancing the overall 
+performance.</p>
+
+
+
+<p>Research questions:</p>
+
+
+
+<ol><li>How to effectively deploy and manage F/EC architecture in IoT for big data services?</li><li>How does F/EC architecture handle mobile objects/devices (e.g. vehicles, human, animals) in IoT systems?</li></ol>
+
+
+
+<p>In order to answer the first question, we have studied the most 
+recent works in F/EC domain. The outcome of this study includes one IEEE
+ Computer magazine article (published) [2] and two book chapters 
+(submitted) [5, 6].</p>
+
+
+
+<p>To answer the second question, we have studied mobile fog 
+computing domain and have developed an adaptive framework together with a
+ corresponding algorithm to handle mobile objects/devices in F/EC. The 
+result has been published (or to be published) in the peer-reviewed 
+international conference [1], international journal [3] and book [4] 
+(please refer the publication list).</p>
+
+
+
+<h3>Publications</h3>
+
+
+
+<ol><li>Chii Chang, Mohan Liyanage, Sander Soo, Satish Narayana Srirama. Fog  Computing as a Resource-Aware Enhancement for Vicinal Mobile Mesh  Social Networking. In Proceedings of the 31st IEEE International  Conference on Advanced Information Networking and Applications  (AINA-2017). 27-29 March 2017, Tamkang University, Taipei, Taiwan.</li><li>Chii Chang, Satish Narayana Srirama, and Rajkumar Buyya, Indie Fog:  An Efficient Fog-Computing Infrastructure for the Internet of Things,  IEEE Computer, Volume 50, Issue 9, Pages: 92-98, ISSN: 0018-9162, IEEE  COMPUTER SOCIETY, USA, September 2017.</li><li>Sander Soo, Chii Chang, Seng W. Loke, Satish Srirama, (2017),  Proactive Mobile Fog Computing using Work Stealing: Data Processing at  the Edge, International Journal of Mobile Computing and Multimedia  Communications (IJMCMC), Vol. 8, No. 4.</li><li>Sander Soo, Chii Chang, Seng W. Loke, Satish Srirama. Dynamic Fog  Computing: Practical Processing at Mobile Edge Devices. In Algorithms,  Methods, and Applications in Mobile Computing and Communications, edited  by Agustinus Borgy Waluyo, IGI Global, 2018. (Accepted to be  published).</li><li>Chii Chang, Amnir Hadachi, Satish Narayana Srirama and Mart Min.  Mobile Big Data: Foundations, State-of-the-Art, and Future Directions.  In Encyclopedia of Big Data Technologies, edited by Sherif Sakr and  Albert Y. Zomaya. (Submitted).</li><li>Chii Chang, Satish Narayana Srirama and Rajkumar Buyya. Introduction  to Fog and Edge Computing. In Fog and Edge Computing: Principles and  Paradigms, edited by Rajkumar Buyya and Satish Narayana Srirama. </li></ol> https://mc.cs.ut.ee/projects/big-data-internet-of-things/feed/ 0 Sensor Data and Image Processing https://mc.cs.ut.ee/projects/sensor-data-and-image-processing/ https://mc.cs.ut.ee/projects/sensor-data-and-image-processing/#respond admin Tue, 21 Jan 2020 15:45:02 +0000 Projects https://mc.cs.ut.ee/?p=250 Investigates the efficient transportation of sensor/multimedia data to the cloud and its processing (parallel algorithms) by applying sophisticated mining techniques. <p>The recent improvements in mobile technologies are  fostering the  
+emergence of ubiquitous environments in which the user is  able to  
+access, create and share information at any location with  considerable 
+ ease. Moreover, mobile devices have become an essential  part of  
+distributed architectures that can be used for monitoring the  context  
+of the user (e.g. location, situation, etc.), and thus reacting  in a  
+proactive way. On the other hand, smart phones are equipped with a   
+variety of sensors (GPS, magnetic field, etc.) that enrich the mobile   
+applications with location awareness and sensing capabilities. These   
+advances enable fitting contextual requirements for improving the   
+quality of service (QoS) in the applications as it allows adapting the  
+ interaction between the handset and the user in real-time. For example,
+ a   sensor such as the accelerometer is used for sensing how the user 
+is   holding the handset, and thus changing the position of the screen 
+as a   result. <br><br>The accelerometer is a sensing element that 
+measures the   acceleration associated with the positioning of a weight 
+in which it   has been embedded (e.g. a mobile device). Depending on the
+ number of   axes, it can gather the acceleration information across 
+multiple   dimensions. In the case of a triaxial accelerometer that is 
+the most   common in mobiles from vendors such as HTC, Samsung, Nokia 
+etc., the   acceleration can be sensed on three axes (x, y and z). The 
+axes are   related with the movements forward/backward, left/right and 
+up/down,   respectively. For example: in the case of a runner, up/down 
+is measured   as the crouching when he/she is warming up before starting
+ to run,   forward/backward is related with speeding up and slowing 
+down, and   left/right involves making turns while he/she is running.</p>
+
+
+
+<h2>Research staff</h2>
+
+
+
+<ul><li><a href="http://ec2-50-19-20-124.compute-1.amazonaws.com/mobilecloud/people/satish-srirama">Assoc. Prof. Dr. Satish Narayana Srirama</a></li><li>Huber Flores</li><li>Siim Puniste</li></ul>
+
+
+
+<h2>Publications</h2>
+
+
+
+<h2>Master theses</h2>
+
+
+
+<p>Kaarel Hanson &#8211; Context Sensor Data on Demand for Mobile Users Supported by XMPP (2012)</p> https://mc.cs.ut.ee/projects/sensor-data-and-image-processing/feed/ 0 Asynchronous Notification Services for Mobiles (ANSM) https://mc.cs.ut.ee/projects/asynchronous-notification-services-for-mobiles-ansm/ https://mc.cs.ut.ee/projects/asynchronous-notification-services-for-mobiles-ansm/#respond admin Tue, 21 Jan 2020 15:44:14 +0000 Projects https://mc.cs.ut.ee/?p=244 Analyzes the adaption of new reliable, flexible and scalable mechanisms (e.g. XMPP) for real-time communication in mobile-to-cloud and cloud-to-mobile scenarios. <p>While the inclusion of notification services within the  mobile  
+applications involves to establish and to maintain an  specialized  
+infrastructure (e.g. application server, mobile clients)  that relies on
+  mobile platform specifications (e.g. mobile  registration, etc.) and 
+its  related cloud vendor technology (e.g.  authentication mechanisms,  
+communication protocols, etc.), existent  running infrastructures at any
+  datacenter that are based on instant  messaging technologies like XMPP
+  can be adapted, in order to work under  a comparable rate of service 
+for  delivering notifications to the  smartphones, without suffering of 
+ message limitations, mobile platform  restrictions or cloud provider  
+constraints. In other words, extending  technologies such as XMPP  
+facilitates the integration of cloud  functionality within the mobile  
+applications and alliviates its  development by avoiding the cloud 
+vendor  lock-in syndrome.</p>
+
+
+
+<h2>Research staff</h2>
+
+
+
+<ul><li><a href="http://mc.cs.ut.ee/mcsite/people/satish-srirama">Assoc. Prof. Dr. Satish Narayana Srirama</a></li><li><a href="http://mc.cs.ut.ee/mcsite/people/huber-flores">Huber Flores</a></li><li>Carlos Paniagua</li><li>Silver Mikk</li></ul>
+
+
+
+<h2>Master theses</h2>
+
+
+
+<p>Riivo Ehrlich &#8211; XMPP protocol implementation between the mobile and the cloud (in progress)</p> https://mc.cs.ut.ee/projects/asynchronous-notification-services-for-mobiles-ansm/feed/ 0 DAMA https://mc.cs.ut.ee/projects/dama/ https://mc.cs.ut.ee/projects/dama/#respond admin Tue, 21 Jan 2020 15:37:53 +0000 Projects https://mc.cs.ut.ee/?p=208 Dynamic Algorithm Modeling Application for choosing the most suitable distributed computing frameworks <p><strong>Dynamic Algorithm Modeling Application (DAMA)</strong></p>
+
+
+
+<p>DAMA is a generic distributed computing
+ application, which can be reconfigured to model the structure of 
+different algorithms. DAMA follows the single program, multiple data 
+(SPMD) parallelism model and has been implemented using four different 
+parallel programming solutions: Apache Spark, Hadoop MapReduce, Apache 
+Hama and MPIJava.</p>
+
+
+
+<p>After configuring DAMA to model the 
+structure of a given algorithm, it can be used directly as an 
+approximate benchmark for this algorithm on any of the supported 
+frameworks or libraries. This process does not require any programming 
+or code debugging steps and can thus significantly simplify the process 
+of estimating the performance of the algorithm on different frameworks 
+as we can avoid implementing the given algorithm on each of the 
+available frameworks and using the implementations as benchmarks.</p>
+
+
+
+<p>To be clear, all these steps are still 
+going to be required once the target distributed computing framework is 
+chosen. The goal of DAMA is simply to postpone these steps until it is 
+known which specific framework should give the best result and thus 
+greatly decrease the scope of work that has to be done. We feel that 
+this kind of approach is critical as the number of available distributed
+ computing frameworks continues to increase in the Hadoop ecosystem and 
+also outside of it.</p>
+
+
+
+<p>Dynamic Algorithm Modeling Application 
+(DAMA) is a generic distributed computing application, which can be 
+reconfigured to model the structure of different algorithms. It follows 
+the single program, multiple data (SPMD) parallelism model and has been 
+implemented using four different parallel programming solutions: Apache 
+Spark, Hadoop MapReduce, Apache Hama and MPIJava. After configuring DAMA
+ to model the structure of a given algorithm, it can be used directly as
+ an approximate benchmark for this algorithm on any of the supported 
+frameworks or libraries. This process does not require any programming 
+or code debugging steps and can thus significantly simplify the process 
+of estimating the performance of the algorithm on different frameworks 
+as we can avoid implementing the given algorithm on each of the 
+available frameworks and using the implementations as benchmarks.</p>
+
+
+
+<p>To be clear, all these steps are still 
+going to be required once the target distributed computing framework is 
+chosen. The goal of DAMA is simply to postpone these steps until it is 
+known which specific framework should give the best result and thus 
+greatly decrease the scope of work that has to be done. This kind of 
+approach is critical as the number of available distributed computing 
+frameworks continues to increase in the Hadoop ecosystem and also 
+outside of it.</p>
+
+
+
+<p>Source code for DAMA is available at <a href="https://github.com/pjakovits/dama">https://github.com/pjakovits/dama</a></p> https://mc.cs.ut.ee/projects/dama/feed/ 0 IoT and Smart Solutions Lab https://mc.cs.ut.ee/projects/iot-and-smart-solutions-lab/ https://mc.cs.ut.ee/projects/iot-and-smart-solutions-lab/#respond admin Mon, 21 Mar 2016 15:48:21 +0000 Projects https://mc.cs.ut.ee/?p=268 The goal of the project is to acquire infrastructure and establishing the IoT and Smart Solutions Lab, with industry cooperation. The lab will facilitate the students in experimenting with the respective devices and design innovative projects in driving the Estonian startup culture forward. <p>The goal of the project is to acquire infrastructure and establishing the IoT and Smart Solutions Lab, with industry cooperation. The lab will  facilitate the students in experimenting with the respective devices and design innovative projects in driving the Estonian startup culture  forward.</p> https://mc.cs.ut.ee/projects/iot-and-smart-solutions-lab/feed/ 0 WiseWare https://mc.cs.ut.ee/projects/wiseware/ https://mc.cs.ut.ee/projects/wiseware/#respond admin Thu, 21 Jan 2016 15:51:37 +0000 Projects https://mc.cs.ut.ee/?p=289 A platform for Goods Monitoring in Industrial IoT. This platform enables de-centralized, long-running IoT monitoring tasks by using Business Process Management System software and mobile devices. <p>A platform for Goods Monitoring in Industrial IoT.  This platform enables long-running IoT monitoring tasks by using  Business Process Management System software and mobile devices.</p>
+
+
+
+<p>Source code repository available at <a href="https://github.com/jaks6/WiseWare-BP-Engine">https://github.com/jaks6/WiseWare-BP-Engine</a><br><br>A
+ platform for Goods Monitoring in Industrial IoT. This platform enables 
+long-running IoT monitoring tasks by using Business Process Management 
+System software and mobile devices.<br><br>Internet of Things 
+(IoT)-enabled information system solutions are emerging in various 
+domains such as remote healthcare, smart logistics, agriculture and so 
+on. Business Process Management Systems (BPMS) have already proved 
+themselves to be promising tools for driving and managing devices within
+ IoT systems.</p>
+
+
+
+<p>In this work, we propose a system design for decentralised 
+device-todevice (D2D)-based BP execution, where mobile nodes have the 
+capability of both executing BPs but also migrating BP execution to 
+other nodes during runtime. We apply this design to the field of smart 
+logistics, in order to enable smart goods monitoring. The presented 
+goods monitoring solution enables reacting to events as soon as they 
+occur, while also generating a trace of the monitoring execution 
+history. A prototype focusing on the migration functionality of the 
+platform has been implemented and tested to evaluate its performance in 
+the context of the mentioned smart logistics scenario.</p> https://mc.cs.ut.ee/projects/wiseware/feed/ 0

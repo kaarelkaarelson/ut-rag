@@ -1,0 +1,81 @@
+Conditional probability [MathWiki] Log In Trace:: Conditional probability MathWiki Search probability:03_conditional_probability Asymptotics The need for asymptotic notation: a case study Big Oh Big Omega Multiple variables Polynomial complexity The negligible, the noticeable and the overwhelming Divisibility and modular arithmetics Divisibility Primes and divisibility Greatest common divisor  and least common multiple Euclidean algorithm Extended Euclidean algorithm Modular arithmetics Finite fields What are rings and fields? Long division of polynomials The general way of constructing finite fields Isomorphisms, homomorphisms, automorphisms. Classification of all finite fields Computations in finite fields What is a group? Multiplicative group in finite fields Subfields Linear algebra 1. Matrices 2. Systems of linear equations and matrices 3. Gaussian elimination algorithm 4. Solving systems of linear equations via invertible matrices Number theory Probability theory Event and probability Probability of two events Conditional probability Total probability Expected value Inequalities Game notation Conditional probability So far, we have seen how probabilities of events are modeled if
+these events happen without any conditions, e.g. probability of rolling a six, or probability 
+that tomorrow it rains. 
+However, often one has to
+ask “what if”-questions. E.g., assuming the sun shines tomorrow,
+what is the probability that the temperature is at least 10 degrees
+Celsius. Here we want to know the probability of tomorrow's temperature being higher then 10 degrees 
+under the condition that the sun shines. To answer such questions, we use conditional 
+probability . A conditional
+probability $\text{Pr}[A|B]$ tells us what the probability of the event $A$
+is under the condition that the event $B$ is known to happen or has happened. For example: $\text{Pr}[x+y=12 | x=6]=\frac{1}{6}$ where $x,y$ are independent fair die rolls. Indeed, if you already know that $x=6$, then you just need to know what the probability of $y=6$ is because $x=y=6$ is the only case that leads to $x+y=12$. In contrast, if we do not know what $x$ is, we have $\text{Pr}[x+y=12]=\text{Pr}[x=6]\cdot\text{Pr}[y=6]=\frac{1}{36}$. The probability that we have more than 10 degrees Celcius (denoted: $t>10$) tomorrow under the condition that the sun shines (denoted: $w=\text{sun}$) is written $\text{Pr}[t>10|w=\text{sun}]$. We cannot tell what this probability is, but it is likely that $\text{Pr}[t>10|w=\text{sun}] > \text{Pr}[t>10]$. (Meaning, that if the sun shines, the probability of warm weather is higher than on average.) The formula of conditional probability goes as follows. Let $A$ and $B$ be events with $\text{Pr}[B]>0$, the
+$$\text{Pr}[A|B]=\frac{\text{Pr}[A\cap B]}{\text{Pr}[B]}.$$ Clearly $\text{Pr}[B]>0$ is needed, since in case $\text{Pr}[B]=0$ the formula 
+$\frac{\text{Pr}[A\cap B]}{\text{Pr}[B]}$ is not defined. This means that we
+cannot ask “what if”-questions that talk about impossible
+situations. E.g., what is the probability that I can fly if I had wings:
+$\text{Pr}[\text{"I can fly"}|\text{"I have wings"}]$ is undefined because
+$\text{Pr}[\text{"I have wings"}]=0$. I just don't have wings, so no probability for the event that I can fly. The formula of conditional probability is quite natural. For example, let us view a bag of marbles. 
+Let there be $2$ blue ones and $3$ red ones. One marble is taken out randomly. The probability that a red one 
+was removed is $\frac{2}{5}$ and the probability that a blue one was removed is $\frac{3}{5}$. Now, if we want to take out a second marble, the probability of obtaining a blue one depends on which color 
+was taken 
+out on first time: i.e. $\text{Pr}[\text{"2nd marble is blue"}|\text{"1st marble is blue"}]=\frac{1}{4}$, $\text{Pr}[\text{"2nd marble is blue"}|\text{"1st marble is red"}]=\frac{2}{4}$. By multiplying along the branches (in the tree diagram), e.g., $\text{Pr}[\text{"1st marble is red"}\cap\text{"2nd marble is blue"}]=\frac{3}{5}\cdot\frac{2}{4}$. That is, $\text{Pr}[\text{"1st marble is red"}\cap\text{"second marble is blue"}]=$ $\text{Pr}[\text{“1st marble is red”}]\cdot
+\text{Pr}[\text{“2nd marble is blue”}|\text{“1st marble is blue”}]$ providing the formula of conditional probability
+$$\frac{\text{Pr}[\text{"1st marble is red"}\cap\text{"second marble is blue"}]}{
+\text{Pr}[\text{"1st marble is red"}]}=
+\text{Pr}[\text{"2nd marble is blue"}|\text{"1st marble is blue"}].$$ When the sun shines, the temperature is above 10 
+degrees with $90\,\%$ chance. And tomorrow the sun shines with 
+$10\,\%$ probability. How likely is it that the sun shines 
+and the temperature is above 10 degrees? Write the question using conditional probability and answer it. Let us have a pair of weird dice. Tests show that each of them
+individually rolls a six with probability $\frac{1}{6}$. But the
+probability that both roll a six is $\frac{1}{10}$ (and not
+$\frac{1}{36}$ as would be expected from a fair dice). What is the
+probability that the second die rolls a six when the first did. Write the question using conditional probability and answer it. Let $x$ and
+$y$ be fair dice rolls. What is the probability that $x=6$
+assuming $x+y>6$. Answer We count that there are 21 possibilities for $(x,y)$
+that lead to $x+y>6$. Thus, $\text{Pr}[x+y>6]=\frac{21}{36}$ since each
+combination has the same probability $\frac{1}{36}$. There are $6$
+possibilities such that $x+y>6$ and $x=6$. Hence,
+$\text{Pr}[\text{"$x=6$"}\cap\text{"$x+y>6$"}]=\frac{1}{6}$. Thus, 
+$\text{Pr}[x=6|x+y>6]=
+\frac{\text{Pr}[\text{“$x=6$”}\cap\text{“$x+y>6$”}]}{
+\text{Pr}[x+y>6]}
+=
+\frac{1}{6}\cdot\frac{36}{21}
+= \frac{2}{7} \approx 0,29$. Four friends each choose a random number between $1$ and $5$. 
+What is the probability that any of them choose the same number? Hint: construct the tree diagram by starting with two fiend in the first step, in the second step add third 
+and so on. Answer The probability is $\frac{101}{125}$. Note, that $\Pr[A|B]$ and $\Pr[B|A]$ are quite different things. For
+example, the probability that a given person will possess more than
+$100000$ Euro (event $A$) under the condition that he wins the jackpot
+in the lottery (event $B$) is quite high ($\text{Pr}[A|B]\approx 1$). But
+the probability that someone wins the lottery jackpot under the
+condition that he will possess more than $100000$ Euro is not very
+high (because there are many more likely causes for getting $100000$
+Euro than winning in the lottery). Hence, $\text{Pr}[B|A]\approx 0$. One can,
+however, in certain cases compute $\text{Pr}[A|B]$ from $\text{Pr}[B|A]$ (and vice versa) using the
+following theorem: Bayes' law :
+let $A$ and $B$ be events with $\text{Pr}[A],\text{Pr}[B]>0$. Then
+$$\text{Pr}[A|B] = \frac{\text{Pr}[B|A]\text{Pr}[A]}{\text{Pr}[B]}.$$ Sometimes, even if $\text{Pr}[A|B]$ is asked, it is much easier to calculated first $\text{Pr}[B|A]$
+(see the exercise below). We have two urns, $\text{I}$ and $\text{II}$. Urn $\text{I}$ contains $2$ black balls and $3$ white
+balls. Urn $\text{II}$ contains $1$ black ball and $1$ white ball. An urn is drawn at random
+and a ball is chosen at random from it. What is the probability of choosing urn $\text{I}$ if the obtained 
+ball is black? Hint : clearly 
+$\text{Pr}[\text{"a black ball is drawn"}|\text{"urn I is chosen"}]=\frac{2}{5}$. For calculation of 
+$\text{Pr}[\text{"a black ball is drawn"}]$ draw the tree diagram. Answer By Bayes' law $\text{Pr}[\text{“urn I is chosen”}|\text{“a black ball is drawn”}]=
+\frac{\frac{2}{5}\cdot\frac{1}{2}}{\frac{1}{5}+\frac{1}{4}}=\frac{4}{9}$, since 
+$\text{Pr}[\text{"a black ball is drawn"}]=$ $\text{Pr}[\text{“a black ball is drawn”}\cap\text{“urn I is chosen”}]+
+\text{Pr}[\text{“a black ball is drawn”}\cap\text{“urn II is chosen”}]$, and
+the corresponding thee diagram is: Another interesting fact about conditional probabilities is that it
+gives a new view on independent events. Intuitively,
+events $A$ and $B$ are independent, if knowing whether $A$ occurs does
+not tell us whether $B$ occurs. That is, the probability that $B$
+occurs should be the same as the probability that $B$ occurs under the
+condition that $A$ occurs, i.e., mathematically $\Pr[B]=\Pr[B|A]$. This,
+indeed, is an alternative but equivalent definition of independence as
+the following result shows: Let $A$ and $B$ be events. Assume that $\text{Pr}[A]>0$. Then $A$ and $B$
+are independent if and only if $\text{Pr}[B]=\text{Pr}[B|A]$. The probability that a person has lung cancer is $0,15$, the probability that a person drinks coffee 
+is $0,4$ and the probability that a person has lung cancer and drinks coffee is $0,06$. What is the 
+probability that a person has lung cancer if the person drinks coffee? What can you say about 
+dependence of the events? Answer Let us denote $A:=\text{"a person has lung cancer"}$ and $B:=\text{"a person drinks coffee"}$. 
+Thus, $\text{Pr}[A]=0,15$, $\text{Pr}[B]=0,4$, and $\text{Pr}[A\cap B]=0,06$. By applying the 
+formula of conditional probability: $\text{Pr}[A|B]=\frac{0,06}{0,4}=0,15$. Hence, 
+$\text{Pr}[A|B]=\text{Pr}[A]$ showing that $A$ and $B$ are independent. Total probability probability/03_conditional_probability.txt · Last modified: 2014/01/20 15:57 by marje Contact: ati.comp@ut.ee

@@ -1,0 +1,36 @@
+Programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine (LTAT.03.001) EN Logi sisse Programmeerimine 2023/24 kevad Home Homework for Week 3 After this week you can Define new functions and call them in your program Make the distinction between returning a value and printing it Use built-in functions from Python standard modules Functions We can gather a collection of statements together and give them a short name. Then we don't need to write these statements again every time we want to use them, but instead write only the name. This can shorten the program considerably. Statements with a name are a function. There are two aspects of using a function in a program: function definition and function call. After defining a function, we can call it many times. Like the mathematical functions, the program's functions can have parameters and return values. Watch the videos about defining and using functions in Python: Slides in English Textbook in English Quiz Go to Moodle and solve the quiz about functions. You can solve the quiz several times, the best attempt counts. Examples Functions allow performing tasks that are similar to each other and differ only by values of parameters. So there is no need to rewrite essentially the same algorithm many times, we can just call the function with the right parameters. Shoe size function Rewrite the shoe size program using the function called shoe_size that takes foot length as its parameter and returns shoe size. def shoe_size(length):
+    size = round(1.5 * length + 2)
+    return size
+
+name = input("Enter your name: ")
+foot = float(input("Enter your foot length (cm): "))
+shoe = shoe_size(foot)
+print("Dear " + name + ", your shoe size is " + str(shoe))
+
+print("Shrek's shoe size is", shoe_size(42.3)) First, we define the function shoe_size , then call it twice. Note that we convert the shoe size to a string in the first printing command: this is needed because only strings can be joined together using the + operator. When no concatenation of strings is needed, as in the second printing command, we can also omit the type conversion. Maximum The following example shows the function that takes two parameters (two numbers) and returns the largest of them. In the example, the function is called twice; therefore, the results are stored in two variables. After that, the smallest of the two largest is found. To show the effect of the function, we test it on different inputs. def maximum(a, b):
+    if a < b:
+        return b
+    else:
+        return a
+
+try:
+    x1 = int(input("Enter first number: "))
+    y1 = int(input("Enter second number: "))
+    m1 = maximum(x1, y1)
+    print("Input numbers are", str(x1), "and", str(y1) + ". The largest is", str(m1) + ".")
+
+    x2 = int(input("Enter third number: "))
+    y2 = int(input("Enter fourth number: "))
+    m2 = maximum(x2, y2)
+    print("Input numbers are", str(x2), "and", str(y2) + ". The largest is", str(m2) + ".")
+
+    if m2 > m1:
+        print("The largest number in first pair is smaller.")
+    else:
+        print("The largest number in second pair is smaller.")
+
+except:
+    print("Please enter a number.")
+
+print("Input numbers are 2 and 5. The largest is", str(maximum(2, 5)) + ".")
+print("Input numbers are 4 and 1. The largest is", str(maximum(4, 1)) + ".") Exercises 1. Bakery cash register A bakery produces three types of cakes: chocolate cakes (0.05 €/cm 2 ), strawberry cakes (0.04 €/cm 2 ), and Napoleon cakes (0.08 €/cm 2 ). Write a function called cake_price , which takes cake name and cake size as parameters and returns the price of the cake in euros, rounded to two decimal digits. Chocolate cake and strawberry cake are round and their sizes are entered as radius. Napoleon cake is square-shaped and its size is entered as a side length. If the cake type is something else, then the function should return -1. >>> cake_price('Napoleon cake', 10) 8.0 >>> cake_price('chocolate cake', 5) 3.93 >>> cake_price('bisquit cake', 10) -1 Cake names are 'chocolate cake', 'strawberry cake' or 'Napoleon cake'. Size is given in centimeters. 2. Jam Emma wants to cook raspberry jam. She has two kinds of jars, with a capacity of 5 liters and 1 liter. Emma has a habit of using up all the biggest jars first and then going to the smaller ones. For example, if she needs to make 8 liters of raspberry jam, she would first take one large jar and then three small jars. If the planned amount of jam does not exactly fit in the jars, Emma will not cook the jam. Write a function jam that takes three integer values as arguments: number of large jars; number of small jars; amount of jam in liters. The function returns the number of jars that Emma uses to make jam. If the amount of jam does not fit exactly in the jars, the function returns -1. Example >>> jam(2, 6, 14) 6 >>> jam(3, 3, 8) 4 >>> jam(1, 2, 10) -1 >>> jam(5, 1, 9) -1 3. Einstein's theory of special relativity If two bodies are moving in the same direction, where the speed of the first body with respect to the observer is u and the speed of the second body with respect to the first body is v , then according to the special theory of relativity, the speed of the second body with respect to the observer is calculated from the formula {$$\frac{u+v}{1+\frac{u\cdot v}{c^2}},$$} where c is the speed of light ( 299792.458 km/s ). This expression is called the sum of speeds u and v . Create a function called einsum , whose parameters are speeds u and v , and which returns the sum of these speeds according to the special theory of relativity. >>> u = 100000 >>> v = 200000 >>> einsum(u, v) 245392.74884785622 Use this function to calculate the sum of speeds of four bodies that move in the same direction. The program should prompt for four speeds and print out their sum. Enter speed of the first body with respect to the observer: 100000 Enter speed of the second body with respect to the first: 150000 Enter speed of the third body with respect to the second: 200000 Enter speed of the fourth body with respect to the third: 250000 Sum of speeds is 297993.41836837644 km/s Hint. Add first two speeds. Then add the third speed to the sum. Then add the fourth speed to the sum. Submit your solutions Submit your solutions of exercises 1, 2, 3 to the autotester in Moodle under the names home1.py , home2.py , home3.py , respectively. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

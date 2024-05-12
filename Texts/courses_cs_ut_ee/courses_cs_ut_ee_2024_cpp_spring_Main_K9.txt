@@ -1,0 +1,73 @@
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 9. STL andmestruktuurid I 9 STL andmestruktuurid I 9.1 Kodutöö 9.2 Harjutused 9.3 Videolingid 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Kodused ülesanded 1. Andmekogumite ühendamine Koosta mallifunktsioon yhenda , mis ühendab kaks andmekogumit. Mallifunktsioonil on kolm malliparameetrit: esimesed kaks määravad ühendatavad andmekogumid ja kolmas määrab andmekogumi, kuhu kaks esimest ühendatakse. Kindlasti kasuta viiteid! Kõik kolm andmekogumit võivad olla erinevad. Mallifunktsioon peab töötama vähemalt kolmel andmekogumil: vector , list ja deque . Näide on koos järgmise ülesandega. Funktsiooni signatuur: template <typename T1, typename T2, typename T3>
+void yhenda(T1& alg1, T2& alg2, T3& tulem) 2. Andmekogumi väljundvoogu saatmine Koosta mallifunktsioon tryki , mis saadab etteantud andmekogumi elemendid tühikuga eraldatult väljundvoogu. Mallifunktsioonil on järgmine signatuur: template <typename T>
+void tryki(T& alg, ostream & os) Näide 1. ja 2. ülesande kohta vector<string> c1{"vector", "deque", "queue"};
+deque<string> c2{"list", "forward_list", "array"};
+list<string> d1;
+yhenda(c1, c2, d1);
+tryki(d1, cout); vector deque queue list forward_list array 3. Andmekogumite võrdlemine Koosta mallifunktsioon, mis defineerib üle andmekogumite võrdlemise elementide summa alusel template <typename T>
+bool operator<(T& esimene, T& teine) Näited andmekogumite võrdlemisest list<int> l1{1, 5, 3, 2, 1, 1, 1};
+list<int> l2{3, 5, 3, 9, 9};
+cout << boolalpha << (l1 < l2) << '\n';
+vector<int> v1{10, 11};
+vector<int> v2{3, 5, 3};
+cout << boolalpha << (v1 < v2) << '\n'; true
+false 4. Lisamine ja kustutamine Kirjuta funktsioon void lisaJaKustuta(vector<string>& v) , 
+mis teeb järgmist: kui vektori element sisaldab "tt" või "at", siis see element kustutada vektorist. kui vektori element sisaldab ühte järgmistest topeltvokaalidest ("aa", "oo" või "uu"), siis lisada vektori samasse kohta veel üks selline element. Eeldame, et vektori ühel elemendil saab nimetatud olukordadest olla korraga vaid üks, st nt sõnad "tattoo" või "koostööraam" ei ole vektori elemendiks. Näiteks, programm vector<string> v{"Juuli", "lõpus", "ilmunud", "loost", "Water", "sai",
+               "võrdlemisi", "salaja", "aasta",  "oluliseim", "hitt"};
+for (auto it{v.begin()}, lopp{v.end()}; it != lopp ; ++it) {
+    cout << *it << " ";
+}
+cout << "\n";
+lisaJaKustuta( v);
+for (auto it{v.begin()}, lopp{v.end()}; it != lopp ; ++it) {
+   cout << *it << " ";
+} kuvab ekraanile Juuli lõpus ilmunud loost Water sai võrdlemisi salaja aasta olulisim hitt 
+Juuli Juuli lõpus ilmunud loost loost sai võrdlemisi salaja aasta aasta olulisim NB! Kasuta ülesande lahendamisel iteraatoreid! Esialgse (funktsioonisignatuuride) kontrolli kood on järgnev. Oma arvutis selle jooksutamiseks salvesta see kuskile ja kasuta käsku g++ -std=c++20 esialgne_kontroll.cpp , kus esialgne_kontroll.cpp on fail, kuhu järgneva sisu salvestasid ja selle faili kõrval on olemas kodutöö päisefail kodu9.h . #include <vector>
+#include <list>
+#include <deque>
+#include <iostream>
+#include <string>
+
+#include "kodu9.h"
+
+using C1 = std::vector<int>;
+using C2 = std::list<int>;
+using C3 = std::deque<int>;
+
+template<typename T>
+concept Yl1 = requires(T &t) {
+    { yhenda(t, t, t) } -> std::same_as<void>;
+};
+
+static_assert(Yl1<C1>);
+static_assert(Yl1<C2>);
+static_assert(Yl1<C3>);
+
+template<typename T>
+concept Yl2 = requires(T &t, std::ostream &os) {
+    { tryki(t, os) } -> std::same_as<decltype(os)>; // std::ostream&
+};
+
+static_assert(Yl2<C1>);
+static_assert(Yl2<C2>);
+static_assert(Yl2<C3>);
+
+template<typename T>
+concept Yl3 = requires(T &t1, T &t2) {
+    { operator<(t1, t2) } -> std::same_as<bool>;
+};
+
+static_assert(Yl3<C1>);
+static_assert(Yl3<C2>);
+static_assert(Yl3<C3>);
+
+template<typename T>
+concept Yl4 = requires(T &t) {
+    { lisaJaKustuta(t) } -> std::same_as<void>;
+};
+
+static_assert(Yl4<std::vector<std::string>>);
+
+int main() {
+    std::cout << "OK\n";
+} Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

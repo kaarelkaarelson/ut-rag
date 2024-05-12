@@ -1,10 +1,10 @@
 https://hcis.cs.ut.ee
-https://hcis.cs.ut.ee/Main/Contacts
+https://hcis.cs.ut.ee/uploads/Main/GMT20200928-151327_Kuldar-Tav_2560x1440.mp4
 https://hcis.cs.ut.ee/Main/HomePage?action=login
 https://hcis.cs.ut.ee/Main/Publications
-https://hcis.cs.ut.ee/Main/ThesisTopics
+https://hcis.cs.ut.ee/Main/Contacts
 https://hcis.cs.ut.ee/Main/Projects
+https://hcis.cs.ut.ee/Main/Members
+https://hcis.cs.ut.ee/Main/ThesisTopics
 https://hcis.cs.ut.ee/Main/Events
 https://hcis.cs.ut.ee/Main/HomePage
-https://hcis.cs.ut.ee/Main/Members
-https://hcis.cs.ut.ee/uploads/Main/GMT20200928-151327_Kuldar-Tav_2560x1440.mp4

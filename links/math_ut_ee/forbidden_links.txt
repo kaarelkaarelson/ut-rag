@@ -73,6 +73,11 @@ mailto:kantselei@ut.ee
 tel:+372 737 5137
 tel:+372 737 6569
 mailto:avalik@ut.ee
+tel:+372 737 4805
+mailto:eik@ut.ee
+mailto:loodusmuuseum@ut.ee
+mailto:iro@ut.ee
+mailto:muuseum@ut.ee
 tel:+372 737 5600
 mailto:rektor@ut.ee
 mailto:siseaudit@ut.ee
@@ -83,11 +88,6 @@ mailto:tyye@ut.ee
 tel:+372 737 5702
 mailto:library@ut.ee
 tel:+372 737 6215
-tel:+372 737 4805
-mailto:eik@ut.ee
-mailto:loodusmuuseum@ut.ee
-mailto:iro@ut.ee
-mailto:muuseum@ut.ee
 https://www.facebook.com/unitartumath
 https://arvamus.postimees.ee/8008417/ene-margit-tiit-kas-eesti-rahvas-haabubki-selle-sajandi-lopuks
 https://menu.err.ee/1609322985/rahvastikuteadlane-ene-margit-tiit-raha-eest-lapsi-ei-osteta

@@ -1,0 +1,237 @@
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 12 Lõimed. Tootja-tarbija mudel. Teemad Lõimed (klass Thread , liides Runnable ). Sünkroniseerimine. BlockingQueue . Peale selle nädala läbimist oskab üliõpilane kirjeldada lõimeklassi; luua mitmelõimelist programmi; kasutada sünkroniseerimist. Siiani oleme lasknud Java programmidel teha oma tegevusi järjestikku - programmi jooksutamisel on igal hetkel käsil üks operatsioon. Programmi kasutusmugavuse parandamiseks või efektiivsuse suurendamiseks (nt. mitmetuumalise protsessori kasutamisel) on võimalik nõuda teatud operatsioonide samaaegset jooksutamist. Samaaegselt täidetavate ülesannete esitamiseks kasutatakse Javas (ja paljudes teistes programmeerimiskeeltes) konstruktsiooni, mida nimetatakse lõimeks ( thread ). Lõimed annavad võimaluse kasutada paindlikumalt ressursse (andmeid, protsessoriaega, sisend-väljundseadmeid jne). Programmi käivitamisel luuakse automaatselt pealõim, mis hakkab täitma peameetodi koodi. Selle käigus on võimalik luua lisalõimi, millele määratakse oma töö (kood) ja mis hakkavad seda tegema pealõimega paralleelselt. Samaaegsuse korraldamine Kui arvutil on mitu protsessorit või protsessorituuma, siis üritab Java virtuaalmasin korraldada töö nii, et erinevad lõimed käivitatakse erinevate protsessorite või tuumade poolt. See võib programmi kogutööaega märgatavalt lühendada. Kui mitmelõimelist programmi jooksutatakse arvutis, millel on ainult üks ühetuumaline protsessor, siis tööde samaaegsust imiteeritakse. Selleks laseb virtuaalmasin lõimedel töötada järgemööda, näiteks mõne millisekundi kaupa. Lõimed vs. protsessid - jagatud vs. eraldatud mälu Ühe programmi ühte jooksutamist tähistatakse operatsioonisüsteemi vaatevinklist terminiga protsess . Nagu olete märganud, suudab operatsioonisüsteem korraga jooksutada mitut protsessi ja nagu eespool selgus, saab ühes protsessis korraga joosta mitu lõime. Miks on vaja lõimi, kui me saaksime samaaegsed tööd korraldada erinevate protsessidena? Protsesside ja lõimede peamine erinevus on selles, et igal protsessil on oma mälu, millele teised protsessid ligi ei pääse, aga ühe protsessi lõimed jagavad omavahel mälu. Jagatud mälu teeb ühest küljest programmeerija elu lihtsamaks, sest eri lõimed saavad omavahel objekte jagada, aga see toob kaasa riski, et lõimed hakkavad üksteise tööd segama. Põhjus on selles, et programmi kirjutades me ei tea ette, millal protsessor iga lõime jooksutamiseks aega leiab ja seetõttu on paralleelsete lõimede omavaheline ajastus täiesti ettearvamatu. Kuna me ei saa ennustada, millal lõimed mingit objekti muudavad või kasutavad, siis tuleb lõimede suhtluse korraldamisel olla väga hoolikas. Lõimed Javas Koodi käivitamiseks eraldi lõimes tuleb tekitada klass, mis realiseerib liidest Runnable , ja panna vajalik kood liidese kirjeldatud run meetodisse. Seejärel tuleb luua uus isend klassist Thread , mille konstruktori parameetriks tuleb anda loodud klassi isend. Lõim ei lähe Thread isendi loomise peale veel automaatselt käima - selle jaoks tuleb kutsuda Thread isendi start meetod. Selle peale käivitatakse sinu loodud run meetod loodud lõimes ja koodi hakatakse paralleelselt teiste lõimedega täitma. public class JooksebParalleelselt implements Runnable {
+  @Override
+  public void run() {
+    // kood, mida soovime paralleelselt käivitada
+  }
+}
+
+public class Test {
+  public static void main(String[] args) {
+    JooksebParalleelselt kood = new JooksebParalleelselt();
+    Thread lõim = new Thread(kood); // tekitame lõime
+    lõim.start(); // käivitame lõime (NB! kasutama peab start, mitte run meetodit!)
+  }
+} Programm lõpetab töö, kui kõigi tema lõimede ja peameetodi töö on lõppenud. Lõim lõpetab töö, kui tema run meetod läbi saab. Kasutades Threadi join meetodit on võimalik ühes lõimes oodata, et mingi teine lõim töö lõpetaks (mugav töö koordineerimiseks). Lisaks saab kasutada staatilist meetodit Thread.sleep , et jooksev lõim ajutiselt peatada. Vaatame näitena programmi, mis loeb korraga kaks faili sisse ja siis prindib nende sisu ridahaaval välja. Kuna mõlemaid faile töödeldakse paralleelselt, siis nende sisu läheb ekraanile väljastades sassi. Jooksuta programmi mitu korda - iga kord peaks järjekord veidi erinema. Sisendiks võib kasutada näiteks faile https://raw.githubusercontent.com/mbakhoff/oop-samples/master/threads/countdownlatch.txt https://raw.githubusercontent.com/mbakhoff/oop-samples/master/threads/executorservice.txt public class FailiLugeja implements Runnable {
+  private String fail;
+
+  public FailiLugeja(String fail) {
+    this.fail = fail;
+  }
+
+  @Override
+  public void run() {
+    try (Scanner scanner = new Scanner(new File(fail))) {
+      while (scanner.hasNextLine()) {
+        System.out.println(scanner.nextLine());
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+public class Test {
+  public static void main(String[] args) {
+    Thread failiLugejaLõim1 = new Thread(new FailiLugeja("countdownlatch.txt"));
+    Thread failiLugejaLõim2 = new Thread(new FailiLugeja("executorservice.txt"));
+    failiLugejaLõim1.start();
+    failiLugejaLõim2.start();
+  }
+} Ülesanne 1 Luua klass, mis realiseerib liidese Runnable ja mis võtab konstruktori parameetriteks kaks arvu - miinimumi ja maksimumi. Meetodis run tuleb kõik arvud miinimumist maksimumini ekraanile väljastada. Pane korraga käima kaks lõime, nii et üks väljastab arve 0..100 ja teine 100..200. Käivitada programm korduvalt. Enesekontroll Your browser does not support including other html pages Võidujooks ehk race condition Kui kaks või enam lõime kasutavad ja muudavad samu andmeid, siis ühe lõime töö võib teise tööd oluliselt segada. Lihtne näide sellisest segamisest on arvu ühe võrra suurendamine ( n = n + 1 ). Suurendamine koosneb tegelikult kolmest operatsioonist: vana väärtuse lugemine, liitmine ja uue väärtuse salvestamine. Kui kaks lõime loevad täpsel samal hetkel algse n väärtuse, saavad nad mõlemad liitmise tulemuseks n + 1 ja mõlemad salvestavad n uueks väärtuseks n + 1 . Kui lõimede ajastus on natuke nihkes, siis suurendab kõigepeal üks lõim arvu ja siis teine lõim - lõpptulemus on n + 2 . Korrektne programm peaks alati kahe suurendamise tulemusena mälusse n + 2 salvestama. Kui programmis on sellised ajastuse probleemid (kood ei käitu iga kord samamoodi), siis öeldakse, et programmis on race condition ehk võidujooks . Järgnevas näiteprogrammis võib tekkida olukord, kus kaks lõime muudavad sama Loendur -tüüpi objekti samaaegselt. Seda näeme, kui klassis Loendur on if -lause tingimus täidetud ja ekraanile tuleb midagi sellist: algne = 2860, n = 3700 . (Kui midagi sellist ei ilmu, siis pange programm uuesti tööle. Seda ei pruugi igal korral juhtuda.) public class Loendur {
+
+  private int n = 0;
+
+  public void suurenda() {
+    int algne = n;
+    n = n + 1;
+    if (n > algne + 1) {
+      System.out.println("algne = " + algne + ", n = " + n);
+    }
+  }
+}
+
+public class Võidujooks implements Runnable {
+
+  private Loendur loendur;
+  private String nimi;
+
+  public Võidujooks(Loendur loendur, String nimi) {
+    this.loendur = loendur;
+    this.nimi = nimi;
+  }
+
+  public void run() {
+    System.out.println(nimi + " alustas");
+    for (int i = 0; i < 10000000; i++) {
+      loendur.suurenda();
+    }
+    System.out.println(nimi + " lõpetas");
+  }
+
+  public static void main(String[] args) throws Exception {
+    Loendur loendur = new Loendur();
+    Thread t1 = new Thread(new Võidujooks(loendur, "Lõim-1"));
+    Thread t2 = new Thread(new Võidujooks(loendur, "Lõim-2"));
+    // käivitame threadid
+    t1.start();
+    t2.start();
+    // ootame, et threadid töö lõpetaks
+    t1.join();
+    t2.join();
+    System.out.println("Valmis!");
+  }
+} Võidujooks tekib siis, kui mitu lõime muudavad korraga ühises mälus olevaid andmeid. Võidujooksud mõjutavad peaaegu kõiki Java andmestruktuure ja andmetüüpe. Paralleelselt ArrayListi muutes võivad ilmneda suvalised vead ja andmekadu. Set -meetodites olevad kontrollid võivad vigaseid andmeid läbi lasta. Ekraanile väljastatud väärtused võivad olla suvalises järjekorras. Arvude liitmisel salvestatakse valed tulemused. Peamised tehnikad võidujooksudega võitlemiseks on lõimede vahel mitte mälu jagada ja mitte lasta lõimedel korraga samu andmeid muuta. Sünkroniseerimine Sünkroniseerimise abil saab takistada lõimedel korraga samade andmete kasutamist. Selle jaoks tuleb tuvastada koodi osad, kus kaitstavaid andmeid kasutatakse ( kriitilised sektsioonid ) ja valida välja objekt, kes hakkab koordineerima kriitiliste sektsioonide kasutamist (n-ö monitor ; sobib iga Java objekt). Kui lõim tahab mõnda kriitilist sektsiooni kasutada, peab ta kõigepealt selle sektsiooni monitorilt luba küsima. Monitor lubab korraga ainult ühel lõimel kriitilist sektsiooni kasutada ja teised lõimed peavad niikaua ootama. Koodis saab tekitada kriitilise sektsiooni kasutades synchronized võtmesõna. Sulgudes tuleb märkida monitor, kes ligipääsu hakkab kontrollima. Näide: klassis Loendur on isendiväli arv , millele me tahame korraga ainult ühe lõime ligi lasta. Meetodid liida ja väärtus kasutavad mõlemad seda välja ja nendes olev kood on märgitud kriitilisteks sektsioonideks. Mõlemad kriitilised sektsioonid kasutavad sama monitori, mis on antud juhul täiesti eraldi objekt. public class Loendur {
+
+  private Object monitor = new Object();
+  private int arv = 0;
+
+  public void liida(int liidetav) {
+    synchronized (monitor) {
+      arv += liidetav;
+    }
+  }
+
+  public int väärtus() {
+    synchronized (monitor) {
+      return arv;
+    }
+  }
+} Kui esimene lõim siseneb liida meetodi kriitilisse sektsiooni, saab ta monitorilt loa. Kui ka mõni teine lõim prooviks enne esimese lõime lahkumist kasutada liida meetodi kriitilist sektsiooni, siis monitor sunniks teda ootama, kuni esimene lõim on lahkunud (teine lõim ootaks synchronized võtmesõnaga rea juures). Kuna meetodis väärtus olevas kriitilises sektsioonis kasutatakse sama monitori, ei saaks teine lõim ka seda meetodit ilma ootamata kasutada. Samas, kui luua mitu Loendur isendit, siis saaks üks lõim ühte isendit ja teine lõim teist isendit kasutada ilma üksteise taga ootamata, sest mõlemal Loendur isendil on eraldi monitorid. Tegelikult saaks Loendur klassi oluliselt lühemaks teha. Nagu varem mainitud, sobib monitoriks iga objekt. Kui me tahame kaitsta ainult Loendur klassis olevaid andmeid, siis saaks kasutada monitorina Loendur isendit ennast, kirjutades synchronized (this) { .. } . Juhtudel, kus terve meetodi sisu on kriitiline sektsioon, lubab Java kirjutada synchronized võtmesõna meetodi piiritlejate juurde: public synchronized void liida(int liidetav) { .. } . public class Loendur {
+
+  private int number = 0;
+
+  public synchronized void liida(int liidetav) {
+    number += liidetav;
+  }
+
+  public synchronized int väärtus() {
+    return number;
+  }
+} Paneme tähele, et kriitilisteks sektsioonideks tuleb märkida kõik koodisektsioonid, mis kaitstavaid andmeid kasutavad - ka meetodid, mis andmeid ainult loevad. Niimoodi väldime olukordi, kus loetakse poolikus seisus andmeid. Kriitiliste sektsioonide tuvastamine on oluliselt lihtsam, kui kaitstavad andmed on privaatses isendiväljas. Kui kaitstud andmeid objektide vahel jagada, siis peab veenduma, et kõik objektid kasutavad sama monitori (see on raske; proovi jagamist vältida). Hea on teada, et synchronized piiritlejat kasutades on isendimeetodite puhul monitor alati this , aga staatiliste meetodite puhul kasutatakse monitorina klassi ennast! Kui kasutad läbi-segi synchronized staatilisi ja mittestaatilisi meetodeid, on lihtne teha viga, kus ühele objektile koordineerib ligipääsu mitu erinevat monitori. Enesekontroll Your browser does not support including other html pages Ülesanne 2 Koosta peameetod, mis loob tühja ArrayList<Integer> ja käivitab kaks lõime. Käivitatud lõimed peavad paralleelselt lisama peameetodis loodud listi arvud 0..1000000. Peameetod peab ootama, kuni mõlemad lõimed on töö lõpetanud ja seejärel väljastama listi suuruse. Ära kasuta sünkroniseerimist ja käivita programm mitu korda. Kas tulemus on ootuspärane? Lisa puuduv sünkroniseerimine ja kontrolli, et programmi väljund oleks igal käivitamisel sama. Ülesanne 3 (kontroll) Kirjutada klass IsikukoodiRegister . Klassis on List<String> , mis hoiab isikukoode ja meetod registreeri , mis lisab etteantud isikukoodi listi, kui seda seal veel ei ole. Lisaks on meetod järjekorranumber , mis tagastab etteantud isikukoodi indeksi registri listis või -1, kui isikukood ei ole registreeritud. Kasutada sünkroniseerimist, nii et registri list on võidujooksude eest kaitstud. Kasutada listi isendit monitorina. Ülesanne 4 Järgnev kood kasutab sünkroniseerimist vigaselt. Kus on viga ja kuidas saaks selle parandada? public class KaitstudMassiiv {
+
+  private int[] andmed = new int[100];
+
+  public synchronized void set(int positsioon, int väärtus) {
+    andmed[positsioon] = väärtus;
+  }
+
+  public synchronized int suurus() {
+    return andmed.length;
+  }
+
+  public synchronized int[] kõikVäärtused() {
+    return andmed;
+  }
+}
+
+public class Test {
+  public static void main(String[] args) {
+    KaitstudMassiiv kaitstud = new KaitstudMassiiv();
+    for (int i = 0; i < kaitstud.suurus(); i++) {
+      kaitstud.set(i, i * 10);
+    }
+    int[] tulemus = kaitstud.kõikVäärtused();
+    for (int element : tulemus) {
+      System.out.println(element);
+    }
+  }
+} Proovida viga leida ja korda teha. Pärast lõpetamist vaadata lahendust . Ülesanne 5 Järgnev kood kasutab sünkroniseerimist vigaselt. Kus on viga ja kuidas saaks selle parandada? public class KaitstudHashMap {
+
+  private Map<String, String> andmed = new HashMap<>();
+
+  public void lisa(String võti, String väärtus) {
+    synchronized (this) {
+      if (!andmed.containsKey(võti)) {
+        andmed.put(võti, väärtus);
+      }
+    }
+  }
+
+  public String asenda(String võti, String väärtus) {
+    synchronized (this) {
+      if (andmed.containsKey(võti)) {
+        String vanaVäärtus = andmed.get(võti);
+        andmed.put(võti, väärtus);
+        return vanaVäärtus;
+      }
+      return null;
+    }
+  }
+
+  public String otsi(String võti, String kuiVäärtusPuudub) {
+    synchronized (andmed) {
+      if (andmed.containsKey(võti)) {
+        return andmed.get(võti);
+      }
+      return kuiVäärtusPuudub;
+    }
+  }
+} Proovida viga leida ja korda teha. Pärast lõpetamist vaadata lahendust . Lõimede vahel sõnumite saatmine Kui teie arvates on sünkroniseerimine ja lõimede vahel andmete jagamine keeruline, siis teil on õigus. Võidujooksud ja vigane sünkroniseerimine on üks Java kõige keerulisematest aspektidest, millega isegi kõige kogenumad arendajad tihti ämbrisse astuvad. Õnneks on sünkroniseerimise abil andmete jagamisele lihtsam alternatiiv - lõimede vahel sõnumite vahetamine. Objektide korraga mitmest lõimest kasutamine sunnib programmeerijat tõsist vaeva nägema, et kood oleks õigesti sünkroniseeritud ja lõimed üksteist ei segaks. Sõnumite vahetamise tehnika puhul ei kasuta lõimed kunagi korraga samu objekte. Kui üks lõim tahab teisele lõimele mingid andmed nähtavaks teha, siis ta saadab teisele lõimele vastava sisuga sõnumi. Kuna jagatud objekte ei kasutata, siis ei saa ka võidujookse tekkida. Sõnumeid saadetakse, kasutades spetsiaalseid järjekordi ( BlockingQueue ), mille meetodite kasutamine ei vaja sünkroniseerimist. interface BlockingQueue<E> {
+  // lisab järjekorda uue sõnumi
+  void put(E e) throws InterruptedException;
+  // võtab järjekorrast järgmise sõnumi. 
+  // kui järjekord on tühi, siis ootab sõnumi saabumist.  
+  E take() throws InterruptedException;
+  // võtab järjekorrast järgmise sõnumi. 
+  // kui järjekord on tühi, siis tagastab null.
+  E poll();
+} Missuguseid sõnumeid lõimed üksteisele saatma peaks? Kui lõim tahab teisele lõimele ülesande anda (loe mingit faili, arvuta mingit algoritmi), siis ülesande andja paneb järjekorda ülesande lähteandmed (failinimi, algoritmi parameetrid). Ülesande täitja saab seejärel lähteandmed järjekorra kaudu kätte ja alustab tööd. Kui ülesandeid on mitu, siis võivad mitu lõime lähteandmete järjekorda jagada. Kui lõim saab talle antud ülesande täidetud, siis ta saab välja arvutatud tulemused teise järjekorra abil ülesande andjale tagasi saata. Sellisel juhul on sõnumi sisuks ülesande lahendus (failist saadud andmed, algoritmi tulemus). Sellist süsteemi nimetatakse tihti ka tootja-tarbija mudeliks, sest osa lõimedest teeb tööd ja teised võtavad tulemusi vastu. Vaatame näiteprogrammi, mis võtab listi lauseid ja pöörab need paralleelselt pahupidi. public class PahupidiPööraja implements Runnable {
+
+  // järjekord, mille kaudu ülesandeid vastu võetakse
+  private BlockingQueue<String> algsedLaused;
+
+  // järjekord, mille kaudu lahendused tagasi saadetakse
+  private BlockingQueue<String> pahupidiLaused;
+
+  public PahupidiPööraja(
+      BlockingQueue<String> algsedLaused,
+      BlockingQueue<String> pahupidiLaused) {
+    this.algsedLaused = algsedLaused;
+    this.pahupidiLaused = pahupidiLaused;
+  }
+
+  @Override
+  public void run() {
+    try {
+      while (true) {
+        // proovime järgmise ülesande vastu võtta
+        String lause = algsedLaused.poll();
+        if (lause == null)
+          break; // ülesanded said otsa, lõpetame töö
+        List<String> sõnad = Arrays.asList(lause.split(" "));
+        Collections.reverse(sõnad);
+        String pahupidiLause = String.join(" ", sõnad);
+        // saadame lahenduse tagasi
+        pahupidiLaused.put(pahupidiLause);
+      }
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+public class Test {
+  public static void main(String[] args) throws InterruptedException {
+    List<String> algandmed = Arrays.asList(
+        "A BlockingQueue does not accept null elements",
+        "Designed to be used primarily for producer-consumer queues",
+        "BlockingQueue implementations are thread-safe",
+        "BlockingQueue can safely be used with multiple producers/consumers");
+
+    // loome sõnumite järjekorrad ja määrame järjekorra maksimaalse suuruse
+    BlockingQueue<String> pahupidiLaused = new ArrayBlockingQueue<>(10);
+    BlockingQueue<String> algsedLaused = new ArrayBlockingQueue<>(10);
+
+    // lisame kõik pahupidi pööratavad laused tööde järjekorda
+    algsedLaused.addAll(algandmed);
+
+    // käivitame töölised (mõlemad võtavad võidu ühisest järjekorrast ülesandeid)
+    new Thread(new PahupidiPööraja(algsedLaused, pahupidiLaused)).start();
+    new Thread(new PahupidiPööraja(algsedLaused, pahupidiLaused)).start();
+
+    for (int i = 0; i < algandmed.size(); i++) {
+      // võtame tulemuste järjekorrast järgmise lause (vajadusel ootame)
+      System.out.println(pahupidiLaused.take());
+    }
+  }
+} Järjekordade kasutamine võimaldas meil sünkroniseerimist täielikult vältida! Lisaks ei pea mitte kuskil muretsema lõimede ajastamise ja võidujooksude pärast. Selline lähenemine on väga lihtne, aga samas võimaldab efektiivselt kogu protsessori jõudlust ära kasutada. Ülesanne 6 (kontroll) Koostada mitu tekstifaili, milles on palju tühikutega eraldatud täisarve. Kirjuta programm, mis loeb failidest arve ja leiab iga faili arvude summa. Testklassi peameetodis luuakse järjekord, kuhu saab lisada saadud summad ja järjekord, kus hoitakse töötlemist ootavate failide nimesid. Peameetodis pannakse kõikide failide nimed failinimede järjekorda ja pannakse käima kolm lõime. Iga lõim võtab failinimede järjekorrast ühe faili, loeb selles olevad arvud sisse, liidab need kokku ja lisab summa tulemuste järjekorda. Kui fail saab töödeldud, proovib lõim järjekorrast järgmist faili võtta ja seda töödelda jne. Peameetod peab tulemuste järjekorrast nii mitu arvu välja võtma ja ekraanile väljastama, kui palju faile ta algselt töösse andis. Ülesanne 7 Muuta eelmist programmi, nii et lisaks failis olnud arvude summale pannakse järjekorda ka loetud faili nimi. Tekitada selle jaoks eraldi klass Tulemus , mille isendeid tulemuste listi saab lisada. Ülesanne 8 Teha eelmise programmiga analoogne programm, aga failinimede asemel kasuta veebiaadresse. Programm võtab nimekirja veebiaadressidest, laeb paralleelselt iga lehekülje sisu alla ja annab tulemused järjekorra kaudu tagasi peameetodisse. Peameetodis kirjutada iga alla laetud leht kettale. Kasutada veebilehtede avamiseks voogude praktikumis tutvustatud URL ja URLConnection klasse. Kõrgema taseme vahendid Antud praktikumi ülesanne oli tutvustada lõimi, kui Java programmi samaaegsete tegevuste alusmõistet. Kuna mitmelõimeliste programmide testimine on väga tülikas ja veaohtlik, siis praktilises programmeerimises üritatakse vältida käsitsi lõimede loomist ja sünkroniseerimist ning eelistatakse sellele standardteegis leiduvaid kõrgema taseme lahendusi. Nende kohta saab rohkem infot näiteks siit: http://docs.oracle.com/javase/tutorial/essential/concurrency/ Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused
