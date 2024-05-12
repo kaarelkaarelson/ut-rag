@@ -36,7 +36,7 @@ Install all packages
 
 Activate the spider (NB! Only activate with supervision, check the 'ut/ut_links.txt file')
 
-`scrapy crawl quotes`
+`scrapy crawl subdomains`
 
 ## Tutorials
 
