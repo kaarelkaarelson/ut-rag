@@ -50,6 +50,16 @@ def download_pages(domains):
                 except Exception as e:
                     print(f"Failed to download {link}: {e}")
 
+
+def remove_unneeded(links_folder):
+    for folder in links_folder:
+        list_of_txt = os.listdir(f"./Texts/{folder}")
+        for file in list_of_txt:
+            if "panopto" in file or "moodle" in file or "ois2" in file:
+                print(f"Deleted {file}")
+                os.remove(f"./Texts/{folder}/{file}")
+
 if __name__ == '__main__':
-    dir_as_list = os.listdir("./links")
-    download_pages(dir_as_list)
+    dir_as_list = os.listdir("./Texts")
+    print(dir_as_list)
+    remove_unneeded(dir_as_list)
