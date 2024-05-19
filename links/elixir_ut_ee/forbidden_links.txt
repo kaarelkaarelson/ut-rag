@@ -5,16 +5,11 @@ https://taltech.ee/en
 https://kbfi.ee/?lang=en
 https://www.tlu.ee/en
 https://www.emu.ee/en
-https://www.sib.swiss/training/course/20240516_DARPY
-https://www.sib.swiss/training/course/20240517_OPTPY
-https://eas.ee/en/events/patenting-system/
-https://www.sib.swiss/training/course/20240527_DOCK
-https://www.sib.swiss/training/course/20240527_SCTPY
 https://www.sib.swiss/training/course/20240531_BGEEL
 https://www.sib.swiss/training/course/20240527_INMLP
 https://www.eurobioimaging.eu/news/a-guide-to-fair-bioimage-data-2024/
 https://www.sib.swiss/training/course/20240607_ENARS
-https://www.avatudteadus.ee/uncategorized-et/avatud-teaduse-infouritus/
+https://www.avatudteadus.ee/uncategorized-et/avatud-teaduse-infouritus-2/
 https://www.sib.swiss/training/course/20240606_UPENZ
 https://www.sib.swiss/training/course/20240703_BPP
 https://www.denbi.de/training-courses-2024/1694-elixir-luxembourg-elixir-germany-train-the-trainer

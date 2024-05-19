@@ -17,16 +17,12 @@ def normalize_url(url):
 
 SUBDOMAINS = []
 FORBIDDEN_SUBDOMAINS = []
-VISITED_SITES = []
 
-with open('subdomains2.txt', 'r') as f:
+with open('subdomains.txt', 'r') as f:
     SUBDOMAINS = [line.strip() for line in f.readlines()]
 
 with open('forbidden_subdomains.txt', 'r') as f:
     FORBIDDEN_SUBDOMAINS = [line.strip() for line in f.readlines()]
-
-#with open('./links/courses_cs_ut_ee/links.txt', 'r') as f:
-#    VISITED_SITES = [line.strip() for line in f.readlines()]
 
 class SubdomainUrlChecker:
 
@@ -105,6 +101,7 @@ class QuotesSpider(scrapy.Spider):
 
     def start_requests(self):
         subdomains = SUBDOMAINS
+        print("SUBDOMAINS", subdomains)
         
         subdomain_max_depth= {
             "courses.cs.ut.ee": 2,
@@ -123,7 +120,6 @@ class QuotesSpider(scrapy.Spider):
                                                 "url_checker": url_checker,
                                                 "depth": 0, 
                                                 "max_depth": max_depth})
-        print("SUBDOMAINS", subdomains)
 
     def download_url(self): # modify function here
         # url = response.url.split("/")[-2] 

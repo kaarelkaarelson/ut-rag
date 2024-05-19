@@ -25,4 +25,3 @@ cs.ut.ee
 its.cs.ut.ee
 tartunlp.ai
 courses.cs.ut.ee
-

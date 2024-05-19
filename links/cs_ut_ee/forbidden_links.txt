@@ -1,3 +1,7 @@
+https://moodle.ut.ee/
+https://moodle.ut.ee/
+https://moodle.ut.ee/
+https://moodle.ut.ee/
 https://taltech.ee/sisseastuja/magistrioppe-erialad/kuberkaitse
 https://www.secclo.eu
 https://www.excite.it.ee
@@ -77,10 +81,6 @@ mailto:kantselei@ut.ee
 tel:+372 737 5137
 tel:+372 737 6569
 mailto:avalik@ut.ee
-tel:+372 737 5620
-tel:+372 737 5581
-mailto:teaduskool@ut.ee
-mailto:tyye@ut.ee
 tel:+372 737 5702
 mailto:library@ut.ee
 tel:+372 737 6215
@@ -92,6 +92,10 @@ mailto:muuseum@ut.ee
 tel:+372 737 5600
 mailto:rektor@ut.ee
 mailto:siseaudit@ut.ee
+tel:+372 737 5620
+tel:+372 737 5581
+mailto:teaduskool@ut.ee
+mailto:tyye@ut.ee
 https://www.addtoany.com/share
 https://www.addtoany.com/share
 https://www.addtoany.com/share
@@ -102,5 +106,5 @@ https://www.youtube.com/c/UniversityofTartuInstituteofComputerScience
 https://twitter.com/UniTartuCS
 https://www.linkedin.com/school/unitartucs/
 https://www.instagram.com/unitartucs/
-https://auth.ut.ee/idp/module.php/core/loginuserpass.php?AuthState=_9e97234f37a35718417c306d4fb539632f69f76e5f%3Ahttps%3A%2F%2Fauth.ut.ee%2Fidp%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fwww.is.ut.ee%252FShibboleth.sso%26RelayState%3Dss%253Amem%253Ac1ddef186883d887c69f3cfd6d1f1ad9a665ce357d5529144533c5b327760b11%26cookieTime%3D1715543058
-https://auth.ut.ee/idp/module.php/core/loginuserpass.php?AuthState=_745e7a52a9173fab94bc405881f2360d359575c706%3Ahttps%3A%2F%2Fauth.ut.ee%2Fidp%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fsiseveeb.ut.ee%252FShibboleth.sso%26RelayState%3Dss%253Amem%253A18c5f6e4b13204a4be577a9d5eb32646094947122c62ab7d3ce46cd10b305512%26cookieTime%3D1715543058
+https://auth.ut.ee/idp/module.php/core/loginuserpass.php?AuthState=_0fbc29920c39f1a601ec638c57aa63132c9d5d2641%3Ahttps%3A%2F%2Fauth.ut.ee%2Fidp%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fsiseveeb.ut.ee%252FShibboleth.sso%26RelayState%3Dss%253Amem%253A2e2f3682ead52788f30c89c52a42bb6e4b6a66fad53b0c1e1a7308f7b9ba0fea%26cookieTime%3D1716118560
+https://auth.ut.ee/idp/module.php/core/loginuserpass.php?AuthState=_c42d44e34d9493264ca998e1f13cadf187918267b1%3Ahttps%3A%2F%2Fauth.ut.ee%2Fidp%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fwww.is.ut.ee%252FShibboleth.sso%26RelayState%3Dss%253Amem%253A1b14d0041982a8fd255acf09348db644797dedda940b5b56a5dfa2c68a02f0ea%26cookieTime%3D1716118560

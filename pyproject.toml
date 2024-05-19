@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ut-rag"
+version = "0.1.0"
+description = ""
+authors = ["Kaarel Kaarelson", "Rannar Zirk"]
+readme = "README.md"
+packages = [
+    { include = "*.py", from = "src" },
+    { include = "*.py", from = "scripts" }
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

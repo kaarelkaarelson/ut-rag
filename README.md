@@ -1,32 +1,30 @@
 # UT RAG
 
-Retrieval Augmented Generation Chatbot for the University of Tartu domain
+Retrieval Augmented Generation Chatbot for the University of Tartu.
 
 ## Setup
 
 **Virtual Environment**
 
-Create virtual environment for the project
+Create virtual environment for the project. Make sure you have an updated version of conda.
 
-`py -3.11 -m venv .venv` _NB! Use python version 3.11.X_
+`conda env create -f environment.yml`
 
-Activate virtual environment
+Activate conda environment
 
-`.venv\Scripts\activate`
-
-_For more info on python virtual environments https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/_
+`conda activate ut-rag`
 
 **Install packages**
 
-Make sure virtual environment is activated
+`pip install -r requirements.txt`
 
-Prepare pip
+`pip install -e .`
 
-`py -m pip install --upgrade pip`
+**Webscrape data**
 
-Install all packages
+`python -m scripts.crawl_subdomains`
 
-`py -m pip install -r requirements.txt`
+`python -m scripts.clean_links`
 
 **Run**
 
