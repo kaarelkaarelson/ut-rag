@@ -1,3 +1,4 @@
+ut.ee
 cs.ut.ee
 math.ut.ee
 majandus.ut.ee

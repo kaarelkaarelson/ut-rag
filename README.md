@@ -20,15 +20,18 @@ Activate conda environment
 
 `pip install -e .`
 
-**Webscrape data**
+**Webscrape and download pages**
 
 `python -m scripts.crawl_subdomains`
 
 `python -m scripts.clean_links`
 
+`python -m scripts.download_links`
+
+
 **Run**
 
-`python -m streamlit run .\app.py`
+`python -m scripts.run_app`
 
 ## Spider
 

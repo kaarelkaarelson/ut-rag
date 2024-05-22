@@ -1,9 +1,0 @@
-Vesal's Homepage Vesal Vojdani Institute of Computer Science University of Tartu Address: Liivi 2, 50409 Tartu, Estonia Room: 426 ( my calendar ) Phone: +372 737 5443 E-mail: vesal@ut.ee I'm an associate professor at the Chair of Programming Languages and Systems at the University of Tartu 
-                        where I have privilege of currently heading our University's much-esteemed Laboratory for Software Science . 
-                        I do feel distincly underqualified to lead research on possibly the most important field at the core of computer science.
-                        My goal is to spread the use of high-assurance software development, both by teaching formal methods and by contributing
-			to the research on sound program analysis. Together with Kalmer Apinis, I created the Goblint static analysis framework. I
-			worked on Goblint for my doctoral dissertation and as a post-doc at the Dept. of Informatics, TU Munich .
-			Our focus now is on the usability of sound static analysis, allowing formal methods to be used without specialist training. My publications can be accessed from this page . Teaching My views on teaching are largely influenced by Hal Abelson .
-		Just learning to code is not enough; we need to teach students that programs have meaning!
-		I teach the following meaningful courses: Compiler Construction ( Spring 2022 ) Advanced Verification and Validation ( Spring 2022 ) Programming Language Research Seminars ( Fall 2021 ) Last Update: February 4, 2022.

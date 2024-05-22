@@ -1,1 +1,0 @@
-Web based visualisation of the Ant Colony Optimisation (ACO) algorithm Visualisation Algorithm About Visualisation of Ant Colony Optimisation © 2015 Tõnis Pool

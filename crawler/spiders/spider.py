@@ -15,11 +15,11 @@ def normalize_url(url):
     else: 
         return url_norm
 
-SUBDOMAINS = []
+SUBDOMAINS = ['ut.ee']
 FORBIDDEN_SUBDOMAINS = []
 
-with open('subdomains.txt', 'r') as f:
-    SUBDOMAINS = [line.strip() for line in f.readlines()]
+# with open('subdomains.txt', 'r') as f:
+#     SUBDOMAINS = [line.strip() for line in f.readlines()]
 
 with open('forbidden_subdomains.txt', 'r') as f:
     FORBIDDEN_SUBDOMAINS = [line.strip() for line in f.readlines()]

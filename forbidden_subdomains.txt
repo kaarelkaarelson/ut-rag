@@ -1,3 +1,4 @@
 auth.ut.ee
 panopto.ut.ee
 moodle.ut.ee
+ois2.ut.ee

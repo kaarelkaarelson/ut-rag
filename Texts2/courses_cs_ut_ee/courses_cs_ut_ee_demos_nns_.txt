@@ -1,1 +1,0 @@
-2D Nearest Neighbor Search 2D Nearest Neighbor Search Application Algorithms Help About Last search data Nodes checked: 10 Time: 0 ms loading... 2D Nearest Neighbour Search by Raimond Tunnel, Anastassia Soikonen, Jordan Valdma is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License .
