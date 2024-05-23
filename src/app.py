@@ -1,4 +1,3 @@
-
 import os 
 from dotenv import load_dotenv
 
@@ -12,44 +11,45 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import ChatPromptTemplate
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from langchain_core.callbacks import BaseCallbackManager
+from llama_index.vector_stores.pinecone import PineconeVectorStore
 import streamlit as st
+from pinecone import Pinecone
 
 load_dotenv()
 
 openai_api_key= os.getenv("OPENAI_API_KEY")
 
-# Settings.embed_model = OpenAIEmbedding(model = 'text-embedding-3-small', api_key=openai_api_key)
-Settings.embed_model = HuggingFaceEmbedding(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
-
-Settings.llm = OpenAI(model= 'gpt-3.5-turbo', api_key=openai_api_key)
+Settings.embed_model = OpenAIEmbedding(model = 'text-embedding-3-small', api_key=openai_api_key)
+Settings.llm = OpenAI(model='gpt-3.5-turbo', api_key=openai_api_key)
 
 qa_prompt_str = (
     "Context information is below.\n"
     "---------------------\n"
     "{context_str}\n"
     "---------------------\n"
-    "Given the context information and not prior knowledge, "
-    "Only answer the question in the same language as the query and not as the context\n"
-    "Query: {query_str}\n"
-    "Answer: "
+    "Given the context information and not prior knowledge, please answer the question: {query_str}\n"
 )
 
-system_message = (
-    "You are an expert Q&A system that highly trusted in University of Tartu.\n"
-    "Always answer the query using the provided context information, and not prior knowledge.\n"
-    "Some rules to follow:\n"
-    "1. Avoid statements like 'Based on the context, ...' or 'The context information ...' or anything along those lines.\n"
-    "2. If you are unable to find any information from context to answer the question, then say you are unable to find any infromation about that."
-)
 
-chat_text_qa_msgs = [
-    ("system", system_message),
-    ("user", qa_prompt_str),
+start_messages = [
+    (
+        "system", 
+        "You are an expert Q&A system of University of Tartu.\n"
+        "Some rules to follow:\n"
+        "1. Avoid statements like 'Based on the context, ...' or 'The context information ...' or anything along those lines.\n"
+     ),
+    (
+        "user", 
+        "Context information is below.\n"
+        "---------------------\n"
+        "{context_str}\n"
+        "---------------------\n"
+        "Given the context information and not prior knowledge, please answer the question: {query_str}\n"
+     
+     ),
 ]
 
-text_qa_template = ChatPromptTemplate.from_messages(chat_text_qa_msgs)
+text_qa_template = ChatPromptTemplate.from_messages(start_messages)
 
 class ChatbotUT:
     def __init__(self):
@@ -59,24 +59,25 @@ class ChatbotUT:
         client = chromadb.PersistentClient(path="./chroma_db")
 
         try:
-            self.collection = client.get_collection(name="docs_collection")
-            collection_exists = True
+            api_key = os.environ["PINECONE_API_KEY"]
+            pc = Pinecone(api_key=api_key)
+            pinecone_index = pc.Index("quickstart")
+            index_exists = True
         except ValueError:
-            collection_exists = False
+            index_exists = False
 
 
-        if not collection_exists: 
-            print("Collection does not exist")
-            raise ValueError("Collection does not exist")
+        if not index_exists: 
+            print("Pinecone index does not exist")
+            raise ValueError("Pinecone index does not exist")
         else: 
-            documents = SimpleDirectoryReader("./docs", recursive=True).load_data()
-            self.vector_store = ChromaVectorStore(chroma_collection=self.collection) 
+            self.vector_store = PineconeVectorStore(pinecone_index=pinecone_index) 
             self.storage_context = StorageContext.from_defaults(vector_store=self.vector_store)
 
             self.index = VectorStoreIndex.from_vector_store(
                 self.vector_store, storage_context=self.storage_context
             )
-            
+
             self.chat_engine = self.index.as_chat_engine(chat_mode="condense_question", text_qa_template = text_qa_template, verbose=True)
         
     def get_chat(self):

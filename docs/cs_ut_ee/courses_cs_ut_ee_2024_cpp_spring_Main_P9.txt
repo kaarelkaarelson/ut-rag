@@ -1,0 +1,33 @@
+<LINK>https://courses.cs.ut.ee/2024/cpp/spring/Main/P9</LINK>
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 9. STL andmestruktuurid I 9 STL andmestruktuurid I 9.1 Kodutöö 9.2 Harjutused 9.3 Videolingid 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Harjutusülesanded 1. Andmekogumid hulkadena Koosta järgmised mallifunktsioonid andmekogumitega opereerimiseks. Funktsioonid peavad töötama andmekogumite vector , list ja deque korral. Vajadusel teha funktsioone juurde. NB! Mitte kasutada päist <set> ! hulkade ühisosa template <typename T1, typename T2, typename T3>
+void yhisosa(T1& esimene, T2& teine, T3& kolmas) hulkade ühend template <typename T1, typename T2, typename T3>
+void yhend(T1& esimene, T2& teine, T3& kolmas) hulkade vahe template <typename T1, typename T2, typename T3>
+void vahe(T1& esimene, T2& teine, T3& kolmas) Näited funktsioonide rakendamisest andmekogumitel vector<int> v1{10, 11, 5, 3, 3};
+    vector<int> v2{3, 5, 3, 5, 1};
+    vector<int> v3{};
+    tryki(v1, cout); // kuvab elemendid ekraanile
+    tryki(v2, cout);
+    yhisosa(v1, v2, v3);
+    cout << "v1 ja v2 ühisosa:\n";
+    tryki(v3, cout);
+    v3.clear();
+    yhend(v1, v2, v3);
+    cout << "v1 ja v2 ühend:\n";
+    tryki(v3, cout);
+    v3.clear();
+    vahe(v1, v2, v3);
+    cout << "v1 ja v2 vahe:\n";
+    tryki(v3, cout); 10 11 5 3 3
+ 3 5 3 5 1
+v1 ja v2 ühisosa:
+ 5 3
+v1 ja v2 ühend:
+ 10 11 5 3 1
+v1 ja v2 vahe:
+ 10 11 2. Funktsioonide tööaja võrdlemine Koosta järgmised mallifunktsioonid suurte andmekogumite töö võrdlemiseks. Kõik andmekogumid hoiavad täisarve. andmekogumi täitmine template <typename T>
+void täida(T& andmed, int n); Funktsioon peab täitma etteantud andmekogumi ( vector , deque või list ) järjestikuste täisarvudega (alates nullist). Funktsioon peab töötama kolme nimetatud andmekogumi korral. Summa leidmine 1. Summa leidmine indeksi abil, kus elemendid saadakse kätte operaatori [] abil. template <typename T>
+int summa1(T& andmed); Funktsioon peab töötama vector ja deque korral. 2. Summa leidmine iteraatori abil. Andmekogum läbitakse iteraatori abil. template <typename T>
+int summa2(T& andmed); Funktsioon peab töötama vector , deque ja list korral. Võrrelge summa leidmise aega mõlema funktsiooni abil ja erinevate andmekogumite korral. Valige sobiv elementide arv (> 1e5).
+Aja mõõtmiseks saab kasutada päises <chrono> olevat funktsiooni now() , mis annab hetke aja: auto algus = chrono::high_resolution_clock::now();
+auto lõpp = chrono::high_resolution_clock::now();
+auto aeg = chrono::duration_cast<std::chrono::nanoseconds>(lõpp - algus); Tuleb silmas pidada, et tulemus on nanosekundites, st on mõistlik teisendada sekunditeks. Põhjendage saadud tulemusi. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

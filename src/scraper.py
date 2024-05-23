@@ -70,7 +70,7 @@ with open('forbidden_subdomains.txt', 'r', ) as f:
     FORBIDDEN_SUBDOMAINS = [line.strip() for line in f.readlines()]
 
 def remove_unneeded_links(folder_paths):
-    
+
     for folder_path in folder_paths:
         links_new = []
         links = []
@@ -105,3 +105,15 @@ def remove_unneeded_links(folder_paths):
         with open(f"{folder_path}/removed_links.txt", 'w') as f:
             for link in removed_links:
                 f.write(link)
+
+def remove_unneeded_docs(folder_paths): 
+    
+    FORBIDDEN_DOCS = ["pdf.txt", "mp4.txt"]
+    for folder in folder_paths:
+        for file in os.listdir(folder):
+            if file.endswith(".txt") and any(subdomain in file for subdomain in FORBIDDEN_DOCS):
+                print(f"Deleted {file}")
+                os.remove(f"{folder}/{file}")
+
+
+

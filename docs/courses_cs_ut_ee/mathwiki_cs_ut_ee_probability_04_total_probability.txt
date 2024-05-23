@@ -1,0 +1,50 @@
+<LINK>https://mathwiki.cs.ut.ee/probability/04_total_probability</LINK>
+Total probability [MathWiki] Log In Trace:: Total probability MathWiki Search probability:04_total_probability Asymptotics The need for asymptotic notation: a case study Big Oh Big Omega Multiple variables Polynomial complexity The negligible, the noticeable and the overwhelming Divisibility and modular arithmetics Divisibility Primes and divisibility Greatest common divisor  and least common multiple Euclidean algorithm Extended Euclidean algorithm Modular arithmetics Finite fields What are rings and fields? Long division of polynomials The general way of constructing finite fields Isomorphisms, homomorphisms, automorphisms. Classification of all finite fields Computations in finite fields What is a group? Multiplicative group in finite fields Subfields Linear algebra 1. Matrices 2. Systems of linear equations and matrices 3. Gaussian elimination algorithm 4. Solving systems of linear equations via invertible matrices Number theory Probability theory Event and probability Probability of two events Conditional probability Total probability Expected value Inequalities Game notation Total probability Bayes' law is tightly related with the law of total probability . For example, let us view the exercise form previous lesson: We have two urns, $\text{I}$ and $\text{II}$. Urn $\text{I}$ contains $2$ black balls and $3$ white
+balls. Urn $\text{II}$ contains $1$ black ball and $1$ white ball. An urn is drawn at random
+and a ball is chosen at random from it. What is the probability of choosing urn $\text{I}$ if the obtained 
+ball is black? It can be observed right away that the probability $\text{Pr}[B|\text{I}]=\frac{2}{5}$, where 
+$B:=\text{"a black ball is drawn"}$ and $\text{I}:=\text{"urn I is chosen"}$. Thus, it is reasonable 
+to use Bayes' law $$\text{Pr}[\text{I}|B] = \frac{\text{Pr}[B|\text{I}]\cdot\text{Pr}[\text{I}]}{\text{Pr}[B]}$$ for answering the question. The probability $\text{Pr}[\text{I}]=\frac{1}{2}$, so only 
+$\text{Pr}[B]$ is unknown. On order to understand the event $B$, let us draw the following diagram: i.e. the event $B$ can happen in relation with urn $\text{I}$ or in relation with urn $\text{II}$. Hence, 
+$$\text{Pr}[B]=\text{Pr}[(B\cap\text{I})\cup (B\cap\text{II})]=\text{Pr}[B\cap\text{I}]+
+\text{Pr}[B\cap\text{II}],$$
+since the events $\text{"black ball is drawn from urn I"}$ and $\text{"black ball is drawn from urn II"}$
+are mutually exclusive. This is precisely what the law of total probability says: If $A_i$, where $i=1, 2, 3, \dots, n$, are pair vise mutually exclusive outcomes of an experiment/process 
+with random results, such that 
+$\text{Pr}[A_1]+\text{Pr}[A_2]+\text{Pr}[A_3]+\dots+\text{Pr}[A_n]=1$, then for any event $B$ that 
+happens in relation with the events 
+$A_i$, we have
+$$\text{Pr}[B]=\text{Pr}[B\cap A_1]+\text{Pr}[B\cap A_2]+\text{Pr}[B\cap A_3]+\dots +\text{Pr}[B\cap A_n]=
+\sum_{i=1}^n\text{Pr}[B\cap A_i].$$
+Diagram: In our example, $n=2$, $A_1=\text{I}$, and $A_2=\text{II}$. One of two urns is chosen, thus the events are 
+mutually exclusive.  
+Note that $\text{Pr}[\text{I}]+\text{Pr}[\text{II}]=
+\frac{1}{2}+
+\frac{1}{2}=1$. We already obtained, that $$\text{Pr}[B]=\text{Pr}[B\cap\text{I}]+\text{Pr}[B\cap\text{II}].$$ Actually, in order to calculated the probability, we can give to the formula also an 
+alternative form. Just let us take into account that the events $B$ and $\text{I}$, and also the events 
+$B$ and $\text{II}$ are not independent, in which case $\text{Pr}[B\cap\text{I}]=
+\text{Pr}[B|\text{I}]\cdot\text{Pr}[\text{I}]$ and $\text{Pr}[B\cap\text{II}]=
+\text{Pr}[B|\text{II}]\cdot\text{Pr}[\text{II}]$. By replace these equalities into the formula: $$\text{Pr}[B]=\text{Pr}[B\cap\text{I}]+\text{Pr}[B\cap\text{II}]=
+\text{Pr}[B|\text{I}]\cdot\text{Pr}[\text{I}]+\text{Pr}[B|\text{II}]\cdot\text{Pr}[\text{II}].$$ Thus,
+$\text{Pr}[B]=\frac{2}{5}\cdot\frac{1}{2}+\frac{1}{2}\cdot\frac{1}{2}=\frac{9}{20}$. Alternatively, the law of total probability can be written
+$$\text{Pr}[B]=\text{Pr}[B|A_1]\cdot\text{Pr}[A_1]+\text{Pr}[B|A_2]\cdot\text{Pr}[A_2]+\dots +\text{Pr}[B|A_n]\cdot\text{Pr}[A_n]=
+\sum_{i=1}^n\text{Pr}[B|A_i]\cdot\text{Pr}[A_i].$$
+The illustrative diagram: What is the probability that $y=1$, where $y$ is evaluated randomly by one element from the list $A$
+following the algorithm below? let us choose $x$ randomly from $\{0, 1, 2\}$ if $x=0$, let $A=(1,0,0,0)$ if $x=1$, let $A=(1,0,0,0,0,0,0,0,0,0)$ if $x=2$, let $A=(1,1,0,0,0,0,0)$ $y\leftarrow A$ As you all know, information is transmitted digitally as a binary sequence
+(bits). However, noise on the channel corrupts the signal, in that a
+digit transmitted as $0$ is received as $1$ with probability $1 −\alpha $, with a similar
+random corruption when the digit $1$ is transmitted. It has been observed that,
+across a large number of transmitted signals, the $0$s and $1$s are transmitted
+in the ratio $3 : 4$. Given that the sequence $101$ is received, what is the probability distribution
+over transmitted signals? Assume that the transmission and reception
+processes are independent. Hint : “the $0$s and $1$s are transmitted
+in the ratio $3 : 4$” tells us, that in general out of seven bits four are $1$s. The task should be solved 
+under the assumption that all the sent bits are independent. Answer Note, that the set $\{000, 001, 010, 011, 100, 101, 110, 111\}$ 
+describes all possible signals that could be sent/received. Let us denote signal events correspondingly $\{S_0, S_1, S_2, S_3, S_4, S_5, S_6, S_7\}$ and received events correspondingly $\{R_0, R_1, R_2, R_3, R_4, R_5, R_6, R_7\}$. We received $101$ that is $R_5$. Our task is to calculate $\text{Pr}[S_i|R_5]$ for 
+$i=1,\dots,7$. However, on the information given, we can only compute $\text{Pr}[R_5|S_i]$. We need to 
+use the Bayes' law: $\text{Pr}[S_i|R_5] = \frac{\text{Pr}[R_5|S_i]\cdot\text{Pr}[S_i]}{\text{Pr}[R_5]}$. According to the law of 
+total probability $\text{Pr}[R_5]=\sum^7_{i=0}\text{Pr}[R_5|S_i]\cdot\text{Pr}[S_i]$. Consider, for 
+example, $\text{Pr}[R_5|S_0]$. If $000$ is transmitted, the probability that $101$ is received
+is $(1 − \alpha)\cdot\alpha\cdot (1 − \alpha) = \alpha (1 − \alpha)^2$ 
+(corruption, no corruption, corruption). Analogously, $\text{Pr}[R_5|S_0]=\alpha (1 − \alpha)^2$ $\text{Pr}[R_5|S_1]=\alpha ^2(1 − \alpha)$ $\text{Pr}[R_5|S_2]=(1 − \alpha)^3$ $\text{Pr}[R_5|S_3]=\alpha (1 − \alpha)^2$ $\text{Pr}[R_5|S_4]=\alpha ^2 (1 − \alpha)$ $\text{Pr}[R_5|S_5]=\alpha ^3$ $\text{Pr}[R_5|S_6]=\alpha (1 − \alpha)^2$ $\text{Pr}[R_5|S_7]=\alpha ^2 (1 − \alpha)$. The probability of transmitting a $1$ is $\frac{4}{7}$, thus, $\text{Pr}[S_0]=\frac{3}{7}^3$ $\text{Pr}[S_1]=\frac{4}{7}\frac{3}{7}^2$ $\text{Pr}[S_2]=\frac{4}{7}\frac{3}{7}^2$ $\text{Pr}[S_3]=\frac{4}{7}^2\frac{3}{7}$ $\text{Pr}[S_4]=\frac{4}{7}\frac{3}{7}^2$ $\text{Pr}[S_5]=\frac{4}{7}^2\frac{3}{7}$ $\text{Pr}[S_6]=\frac{4}{7}^2\frac{3}{7}$ $\text{Pr}[S_7]=\frac{4}{7}^3$. Hence, $\text{Pr}[R_5]=\frac{48\alpha^3+136\alpha^2(1-\alpha)+123\alpha(1-\alpha)^2+36(1-\alpha)^3}{343}$ and now 
+the Bayes' law can be used. We find here just one probability: $\text{Pr}[S_5|R_5]=\frac{48\alpha^3}{48\alpha^3+136\alpha^2(1-\alpha)+123\alpha(1-\alpha)^2+36(1-\alpha)^3}$ which is the probability of correct reception. Expected value probability/04_total_probability.txt · Last modified: 2014/01/20 15:57 by marje Contact: ati.comp@ut.ee

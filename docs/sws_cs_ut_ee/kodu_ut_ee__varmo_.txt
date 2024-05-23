@@ -1,0 +1,52 @@
+<LINK>https://kodu.ut.ee/~varmo/</LINK>
+Varmo Vene Varmo Vene Address: Liivi 2, 50409 Tartu, Estonia Office: 215 Phone: +372 737 5870 Fax: +372 737 5468 Email: varmo.vene@ut.ee I am a professor in the Department of
+Computer Science at University of Tartu .
+Until the end of 2011, I was also affiliated with the Institute of Cybernetics at
+Tallinn. From August 2001 to July 2002, I was on leave at the Computer Science Department of Trier University where I contributed to
+the Daedalus
+project . My research interests include semantics of programming languages, methods of
+program construction and transformation, static analysis of programs,
+functional programming, type theory, category theory.  My favourite programming
+language is Haskell . Links to some of my publications appear on another page. Professional activities Teooriap�evad Sakal , Oct 25 - 27, 2013. SBLP 2013: 17th Brazilian Symposium on Programming Languages,
+Bras�lia, Sept 29 - Oct 4, 2013. EWSCS'13: 18th Estonian Winter School in Computer Science,
+Palmse, March 3 - 8, 2013. Teooriap�evad Otep��l , Feb 1 - 3, 2013. Teooriap�evad Lilastel , Sept 27 - 30, 2012. SBLP 2012: 16th Brazilian Symposium on Programming Languages,
+Natal, Sept 24-28, 2012. EWSCS'12: 17th Estonian Winter School in Computer Science,
+Palmse, Feb 26 - March 2, 2012. Teooriap�evad Kubijal , Jan 27 - 29, 2012. Teooriap�evad T�rvel , Oct 7 - 9, 2011. SPLST'11: 12th Symposium on Programming Languages and Software Tools,
+Tallinn, October 5-7, 2011. SBLP 2011: 15th Brazilian Symposium on Programming Languages,
+Sao Paulo, Sept 29-30, 2011. EWSCS'11: 16th Estonian Winter School in Computer Science,
+Palmse, Feb 27 - March 4, 2011. Teooriap�evad Nelij�rvel , Feb 4 - 6, 2011. Teooriap�evad Rakaril , Sept 30 - Oct 3, 2010. SBLP 2010: 14th Brazilian Symposium on Programming Languages,
+Salvador-Bahia, Sept 27-29, 2010. MSFP 2010: Mathematically Structured Functional Programming,
+Baltimore, Maryland, September 25, 2010. AMAST 2010: 13th International Conference on Algebraic Methodology and
+Software Technology, Qu�bec City, June 23-26, 2010. EWSCS'10: 15th Estonian Winter School in Computer Science,
+Palmse, Feb 28 - March 5, 2010. Teooriap�evad Andul , Feb 5 - 7, 2010. Teooriap�evad M�etagusel , Oct 2 - 4, 2009. SPLST'09: 11th Symposium on Programming Languages and Software Tools,
+Tampere, August 26-28, 2009. SBLP'09: 13th Brazilian Symposium on Programming Languages,
+Gramado-RS, August 19-21, 2009. TFP'09: 10th Symposium on Trends in Functional Programming,
+Komarno, June 2-4, 2009. EWSCS'09 : 14th Estonian Winter School in Computer Science,
+Palmse, March 1-6, 2009. Teooriap�evad K��rikul , Jan 30 - Feb 1, 2009. Teooriap�evad J�ulum�el , Oct 3 - 5, 2008. Haskell Symposium 2008 , Victoria, British Columbia,
+September 25, 2008. SBLP'08: 12th Brazilian Symposium on Programming Languages,
+Fortaleza, August 27-29, 2008. AMAST'08: 12th International Conference on Algebraic Methodology and
+Software Technology, Urbana, Illinois, July 28-31, 2008. TFP'08: 9th Symposium on Trends in Functional Programming,
+Nijmegen, May 26-28, 2008. EWSCS'08 : 13th Estonian Winter School in Computer Science,
+Palmse, March 2-7, 2008. Teooriap�evad P�lvas , Jan 25-27, 2008. Teooriap�evad Vana�uel , Sept 28 - 30, 2007. ESSCaSS'07 : 6th Estonian Summer School in Computer and Systems
+Science, Lepanina, August 26-30, 2007. SPLST'07: 10th Symposium on Programming Languages and Software Tools,
+Budapest, June 14-16, 2007. SBLP'07: 11th Brazilian Symposium on Programming Languages,
+Natal, May 23-25, 2007. EWSCS'07 : 12th Estonian Winter School in Computer Science,
+Palmse, March 4-9, 2007. Teooriap�evad R�uges , Jan 26-28, 2007. Teooriap�evad Voorel , Sept 29 - Oct 1, 2006. ESSCaSS'06 : 5th Estonian Summer School in Computer and Systems
+Science, Pedase, August 6-10, 2006. AMAST'06: 11th International Conference on Algebraic Methodology and
+Software Technology, Kuressaare, July 5-8, 2006. MPC'06: 8th International Conference on Mathematics of Program
+Construction, Kuressaare, July 3-5, 2006. SBLP'06: 10th Brazilian Symposium on Programming Languages,
+Itatiaia, May 15-17, 2006. EWSCS'06 : 11th Estonian Winter School in Computer Science,
+Palmse, March 5-10, 2006. Teooriap�evad Kokel , Feb 3-5, 2006. Teooriap�evad Viinistul , Oct 28-30, 2005. ICFP/GPCE/TFP'05 : 10th ACM SIGPLAN International Conference on
+Functional Programming / 4th International Conference on Generative
+Programming and Component Engineering / 6th International Symposium on
+Trends in Functional Programming, Tallinn, Sept 23 - Oct 1, 2005. SPLST'05: 9th Symposium on Programming Languages and Software Tools,
+Tartu, Aug 13-14, 2005. Central-European Functional
+Programming School , Budapest, July 4-16, 2005. EWSCS'05 : 10th Estonian Winter School in Computer Science,
+Palmse, Feb 27 - March 4, 2005. Teooriap�evad Kokel , Feb 4-6, 2005. Teooriap�evad Veskisillal , Oct 1-3, 2004. AFP'04: 5th Advanced Functional Programming Summer School,
+Tartu, Aug 14-21, 2004. APPSEM'04 : 2nd APPSEM II Workshop,
+Tallinn, April 14-16, 2004. EWSCS'04 : 9th Estonian Winter School in Computer Science,
+Palmse, Feb 29 - March 5, 2004. Teooriap�evad Kokel , Jan 30 - Feb 1, 2004. Teooriap�evad Pedasel , Oct 3-5, 2003. EWSCS'03 : 8th Estonian Winter School in Computer Science,
+Palmse, March 2-7, 2003. Teooriap�evad Arulas , Feb 3-5, 2003. Teooriap�evad Roostal , Oct 16-17, 2002. EWSCS'99 : 4th Estonian Winter School in Computer Science,
+Palmse, Feb 28 - March 4, 1999. EWSCS'96 : New Trends in Computer Science and Information Technology,
+P�haj�rve, March 3-8, 1996. Teaching Programmeerimine (2014 s�gis) Automaadid, keeled, translaatorid (2014 kevad) Programmeerimine (2013 s�gis) Funktsionaalprogrammeerimine (2013 kevad) Programmeerimine (2012 s�gis) Programmeerimine (2011 s�gis) T��biteooria (2011 s�gis) Funktsionaalprogrammeerimine (2011 kevad) Programmeerimine (2010 s�gis) Transleerimismeetodid (2010 s�gis) Programmeerimiskeelte semantika uurimisseminar (2010 s�gis) T��biteooria (2010 kevad) Programmeerimiskeelte seminar (2010 kevad) Formaalsete keelte teooria (prof. Mati Pentus, 2009 s�gis) Programmeerimine (2009 s�gis) Programmeerimiskeelte semantika uurimisseminar (2009 s�gis) Programmeerimiskeelte seminar (2009 kevad) Funktsionaalprogrammeerimine (2009 kevad) Programmeerimiskeelte semantika uurimisseminar (2008 s�gis) Funktsionaalprogrammeerimise meetodid (2008 s�gis) Compiler Construction (2008 s�gis) Functionality from Structure with Dependent Types (by Conor McBride, 2008
+kevad) Funktsionaalprogrammeerimise meetodid (2007 s�gis) Funktsionaalne programmeerimine (2007 kevad) Koalgebrad (2007 kevad) Funktsionaalprogrammeerimise meetodid (2006 s�gis) Transleerimismeetodid (2006 s�gis) Seminar: Algebra of Programming (2006 s�gis) Programmeerimiskeelte semantika (2006 kevad) T��bis�steemid (2006 kevad) Funktsionaalprogrammeerimise meetodid (2005 s�gis) Funktsionaalne programmeerimine (2005 kevad) Funktsionaalprogrammeerimise meetodid (2004 s�gis) Transleerimismeetodid (2004 s�gis) Operatsioonis�steemide ehitus (2004 s�gis) Programmeerimiskeelte semantika (2004 kevad) Models and Calculi for Software Components (by Luis S. Barbosa, 2003 s�gis) Funktsionaalprogrammeerimise meetodid (2003 s�gis) Operatsioonis�steemide ehitus (2003 kevad) Funktsionaalne programmeerimine (2003 kevad) Transleerimismeetodid (2002 s�gis) Funktsionaalne programmeerimine (2001 kevad) Programmeerimiskeeled (2001 kevad) Programmeerimiskeelte semantika (2000 kevad) Last update 4 Sep 2014

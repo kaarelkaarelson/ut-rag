@@ -1,0 +1,4 @@
+<LINK>https://crypto.cs.ut.ee/Main/HomePage</LINK>
+Cryptography Research Group Institute of Computer Science Faculty of Science and Technology University of Tartu Cryptography Research Group Home page News Team Projects Teaching Theses Research Presentations Open positions Log in Cryptography Research Group This is the homepage of the cryptography research group in the Institute of Computer Science in the Faculty of Science and Technology at the University of Tartu .
+Currently, the group is led by Helger Lipmaa .
+Before that, the group was led by Dominique Unruh . The cryptography group conducts research into cryptography, in particular in the following areas: Zero knowledge and zk-SNARKs Applications of ZK (blockchain, verifiable computation, e-voting, etc.) Multi-party computation Various Cryptographic protocols Postquantum cryptography Efficient cryptographic computations (finite field arithmetic, diffusion layers of block ciphers, etc.) Theory of cryptography

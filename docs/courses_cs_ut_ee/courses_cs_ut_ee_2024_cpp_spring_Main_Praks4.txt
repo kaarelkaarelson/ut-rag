@@ -1,0 +1,15 @@
+<LINK>https://courses.cs.ut.ee/2024/cpp/spring/Main/Praks4</LINK>
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 4 Klass, struktuur, mallid 4.1 Kodutöö 4.2 Harjutused 4.3 Videolingid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 9. STL andmestruktuurid I 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Harjutusülesanded 1. Liitmise piiramine Loo funktsioonimall nimega liidaJaPiira , millel on kaks malliparameetrit. Esimene neist on tüübiparameeter T , teine täisarv N vaikimisi väärtusega 10. Funktsioonil endal on kaks parameetrit tüübiga T ja funktsioon tagastab antud parameetrite summa juhul, kui see on väiksem kui teine malli parameeter. Vastasel juhul tagastada malli teise parameetri väärtus. Näide funktsiooni poole pöördumisest: int main() {
+    std::cout << liidaJaPiira(4, 1) << '\n';
+    std::cout << liidaJaPiira(10, 100) << '\n';
+    std::cout << liidaJaPiira<int, 0>(0, 1) << '\n';
+    return 0;
+} Väljund: 5
+10
+0 2. Elementide salvestaja Loo funktsioonimall tüübiparameetriga T , mille signatuur on järgmine: void looFailJaKirjuta(filesystem::path asukoht, T elemendid[], size_t arv) . Funktsioon peab avama väljundfaili antud asukohale ning kirjutama sinna teises parameetris antud elemendid. Kolmas parameeter määrab elementide arvu. Kui faili ei eksisteeri, peab funktsioon selle looma. Näide: int main() {
+    auto asukoht = filesystem::path("elemendid.txt");
+    string elemendid[] = {"üks", "kaks", "kolm"};
+    looFailJaKirjuta<string>(asukoht, elemendid, 3);
+} Faili elemendid.txt sisu: üks
+kaks
+kolm Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

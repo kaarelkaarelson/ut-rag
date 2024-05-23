@@ -1,0 +1,246 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice10</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 10 Veahaldus. Teemad Klassid Exception ja Throwable . Erindite püüdmine, loomine, viskamine, suunamine. Pärast selle nädala läbimist oskab üliõpilane erindit püüda; uut erindit luua; erindit käsitleda. Java veahalduse põhimõtted Javas analüüsitakse programmitekst tervikuna enne täitmist. See võimaldab kompilaatoril suure osa probleemidest juba enne programmi käivitamist tuvastada ja korda teha - kompileerimisvigadega programmi ei saa lihtsalt käivitada ja kompileerimisvigu programmi töö käigus juurde ei teki. Samas on ka suur hulk probleeme, mis tulevad välja alles programmi töö jooksul. Mõned näited, mis võiks juba tuttavad olla: int[] numbrid = {1, 2, 3};
+System.out.println(numbrid[42]); // ArrayIndexOutOfBoundsException
+int n = Integer.parseInt("tekst"); // NumberFormatException
+String väärtustamata = null;
+väärtustamata.length(); // NullPointerException Java programmi täitmise käigus tekkivad tõrked jagunevad vigadeks (klass java.lang.Error ) ja erinditeks (klass java.lang.Exception ). Viga tähistab tavalist tõsist probleemi (nt mälu saab otsa, klassi ei leita). Palju tavalisem on näha erindeid. Need tekivad lihtsate loogikavigade või täitmata eelduste tõttu. Ka kõik ülaltoodud näited on erindid. Siiani on erindi tekkimisel teie programmi töö katkestatud ja vastav veateade on ekraanile prinditud. Aga mis ikkagi täpsemalt juhtub, kui erind tekib? Kas neid saab ise tekitada? Kui erindeid on võimalik programmi töö käigus põhjustada, kas siis on võimalik neid ka töö käigus "korda teha"? Sellest kõigest tuleb juttu. Erindite viskamine Enne, kui lähme erindite "korda tegemise" juurde, vaatame kuidas meil endal on võimalik veaolukorras meetodi töö peatada. Igas meetodis on võimalik igal hetkel ise erind tekitada. Selle kohta öeldakse, et meetod viskab erindi (throws an exception) . Erindi viskamiseks tuleb kasutada võtmesõna throw , millele tuleb anda ka argument - erindi isend, mille peaks viskama. Kasutage seda võimalust julgelt ka enda koodis. Alati on vale tulemuse tagastamise asemel parem erind visata! static int faktoriaal(int n) {
+  if (n < 0)
+    throw new IllegalArgumentException("N ei saa olla negatiivne!");
+  int tulemus = 1;
+  for (int i = n; i > 1; i--)
+    tulemus = tulemus * i;
+  return tulemus;
+} Kui see meetod käivitada näiteks argumendiga -1, jookseb programm vigase tulemuse tagastamise asemel kokku ja ekraanile ilmub järgnev: Exception in thread "main" java.lang.IllegalArgumentException: N ei saa olla negatiivne!
+    at Näide.faktoriaal(Näide.java:7)
+    at Näide.main(Näide.java:3) Ülesanne 1 Kirjutada meetod sünnikuu , mis võtab parameetriks String kujul isikukoodi ja tagastab isikukoodist kuud tähistava osa arvuna ( int ). Lisada meetodi algusesse kontroll: kui argumendiks antud sõne on null või selle pikkus ei ole 11 tähemärki, siis visata RuntimeException tüüpi erind, mis kirjeldab vea olemust. Kirjutada peameetod, millega meetodi tööd kontrollitakse. Enesekontroll Your browser does not support including other html pages Erindi püüdmine Igas meetodis saab vajalikke koodijuppe ümbritseda erinditöötlejate ehk püünistega ( catch -plokk). Kui mõnes püünisega ümbritsetud käsus visatakse erind, siis püünisel on võimalik see erind kinni püüda ja veaolukord lahendada. Kui programmi töö käigus visatakse erind, siis programm peatab koheselt erindi visanud meetodi täitmise ja hakkab otsima sobilikku püünist. Kõigepealt otsitakse püünist täitmisel olevast meetodist. Kui sealt sobilikku püünist ei leita, siis katkestatakse täitmisel olev meetod ja hakatakse otsima püünist meetodi välja kutsunud meetodist jne. Niimoodi liigutakse mööda meetodite väljakutsete ahelat, kuni leitakse sobiv püünis või ka peameetod on katkestatud (programmi töö lõppeb). Püünise lisamine Erindi püüdmiseks saab paigutada erindiohtliku programmilõigu try -plokki ning lisada erindi töötlemiseks sobiva püünise ( catch -ploki). Try -plokis tekkiva erindi korral leiab programm püünise ja hüppab otse seal olevat koodi täitma. Kogu kood, mis pidi tulema try -plokis pärast erindi põhjustanud käsku, jäetakse vahele! Näiteks järgnev näide küsib kasutajalt failinime ja proovib seda avada. Kui faili avamisel visatakse erind FileNotFoundException , siis vastav catch -plokk laseb kasutajal uue failinime sisestada. import java.io.*;
+import java.util.*;
+
+public class FailiLugeja1 {
+  public static void main(String[] args) {
+    Scanner sisend = new Scanner(System.in);
+    System.out.println("Sisesta faili nimi: ");
+    String failiNimi = sisend.nextLine();
+    while (true) {
+      // faili avamine võib visata erindi
+      try (Scanner failiLugeja = new Scanner(new File(failiNimi), "UTF-8")) {
+        // kui eelmine rida viskas erindi, siis seda plokki ei täideta
+        System.out.println("failiLugeja on valmis");
+        // siin saab failiga toimetada
+        break;
+      } catch (FileNotFoundException e) {
+        System.out.println("Sellist faili ei leitud. Sisesta uus faili nimi: ");
+        failiNimi = sisend.nextLine();
+      }
+    }
+  }
+} Paneme tähele, et catch -ploki päises peab olema üks formaalne parameeter (antud juhul e ). Tema tüüp (antud juhul java.io.FileNotFoundException ) määrab, mis tüüpi erindit see plokk töötleb. Püünis ignoreerib erindeid, mis ei ole määratud tüüpi (ega selle alamklassi tüüpi). Formaalse parameetri e abil saab viidata erindi isendimeetoditele (näiteks e.getMessage() ). Kontrollitavad erindid (checked exceptions) Java kompilaator nõuab, et kõigi koodis visatud erinditega midagi tehtaks. Variante on kaks: erind püüda (ümbritseda erindi visanud kood try-catch plokiga), erind püüdmata jätta ja lisada meetodi signatuuri võtmesõna throws , millele järgnevad erinditüübid, mida meetod võib visata (n-ö erind "edasi suunata", jättes selle töötlemise meetodi kutsuja hooleks). Erindit, mida kompilaator sunnib meid töötlema, kutsutakse kontrollitavaks erindiks ( checked exception ). Erandiks sellele reeglile on RuntimeException ning selle alamklassid - kompilaator lubab need püüdmata ja throws deklaratsioonis märkimata jätta. Pildil on mõndade tähtsamate erindite (ja vigade) klassihierarhia. Nii Exceptionil kui ka Erroril on veel omakorda terve hunnik alamklasse. Vaadake täpsemalt javadocist: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html Kuigi kompilaator üritab meid sundida kontrollitavaid erindeid püüdma, tahame me seda teha ainult sellisel juhul, kui me oskame erindi põhjustanud probleemi reaalselt lahendada. Enamus juhtudel on sobilikum try-catch plokki mitte kasutada ja erind edasi suunata. Sellisel juhul kasutatakse tavapärast püünise otsimise algoritmi: liigutakse mööda meetodite väljakutsete ahelat, kuni leitakse sobivat püünist sisaldav meetod. NB! Paneme tähele, et throws võtmesõna ütleb kompilaatorile vaid seda, et meetod võib näidatud tüüpi erindi visata. Sellest ei saa järeldada, et erind kindlasti visatakse. Samuti ei saa selle võtmesõna puudumisest järeldada, et meetodi käivitamisel ei teki ühtegi erindit, kuna RuntimeException ’i (ja selle alamklasside) viskamist ei pea deklareerima. class FailiLugeja2 {
+
+  public static void main(String[] args) throws IOException {
+    try (BufferedReader lugeja = new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8"))) {
+      loeRead(lugeja); 
+    }
+  }
+
+  // proovi throws IOException ära võtta ja vaata, mis kompilaator arvab
+  private static void loeRead(BufferedReader lugeja) throws IOException {
+    while (true) {
+      String rida = lugeja.readLine(); // võib visata IOExceptioni
+      if (rida == null)
+        break; // faili lõpp
+      System.out.println(rida);
+    }
+  }
+} NB! IDEd kipuvad kontrollitavate erindite "lahendamiseks" järgnevat koodi genereerima. Selline vea püüdmine ilma vea põhjuse parandamiseta ei ole korrektne ja toob teile miinuspunkte! Parem suuna viga edasi kasutades throws võtmesõna. try {
+  mingiErinditViskavMeetod();
+} catch (Exception e) {
+  e.printStackTrace(); // TODO autogenerated catch -- ÄRA NII TEE
+} Finally Alates 4. praktikumist oleme failidega töötamisel kasutanud try-with-resources süntaksi ja vältinud failide käsitsi sulgemist close meetodi abil. Mille poolest siiski try-with-resources parem on? public static String esimeneRida(File fail) throws IOException {
+  BufferedReader lugeja = new BufferedReader(new InputStreamReader(new FileInputStream(fail), "UTF-8"));
+  String rida = lugeja.readLine();
+  lugeja.close();
+  return rida;
+} Kasutades käsitsi failide sulgemist võib juhtuda, et faili avamise ja sulgemise vahel olevas koodis tekib erind. Näiteks ülaltoodud readLine võib visata erindi, kui fail pole UTF-8 kodeeringus või seda sisaldav usb-pulk streigib. Erind katkestab meetodi töö ja close meetod jääb käivitamata. Probleemi lahendamiseks on Javas olemas finally -plokid. Finally -plokk lisatakse try -ploki järele ja selle sisu käivitub kohe pärast try -ploki lõppu. Finally on eriline, sest selle sisu käivitatakse ka siis, kui try -plokis tehakse return või visatakse erind. Failide (ja muude ressursside) korrektselt sulgemiseks peab sulgemine olema alati paigutatud finally -plokki - see tagab, et fail suletakse ka erindite korral. public static String esimeneRida(File fail) throws IOException {
+  BufferedReader lugeja = new BufferedReader(new InputStreamReader(new FileInputStream(fail), "UTF-8"));
+  try {
+    return lugeja.readLine();
+  } finally {
+    lugeja.close(); // käivitatakse ka try-plokis tekkinud erindi korral
+  }
+} Try-with-resources toimib täpselt sama põhimõttega. Kui try järel on sulgudes ressurssid määratud, siis kompilaator genereerib automaatselt try -ploki järele finally ploki. Genereeritud finally plokis kutsutakse kõigi sulgudes määratud ressursside close meetod. Try-with-resources , finally ja catch võib ka omavahel kombineerida: try (InputStream is = new FileInputStream("fail.txt")) {
+  ..
+  return result;
+} catch (IOException e) {
+  // kui visati IOException
+} catch (RuntimeException e) {
+  // kui visati RuntimeException
+} finally {
+  // seda tehakse igal juhul
+} Finally plokid ja try-with-resources on erinditega korrektselt toimiva koodi kirjutamise vältimatu osa. Lisaks juba tuttavate voogude sulgemisele kasutatakse neid ka interneti- ja andmebaasiühenduste sulgemiseks, ajutiste failide kustutamiseks ja paljuks muuks. Enesekontroll Your browser does not support including other html pages Millal erindeid visata/püüda? Üks hoiatav lugu Juku kirjutas programmi, mis aitab arvutis vaba kettaruumi juurde saada. Programmi esimeseks käsurea argumendiks tuleb anda ühe faili nimi, mida sul tihti vaja pole, aga mida sa ei raatsi ka ära kustutada. Teiseks argumendiks annad uue zip-faili nime, kuhu antud fail tuleks pakkida. Peale pakkimist kustutab programm algse faili. NB! Järgnev kood sisaldab praktiliselt kõiki vigu, mis veahalduses saab teha. Ärge võtke seda eeskujuks! Võite kasutada tehisaru, et saada teada teatud probleemsed kohad. import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+public class Pakkija {
+  public static void main(String[] args) {
+    File lähtefail = new File(args[0]);
+    File zipFail = new File(args[1]);
+
+    paki(lähtefail, zipFail);
+    System.out.println("Varukoopia tehtud.");
+
+    lähtefail.delete();
+    System.out.println("Algne fail kustutatud.");
+
+    System.out.println("Kena päeva!");
+  }
+
+  private static void paki(File lähtefail, File zipFail) {
+    FileInputStream sisendvoog = null;
+    try {
+      sisendvoog = new FileInputStream(lähtefail);
+      ZipOutputStream zipvoog = new ZipOutputStream(
+          new BufferedOutputStream(new FileOutputStream(zipFail)));
+
+      zipvoog.putNextEntry(new ZipEntry(lähtefail.getName()));
+      byte[] buffer = new byte[1024];
+      int length;
+      while ((length = sisendvoog.read(buffer)) > 0) {
+        zipvoog.write(buffer, 0, length);
+      }
+      zipvoog.closeEntry();
+
+      sisendvoog.close();
+      zipvoog.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    try {
+      sisendvoog.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+} Zip-faili loomiseks tuli kasutada hulka meetodeid, millele IDE tõmbas punase joone alla. Juku teadis, et need käsud võivad anda IOException erindi ja seetõttu tuleb need panna try -plokki. Kuna ta ei osanud catch -plokki midagi kirjutada, siis ta jättis sinna selle koodi, mille IDE talle välja pakkus. (IDE ju ei pakuks mingit jama!) Juku testis oma programmi ja kõik läks ilusti. Kuna Mari arvutis on väike SSD, siis saab tal alatasa ruum otsa, ja seepärast soovitas Juku talle enda programmi. Mari otsustas, et ta pakib Juku programmiga kokku ühe e-raamatu, mille ta kusagilt althõlma sai, aga mida tal hetkel tarvis polnud. Zip-faili lasi ta teha ühe mälukaardi peale. Programm kirjutas ekraanile kõigepealt mingi kribukrabu, mida Mari ei viitsinud lugeda, aga kuna lõpuks tuli ekraanile "Varukoopia tehtud", siis oli ta rõõmus, et sai kettaruumi juurde. Mõne päeva pärast läks tal raamatut vaja ja ta võttis mälukaardi ette. Paraku polnud seal midagi. Algfail oli ka arvutist kadunud. Mari oli väga vihane. Ta teadis, kus Juku elab … Mis võis olla selle põhjuseks, et Mari arvutis ei tekitanud programm ettenähtud zip faili? Kahjuks me ei saa seda enam iial teada. Võibolla ei mahtunud pakitud raamat mälukaardile, võibolla oli mälukaardil sel hetkel kirjutamise lukk peal. Miks aga läks programm algfaili kustutamise juurde, kui varukoopia tegemine ebaõnnestus? Ülesanne 2 (kontroll) Muuta Juku programmi nii, et algfail kustutakse ainult siis, kui pakkimise juures mingit jama ei teki. Paranda koodi, nii et see järgiks veahalduse häid tavasid: erindeid püütakse ainult siis, kui catch-plokis suudetakse erindi põhjustanud probleem korda teha (vajadusel võib programm erindi tõttu töö katkestada), kontrollitavad erindid suunatakse vajadusel edasi ja vood suletakse try-with-resources abil. Erindite kinni püüdmine on põhjendatud ainult siis, kui tõesti suudate erindi poolt viidatud probleemi kuidagi lahendada. Kui lahendamine tähendab ainult vea ekraanile kuvamist, siis on oht, et see jääb märkamata ja kasutaja (või ka programmeerija ise) peab hakkama nuputama, miks programm valesti töötab. Ärge niimoodi tehke! Samuti ei tohiks erindeid kasutada seal, kus piisaks tavalisest if-else plokist. Näiteks ei tohiks kunagi teha catch -plokki NullPointerExceptioni püüdmiseks - selle jaoks sobib palju paremini if (muutuja != null) { .. } . Kui soovite kontrollitavat erindit püüda, sest ei saa lisada meetodi signatuuri throws deklaratsiooni (sisse-ehitatud liidesed, näiteks JavaFX EventHandler#handle ei luba seda), siis harilikult on parim valik püüda erind kinni, mähkida see RuntimeException -isse ja visata uuesti: @Override
+public void handle(ActionEvent event) {
+  try (FileInputStream reader = new FileInputStream("andmed.txt")) {
+    ...
+  } catch (FileNotFoundException e) {
+    throw new RuntimeException(e);
+  }
+} Põhireeglid Kui koodis tekib erind või kompilaator nõuab kontrollitava erindiga (checked exception) tegelemist, siis kasuta järgnevat algoritmi: Kas seda erindit saab kuidagi vältida, nii et programm töötab jätkuvalt korrektselt? Näiteks NullPointerExceptioni püüdmise asemel peaks hoopis koodi lisama if (muutuja != null) kontrolli või muutuja väärtustama. Kas ma oskan selle erindi algpõhjuse korda teha ja veasituatsiooni parandada? Siis võib erindi püüda ja vea korda teha. See variant on kõige haruldasem! Kas ma saan meetodi signatuuri lisada throws Exception ja sellega erindi edasi suunata? Kui eelnevad variandid ei sobinud, siis see on parim alternatiiv. Kompilaator nõuab erindiga tegelemist, aga meetodi signatuuri ei saa muuta? Siis lisa catch-plokk ja kirjuta catch-plokki throw new RuntimeException(algneErind); . Niimoodi on kompilaator rahul ja ka erind ei jää viskamata. Erindeid tuleks visata seal, kus töö normaalne jätkamine pole miskipärast võimalik ja erindeid tuleks püüda siis, kui veasituatsiooni on võimalik parandada. Ärge püüdke erindit, kui ei oska sellega midagi mõistlikku peale hakata! Ülesanne 3 (kontroll) Luua programm klassis Korrutaja , mis küsib kasutajalt täisarvu, korrutab selle kahega ja prindib välja. Teisendada kasutajalt saadud sisend arvuks Integer.parseInt meetodiga. Kasutajal on võimalik arvu asemel ka teksti sisestada - sellisel juhul viskab parseInt meetod NumberFormatException erindi. Lisada catch -plokk, mis selle kinni püüab ja kasutajalt uue arvu küsib. Ülesanne 4. Vigane veahaldus. Järgnev programm küsib kasutajalt kuupäeva, kus kuu on antud eestikeelse nimega ning väljastab, mitu päeva on sellest kuupäevast möödunud. Kui programm ei saa kuupäevast aru, siis küsib ta kuupäeva uuesti. Katsetada seda programmi nii vigaste (nt. "4. maaaai 2014" või "xz mai asdf") kui ka korrektsete kuupäevadega (nt. "4. mai 2014"). Miks ei toimi programmi veahaldus nii nagu tarvis? Proovida programm korda teha. Kui jääte hätta, siis loe edasi, aga üritage esmalt ise probleemile jälile jõuda! import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class Kuupäev {
+  public static void main(String[] args) {
+    try (Scanner in = new Scanner(System.in)) {
+      while (true) {
+        try {
+          System.out.print("Sisesta kuupäev kujul pp. kuu_nimi aaaa (nt. 3. mai 2015): ");
+          LocalDate kp = annaKuupäev(in.nextLine().trim());
+          long erinevus = ChronoUnit.DAYS.between(kp, LocalDate.now());
+          System.out.println("Sellest kuupäevast on möödunud " + erinevus + " päeva");
+          break;
+        }
+        catch (NumberFormatException e) {
+          System.out.println("Vigane päev või aasta! Proovi uuesti");
+        }
+        catch (RuntimeException e) {
+          System.out.println("Vigane kuu nimi! Proovi uuesti");
+        }
+        catch (Exception e) { // See plokk hõlmab kõiki ülejäänud erindeid
+          System.out.println("Mingi muu viga! Proovi uuesti");
+        }
+      }
+    }
+  }
+
+  public static LocalDate annaKuupäev(String kuupäevSõnena) {
+    String[] osad = kuupäevSõnena.split(" ");
+
+    String päevStr = osad[1];
+    String kuuStr = osad[2];
+    String aastaStr = osad[3];
+
+    int päev = Integer.parseInt(päevStr.replace(".", "")); // replace'iga eemaldame päeva punkti
+    int kuu = kuuNumber(kuuStr);
+    int aasta = Integer.parseInt(aastaStr);
+
+    return LocalDate.of(aasta, kuu, päev);
+  }
+
+  private static int kuuNumber(String kuuNimi) {
+    String[] kuud = {
+      "jaanuar", "veebruar", "märts", "aprill",
+      "mai", "juuni", "juuli", "august",
+      "september", "oktoober", "november", "detsember"
+    };
+    for (int i = 0; i < kuud.length; i++) {
+       if (kuud[i].equalsIgnoreCase(kuuNimi))
+    	  return i + 1;
+    }
+    throw new RuntimeException("Vigane kuu nimi: " + kuuNimi);
+  }
+} Valede erindite püüdmine Eelmise näite probleemiks oli peameetodis tehtud eeldus, et iga RuntimeException tähendab vigaselt sisestatud kuu nime. Siin tuleb tähele panna, et kuigi programmi tekstis on ainuke throw new RuntimeException tõepoolest kuu nime kontrollimise juures, võivad mitmed kasutatud operatsioonid (nt. Integer.parseInt või massiivi indekseerimine) visata erindi, mis on RuntimeException alamklass. Antud juhul tekkis korrektse kuupäeva sisestamisel hoopis ArrayIndexOutOfBoundsException , sest programmeerija oli unustanud, et massiivi indekseerimine algab 0-st. Võibolla märkasite tegelikku viga kohe, aga keerulisemate programmide puhul on alati oht, et läbimõtlematu erindite püüdmine varjab programmis mingi tõsise probleemi. Seetõttu maksab alati kaaluda esimese valikuna erindite püüdmata jätmist -- veateatega kokkujooksnud programmi on lihtsam siluda kui programmi, mis töötab valesti. Kui aga erindi töötlemine on vajalik, tuleb erindid visata ja püüda võimalikult täpse erindiklassiga, et vähendada valede erindite püüdmise ohtu. Mis oleks antud juhul olnud sobiv klass vigase kuu nime teatamiseks? Sobiva klassi leidmiseks võib võtta ette ( Exception-i ) või ( RuntimeException-i )) dokumentatsiooni, aga ka "kitsama" klassi kasutamine ei anna alati täielikku kindlust, kuna mingi muu meetod, millest kood sõltub, võib seda klassi kasutada. Seepärast maksab neil juhtudel, kus soovite kindlaid vigu kinni püüda, kaaluda uue erindiklassi loomist. Uue erindiklassi loomine Erindiklasse saab ka ise kirjutada, sellisel juhul peavad need olema klassi java.lang.Exception alamklassid. Soovitatav on klassi nime viimaseks osaks panna sõna Erind või Exception . Klassi nimi peaks vihjama erindi olemusele. Oma erindi loomine on kasulik, sest siis on võimalik kirjutada püüniseid, mis püüavad ainult sinu konkreetset erindit (ei ole ohtu kogemata vale erindit püüda). Oma erindiklassi külge võib panna ka spetsiaalseid lisavälju veasituatsiooni täpsemaks kirjeldamiseks. Muudame programmi FailiLugeja2 nii, et sisse loetud read teisendatakse arvudeks. Kui teisendamisel tekkis viga, siis näitame ka vigase rea kohta lisainformatsiooni. public class VigaseReaErind extends RuntimeException {
+  private int rida;
+
+  public VigaseReaErind(int rida, NumberFormatException teisendusViga) {
+    super("vigased andmed real " + rida, teisendusViga);
+    this.rida = rida;
+  }
+
+  public int reaNumber() {
+    return rida;
+  }
+}
+
+public class FailiLugeja3 {
+  public static void main(String[] args) throws IOException {
+    try (BufferedReader lugeja = new BufferedReader(new InputStreamReader(new FileInputStream(args[0]), "UTF-8"))) {
+      System.out.println(loeFailiSisu(lugeja));
+    } catch (VigaseReaErind e) {
+      System.out.println("reanumber: " + e.reaNumber());
+      throw e; // viskame edasi, sest ei oska korda teha
+    }
+  }
+
+  private static List<Integer> loeFailiSisu(BufferedReader lugeja) throws IOException {
+    List<Integer> read = new ArrayList<>();
+    int reaNumber = 1;
+    while (true) {
+      String rida = lugeja.readLine();
+      if (rida == null)
+        break;
+      try {
+        read.add(Integer.parseInt(rida));
+        reaNumber++;
+      } catch (NumberFormatException e) {
+        throw new VigaseReaErind(reaNumber, e);
+      }
+    }
+    return read;
+  }
+} Enesekontroll Your browser does not support including other html pages Ülesanne 5 Muuta kuupäeva analüüsimise näidet nii, et oleks võimalik kasutada sellist peameetodit: public static void main(String[] args) {
+  try (Scanner in = new Scanner(System.in)) {
+    while (true) {
+      try {
+        System.out.print("Sisesta kuupäev kujul pp. kuu_nimi aaaa (nt. 3. mai 2015): ");
+        LocalDate kp = annaKuupäev(in.nextLine().trim());
+        long erinevus = ChronoUnit.DAYS.between(kp, LocalDate.now());
+        System.out.println("Sellest kuupäevast on möödunud " + erinevus + " päeva");
+        break;
+      }
+      catch (KuupäevaFormaadiErind e) {
+        System.out.println("Sisestatud kuupäev pole õige formaadiga!");
+        if (e.viganeKomponent() != null) {
+          System.out.println("Arusaamatust tekitas: '" + e.viganeKomponent() + "'");
+        }
+        System.out.println("Proovi uuesti!");
+      }
+    }
+  }
+} Ülesanne 6 (kontroll) Kirjutada programm, mis kasutab BufferedWriter klassi, et kirjutada käsureal ette antud faili "Hello world!". Kasuta faili kirjutamisel UTF-8 kodeeringut. Ära sulge BufferedWriter objekti (ära kasuta close meetodit ega try-with-resources ). Käivitada programm ja veenduda, et fail tekitati ja see sisaldab soovitud teksti. Kui fail jääb tühjaks, siis uurida välja, miks see nii on ja lisada seletus kommentaarina. Muuta programmi, nii et see sulgeks try-with-resources abil BufferedWriteri . Ülesanne 7 (kontroll) Tekitada klass KoduneÜlesanne . Lisada privaatne LocalDate tüüpi isendiväli tähtaja jaoks ja vastavad get - ja set -meetodid. Tähtaega peaks olema võimalik määrata ka konstruktoris. Täiendada klassi nii, et tähtaega ei ole võimalik laupäevaks ega pühapäevaks määrata - kui seda üritatakse, siis tuleb visata IllegalArgumentException erind, mille sõnum sisaldab ebasobivat kuupäeva kujul pp.kk.aaaa . Demonstreerida klassi kasutamist nii sobivate kui ka ebasobivate kuupäevadega. Vihje: Kasutada LocalDate meetodit getDayOfWeek , et nädalapäeva tuvastada. Ülesanne 8 Koostada staatiline meetod tõstaTurvaliselt . Meetod võtab parameetriks kaks File objekti - esimene tähistab faili, mis tuleb teise kohta tõsta ja teine tähistab asukohta, kuhu algne fail tuleks tõsta. Enne ümbertõstmist kontrolli, et koht, kuhu faili tõsta tahetakse, juba olemas ei ole. Lisaks kontrolli, et algne fail ja uus asukoht ei ole sama koht. Seejärel kasuta File klassi meetodit renameTo , et fail ümber tõsta. Kontrolli renameTo meetodi tagastusväärtust - false tähistab ebaõnnestumist. Kui kumbki kontrollitud eeltingimustest ei kehti või faili ümbertõstmine ebaõnnestus, siis viska IOException , mis kirjeldab tekkinud probleemi. Luua testklass, mis võtab käsurea parameetritest faili nime ja uue asukoha ja proovib faili ümber tõsta. Vihje: Faili asukohtade võrdlemiseks võrdle failide getAbsolutePath() väärtust. Vihje: new File(failiNimi) ei loo kettale faili, vaid objekti, mis tähistab faili asukohta. Ülesanne 9 (kontroll) Luua klass Pilt , mis hoiab enda sees mustvalge pildi pikslite väärtusi. Iga piksel on täisarv vahemikus 0..255, kus 0 tähistab musta, 255 valget ja vahepealsed väärtused halle toone. Pildi mõõtmed määratakse konstruktori parameetritega (esimene argument tähistab laiust pikslites ja teine kõrgust pikslites). Eeldame, et pildi kõik pikslid on algselt mustad. Lisada klassile meetod määraPiksel , mis võtab parameetriteks x ja y koordinaadi (vasakul üleval nurgas oleva piksli koordinaatideks on (0,0)) ja piksli uue väärtuse. Lisada meetod annaPiksel , mis võtab parameetriteks koordinaadid ja tagastab vastava piksli väärtuse. Tekitada erindiklassid VigaseKoordinaadiErind ja VigaseVärviErind , mis on mõlemad RuntimeException alamklassid. Muuta piksli väärtustamise meetodit, nii et enne piksli väärtustamist kontrollitakse koordinaate ja värvi 0..255 vahemikku kuulumist ja vajadusel visatakse sobilik erind. Lisada koordinaadi kontroll ka piksli vaatamise meetodisse. Luua testklass, mis loob 10x10 pildi ja hakkab System.in abil kasutajalt käske küsima. Kasutaja peab saama interaktiivselt pikslite väärtusi muuta ja vaadata. Vigase koordinaadi sisestamisel lase kasutajal uuesti proovida, aga vigase värvi sisestamise puhul väljasta pahur kommentaar ja sulge programm. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

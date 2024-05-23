@@ -1,0 +1,184 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice5</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 5 Polümorfism, liidesed Teemad Liidesed. Polümorfism. Pärast selle praktikumi läbimist oskab üliõpilane luua ja kasutada liidest; võrrelda objekte, vajadusel luua võrdlemiskriteeriume; on tuttav polümorfismiga. Ilus päev lõbustuspargis Lõbustuspargi direktor teeb teie tarkvaraettevõttega lepingu, et te kirjutaksite lõbustuspargi ameerika mägede atraktsioonile vanusekontrolli programmi. Atraktsioonile lubatakse alates 12 eluaastast ja tavaliselt on noortel kaasas ID-kaart või õpilaspilet, mida peaks kontrollima. Seejuures kontrollida tuleb terve vagunitäis rahvast korraga. public class IdKaart {
+  private String isikukood;
+  public IdKaart(String isikukood) {
+    this.isikukood = isikukood;
+  }
+  public boolean onVähemalt12Aastane() {
+    int praeguneAasta = LocalDate.now().getYear(); 
+    return sünniaasta() <= praeguneAasta - 12;
+  }
+  private int sünniaasta() { // 4. praktikumi 2. harjutus 
+    int algus = Integer.parseInt(isikukood.substring(0, 1));
+    int aasta = Integer.parseInt(isikukood.substring(1, 3));
+    if (algus <= 2)
+      return 1800 + aasta;
+    if (algus <= 4)
+      return 1900 + aasta;
+    if (algus <= 6)
+      return 2000 + aasta;
+    return 2100 + aasta;
+  }
+} public class Õpilaspilet {
+  private int sünniaasta;
+  public Õpilaspilet(int sünniaasta) {
+    this.sünniaasta = sünniaasta;
+  }
+  public boolean onVähemalt12Aastane() {
+    return sünniaasta + 12 <= LocalDate.now().getYear();
+  }
+} public class AmeerikaMäed {
+  public boolean vanusedSobivad(IdKaart[] idKaardid, Õpilaspilet[] õpilaspiletid) {
+    for (IdKaart id : idKaardid) {
+      if (!id.onVähemalt12Aastane())
+        return false;
+    }
+    for (Õpilaspilet pilet : õpilaspiletid) {
+      if (!pilet.onVähemalt12Aastane())
+        return false;
+    }
+    return true;
+  }
+} LocalDate klassist saad täpsemalt lugeda siit: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html https://docs.oracle.com/javase/tutorial/datetime/iso/index.html Nädal aega hiljem helistab lõbustuspargi direktor ja ütleb, et mõned inimesed tahavad enda vanust hoopis juhiloaga tuvastada. Selle jaoks tuleb koodis vajalikud muudatused teha. Ülesanne 1: Juhiloaga sõitma Lisada uus klass Juhiluba . Konstruktori parameetriks on kehtivuse lõpu aasta, salvestada see vastavasse isendivälja. Võib eeldada, et alla 18 aastased juhiluba ei saa. Ameerika mäed peavad oskama juhiluba kontrollida, selle jaoks tekitada meetod onVähemalt12Aastane . Link ülesande algsele koodile: https://github.com/mbakhoff/oop-samples/tree/master/interfaces/task1/src . Nädal aega hiljem helistab lõbustuspargi direktor tagasi ja ütleb, et külastajad on pahased, sest iga kord, kui mõni alla 12-aastane gruppi satub, saadetakse terve grupp tagasi. Kontrollmeetod peaks tagastama boolean i asemel need dokumendid, mis ei sobinud. Mõelge hetk, kuidas seda ülesannet lahendaksite (praegu lahendama ei pea). Sarnase eesmärgiga objektide tüübid Näiteülesandes kujutatud dokumente võib olla palju erinevaid ja nende kõigi jaoks koodis muudatusi tehes läheb asi kiirelt käest ära. Peab leiduma parem lahendus! Koodist on näha, et iga dokumendi klass teeb vanusekontrolli erinevalt - sõltuvalt sellest, mis andmed seal olemas on. Meetodit vanusedSobivad tegelikult ei huvita, kuidas täpselt see vanusekontroll toimib. Tähtis pole lõpuks ka see, millise dokumendiga tegemist on, niikaua kuni selle põhjal on võimalik vanust kontrollida. Näites on igal dokumendiklassil samasugune boolean onVähemalt12Aastane() meetod. Oleks mõistlik, kui vanusedSobivad meetodile saaks kõik dokumendid ühe massiivina ette anda, sest onVähemalt12Aastane meetodi väljakutse on kõigi isendite puhul samasugune. Pythonis see niimoodi töötabki ja töötaks ka Javas . Paraku Java kompilaator on nõus kompileerima ainult sellist koodi, mille toimimises ta kompileerimise hetkel kindel saab olla ja selle otsustab ta väljakirjutatud muutujatüüpide järgi. Mis tüüpi peaks olema dokumentide ühine massiiv, et kompilaator vajaliku meetodi olemasolus kindel saaks olla? Selle probleemi aitavad lahendada liidesed. Liidese definitsioon Liides (interface) on süntaksi mõttes klassile sarnane struktuur, mis kirjeldab komplekti meetodeid. Kirja pannakse meetodite nimed, tagastustüübid ja parameetrite tüübid, aga meetodi kehad jäetakse täpsustamata. Eesmärk on kirjeldada funktsionaalsust, mis mingil objektil peaks olema. Seejuures räägitakse ainult oodatavast käitumisest, aga mitte sellest, mis klassi objektiga tegu on, ega täpsest algoritmist, mida funktsionaalsuse saavutamiseks kasutatakse. Mõned näited: public interface Hulknurk {
+  // Hulknurga pindala arvutatakse eri kujundite puhul erinevalt. Liides ütleb, et 
+  // objektil peaks selline meetod olema, aga ei täpsusta, mis valemit kasutatakse.
+  double pindala(); 
+
+  // hulknurga nurkade arv sõltub kujundist, aga seda peab saama tuvastada
+  int nurkadeArv(); 
+} public interface Väljund {
+  // ei täpsusta, kas väljastatakse faili või käsureale või kuhugi mujale
+  void väljasta(String väärtus); 
+} Liideseid saab teha sarnaselt klassidega: IntelliJ -s: New --> Java Class --> Interface Eclipse -is: New --> Interface Kui mingis klassis on kõik liideses kirjeldatud meetodid olemas, siis öeldakse, et klass realiseerib liidese (implements an interface) . Eestikeelse terminina kasutatakse ka sõna "implementeerima". Selle kursuse raames loeme neid sünonüümideks ja kasutame mõlemaid. Selleks, et asi veel kindlam oleks, antakse oma kavatsusest teada ka kompilaatorile: public class Kolmnurk implements Hulknurk {
+  private double a, b, c; // küljed
+  public Kolmnurk(double a, double b, double c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+  }
+  public double pindala() {
+    // Heroni valem
+    double s = (a + b + c) / 2.0;
+    return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+  }
+  public int nurkadeArv() {
+    return 3; 
+  }
+  public boolean onTäisnurkne() {
+    // Klassis peavad olema realiseeritud kõik liidese meetodid, aga see ei tähenda,
+    // et kõik klassi meetodid peavad olema liideses kirjeldatud. Liidesega klass 
+    // on ikka tavaline klass, kuhu võib oma soovi järgi igasuguseid meetodeid lisada.
+    double[] abc = {a, b, c};
+    java.util.Arrays.sort(abc);
+    double kaatet1 = abc[0] * abc[0];
+    double kaatet2 = abc[1] * abc[1];
+    double hüpotenuus = abc[2] * abc[2];
+    return Math.abs(kaatet1 + kaatet2 - hüpotenuus) < 0.001; // ümardusviga
+  }
+} Lisades klassi kirjeldusse implements ja siis mingi liidese nime, tehakse kokkulepe klassi looja ja kompilaatori vahel. Klassi looja lubab, et loodud klassis on kõik liideses kirjeldatud meetodid olemas. Kui see niimoodi ei ole, siis kompilaator keeldub klassi kompileerimast. Vastutasuks lubab kompilaator kasutada loodud klassi isendeid seal, kus on muutuja tüübiks oodatud hoopis liidese tüüp: Kolmnurk kolmnurk = new Kolmnurk(3, 4, 5); 
+Hulknurk hulknurk = kolmnurk; // toimib, sest Kolmnurk realiseerib Hulknurka!
+System.out.println(kolmnurk.nurkadeArv()); // 3
+System.out.println(hulknurk.nurkadeArv()); // 3 static void näidisMeetod(Hulknurk h) { ... }
+
+näidisMeetod(kolmnurk);
+näidisMeetod(new Kolmnurk(3, 4, 5)); Kui klass realiseerib liidest, siis sisuliselt on selle klassi isend korraga mitut tüüpi - klassi enda tüüpi ja realiseeritud liideste tüüpi. Sellist nähtust nimetatakse polümorfismiks (polymorphism) . (Liideste kasutamine pole ainus polümorfismi vorm.) Mõned reeglid liideste kohta: Liides on tüüp. Seda saab kasutada lokaalse muutuja tüübina, isendivälja tüübina, meetodi parameetri tüübina jne - täpselt nagu klassi. Liidesest ei saa isendeid luua ( new Hulknurk() ei kompileeru), sest seal on meetodite kehad puudu. Isendeid saab luua klassidest, mis liidest realiseerivad. Mitu erinevat klassi saavad realiseerida sama liidest (nt Kolmnurk ja Nelinurk ). Üks klass saab realiseerida mitu liidest. Liideste nimed eraldatakse komaga: class TekstiFail implements Sisend, Väljund { .. } Kui liidese meetodil ei ole piiritlejat ( public / private ), siis loetakse see public meetodiks. Isegi, kui liideses ei ole public võtmesõna välja kirjutatud, peab meetodit realiseerivas klassis public välja kirjutama. Objektide identiteet Kasutades new võtmesõna saame me luua uusi objekte (isendeid). Objekti loomisel tuleb new järgi kirja panna konkreetne klassi nimi, millest isendit luuakse. Loodud objekt jätab alati meelde, mis klassi isend ta on - seda informatsiooni ei saa objektist lahutada. Iga objekti küljes on meetod getClass , mille abil saab seda informatsiooni ka küsida (kasulik vigade otsimisel). Kui klass realiseerib liideseid, siis ta oskab käituda ka nende liideste isenditena, sh saab teda nende liideste tüüpi muutujatesse salvestada. See ei muuda objekti klassi! Kolmnurk kolmnurk = new Kolmnurk(3, 4, 5);
+System.out.println(kolmnurk.getClass()); // class Kolmnurk
+Hulknurk hulknurk = new Kolmnurk(3, 4, 5);
+System.out.println(hulknurk.getClass()); // class Kolmnurk
+
+hulknurk.onTäisnurkne(); // compile error: cannot resolve method
+Kolmnurk samaKolmnurk = hulknurk; // compile error: incompatible types Iga jooksvas programmis elav objekt teab, millise klassi isend ta on ja mis meetodid tema küljes on. See-eest kompileerimise hetkel näeb kompilaator ainult staatilisi tüüpe - tüüpe, mis on programmeerija poolt välja kirjutatud või koodist üheselt mõistetavalt tuletatavad. See seab mõnikord tobedaid piiranguid - kuna kompilaator näeb ainult väljakirjutatud tüüpe, lubab ta kasutada ainult meetodeid, mis väljakirjutatud tüüpide küljes on, isegi kui muutuja viidatud objekti küljes on ka teisi meetodeid. Näiteks ülal toodud koodinäites samaKolmnurk muutuja väärtustamise juures näeb kompilaator ainult seda, et muutuja hulknurk on Hulknurk tüüpi. Kuigi Kolmnurk realiseerib Hulknurga liidest, võivad seda liidest realiseerida ka teised klassid. Kompilaator ei saa olla kindel, et iga Hulknurk on Kolmnurk ja seetõttu ta ei luba samaKolmnurk väärtustada. Samal põhjusel ei saa Hulknurk tüüpi muutuja küljes kutsuda Kolmnurga meetodeid, mis pole ka Hulknurgas kirjeldatud. Näiteid Java sisseehitatud liidestest java.lang.Comparable https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Comparable.html Liides Comparable kirjeldab compareTo meetodi kahe objekti võrdlemiseks. Liidest kasutatakse näiteks Java sorteerimisalgoritmide poolt. Erinevate realisatsioonidega saab määrata, mis omaduse järgi ja mis järjekorras objektid peaksid sorteeritud saama (oluline, kui te enda loodud klassi isendeid tahate sorteerida). Näiteks kolmnurkade omavahel pindala järgi võrreldavaks muutmiseks tuleks muuta Kolmnurk klassi: public class Kolmnurk implements Hulknurk, Comparable<Kolmnurk> {
+  public int compareTo(Kolmnurk võrreldav) {
+    if (pindala() < võrreldav.pindala())
+      return -1; // negatiivne arv näitab, et this on väiksem kui võrreldav
+    if (pindala() > võrreldav.pindala())
+      return 1; // positiivne arv näitab, et this on suurem kui võrreldav
+    return 0; // null tähendab, et mõlemad on võrdsed
+  }
+  // ülejäänud kood sama
+} java.util.List https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html Liides List kirjeldab meile juba tuttavat funktsionaalsust, mille meetodid on näiteks add , get ja size . List on liides, sest seda saab realiseerida erinevat moodi, sõltuvalt sellest, millised operatsioonid peavad kiirelt jooksma. Näiteks ArrayList realisatsioon võimaldab elemente kiirelt indeksi järgi leida, aga LinkedList realisatsioon võimaldab suvalistel indeksitel kiirelt elemente lisada või eemaldada. Sarnane liides on ka java.util.Map . java.lang.Iterable https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html Liides Iterable kirjeldab meetodi iterator . Iteraatorid on abiks objektide sisu läbi vaatamisel. Näiteks ArrayList realiseerib Iterable liidese. Java for (T element : elemendid) süntaks ei kontrolli tegelikult, kas elemendid on list/massiiv, vaid kas tüüp on Iterable . Seega on igaühel võimalik luua klass, mille sisu saab sellise for tsükliga läbi vaadata. Liidesed ja Java 8+ Kuni Java 7 oli võimalik liidestesse ainult public meetodeid lisada. Meetodi keha ei olnud võimalik liidesesse kirjutada, selle pidi lisama igasse liidest realiseerivasse klassi. Uuemates Java versioonides on võimalik lisada liidestesse n-ö vaikemeetodeid ( default method ) - meetodeid, millel on ka keha. Liidest realiseerivad klassid peavad realiseerima kõik liidese meetodid, välja arvatud default meetodid. Klass saab kasutada oma liideste default meetodeid, nagu need oleks selle klassi tavalised public meetodid (klass pärib liidese default meetodid). Lisada saab ka static meetodeid, mis toimivad nagu tavalised static meetodid, ja private meetodeid, mida saab välja kutsuda ainult sama liidese static ja default meetoditest. Siin kursusel ei hakka me ise default / static / private meetoditega liideseid looma. Küll aga võite neid kohata Java sisseehitatud liidestes. Enesekontroll Your browser does not support including other html pages Tagasi lõbustusparki Vaatame nüüd uuesti meie AmeerikaMäed klassi ja tema sadat häda. Vaadates vanusedSobivad meetodit on selge, et see oleks nõus kasutama kõiki objekte, millel on meetod onVähemalt12Aastane . Loome talle vastava liidese ja kasutame seda: public interface Dokument {
+  boolean onVähemalt12Aastane();
+}
+
+public class AmeerikaMäed {
+  public boolean vanusedSobivad(Dokument[] dokumendid) {
+    for (Dokument dokument : dokumendid) {
+      if (!dokument.onVähemalt12Aastane())
+        return false;
+    }
+    return true;
+  }
+} Lisaks sellele peavad IdKaart ja Õpilaspilet realiseerima meie uut liidest. Vaatame, kuidas see kõik kokku läheks. public class IdKaart implements Dokument {
+  // ülejäänud kood ei muutu
+}
+
+public class Õpilaspilet implements Dokument {
+  // ülejäänud kood ei muutu
+}
+
+public class Test {
+  public static void main(String[] args) {
+    AmeerikaMäed mäed = new AmeerikaMäed();
+    Dokument[] dokumendid = {
+        new IdKaart("39108071234"),
+        new Õpilaspilet(1991)
+    };
+    System.out.println("sobib: " + mäed.vanusedSobivad(dokumendid));
+  }
+} Link tervele lõpplahenduse koodile: https://github.com/mbakhoff/oop-samples/tree/master/interfaces/sample1/src Ülesanne 2: Dokumentide tagastamine (kontroll) Peatüki sissejuhatuses küsisime, kuidas võiks tagastada kontrollmeetodis sobimatud dokumendid. Pärast liideste õppimist on seda probleemi oluliselt lihtsam lahendada. Veenduge ise! Looge klassi AmeerikaMäed uus meetod ebasobivadDokumendid , mis võtab argumendiks dokumentide massiivi ja tagastab kõik dokumendid, mis vanusekontrolli ei läbinud. Tagastustüübiks kasutage List<Dokument> . Peameetodis väljastage kõik sobimatud dokumendid. Mõistliku väljundi nägemiseks lisage IdKaardile ja Õpilaspiletile ka sobilikud toString meetodid. Lõpuks lihtsustage meetodi vanusedSobivad koodi delegeerides põhitöö äsja loodud uuele meetodile. Vihje: Tuletage meelde 4. praktikumis seletatud geneerilised tüübid. Vihje: List on liides, sellest ei saa isendit luua. ArrayList klass realiseerib List liidest ja sellest saab vajaliku isendi luua. Ärge unustage listis olevate andmete tüüpi määrata: ArrayList<Dokument> . Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Ülesanne 3: Tondilossi avamine (kontroll) Lõbustuspark otsustas avada uue atraktsiooni "Tondiloss". Tondilossi lubatakse alates 14-aastaseid uudistajaid, sest see on nii hirmus. Kustutage Dokumendi liideses meetod onVähemalt12Aastane ja lisage selle asemele uus meetod vanusOnVähemalt , millega saab kontrollida, kas külastaja on vähemalt x aastat vana (x on parameeter). Muudke IdKaarti ja Õpilaspiletit nii, et nad liideses tehtud muutused realiseeriks. Olemasolevat lõbustuste koodi tuleb muuta üldisemaks, et seda saaks taaskasutada. Selle jaoks nimetage AmeerikaMäed ümber Atraktsiooniks (IDEs Refactor -> Rename ). Lisage Atraktsioonile privaatsed isendiväljad atraktsiooni nime ( String ) ja minimaalse nõutud vanuse hoidmiseks ( int ) ja lisage konstruktor, mille parameetrite kaudu need väärtustada saab. Lisage Atraktsioonile ka toString meetod, mis objekti mugavalt näidata võimaldab. Looge testklass, mille peameetodis luuakse kaks atraktsiooni (ühe vanusepiir on 14 ja teisel 12), massiivi vähemalt kahe dokumendiga (õpilaspilet vanusele 13 ja ID-kaart vanusele 15) ja proovitakse nende dokumentide sobivust kummaski atraktsioonis. Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Ülesanne 4: Loosiratas (kontroll) Lõbustuspargi turundusjuht otsustas kõige aktiivsemate külaliste vahel auhindu välja loosima hakata. Kirjutage programm, mis leiab kõige rohkem atraktsioone kasutanud külalised ja loosib nende seast võitja. Lõplik loosimine toimub kolme kõige aktiivsema külalise vahel. Looge klass Külastaja , milles on privaatsed väljad nime ( String ) ja külastatud atraktsioonide arvu ( int ) hoidmiseks. Lisage konstruktor, mille parameetrite kaudu väljad väärtustatakse ja vastavad get -meetodid. Lisage toString meetod, mis näitab külastaja nime. Looge klass Loosiratas . Selle klassi isendimeetod lisaKülastaja peab võimaldama potentsiaalseid loosis osalejaid registreerida. (Vihje: osalejate meeleshoidmiseks võiks klassis olla näiteks privaatne isendiväli sobiva andmestruktuuriga.) Külastajaid peab olema võimalik lisada kahel moel: 1) andes meetodi parameetriks Külastaja isendi; 2) andes meetodi parameetriteks külastaja nime ja külastuste arvu (et saaks kasutada klassi Külastaja konstruktorit). (Vihje: tuletage meelde üledefineerimine.) Meetod kõigeAktiivsemad(int n) peab seni registreeritud külastajate andmete põhjal tagastama listi n kõige aktiivsema külastajaga (või kõigi külastajatega, kui külastajaid on vähem, kui n ). Seda on kõige lihtsam teha, kui külastajad järjestada külastuste arvu järgi. Järjestamiseks sobib näiteks klassi java.util.Collections meetod sort , aga selle kasutamiseks tuleb klassis Külastaja näidata, kuidas kahte isendit järjestuse mõttes võrrelda. (Tuletage siinkohal meelde ülaltoodud kolmnurkade võrdlemise näide! Teiseks pange tähele, et Collections.sort parameeteri tüüp on liides List . Kuna ArrayList realiseerib liidest List , on võimalik ka seda sorteerida.) Meetod loosiVõitja peab tagastama juhuslikult ühe külastaja 3 kõige aktiivsema külastaja seast (või kõigi külastajate seast, kui külastajaid on vähem kui 3). Looge testklass, mille peameetodis luuakse loosiratas ja viis külastajat. Registreerige külastajad loosimisele, katsetage loosiratta meetodite tööd ja väljastage võitja ekraanile. Kasulikud lingid: https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Collections.html#sort(java.util.List) https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Comparable.html Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Ülesanne 5: Kütusekontroll Lõbustuspargi direktor helistab tagasi: “Tahaksime oma erinevate sõidukite kütusekasutuse kohta statistikat teha. Vastavalt tehniku (käsurealt) sisestatud seadistusele tuleb kirjutada iga mõõtmise tulemus kas faili või käsureale. Mu onupoeg kirjutas juba mõlema väljundi jaoks koodi valmis, nii et see peaks lihtsalt minema?” public class FailiLogija {
+  private PrintWriter logiFail;
+
+  public FailiLogija(PrintWriter logiFail) {
+    this.logiFail = logiFail;
+  }
+
+  public void logiFaili(String teade) {
+    logiFail.println(teade);
+    logiFail.flush(); // kirjuta kohe faili
+  }
+}
+
+public class KäsureaLogija {
+  public void logiKäsureale(String teade) {
+    System.out.println(teade); 
+  }
+} Kuidagi tuleb ainult neid klasse kasutada. Häda on selles, et kütusemõõtjas ei taheta teha if­else rägastikke FailiLogija ja KäsureaLogija vahel otsustamiseks. Koostage liides Logija , nii et kütusemõõtja ei peaks täpse realisatsiooni pärast muretsema. Muudke KäsureaLogija ja FailiLogija nii, et nad realiseeriks loodud liidest. Link ülesande algsele koodile: https://github.com/mbakhoff/oop-samples/tree/master/interfaces/task4/src . public class Vagun {
+  private int kütus;
+  public Vagun(int kütus) {
+    this.kütus = kütus;
+  }
+  public int kütuseTase() {
+    return kütus;
+  }
+}
+
+public class KütuseMõõtja {
+  private Logija logija;
+  public KütuseMõõtja(Logija logija) {
+    this.logija = logija;
+  }
+  public void mõõdaKütust(Vagun vagun) {
+    // logi siin vaguni kütusetase
+    // kui kütusetase on alla 10 ühiku, siis logi ka hoiatus
+  }
+}
+
+public class Test {
+  public static void main(String[] args) throws Exception {
+    Logija logija;
+    // args on käsurea argumendid
+    if (args.length == 1 && args[0].equals("kirjuta-faili")) {
+      logija = new FailiLogija(new PrintWriter("logi.txt", "UTF-8"));
+    } else {
+      logija = new KäsureaLogija();
+    }
+
+    KütuseMõõtja mõõtja = new KütuseMõõtja(logija);
+    List<Vagun> vagunid = Arrays.asList(
+          new Vagun(33),
+          new Vagun(5));
+    for (Vagun vagun : vagunid) {
+        mõõtja.mõõdaKütust(vagun);
+    }
+  }
+} Vihje: KäsureaLogija ja FailiLogija meetodite signatuure võib muuta. Vihje: Logija liideses piisab ühest meetodist. Meetod võib olla üldisem, kui realisatsioonid. Vihje: Logija liideses ei peaks mainima midagi failide või käsurea kohta. See peaks olema piisavalt üldine, et hiljem saaks vajadusel tekitada uue logija “SMSLogija”. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

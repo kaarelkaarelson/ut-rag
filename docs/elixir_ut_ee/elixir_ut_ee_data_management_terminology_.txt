@@ -1,0 +1,257 @@
+<LINK>https://elixir.ut.ee/data_management/terminology/</LINK>
+Terminology - ELIXIR Estonia Skip to content ELIXIR Estonia Terminology Initializing search News People Services Publications Training Data Management Projects Contact ELIXIR Estonia News News Archive Archive 2024 2023 2022 2021 2020 2019 2018 2017 Categories Categories Alignment Andmehaldus Andmehaldusplaan Avatud juurdepÃ¤Ã¤s Best practices Bgee Bioimaging Containers DM courses DMP DMPonline DSpace Data analysis Data visualisation DataCite Estonia Consortium DataDoi Dataverse DisProt Docker Dworkshop E-Learning EBI ELIXIR Estonia ENA ETAIS FAIR FAIR principles GDPR Git Grant Office Helis Academy Linux MOOC Machine-learning MobiDB NGS Open Access OpenRefine Patent Python R RNA-seq RStudio Reproducible Research SIB Singularity Summer school Switzerland. Tableau TalTech Data Train the Trainer course May 8-10 at the University of Basel Train-the-Trainer UT University of Tartu Unix analytics award bioinformatics charts cineca cleaning data code review command-line conference contetathon coronavirus course covid covid19 csc data data visualization data-management database demo diagnosing elixir-fi enrichment-analysis file-formats g:Profiler galaxy gene-expression ggplot2 grants hackathon horizon europe how-to hpc interoperability lecture license metabolomics metadata microbiome online open science programming proteins quality control rare diseases readme repository sars-cov2 seminar sensitive data shell single-cell single-cell-transcriptomics slurm statistics symposium tables training translational research version control visualisation visualisations visualization webinar workflow workshop People Services Publications Training Training Upcoming Trainings Past Trainings Instructors Data Management Data Management Introduction Terminology Terminology Table of contents Analytics â analÃ¼Ã¼tika Anonymisation â anonÃ¼Ã¼mimine/anonÃ¼miseerimine Application program interface (API) â rakendustarkvara liides Article processing charge (APC) â avaldamistasu Big data â suurandmed Cookbook/handbook â kÃ¤siraamat CoreTrustSeal â usalduse pitser andmebaasile Data architecture â andmete arhitektuur Data archive â andmete arhiiv Data backup â andmete varundamine Data format (file format) â andmete failivorming Data governance â andmete haldamine kÃµrgemal tasemel Data integrity â andmete terviklikkus Data jargon â andmeteaduse slÃ¤ng Data literacy â andmete kirjaoskus Data Management Plan (DMP) â andmehaldusplaan Data manager (DM) â andmehaldur Data owner â andmete omanik Data preservation â andmete sÃ¤ilitamine Data privacy â andmete privaatsus Data Protection Impact Assessment (DPIA) â andmekaitse mÃµju hindamine Data protection officer (DPO) â andmekaitsespetsialist (AKS) Data provenance â andmete pÃ¤ritolu Data publishing â andmete avaldamine Data repository â andmete repositoorium ehk andmekogu Data scientist â andmeteadlane Data steward (DS) â andmespetsialist Data tweeps â andme sÃ¤utsud Dataset â andmekogum Digital Object Identifier (DOI) â digitaalse objekti identifikaator E-infrastructure â e-taristu Embargo period â embargoperiood Encryption â kruÌptimine FACT principles â FACT printsiibid FAIR principles â FAIR printsiibid Free cultural work â vaba kultuuriteos General Data Protection Regulation (GDPR) â isikuandmete kaitse uÌldmaÌaÌrus (IKUÌM) voÌi lihtsalt (andmekaitse) uÌldmaÌaÌrus Gold open access â kuldne avatud juurdepaÌaÌs Green open access â roheline avatud juurdepaÌaÌs Informed consent â teadlik ehk informeeritud nÃµusolek Infrastructure data steward â infrastruktuuri andmespetsialist Linked data â lingitud/seostatud andmed Long-term preservation â andmete pikaajaline sÃ¤ilitamine Machine readability â masinloetavus Metadata â metaandmed Ontology â ontoloogia Open access â avatud juurdepaÌaÌs Open Data â avaandmed, avatud teadusandmed Open licence â avatud sisulitsents Open methodology â avatud metodoloogia Open peer review â avatud eelretsenseerimine Open researcher and contributor ID (ORCID) â avatud teadlase ja kaasautori ID Open science â avatud teadus Open source â avatud laÌhtekood Open source software â avatud laÌhtekoodiga tarkvara Peer review â eelretsenseerimine Persistent identifier (PID) â puÌsiidentifikaator Personal data â isikuandmed Policy data steward â strateegia/raamistiku andmespetsialist Post-print â jÃ¤rel-print Preferred format â eelistatud failiformaat Pre-print â eeltrÃ¼kk Pre-registration â eel-registreerimine Pseudonymisation â pseudonÃ¼Ã¼mimine/pseudonÃ¼miseerimine* Publisherâs PDF â trÃ¼kifail Resource decription framework (RDF) â ressursi kirjelduse raamistik Reproducibility â taasesitatavus Research communication â teaduskommunikatsioon Research data â uurimistÃ¶Ã¶ andmed/teadusandmed Research data lifecycle â uurimistÃ¶Ã¶ andmete elutsÃ¼kkel Research data management â uurimistÃ¶Ã¶ andmete haldamine Research data steward â teadustÃ¶Ã¶ andmespetsialist Scientific publication â teaduspublikatsioon Self-archiving â isearhiveerimine Sensitive personal data â eri liiki isikuandmed Short-term preservation â lÃ¼hiajaline andmete sÃ¤ilitamine Stakeholder â huvipool Text and Data Mining (TDM) â teksti- ja andmekaeve Trusted digital repository (TDR) â usaldusvÃ¤Ã¤rne digitaalne hoidla Uniform resource identifier (URI) â Ã¼htne ressursi identifikaator Virtual Research Environment (VRE) â virtuaalne uurimiskeskkond Vocabulary â sÃµnavara Work package â tÃ¶Ã¶pakett The FAIR Principles Sensitive data Projects Contact Table of contents Analytics â analÃ¼Ã¼tika Anonymisation â anonÃ¼Ã¼mimine/anonÃ¼miseerimine Application program interface (API) â rakendustarkvara liides Article processing charge (APC) â avaldamistasu Big data â suurandmed Cookbook/handbook â kÃ¤siraamat CoreTrustSeal â usalduse pitser andmebaasile Data architecture â andmete arhitektuur Data archive â andmete arhiiv Data backup â andmete varundamine Data format (file format) â andmete failivorming Data governance â andmete haldamine kÃµrgemal tasemel Data integrity â andmete terviklikkus Data jargon â andmeteaduse slÃ¤ng Data literacy â andmete kirjaoskus Data Management Plan (DMP) â andmehaldusplaan Data manager (DM) â andmehaldur Data owner â andmete omanik Data preservation â andmete sÃ¤ilitamine Data privacy â andmete privaatsus Data Protection Impact Assessment (DPIA) â andmekaitse mÃµju hindamine Data protection officer (DPO) â andmekaitsespetsialist (AKS) Data provenance â andmete pÃ¤ritolu Data publishing â andmete avaldamine Data repository â andmete repositoorium ehk andmekogu Data scientist â andmeteadlane Data steward (DS) â andmespetsialist Data tweeps â andme sÃ¤utsud Dataset â andmekogum Digital Object Identifier (DOI) â digitaalse objekti identifikaator E-infrastructure â e-taristu Embargo period â embargoperiood Encryption â kruÌptimine FACT principles â FACT printsiibid FAIR principles â FAIR printsiibid Free cultural work â vaba kultuuriteos General Data Protection Regulation (GDPR) â isikuandmete kaitse uÌldmaÌaÌrus (IKUÌM) voÌi lihtsalt (andmekaitse) uÌldmaÌaÌrus Gold open access â kuldne avatud juurdepaÌaÌs Green open access â roheline avatud juurdepaÌaÌs Informed consent â teadlik ehk informeeritud nÃµusolek Infrastructure data steward â infrastruktuuri andmespetsialist Linked data â lingitud/seostatud andmed Long-term preservation â andmete pikaajaline sÃ¤ilitamine Machine readability â masinloetavus Metadata â metaandmed Ontology â ontoloogia Open access â avatud juurdepaÌaÌs Open Data â avaandmed, avatud teadusandmed Open licence â avatud sisulitsents Open methodology â avatud metodoloogia Open peer review â avatud eelretsenseerimine Open researcher and contributor ID (ORCID) â avatud teadlase ja kaasautori ID Open science â avatud teadus Open source â avatud laÌhtekood Open source software â avatud laÌhtekoodiga tarkvara Peer review â eelretsenseerimine Persistent identifier (PID) â puÌsiidentifikaator Personal data â isikuandmed Policy data steward â strateegia/raamistiku andmespetsialist Post-print â jÃ¤rel-print Preferred format â eelistatud failiformaat Pre-print â eeltrÃ¼kk Pre-registration â eel-registreerimine Pseudonymisation â pseudonÃ¼Ã¼mimine/pseudonÃ¼miseerimine* Publisherâs PDF â trÃ¼kifail Resource decription framework (RDF) â ressursi kirjelduse raamistik Reproducibility â taasesitatavus Research communication â teaduskommunikatsioon Research data â uurimistÃ¶Ã¶ andmed/teadusandmed Research data lifecycle â uurimistÃ¶Ã¶ andmete elutsÃ¼kkel Research data management â uurimistÃ¶Ã¶ andmete haldamine Research data steward â teadustÃ¶Ã¶ andmespetsialist Scientific publication â teaduspublikatsioon Self-archiving â isearhiveerimine Sensitive personal data â eri liiki isikuandmed Short-term preservation â lÃ¼hiajaline andmete sÃ¤ilitamine Stakeholder â huvipool Text and Data Mining (TDM) â teksti- ja andmekaeve Trusted digital repository (TDR) â usaldusvÃ¤Ã¤rne digitaalne hoidla Uniform resource identifier (URI) â Ã¼htne ressursi identifikaator Virtual Research Environment (VRE) â virtuaalne uurimiskeskkond Vocabulary â sÃµnavara Work package â tÃ¶Ã¶pakett Terminology Here is a list of terminology used in data management. The list is in the
+alphabetical order with the english word first, followed by the Estonian
+translation and the explanation of the term. This list was compiled together
+using the help of ETAG and University of Tartu
+Library . If you have any additions or reparations for
+the list, please contact us to let us know. Analytics â analÃ¼Ã¼tika AnalÃ¼Ã¼simiseks kasutatavad statistilised ja visualiseeritavad tehnikad, mis on
+kasutusel andmetest oluliste mustrite leidmiseks, tÃµlgendamiseks ning edasi
+andmiseks. Anonymisation â anonÃ¼Ã¼mimine/anonÃ¼miseerimine Teabest koÌikide jaÌlgede kaotamine, mis voÌiksid viia isikute tuvastamiseni. Kui
+pseudonuÌuÌmimine ja kruÌptimine on tagasipoÌoÌratav umbisikustamine, siis
+anonuÌuÌmimine taÌhendab tagasipoÌoÌramatut ehk loÌplikku umbisikustamist. See
+tÃ¤hendab, et Ã¼htegi isikustavat dokumenti/faili ei tohi enam eksisteerida. Application program interface (API) â rakendustarkvara liides Arvutiprogrammides olevate alamprogrammide rutiinide, protokollide ja
+tÃ¶Ã¶riistade komplektid, mille abil saab tÃ¶Ã¶vooge luua. Ãlesandeks on lihtsustada
+tarkvara kasutamist, andes ette programmi plokid, mida programmeerijad kasutavad
+lÃµpliku tÃ¶Ã¶voo koostamisel. Antud sÃ¼steem vÃµimaldab lisaks suuremat paindlikkust
+ja analÃ¼Ã¼simisvÃµimet tegelemaks andmetega. NÃ¤iteks, kombineerides API RDF-iga
+(ressursi kirjelduste tarkvararaamistik), on vÃµimalik eri asukohtades olevad
+andmed linkida (ehk Ã¼hes kohas asuvate andmete uuendamisel sÃ¤testatakse
+automaatselt ka teises asukohas olevad andmed). Vt. lingitud andmed. Article processing charge (APC) â avaldamistasu Peamiselt avatud juurdepaÌaÌsuga publikatsiooni avaldamisega seotud kulud, sh
+sisuline ja keeleline toimetamine, formaadi korrektuur, linkide lisamine jms.
+Siiski vÃµivad avaldamistasu nÃµuda ka piiratud ligipÃ¤Ã¤suga ajakirjad.
+KoÌrgetasemeliste ajakirjade artikli avaldamistasu on enamasti 1000â3000 eurot. Vt. kuldne avatud juurdepaÌaÌs. Big data â suurandmed Andmed, mis on sedavÃµrd suure mahuga vÃµi nii keerulised, et nende tÃ¶Ã¶tlemiseks
+ei piisa tavapÃ¤rastest vahenditest ja ressurssidest (nÃ¤iteks sotsiaalmeedia
+andmed). Suurandmeid kirjeldavad 10 pÃµhiomadust ( The Big Vs ): maht ( volume ),
+kiirus ( velocity ), sort ( variety ), varieeruvus ( variability ),
+Ãµigsus ( veracity ), kehtivus ( validity ), haavatavus ( vulnerability ),
+volatiilsus ( volatility ), visualiseeritavus ( visualisation ),
+vÃ¤Ã¤rtus ( value ). Cookbook/handbook â kÃ¤siraamat Valdkonna spetsiifiline teadmiste vÃµi juhendite kogum, mis on ette nÃ¤htud
+teemaga tutvumiseks, tundma Ãµppimiseks ja mÃµistete lahti seletamiseks. Ãldjuhul
+sisaldab ka parimaid tavasid, mis on antud valdkonnas kasutusel; ning soovitatud
+programmide loendit, mis antud valdkonnas on soovituslikud. CoreTrustSeal â usalduse pitser andmebaasile Sertifikaat, mis antakse andmebaasile, mis suudab tÃµestada et nad on
+jÃ¤tkusuutlikud ja usaldusvÃ¤Ã¤rsed. CoreTrustSeal mÃ¤rgis kehtib kolm aastat. Data architecture â andmete arhitektuur Organisatsioonisisene andmete kogumise, ladustamise, korralduse, integratsiooni
+ja kasutamise taristu, mida reguleeritakse mudelite, strateegiate, reeglite ja
+standarditega. Selle peamiseks Ã¼lesandeks on ametliku lÃ¤henemisviisi soovitamine
+andmevoo loomisele ja haldamisele ning selle tÃ¶Ã¶tlemiseks organisatsiooni
+IT-sÃ¼steemides ja rakendustes. Data archive â andmete arhiiv Keskkond, mis vÃµimaldab andmeid hoiustada nii pika- kui ka lÃ¼hiajaliselt. See on
+indekseeritud ning andmete leidmine ja kÃ¤ttesaamine on selgelt kirjeldatud. Data backup â andmete varundamine Andmetest varukoopiate tegemine, tÃ¤nu millele on vÃµimalik hilisemalt andmeid
+taastada. Data format (file format) â andmete failivorming Andmete struktureerimis- ja paigutusviis failis, andes andmetele (tekst,
+graafika, foto, video, audio) sellise kuju, et arvuti oleks vÃµimeline neid
+tÃ¶Ã¶tlema. Arvuti tunneb Ã¤ra faili lÃµpus oleva, peale punkti asuva sÃ¼mbolite
+lÃ¼hendi (failinime laiendi) ning saab aru, millise programmiga on vÃµimalik faili
+loetavaks teha. Data governance â andmete haldamine kÃµrgemal tasemel Andmete haldamise toetamine andmespetsialisti abiga, riiklike poliitikate,
+protseduuride, standardite ja juhtivate tavade jÃ¤rgimise abil. Data integrity â andmete terviklikkus Andmed peavad pÃ¤rinema autentsest allikast ning peab olema veendumus, et need ei
+ole muutunud ja/vÃµi neid ei ole hiljem ilma loata muudetud kogu andmete
+elutsÃ¼kli jooksul. Data jargon â andmeteaduse slÃ¤ng Spetsiifiline sÃµnavara, mida kasutatakse andmete kohta. Data literacy â andmete kirjaoskus VÃµimekus lugeda, aru saada, luua ja kommunikeerida andmeid kui informatsiooni.
+See tÃ¤hendab et mÃµistetakse, mida andmed pÃ¼Ã¼avad Ã¶elda, tÃ¤pselt nii nagu autor
+on seda mÃµelnud. Peamiselt koosneb viiest alustalast ja oskusest: andmete
+leidmine, lugemine, tÃ¶Ã¶tlemine, analÃ¼Ã¼simine ning argumenteerimine. Data Management Plan (DMP) â andmehaldusplaan UurimistoÌoÌ juurde kuuluv kava, milles kirjeldatakse, milliseid andmeid
+uurimistoÌoÌ projekti kaÌigus toodetakse ja/voÌi kogutakse, kuidas neid hallatakse,
+saÌilitatakse ja millistele andmetele voÌimaldatakse juurdepaÌaÌs. Andmehaldusplaani
+eesmaÌrgiks on kirjeldada kogu andmehalduse protsessi projekti jooksul ja peale
+projekti loÌppemist. Andmehaldusplaan esitatakse koos uurimisprojekti taotlusega
+ning kasutatakse/tÃ¤iendatakse kogu projekti vÃ¤ltel. Data manager (DM) â andmehaldur Organisatsioonis inimene, kes vastutab igapÃ¤evaselt andmete kogumise, haldamise
+ja analÃ¼Ã¼simise eest vastavalt seatud plaanidele ning protseduuridele. Data owner â andmete omanik Andmete omamine on seaduslike Ãµiguste omamine ja tÃ¤ielik kontroll Ã¼he andmefaili
+vÃµi andmeelementide komplekti Ã¼le. See mÃ¤Ã¤ratleb ja annab teavet andmete
+ÃµigusjÃ¤rgse omaniku ning rakendatud omamise, kasutamise ja levitamise poliitika
+kohta. Data preservation â andmete sÃ¤ilitamine Andmete hoiustamise sellisel viisil, mis kindlustab, et andmed ei kaoks
+juhuslikult ning need oleks kergesti leitavad tÃ¤nu heale metaandmete
+kirjeldusele. Soovides hoiustada andmeid pikemaajaliselt, peab lisaks vÃµtma
+arvesse ka failivormingut, mis on tulevikukindel. Lisaks peab vastutama ka kÃµigi
+vÃµimalike manipulatsioonide eest, et antud faile ei oleks Ã¼helgi hetkel ilma
+loata muudetud. Data privacy â andmete privaatsus Kindlaks mÃ¤Ã¤ratud normid, kirjeldades kes, milleks ning mis tingimustel vÃµib
+andmeid kasutada. Data Protection Impact Assessment (DPIA) â andmekaitse mÃµju hindamine GDPR artikkel 35 Ã¼tleb, et kui tegeletakse isikuandmetega, peab teostama
+andmekaitse mÃµjuhinnangu. Selle puhul hinnatakse âfÃ¼Ã¼siliste isikute Ãµigusi ja
+vabadusi ohustava riski pÃ¤ritolu, olemust, eripÃ¤ra ja tÃµsidustâ. Selle hinnangu
+tulemust tuleb vÃµtta arvesse, kui hakatakse isikuandmete tÃ¶Ã¶tlemiseks vajalikke
+meetmeid kindlaks mÃ¤Ã¤rama. Data protection officer (DPO) â andmekaitsespetsialist (AKS) Asutuses spetsiaalselt mÃ¤Ã¤ratud inimene, kes korraldab, et andmete tÃ¶Ã¶tlemine
+Ã¼ksuses toimuks nÃµuetekohaselt. Ta teeb koostÃ¶Ã¶d erinevate alamÃ¼ksuste vahel,
+nÃµustab ja koolitab tÃ¶Ã¶tajaid andmekaitset puudutavatel teemadel ning on
+kontaktisikuks Andmekaitse Inspektsioonile (AKI) . Data provenance â andmete pÃ¤ritolu Metaandmed, mis kirjeldavad andmete pÃ¤ritolu, muutusi tehtud andmetes ning
+detailid, mis nÃ¤itavad andmete usaldusvÃ¤Ã¤rsust vÃµi kehtivust. Data publishing â andmete avaldamine Andmete vÃµi andmekogumike koostamine avalikuks kasutamiseks, tehes need
+kÃ¤ttesaadavaks kÃµigile soovijatele. See praktika on avatud teaduse liikumise
+lahutamatu osa. Data repository â andmete repositoorium ehk andmekogu Publikatsioonide ja andmete pikaajalise stabiilse saÌilitamise keskkond ja
+taristu. Data scientist â andmeteadlane Teadlane, kelle tÃ¶Ã¶ on valdkondade Ã¼lene, kasutades erinevaid tehnikaid ja
+lÃ¤henemisi, et saada teadmisi ja sÃ¼gavamat arusaamist struktureeritud ja
+struktureerimata andmetest. Peamiselt tegeletakse andmekaeve ja suurandmetega
+( big data ). Data steward (DS) â andmespetsialist Organisatsioonis inimene, kes vastutab organisatsiooni andmete Ã¼ldise halduse
+eest (andmete kvaliteet, kasutatavus, eesmÃ¤rkidele vastavus). Data tweeps â andme sÃ¤utsud Platvormil Twitter edastatud sÃµnumid, mis on seotud andmetega ja andmehaldusega. Dataset â andmekogum Andme-elementidest koosnev hulk. KoÌige sagedamini vastab andmekogum uÌhele
+andmebaasi tabelile voÌi andmemaatriksile. Digital Object Identifier (DOI) â digitaalse objekti identifikaator Numbritest ja tÃ¤htedest koosnev unikaalne kood artiklitele ja/vÃµi dokumentidele. E-infrastructure â e-taristu Unikaalsed infotehnoloogiatel poÌhinevad taristud, mis voÌimaldavad kasutajatele
+lihtsa ja turvalise internetipoÌhise juurdepaÌaÌsu teadustoÌoÌks vajalikele
+ressurssidele, toÌoÌriistadele, meetoditele ja vahenditele, aidates sellega kaasa
+teadustegevuse veelgi komplekssemaks, globaalsemaks ja multidistsiplinaarsemaks
+muutumisele. E-taristud voÌivad olla naÌiteks suure voÌimsuse ja joÌudlusega
+andmevoÌrgud (nt GEÌANT), hajutatud arvutiinfrastruktuurid (voÌrgud ja pilved),
+superarvutusinfrastruktuurid, teadusandmeid koondavad ja talletavad
+infrastruktuurid ning nendega kaasnevad teenused (nt ELIXIR). Embargo period â embargoperiood Kirjastaja noÌutud periood, mille jooksul ei tohi publikatsiooni taÌisteksti teha
+avalikult kaÌttesaadavaks. Enamus avatud juurdepaÌaÌsu regulatsioone saÌtestavad, et
+eelretsenseeritud teadusajakirjade artiklite puhul tuleks avatud juurdepaÌaÌs
+tagada kohe publitseerimisel, kuid mitte hiljem kui 12 kuud paÌrast esmast
+publitseerimist sotsiaal- ja humanitaarteadustes ja maksimaalselt 6 kuud teistes
+teadusvaldkondades. Juhtivad teaduskirjastused standardlepingutes autoritega
+sageli sellised oÌiguseid teadusartiklite repositooriumites avaldamiseks ei anna,
+enamasti noÌutakse pikemat viivitust avatud juurdepaÌaÌsu andmisel. Vt. roheline avatud juurdepaÌaÌs. Encryption â kruÌptimine Edastatava/hoitava teabe sisu kaÌttesaamatuks muutmine. Lihtsaim viis
+kruÌptimiseks on ID-kaardiga kruÌptimine, kruÌptitud faile saavad avada vaid kindla
+isikukoodiga ID-kaardi valdajad. FACT principles â FACT printsiibid AkronÃ¼Ã¼m, mis viitab jÃ¤rgmistele pÃµhimÃµtetele: Fair â Ãµiglane Accurate â tÃ¤pne Confidential â konfidentsiaalne Transparent â lÃ¤binÃ¤htav Erinevalt FAIR printsiipidest, kirjeldavad FACT printsiibid rohkem teaduse
+fundamentaalseid pÃµhimÃµtteid : Eelarvamusteta andmeteadus â kuidas vÃ¤ltida ebaÃµiglasi jÃ¤rjeldusi, isegi kui
+need on tÃµesed? Aimamata (juhupakkumistel baseeruv) andmeteadus â kuidas vastata kÃ¼simustele
+garanteeritud tÃ¤psusega? Konfidentsiaalsust tagav andmeteadus â kuidas vastata kÃ¼simustele saladusi’
+paljastamata? LÃ¤bipaistev andmeteadus â kuidas selgitada vastuseid, et need muutuksid
+vaieldamatuks? FAIR principles â FAIR printsiibid AkronÃ¼Ã¼m, mis viitab jÃ¤rgmistele pÃµhimÃµtetele: Findable â leitavad Accessible â ligipÃ¤Ã¤setavad Interoperable â koostalitlusvÃµimelised/ristkasutatavad Re-usable â taaskasutavad Avatud teaduse andmete pÃµhiprintsiibid. FAIR printsiibile vastavus tÃ¤hendab, et
+andmed peaks olema kergesti leitavad, kÃµigile inimestele kÃ¤ttesaadavad, peaksid
+olema kergesti kasutatavad mitmetel platvormidel ning andmeid peaks olema alati
+vÃµimalik taaskasutada. Free cultural work â vaba kultuuriteos Teos, sh teaduspublikatsioon, mille litsentsitingimused lubavad piiranguteta
+kasutamist ja jagamist igasugustel eesmaÌrkidel. Vaba kultuuriteose
+definitsioonile vastavad CC BY ja CC BY-SA litsentsid, kuid
+mitte nt CC BY-NC , mis ei
+luba kasutamist aÌrilisel eesmaÌrgil (vt https://creativecommons.org/freeworks ). General Data Protection Regulation (GDPR) â isikuandmete kaitse uÌldmaÌaÌrus (IKUÌM) voÌi lihtsalt (andmekaitse) uÌldmaÌaÌrus Euroopa tasemel kindlaks mÃ¤Ã¤ratud seadused ja mÃ¤Ã¤rused, mis kaitsevad
+eurooplaste ja Euroopas teostatud andmetÃ¶Ã¶tluses kÃ¤ideldud isikute isikuandmeid.
+ÃldmÃ¤Ã¤rus hakkas kehtima  2018. aastal maikuus.
+Vt. https://www.aki.ee/et ja https://gdpr.eu/ Gold open access â kuldne avatud juurdepaÌaÌs Publikatsioon on kirjastuse veebilehel viivituseta ja lÃµplikul kujul kÃµigile
+tasuta kÃ¤ttesaadav. Kirjastamiskulud vÃµivad olla publikatsiooni autorite kanda
+(vt artikliavaldamistasu) vÃµi toetab ajakirja vÃ¤ljaandmist mÃµni asutus vÃµi
+organisatsioon, nt Ã¼likool, erialaliit vÃµi teaduste akadeemia. Enamiku Eesti
+teadusajakirjade puhul on kasutuses viimati nimetatud mudel ning autorid nendes
+ajakirjades avaldamistasu maksma ei pea. Kuldse avatud juurdepÃ¤Ã¤suga
+publikatsioonide tÃ¤psemad kasutustingimused pannakse paika konkreetse
+litsentsiga. Enamus avatud juurdepÃ¤Ã¤suga artikleid kasutavad nn Creative Commons
+litsentse. Selliseid publikatsioone on lubatud lÃµplikul kujul ka ise
+arhiveerida, talletades koopiat institutsionaalses (nt Ã¼likooli digiarhiiv),
+riiklikus (nt ETIS) vÃµi rahvusvahelises repositooriumis (nt ArXiv ja PubMed Central ). Green open access â roheline avatud juurdepaÌaÌs Autor arhiveerib avaldatud teadusartikli voÌi retsenseeritud kaÌsikirja
+institutsionaalses (nt uÌlikooli digiarhiiv), riiklikus (nt ETIS) voÌi
+rahvusvahelises repositooriumis (nt ArXiv ja PubMed Central ), mille kaudu muutub see
+koÌigile kaÌttesaadavaks. Kirjastuste ja ajakirjade loÌikes voÌivad isearhiveerimise
+tingimused olla erinevad. Enamasti rakendub kirjastaja noÌudel embargoperiood, st
+isearhiveerimine on lubatud mitte varem kui 6â12 kuud peale artikli
+esmailmumist. UÌldjuhul ei ole lubatud artikli loÌpliku versiooni (vt truÌkifail)
+isearhiveerimine. Rohelise avatud juurdepaÌaÌsu puhul autorid avaldamistasu ei
+maksa. Kirjastuste tegevuskulud kaetakse ajakirjade jt publikatsioonide
+tellimuste ja lisateenuste kaudu, mille eest tasuvad raamatukogud ja
+teadusasutused. Informed consent â teadlik ehk informeeritud nÃµusolek OtsusvÃµimelise inimese vabatahtlik nÃµusolek selleks, et temaga vÃµi temasse
+otseselt puutuvat (nÃ¤iteks tema andmetega) midagi tehakse, kui ta seda andes on
+teadlik selle tegevuse olemusest ja eesmÃ¤rgist ning selle vÃµimalikest
+tagajÃ¤rgedest. NÃµusolek peab olema vabalt antud, spetsiifiline, informeeritud ja
+Ã¼heselt mÃµistetav. Lisaks, tÃ¤napÃ¤eval tuleb nÃµustuda mitte ainult
+uurimisprojektis osalemisega, vaid ka andmete arhiveerimisega ja jagamisega.
+Vajaduse korral peaksid nÃµusolekuvormid kÃ¤sitlema andmete jagamise vÃµimalust,
+andmete edaspidist avaldamist (sealhulgas hoidlas hoidmist) vÃµi andmete
+pikaajalist sÃ¤ilitamist taasesitamise tagamiseks. Infrastructure data steward â infrastruktuuri andmespetsialist Organisatsioonis inimene, kelle peamiseks Ã¼lesandeks on sobitada ette mÃ¤Ã¤ratud
+poliitikad ja teaduse nÃµuded sobivateks IT-lahendusteks ja tÃ¶Ã¶riistadeks.
+LisaÃ¼lesanneteks vÃµivad olla IT-infrastruktuuri lahenduste rakendamine,
+andmetele ja tarkvarale ligipÃ¤Ã¤su mÃ¤Ã¤ramine ning praktiliste Ã¼lesannete
+teostamine uurimisprojektis. Linked data â lingitud/seostatud andmed Internetti lisatud andmed, mis on omavahel seostatud (tavaliselt Ã¼hesuunaliste
+hÃ¼perviidetega). Seostamiseks kasutatakse veebis hÃ¼perteksti edastusprotokolli
+RDF- ja URI-tehnoloogiaid ning nende kirjeldamiseks luuakse ja kasutatakse
+ontoloogiaid. Lingitud andmete vahelised seosed ei ole mÃµeldud inimestele
+lugemiseks, vaid on loodud nii, et neid oleks lihtne automaatselt arvutitega
+tÃ¶Ã¶delda ja moodustada suuremaid andmemassiive (andmebaase), millest infot
+pÃ¤rida. Long-term preservation â andmete pikaajaline sÃ¤ilitamine Andmete hoiustamine sellisel viisil, mis vÃµimaldab neid kasutada tulevikus. Machine readability â masinloetavus Failivorming, mis on struktureeritud selliselt, et tarkvararakendused suudavad
+spetsiifilisi andmeid, sealhulgas uÌksikuid faktivaÌiteid, ja nende sisemist
+struktuuri kergesti tuvastada, aÌra tunda ja vaÌlja lugeda. Metadata â metaandmed Objekti (publikatsioon, andmed jne) kirjeldamiseks kasutatav standardiseeritud
+informatsioonihulk. UÌldiselt on noÌutav autorlus, pealkiri, institutsioon,
+avaldamise aeg jpm. Ontology â ontoloogia Jagatud sÃµnavarad kirjeldamaks kindla ala mÃµisteid ning kategooriaid ja
+nendevahelisi suhteid. Open access â avatud juurdepaÌaÌs Elektrooniline piiranguteta juurdepaÌaÌs teadusinformatsioonile. Rahvusvaheliste
+kommertsalustel teaduskirjastuste tegevus poÌhineb seni valdavalt tellimustel
+poÌhineval aÌrimudelil (lugeja, raamatukogu voÌi riik maksab) ning loÌpptulemuse,
+teaduspublikatsioonide tasuta jagamist ei toimu. Avatud juurdepaÌaÌsu poliitikate
+survel ning ka uusi sissetulekuvoÌimalusi naÌhes on juhtivad teaduskirjastused
+loonud uusi teadusvaÌljaandeid, mis kasutavad kuldse avatud juurdepaÌaÌsu
+aÌrimudelit (autor maksab reeglina avaldamistasu). Enamasti tuumikvaÌljaannete
+aÌrimudelit ei ole muudetud, samas on loodud nn huÌbriidvaÌljaannete autoritele
+voÌimalus artiklid âvabaks ostaâ. HuÌbriidvaÌljaannete puhul on aga oht, et
+maksumaksja raha kulutatakse topelt â nii vaÌljaannete tellimiseks raamatukogude
+kaudu kui artiklite avaldamiseks grandirahadest. TeadusvaÌljaannete
+litsentsitingimustest ja isearhiveerimise reeglitest annab uÌlevaate SHERPA/ROMEO
+register ( http://www.sherpa.ac.uk/romeo ). Open Data â avaandmed, avatud teadusandmed Teadlaste, uurimisruÌhmade, uurimisasutuste voÌi avaliku sektori poolt loodud ja
+teadustoÌoÌs kasutatavad andmed, mis on tehtud elektrooniliselt vabalt
+kaÌttesaadavaks kÃµigile inimestele. See tÃ¤hendab, et andmeid saab taas-kasutada
+tasusid maksmata (tasuta; free-of-charge) ja ilma litsentsipiiranguteta
+( copyright restrictions ). Open licence â avatud sisulitsents Publikatsioonid ja (teadus)andmed on uÌldjuhul autorioÌiguse kaitse all ning
+avatud juurdepaÌaÌs peab olema vastava litsentsiga kehtestatud
+(Creative Commons: CC-Zero, CC BY-SA jt; vt taÌpsem info http://www.hitsa.ee/teenused/autorioigused ja http://creativecommons.org ). Open methodology â avatud metodoloogia Avalik ja vaba juurdepaÌaÌs teadusuuringu laÌbiviimisel kasutatud meetoditele,
+vahenditele ja analuÌuÌsile. Open peer review â avatud eelretsenseerimine Teadusliku kvaliteedi tagamine laÌbipaistva ja jaÌlgitava eelhindamise
+protsessiga. Open researcher and contributor ID (ORCID) â avatud teadlase ja kaasautori ID Iga teadlase unikaalne kood Internetis, millega saab siduda oma  artikleid ja
+muid teadustÃ¶Ã¶ga seotud andmeid. Open science â avatud teadus TÃ¤histab vaba juurdepÃ¤Ã¤su elektroonilisele teadusinformatsioonile, esmajoones
+publikatsioonidele ja teadusandmetele, mille loomiseks ja avaldamiseks on
+kasutatud avalikke vahendeid (ETag). Avatud teaduse eesmÃ¤rk on muuta
+teadusuuringud avatud, globaalseks, loovaks ning koostÃ¶Ã¶l pÃµhinevaks, kasutades
+tÃ¤napÃ¤evaseid e-taristuid. Avatud teaduse kontseptsioon muudab teadusuuringud
+efektiivsemaks ja lÃ¤bipaistvamaks, suurendab koostÃ¶Ã¶d teadlaste ja
+teadusvaldkondade vahel, soodustab innovatsiooni ning on seega kasulik
+Ã¼hiskonnale. Open source â avatud laÌhtekood Avalik ja vaba juurdepaÌaÌs tarkvaratoote algtekstidele. Open source software â avatud laÌhtekoodiga tarkvara LaÌhtekood ja sellega seonduv dokumentatsioon on koÌigile kasutajatele vabalt
+kaÌttesaadav nii tutvumiseks kui muutmiseks. Peer review â eelretsenseerimine Avaldamisele eelnev publikatsiooni soÌltumatu hindamine vaÌhemalt uÌhe vastava ala
+eksperdi poolt. Persistent identifier (PID) â puÌsiidentifikaator Ajas pÃ¼siv viide digitaalsele ressursile, mida kasutatakse publikatsioonide ja
+andmehulkade (aga ka muude digitaalsete objektide) otsimiseks, tuvastamiseks ja
+linkimiseks. See tÃ¶Ã¶tab isegi siis, kui objekti/ressursi esialgne asukoht on
+muutunud. PID lingib uue objekti asukohaga, muutmata enda aadressi. NaÌiteks ISBN
+(monograafiad), Handle ID (repositooriumid), DOI (publikatsioonid ja
+andmehulgad). Personal data â isikuandmed Teave inimese ehk fuÌuÌsilise isiku (andmesubjekti) kohta, millega teda saab otse
+voÌi kaudselt tuvastada: nimi, isikukood, asukohateave, voÌrguidentifikaatorid
+(tunnused, mis sidevoÌrgus aitavad viia konkreetse isikuni), samuti fuÌuÌsilised,
+geneetilised, vaimsed, majanduslikud, kultuurilised ja mistahes muud tuvastamist
+voÌimaldavad tunnused ja nende kombinatsioonid. Isikuandmete toÌoÌtlemine on
+andmetega tehtav mistahes toiming: kogumine, korrastamine, saÌilitamine,
+muutmine, lugemine, kasutamine, edastamine, uÌhendamine, kustutamine jne. Policy data steward â strateegia/raamistiku andmespetsialist Organisatsioonis inimene, kelle peamiseks Ã¼lesandeks on strateegiate arendamine
+ja andmehalduse tavade rakendamine, tÃ¶Ã¶tades tihedalt koos teiste tippjuhtide,
+poliitika kujundajate ja rahastajatega, luues sobivaid andmehaldusteenuseid ja
+infrastruktuuri. Selleks omab hÃ¤id teadmisi nii kohalikest kui ka Euroopa
+tasemel olevatest nÃµuetest, reeglitest ja seadustest ning oskab neid tÃµlkida
+praktilisteks soovitusteks. Post-print â jÃ¤rel-print Artiklimustand, mis on eelretsenseerimise laÌbinud. Preferred format â eelistatud failiformaat FailitÃ¼Ã¼bid, mida peetakse praegusel ajahetkel vÃµimalikult tulevikukindlaks, st
+et on kergesti kasutatavad ka tulevikus. Pre-print â eeltrÃ¼kk Artiklimustand, mis ei ole laÌbinud eelretsenseerimist. Pre-registration â eel-registreerimine Enne uurimistÃ¶Ã¶ algust registreeritakse uurimise hÃ¼potees, uurimistÃ¶Ã¶ plaan,
+metodoloogia ja andmeanalÃ¼Ã¼si skeem. NÃ¤iteks ETAGi PRG granditaotlus. Sarnane
+kliinilise uuringu registreerimisele, aga pÃµhjalikum. Vt. Registered Reports ( https://www.cos.io ) Pseudonymisation â pseudonÃ¼Ã¼mimine/pseudonÃ¼miseerimine * See taÌhendab aÌratuntavate isikuandmete asendamist varjunimede, numbrikoodide ja
+muude tunnustega, mida asjassepuutumatud isikud ei oska ilma mÃµistliku
+ressursikuluga aÌra arvata. Inimesed, kelle kohta antud andmed kÃ¤ivad, on siiski
+taas indentifitseeritavad, kasutades selleks identifitseerimisdokumenti
+(dokumenti, kus on kirjas mis andmed millega asendati). Publisherâs PDF â trÃ¼kifail Viimane truÌkieelne publikatsiooni versioon, mis on laÌbinud eelretsenseerimise ja
+kus koÌik detailid on loÌplikult paigas. Resource decription framework (RDF) â ressursi kirjelduse raamistik RDF abiga defineeritakse digitaalsete objektide vahelised seosed. Esiteks, kÃµik
+digitaalsed objektid saavad Ã¼htse ressursi identifikaator
+( URI; Uniform Resource Identifier ), mis mÃ¤Ã¤ratleb konkreetse allika asukoha ja
+lÃ¤henemise. Paljudel juhtudel on URI URL aadress. Iga digitaalne objekt on
+jÃ¤rgnevalt lingitud teiste objektidega RDF kolmikute kaudu. Lihtsustatult, RDF
+kolmik Ã¼tleb, et objekt X on seoses Y objektiga Z. Selliselt seoste esitamise
+viisi nimetatakse ka lingitud andmeteks. Reproducibility â taasesitatavus Uurimisandmed ja koodid tehakse kÃ¤ttesaadavaks, et teised saaksid jÃµuda samade
+tulemusteni, nagu vÃ¤idetakse teaduslikes vÃ¤ljundites. Replitseeritavus
+(teadusmetoodika kordamine, et jÃµuda sarnaste jÃ¤reldusteni) on tihedalt seotud
+taasesitatavusega. Need mÃµlemad kontseptsioonid on empiiriliste uuringute
+pÃµhielemendid. Research communication â teaduskommunikatsioon Komplekssete uurimistulemuste tÃµlgendamine vÃµi tÃµlkimise protsess lihtsasse
+formaati vÃµi konteksti, mida suudaksid ka teised peale valdkonna ekspertide
+mÃµista. Research data â uurimistÃ¶Ã¶ andmed/teadusandmed KoÌik andmed, mis on loodud voÌi kogutud uurimistoÌoÌ kaÌigus. Samas tuleb arvesse
+vÃµtta, et teadusandmeteks ei muutu andmed, mis on kogutud muul otstarbel, kuid
+voÌivad leida rakendust teadustoÌoÌs (nt keskkonnaseire andmestik). Research data lifecycle â uurimistÃ¶Ã¶ andmete elutsÃ¼kkel Uurimiseks kasutatavate andmete kÃ¤sitlemise voog, alates teadustÃ¶Ã¶
+planeerimisest kuni andmete jagamise ja taaskasutamiseni vÃ¤lja. Ãldiselt koosneb
+7-st peamisest etapist, mida kasutatakse ka andmehaldusplaani koostamisel:
+teadustÃ¶Ã¶ ja kogutavate andmete planeerimine, andmete kogumine, tÃ¶Ã¶tlemine,
+analÃ¼Ã¼s, sÃ¤ilitamine, jagamine ja taaskasutamine. Research data management â uurimistÃ¶Ã¶ andmete haldamine Andmete aktiivne organiseerimine ja hooldamine kogu uurimistÃ¶Ã¶ vÃ¤ltel ning
+andmete korrektne hoiustamine pÃ¤rast uurimistÃ¶Ã¶ lÃµppu. Research data steward â teadustÃ¶Ã¶ andmespetsialist Organisatsioonis inimene, kelle peamiseks Ã¼lesandeks on teadlaste otsene
+nÃµustamine andmehalduse valdkonnas, vaadates, et jÃ¤rgitakse institutsionaalseid
+nÃµuded ja soovitusi. LisaÃ¼lesandena vÃµib koostada valdkonna spetsiifilisi vÃµi
+projekti spetsiifilisi suuniseid ning tÃ¶Ã¶tada ka otse projektide kallal. Scientific publication â teaduspublikatsioon Eelretsenseeritud teadusartikkel voÌi teaduslik uÌksikvaÌljaanne, mis on
+kaÌttesaadav kas taÌistekstina (paberkandjal voÌi elektrooniliselt) voÌi
+refereerituna/indekseerituna erialastes andmebaasides ja referaatajakirjades. Self-archiving â isearhiveerimine Vt. roheline avatud juurdepaÌaÌs. Sensitive personal data â eri liiki isikuandmed Andmed, millest ilmneb rassiline voÌi etniline paÌritolu, poliitilised vaated,
+usulised voÌi filosoofilised veendumused voÌi ametiuÌhingusse kuulumine,
+geneetilised andmed, isiku kordumatuks tuvastamiseks kasutatavad biomeetrilised
+andmed, terviseandmed ja andmeid seksuaalelu ja seksuaalse saÌttumuse kohta. Short-term preservation â lÃ¼hiajaline andmete sÃ¤ilitamine Stakeholder â huvipool Asjast huvitatud isik, asjaosaline, osanik, huvipool. Isik, kes on huvitatud
+millegi kÃ¤ekÃ¤igust vÃµi sellest, milline otsus langetatakse, sest see puudutab
+tema heaolu. Text and Data Mining (TDM) â teksti- ja andmekaeve Automaatne protsess, mille abil saab suurtest andmehulkadest leida kasulikku
+infot ja sÃ¼ndmuse mustreid. Koosneb andmete eeltÃ¶Ã¶tlusest, andmekaevest ja
+jÃ¤reltÃ¶Ã¶tlusest. Trusted digital repository (TDR) â usaldusvÃ¤Ã¤rne digitaalne hoidla Sertifitseeritud hoidla, mis on loodud tagama hoiustatud andmetele usaldusvÃ¤Ã¤rse
+ja jÃ¤tkusuutliku juurdepÃ¤Ã¤su. TDR-sid vÃµib sertifitseerida kolmel tasemel:
+pÃµhisertifikaat koos CoreTrustSeal -i sertifikaadiga;
+laiendatud sertifikaat pÃ¤rast seda, kui hoidla teostab ISO 16363 (vÃµi DIN 31644)
+kohase eneseauditi;
+ja vormingusertifikaat lisaks laiendatud sertifikaadile peale tÃ¤iendava vÃ¤lise
+auditi ja sertifitseerimist ISO 16363 vÃµi DIN 3164410. Uniform resource identifier (URI) â Ã¼htne ressursi identifikaator Andmetele Ã¼htse tuvastamise mÃ¤rgi lisamine vÃµimaldab andmeid kergemini leida
+ning neid omavahel vÃµrrelda. Virtual Research Environment (VRE) â virtuaalne uurimiskeskkond VRE Ã¼hendab Ã¼hes keskkonnas erinevaid andmehalduse tÃ¶Ã¶riistu, toetades teadlaste
+tÃ¶Ã¶voogu ja turvalist tÃ¶Ã¶keskkonda. Vocabulary â sÃµnavara Metaandmete kirjeldamiseks kasutatav standardiseeritud ja organiseeritud
+sÃµnavara. Work package â tÃ¶Ã¶pakett TÃ¶Ã¶jaotuse struktuuri vÃ¤ikseim komponent. TÃ¶Ã¶pakett luuakse, kui jagatakse
+Ã¼ldine eesmÃ¤rk vÃ¤iksemateks eesmÃ¤rkideks/komponentideks. TÃ¶Ã¶pakett on loodud,
+kui tÃ¶Ã¶ eesmÃ¤rke ei saa enam jÃ¤rgmisteks alltulemusteks vÃµi kÃ¤egakatsutavateks
+projekti tulemusteks jagada. TÃ¶Ã¶pakett on viis mÃµista nii kulusid kui ka
+kestvust ning hallata neid kergesti. Back to top ELIXIR Estonia ServicesÂ Terms of Use . ELIXIR Estonia follows ELIXIR Code
+              of Conduct when organising events. Content on this site is licensed under a Commons
+              Attribution 4.0 International license . Made with Material for MkDocs ELIXIR is partly funded by the European Commission within the
+              Research Infrastructures programme of Horizon 2020. The sole responsibility for the content of this webpage
+              lies with ELIXIR Estonia. It does not necessarily reflect the opinion of the European Union,
+              and the European Commission is not responsible for any use that
+              may be made of the information contained therein.

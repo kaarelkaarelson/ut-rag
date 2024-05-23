@@ -1,0 +1,2 @@
+<LINK>https://courses.cs.ut.ee/demos/csstype/</LINK>
+CssTYPE SAVE CLEAR Ctrl+D - Toggle design mode Ctrl+G - Add new Graphic block Base font size: px Css TYPE G 1 Press the green "G" or Ctrl+G to create a new graphic block Alignment Padding (em) Graphblock width % Word spacing em Letter spacing em Add new font Font family separated by commas or link to a Google font : Add Cancel

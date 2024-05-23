@@ -1,0 +1,2 @@
+<LINK>https://courses.cs.ut.ee/demos/geopeitusmap/</LINK>
+Geopeitus map Toggle Heatmap Change radius Toggle markers Info

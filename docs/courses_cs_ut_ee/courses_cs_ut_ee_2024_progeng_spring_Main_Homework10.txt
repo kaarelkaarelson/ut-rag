@@ -1,0 +1,59 @@
+<LINK>https://courses.cs.ut.ee/2024/progeng/spring/Main/Homework10</LINK>
+Programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine (LTAT.03.001) EN Logi sisse Programmeerimine 2023/24 kevad Home Homework for Week 10 After this week you can Create and use tuples Create sets and perform operations with them Use tuples for sorting data Choose appropriate data structure based on the characteristics of the problem Tuples A tuple is very similar to a list; the main difference is that a tuple cannot be changed. Once it is created, it remains the same until the end of the program. Thanks to this, tuples can be used where lists are not allowed, such as keys in a dictionary. Tuples are also more efficient performance-wise and, therefore, can be used when the value is known not to change. First, watch the following videos about tuples: Slides in English Textbook in English Sets Python also has a data type for sets . A set is an unordered collection of unique elements – in a set, there are no duplicates. Every element of a set must be immutable (cannot be changed), but any immutable data type is allowed: integers, floats, strings, even tuples, and so on. Although a set (contrary to lists and dictionaries) cannot have mutable elements, a set itself is mutable – we can add elements to it or remove elements from it. Creating sets A set is created by listing all its elements inside the curly brackets {}, separated by commas, or by using the built-in function set() . Note: to create an empty set you have to use set() , not {} ; the latter creates an empty dictionary. s1 = {8, 2, 3, 6, 7}
+s2 = set([6, 4, 5])
+s3 = set('Good morning')
+s4 = set() Go through the following examples as well. >>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+>>> print(basket)    # show that duplicates have been removed
+{'orange', 'pear', 'banana', 'apple'}
+>>> X = set('abracadabra')
+>>> X    # unique letters in X
+{'a', 'r', 'b', 'c', 'd'} Set operations Sets have a large number of built-in methods. The table below shows only the most basic ones. For more methods, see Python's documentation on sets . Operation Description s.add(el) add element el to set s s.remove(el) remove element el from set s if the element is in the set. If el is not in the set, a KeyError is raised. s.discard(el) remove element el from set s if the element is in the set. If el is not in the set, nothing is done. s.update(s1) update set s by adding the elements from another set s1 s.pop() remove an arbitrary element from set s , the method returns the element removed s.clear() remove all elements from set s s.copy() return a new set with a shallow copy of set s Sets also support mathematical operations like union, intersection, difference, and symmetric difference. Operation Description A & B A.intersection(B) a new set with elements that belong to both A and B at the same time A | B A.union(B) a new set with all elements that belong to either A or B (or both) A - B A.difference(B) difference of A and B, a set of elements that are only in A, but not in B A ^ B A.symmetric_difference(B) symmetric difference of A and B, a set with elements in either A or B, but not in both A <= B A.issubset(B) tests whether every element in set A is in set B A >= B A.issuperset(B) tests whether every element in set B is in set A Try out these operations yourself! Iterating through a set Using a for-loop, we can iterate though a set: for letter in set("apple"):
+    print(letter, end=" ") In the output, the duplicates are removed and the order of letters is not preserved: p a e l Quiz Go to Moodle and solve the quiz on tuples and sets. Examples Meetings revisited The following program is a modified example from last week, the meetings program . The file meetings.txt contains records of meetings. Each number in the file indicates the day of the week when an appointment takes place. The following program reads the data from the file and creates a dictionary, where the days of the week are the keys, and the numbers of appointments are the values. Then the program creates a list of tuples and sorts it in descending order. Finally, the program outputs three days which have the largest number of meetings. def day_of_week(n):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return days[n-1]
+
+ffile = open("meetings.txt")
+
+meetings = dict()
+
+for line in ffile:
+    try:
+        number = int(line)
+        day = day_of_week(number)
+        meetings[day] = meetings.get(day,0) + 1
+    except:
+        print("Invalid value")
+
+ffile.close()
+
+lst = list()
+for key, val in meetings.items():
+    lst.append( (val, key) )
+
+lst.sort(reverse=True)
+
+for val, key in lst[:3]:
+    print(key, val) Here, tuples are used to sort the dictionary entries since the dictionary itself doesn't allow sorting. The list of tuples is sorted lexicographically: by first elements, then by second elements, etc. Names This program prompts the user for the first and last names of three people and outputs two names that have the most number of letters in common. Pay attention to the function names , which returns two values at once (actually one tuple). def names(number):
+    first = input("Please enter the first name of person "+str(number)+": ")
+    last = input("Please enter the last name of person "+str(number)+": ")
+    return first.lower(), last.lower()
+
+def common(firstX, lastX, firstY, lastY):
+    firsts = set(firstX) & set(firstY)
+    lasts = set(lastX) & set(lastY)
+    return len(firsts) + len(lasts)
+
+first1, last1 = names(1)
+first2, last2 = names(2)
+first3, last3 = names(3)
+
+common12 = common(first1, last1, first2, last2)
+common23 = common(first2, last2, first3, last3)
+common13 = common(first1, last1, first3, last3)
+
+if common12 >= common13 and common12 >= common23:
+    print("Names of persons 1 and 2 are most similar to each other.")
+if common13 >= common12 and common13 >= common23:
+    print("Names of persons 1 and 3 are most similar to each other.")
+if common23 >= common12 and common23 >= common13:
+    print("Names of persons 2 and 3 are most similar to each other.") In the main program, we compare each pair of persons; there are three such pairs for a set of three persons. Exercises 1. Distances between points Write a function distance that takes two tuples of length two (coordinates of two points) as its arguments and returns the distance between the two points. >>> A = (1, 2) >>> B = (5, 5) >>> distance(A, B) 5.0 Hint: {$d = \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}$} Write a program that first asks the user for the number of points, then for each point, asks for its x and y coordinates in the form ( x , y ). Then, using the function distance , finds and prints the numbers of two points that are the closest to each other. If there are several pairs of points with the same distance, any such pair can be taken. Point numbers start from 1. Here is an example of the output: Enter the number of points: 4 Enter the coordinates of point 1: (8, 9) Enter the coordinates of point 2: (3, 2) Enter the coordinates of point 3: (16, 20) Enter the coordinates of point 4: (0, 0) Points 2 and 4 are the closest to each other. 2. Children and parents Each line in the file names.txt contains the personal identification code and the name of a person, separated by a space. It can be assumed that there are no duplicate names in the file. Each line of the file children.txt contains the parent's personal identification code and the child's personal identification code, separated by a space. It can be assumed that for each personal code in the file children.txt , the corresponding name is listed in the file names.txt . Write a program that outputs one line for each child on the screen: name, colon, space, and then the name of the mother and the father, separated by a comma and space. If only one parent is known, then the program prints only one name. For example, for the files above, the following lines should appear on the screen (the order of the children or their parents does not matter): Robert Peedumets: Madli Peedumets, Peeter Peedumets Maria Peedumets: Madli Peedumets, Peeter Peedumets Liisa-Maria Jaaniste: Kadri Kalkun Peeter Peedumets: Karl Peedumets The main job should be delegated to the function children_with_parents , whose parameters are the names file name and the children's file name, and which returns a dictionary where the key of each entry is the child's name and the value is the set of his or her parents' names. For example, for the files above, the result should be: >>> children_with_parents ("names.txt", "children.txt") {'Robert Peedumets': {'Madli Peedumets', 'Peeter Peedumets'}, 'Maria Peedumets': {'Madli Peedumets', 'Peeter Peedumets'}, 'Liisa-Maria Jaaniste': {'Kadri Kalkun'}, 'Peeter Peedumets': {'Karl Peedumets'}} Autotester. The program should not ask the user for anything. The names of the data files, names.txt and children.txt , should be written into the program, i.e., the main program will call the function children_with_parents with them. Submit your solutions Go to Moodle and upload your solutions there. The programs should have the names home1.py and home2.py , respectively. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

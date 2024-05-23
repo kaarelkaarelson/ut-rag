@@ -1,0 +1,108 @@
+<LINK>https://mathwiki.cs.ut.ee/finite_fields/03_general_construction</LINK>
+The general way of constructing finite fields [MathWiki] Log In Trace:: The general way of constructing finite fields MathWiki Search finite_fields:03_general_construction Asymptotics The need for asymptotic notation: a case study Big Oh Big Omega Multiple variables Polynomial complexity The negligible, the noticeable and the overwhelming Divisibility and modular arithmetics Divisibility Primes and divisibility Greatest common divisor  and least common multiple Euclidean algorithm Extended Euclidean algorithm Modular arithmetics Finite fields What are rings and fields? Long division of polynomials The general way of constructing finite fields Isomorphisms, homomorphisms, automorphisms. Classification of all finite fields Computations in finite fields What is a group? Multiplicative group in finite fields Subfields Linear algebra 1. Matrices 2. Systems of linear equations and matrices 3. Gaussian elimination algorithm 4. Solving systems of linear equations via invertible matrices Number theory Probability theory Event and probability Probability of two events Conditional probability Total probability Expected value Inequalities Game notation 1. Yet another finite field 2. Generalizing of the construction 3. Finding irreducible polynomials with the sieve of Eratosthenes The general way of constructing finite fields 1. Yet another finite field We know that $\mathbb Z_n$ is a finite field if $n$ is a prime. Do there exist other examples of finite fields? Let us try to construct one. A way how one could try to construct a finite field would be to start with a data structure for which addition is already defined and then try to define multiplication so that the resulting structure would satisfy all field axioms. Let us consider, for instance, the set of two bit integers $\mathcal{B}_2=\left\{00, 01, 10, 11\right\}$. As the addition operation, let us use bitwise XOR (denoted by $\oplus$): $\oplus$ $00$ $01$ $10$ $11$ $00$ $00$ $01$ $10$ $11$ $01$ $01$ $00$ $11$ $10$ $10$ $10$ $11$ $00$ $01$ $11$ $11$ $10$ $01$ $00$ Recall that bitwise XOR satisfies all field axioms that are connected to addition ($\oplus$ is commutative and associative, there exists a zero element and every element has an opposite element); so the set $\mathcal{B}_2$ would form a finite field if we could come up with a multiplication operation so that the remaining field axioms are satisfied. What is the zero element of $\mathcal{B}_2$? If $x$ is an element of $\mathcal{B}_2$, what is its opposite element $-x$? Solution. The zero element is $00$ since XOR-ing with $00$ does not change any element of $\mathcal{B}_2$. The opposite of an element must satisfy $x \oplus (-x) = 00$, so it must be the element itself: e. g. $-10 = 10$ since $10 \oplus 10 = 00$. As a first thought of a potential candidate for multiplication operation, one might think of the bitwise AND operation, as it is readily seen to be commutative ($a\wedge b = b\wedge a$) and associative ($(a\wedge b)\wedge c=a\wedge(b\wedge c)$). Actually it turns out that this would almost work: it can be checked that then $\mathcal{B}_2$ would be a commutative ring. The identity element of this ring is $11$ since $x \wedge 11 = x$ for all $x \in \mathcal{B}_2$. However, this commutative ring is not a field since there exist nonzero elements without reciprocal: e. g. there is no element $b\in\mathcal{B}_2$ such that $10 \wedge b = 11$. Nevertheless, there exist ways of defining multiplication on $\mathcal{B}_2$ that turn it into a field (if XOR is used as addition, as before). Namely, if we define multiplication in the following way $\times$ $00$ $01$ $10$ $11$ $00$ $00$ $00$ $00$ $00$ $01$ $00$ $01$ $10$ $11$ $10$ $00$ $10$ $11$ $01$ $11$ $00$ $11$ $01$ $10$ then it is not hard, though extremely tedious, to verify that resulting
+data structure $(\mathcal{B}_2; \oplus,\times)$ satisfies all field axioms. Verify that the data structure $(\mathcal{B}_2;\oplus,\times)$ satisfies
+all field axioms. (Try to be clever to reduce the amount of work required:
+e. g. when checking the distributivity condition
+$a\times(b\oplus c)=(a\times b) \oplus (b \times c)$, you don't have to
+compute both sides of the equality for all the $4^3 = 64$ triples
+$(a,b,c)$ because you can, for instance, take advantage of commutativity.) Alternatively, write a program in IPython that checks whether a finite set is a field,
+given an addition table and a multiplication table as input.
+Use the program to verify that $(\mathcal{B}_2; \oplus,\times)$ is a field. From the addition and multiplication tables above it is obvious that the zero element of $(\mathcal{B}_2; \oplus,\times)$ is $00$ and the identity element is $01$, since adding $00$ to any element is a no-op, as is multiplying by $01$; therefore, in the following, we shall denote $00$ and $01$ by $0$ and $1$, respectively. We shall also denote the operation $\oplus$ simply by $+$ and the operation $\times$ by $\cdot$ or juxtaposition to help our intuition recognize situations analogous to our familiar field of real numbers. 2. Generalizing of the construction Let's study this data structure a bit more to unravel the magic behind the definition of multiplication operation. Let $\alpha = 10$. Then it is easy to express all field elements as linear combinations of $\alpha$ and $1$. Combination $0$ $1$ $\alpha$ $\alpha + 1$ Binary representation $00$ $01$ $10$ $11$ The multiplication table forces the following substitutions:
+\[\begin{align*}
+  \alpha^2 &= \alpha + 1, &
+  (\alpha+ 1)^2 &= \alpha, &
+  \alpha\cdot(\alpha+ 1) &= 1\enspace.
+\end{align*}\]
+If we open brackets and move all terms to left-hand side 1) , we get the same equality
+\[\begin{align*}
+  \alpha^2+ \alpha + 1 = 0 
+\end{align*}\]
+after simplifications. To be punctual, note that in the field $\mathcal B_2$ we have the equalities $2x = x+x=0$ and $-x=x$, thus we can always drop terms with even coefficients and ignore signs. From this insight it is easy to verify that the multiplication table captures arithmetic with polynomials where the result is reduced modulo $\alpha^2+\alpha+ 1$:
+\[\begin{align*}
+  \alpha\cdot \alpha & = \alpha^2=\alpha^2+(\alpha^2+ \alpha+ 1) =\alpha+ 1\\
+  \alpha\cdot (\alpha + 1) & =%
+  \alpha^2+ \alpha=\alpha^2+\alpha+ (\alpha^2+ \alpha+ 1) = 1\\
+  (\alpha+ 1)\cdot (\alpha + 1) & =%
+  \alpha^2+ 1=\alpha^2+ 1+ (\alpha^2+ \alpha+ 1) = \alpha\enspace.
+\end{align*}\]
+The latter allows us to declare that $(\mathcal{B}_2;+,\cdot)$ is actually defined as a set of polynomials
+\[\begin{align*}
+  \mathbb{Z}_2[\alpha]/(\alpha^2+\alpha+ 1)=\left\{0, 1, \alpha, \alpha+1\right\}
+\end{align*}\]
+where $\mathbb{Z}_2$ means that we consider all polynomial coefficients modulo 2 and $(\alpha^2+\alpha+ 1)$ under division slash means that whenever the degree of a polynomial is larger than or equal to $2$ we compute remainder of the polynomial modulo $\alpha^2+\alpha+ 1$. Such a formalisation can be generalized to construct many potential candidates of finite fields of the form $\mathbb{Z}_n[\alpha]/(p(\alpha))$ where $p$ is some polynomial with coefficients in $\mathbb Z_n$. Definition. Let $\mathbb{Z}_n$ be a residue ring. Then $\mathbb{Z}_n[\alpha]=\{0,1, \ldots, \alpha, 2\alpha,\ldots\}$ denotes the set of all polynomials with coefficients from $\mathbb{Z}_n$. Addition and multiplication of these polynomials with each other is defined as usual, except that all coefficients of the resulting polynomials are reduced modulo $n$. Let $p(\alpha)\in\mathbb{Z}_n[\alpha]$. Then $\mathbb{Z}_n[\alpha]/(p(\alpha))$ denotes the set of all polynomials over $\mathbb{Z}_n$ that are reduced modulo $p(\alpha)$.
+Similarly, addition and multiplication with these polynomials is defined as in $\mathbb{Z}_n[\alpha]$, except that the resulting polynomials are reduced modulo $p(\alpha)$. The following lemma says that our finite field candidates also automatically satisfy most of the field axioms. Lemma. The set $\mathbb{Z}_n[\alpha]/(p(\alpha))$ is a commutative ring for any polynomial $p(\alpha)\in\mathbb{Z}_n[\alpha]$. The set $\mathbb{Z}_n[\alpha]/(p(\alpha)))$ is always finite. Indeed, its elements — the remainders of polynomials modulo $p(\alpha)$ — are the polynomials of degree less than the degree of $p(\alpha)$. Polynomials of degree less than $k$ are of the form $a_{k-1} x^{k-1} + \ldots + a_2 x^2 + a_1 x + a_0$; they are uniquely determined by their coefficients $a_0, \ldots, a_{k-1} \in \mathbb Z_n$. So the set $\mathbb{Z}_n[\alpha]/(p(\alpha)))$ contains $n^k$ elements where $k$ is the degree of $p(\alpha)$. Therefore, in order to construct a finite field, we may choose a modulus $n$ (an integer greater than $1$) and a polynomial $p(\alpha)$ and then check whether all non-zero polynomials in $\mathbb{Z}_n[\alpha]/(p(\alpha))$ are invertible or not — if they are, then $\mathbb{Z}_n[\alpha]/(p(\alpha))$ is a field. After that, if one wishes to make calculations in the field using a computer, one has to choose how to represent these polynomials in binary. The easiest way is to store polynomials by their coefficient vectors. Note that not all polynomials lead to a field. Let us do an exhaustive classification of first and second degree polynomials over $\mathbb{Z}_2$, i. e., addition is defined as bitwise XOR. There are two linear polynomials $\alpha$ and $\alpha+ 1$. The corresponding rings consist of two elements
+\[\begin{align*}
+  \mathbb{Z}_2[\alpha]/(\alpha) &=\left\{0,1\right\}=\mathbb{Z}_2 & \mathbb{Z}_2[\alpha]/(\alpha+1)
+  &=\left\{0,1\right\}=\mathbb{Z}_2\enspace,
+\end{align*}\]
+since the remainder of a polynomial, when divided by a first degree polynomial, is a constant term. There are four quadratic polynomials over $\mathbb{Z}_2$:
+\[\begin{align*}
+  \alpha^2\enspace, 
+  \alpha^2+ 1\enspace
+  \alpha^2+ \alpha\enspace,
+  \alpha^2+ \alpha + 1\enspace. 
+\end{align*}\]
+Note that the first three can be easily factored: \[\begin{align*}
+  \alpha^2 &=\alpha\cdot\alpha \enspace\\ 
+  \alpha^2+ 1&=(\alpha+ 1)\cdot(\alpha+ 1)\enspace\\
+  \alpha^2+ \alpha&=\alpha\cdot(\alpha+ 1)\enspace.
+\end{align*}\] Note that if a polynomial $p(\alpha)$ can be expressed as a non-trivial product of two other polynomials $p(\alpha) = u(\alpha)\cdot v(\alpha)$, then polynomials modulo $p(\alpha)$ do not form a field. Indeed, the left-hand side of the equality $p(\alpha) = u(\alpha)\cdot v(\alpha)$ is zero modulo $p(\alpha)$, whereas the right-hand side is the product of two polynomials that are non-zero modulo $p(\alpha)$ (neither of $u(\alpha)$ and $v(\alpha)$ cannot be the zero polynomial since otherwise $p(\alpha)$ would be the zero polynomial; as $u(\alpha)$ and $v(\alpha)$ have smaller degrees than $p(\alpha)$, the remainders of $u(\alpha)$ and $v(\alpha)$, when divided by $p(\alpha)$, are $u(\alpha)$ and $v(\alpha)$ themselves, so the remainders are non-zero). Therefore, in such case the ring of polynomials modulo $p(\alpha)$ contains what algebraists call zero divisors : two non-zero elements $u$ and $v$ such that $u \cdot v = 0$. It is an easy algebraic fact that no field can contain zero divisors: indeed, if in a field there are elements $u$ and $v$ such that $u \cdot v = 0$ and $u \neq 0$, then $u$ has an inverse $u^{-1}$, so $0 = u^{-1} \cdot 0 = u^{-1} \cdot (u \cdot v) = (u^{-1} \cdot u) \cdot v = 1 \cdot v = v$. It is common to call a non-constant polynomial irreducible if it cannot be represented as a non-trivial product of two polynomials. To be punctual, we require that the degree of both factors is at least one. This avoids trivial factorisations where one of factors is one or any other scalar. Now we are ready to state and prove the analog of the theorem that a residue class ring is a field if and only if the modulus is a prime . Theorem. Let $n > 1$ be an integer and $p(\alpha)$ a non-constant polynomial with coefficients in $\mathbb{Z}_n$. The ring $\mathbb{Z}_n[\alpha]/(p(\alpha)))$ is a finite field if and only if $n$ is a prime and $p(\alpha)$ is an irreducible polynomial. Proof First note that any non-zero scalar $c\in\mathbb{Z}_n$ is invertible only
+if $\mathbb{Z}_n$ is a field and thus $n$ must be a prime. We already saw
+that factors of a reducible polynomial cannot be inverted. To prove
+the theorem, we must prove that any non-zero polynomial has its
+inverse when $p(\alpha)$ is irreducible. To find a clue for the proof, let's recall what were the invertible elements of some simpler rings we know — the residue rings $\mathbb Z_n$. If $a$ and $b$ are two integers such that $b>0$ then the residue class of an integer $a$ is an invertible element of $\mathbb Z_b$ (or equivalently: there exists $u$ such that $au \equiv 1\ (\operatorname{mod} b)$; or equivalently: there exist integers $u$ and $v$ such that $au + bv = 1$) if and only if $a$ and $b$ are coprime, i. e. $\gcd(a,b)=1$. This fact was proven using the extended Euclid's algorithm that calculates the greatest common divisior of two integers. One can apply the extended Euclid's algorithm to polynomials completely analogously, only doing long division of polynomials instead of integer division. The result is the greatest common divisor of the polynomials. The greatest common divisor of polynomials is defined like the GCD of integers: the GCD of two polynomials $a(x)$ and $b(x)$ is a polynomial which divides every polynomial that divides both $a(x)$ and $b(x)$ and is divisible by every common divisor of $a(x)$ and $b(x)$. Basically, it is a polynomial of the highest degree that divides both $a(x)$ and $b(x)$ (with the exception that the GCD of zero polynomials is zero). The GCD of two polynomials is determined up multiplication by nonzero constant. E. g. the greatest common divisor of the polynomials $x^2+2$ and $x^3+1$ with coefficients in $\mathbb Z_3$ is $x+1$ (or equivalently, $2x+2$) since in $\mathbb Z_3$ we have $x^2+2 = x^2 + 3x + 2 = (x+1)(x+2)$ and $x^3+1 = x^3 + 3x^2 + 3x + 1 = (x+1)^3$. Two polynomials are called coprime if their GCD is a non-zero constant polynomial. Completely analogously to the proof of the fact for integers, one can show that if two polynomials $a(\alpha), b(\alpha)$ are coprime over $\mathbb{Z}_n$ then there exist $u(\alpha),v(\alpha)\in\mathbb{Z}_n[\alpha]$ such that $u(\alpha)a(\alpha)+v(\alpha)b(\alpha)=1$ over $\mathbb{Z}_n$. If $p(\alpha)$ is irreducible then any polynomial with smaller degree is coprime with $p(\alpha)$ over $\mathbb{Z}_n$. Consequently, we can represent $1 = u(\alpha)a(\alpha)+ v(\alpha)p(\alpha)$ and thus $1 = u(\alpha)a(\alpha)$ in the ring of polynomials over $\mathbb{Z}_n$ modulo $p(\alpha))$. 3. Finding irreducible polynomials with the sieve of Eratosthenes Irreducible polynomials are the analog of prime numbers. In
+particular, if a polynomial is reducible then some smaller degree
+irreducible polynomial must divide it. More precisely, if the degree of
+a polynomial is $n$ then it is sufficient to consider all irreducible
+polynomials up to degree $\left\lfloor n/2\right\rfloor$. For example, let's find all irreducible polynomials of degree five over $\mathbb{Z}_2$.
+To this end, we must first find all irreducible polynomials up to degree $2$. These
+are
+\[\begin{align*}
+  \alpha, \qquad\alpha+ 1,\qquad \alpha^2+\alpha+ 1\enspace.
+\end{align*}\]
+Now lets consider all $16$ polynomials of degree $5$. Half of them
+have the free term zero and thus divide by $\alpha$ and cannot be
+irreducible. Secondly, note that $\alpha+ 1$ divides polynomial
+$p(\alpha)$ if $p(1)=0$ (this follows from the little Bézout's theorem, which holds for polynomials over any field:
+a linear polynomial $x-a$, where $a$ is a constant, divides a polynomial $p(x)$ if and only if $p(a)=0$).
+The latter happens if the number of nonzero monomials is even.
+Therefore, we need to consider only polynomials with odd number of monomials and non-zero free term:
+\[\begin{align*}
+  &\begin{aligned}
+    \alpha^5&+\alpha^4+ 1\\
+    \alpha^5&+\alpha^3+ 1\\
+    \alpha^5&+\alpha^2+ 1\\
+    \alpha^5&+\alpha\hphantom{^1}+ 1\\
+  \end{aligned}
+  &\begin{aligned}
+    \alpha^5&+\alpha^3+\alpha^2+\alpha\hphantom{^1}+ 1\\
+    \alpha^5&+\alpha^4+\alpha^2+\alpha\hphantom{^1}+ 1\\
+    \alpha^5&+\alpha^4+\alpha^3+\alpha\hphantom{^1}+ 1\\
+    \alpha^5&+\alpha^4+\alpha^3+\alpha^2+ 1\\
+  \end{aligned}
+\end{align*}\]
+Now note that $\alpha^2+\alpha+ 1$ divides only two of them:
+\[\begin{align*}
+  \alpha^5+\alpha^4+ 1%
+  &= (\alpha^3+\alpha+ 1)\cdot(\alpha^2+\alpha+
+  1)\\
+  \alpha^5+\alpha+ 1%
+  &= (\alpha^3+\alpha^2+ 1)\cdot(\alpha^2+\alpha+
+  1)
+\end{align*}\]
+and thus there are six irreducible polynomials:
+\[\begin{align*}
+  &\begin{aligned}
+    \alpha^5&+\alpha^3+ 1\\
+    \alpha^5&+\alpha^2+ 1\\
+    \end{aligned}
+  &&\begin{aligned}
+    \alpha^5&+\alpha^3+\alpha^2+\alpha\hphantom{^1}+ 1\\
+    \alpha^5&+\alpha^4+\alpha^2+\alpha\hphantom{^1}+ 1\\
+    \end{aligned}
+   &&\begin{aligned}
+    \alpha^5&+\alpha^4+\alpha^3+\alpha\hphantom{^1}+ 1\\
+    \alpha^5&+\alpha^4+\alpha^3+\alpha^2+ 1\enspace
+  \end{aligned}
+\end{align*}\]
+which all give a rise to a $32$-element finite fields. Find all irreducible polynomials of degree $3$ and $4$ over $\mathbb{Z}_2$. Construct the multiplication tables of the corresponding fields. Isomorphisms, homomorphisms, automorphisms. Classification of all finite fields 1) We can do high school math as all field axioms are satisfied. finite_fields/03_general_construction.txt · Last modified: 2014/01/20 11:14 by marje Contact: ati.comp@ut.ee

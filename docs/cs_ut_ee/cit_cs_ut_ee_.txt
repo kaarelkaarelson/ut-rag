@@ -1,0 +1,2 @@
+<LINK>https://cit.cs.ut.ee/</LINK>
+Coding and Information Transmission Group Coding and Information Transmission Group Institute of Computer Science, University of Tartu, Estonia People Projects For students 5th International Castle Meeting Research interests: Coding theory, network coding, wireless communications, information theory, combinatorics, theoretical computer science Contact details: Vitaly Skachek Institute of Computer Science University of Tartu J. Liivi 2, 50409 Tartu, ESTONIA Phone: +372 737-6418 Email: Vitaly dot Skachek at ut dot ee

@@ -1,0 +1,150 @@
+<LINK>https://mathwiki.cs.ut.ee/linear_algebra/04_invertible_matrices</LINK>
+4. Solving systems of linear equations via invertible matrices [MathWiki] Log In Trace:: 4. Solving systems of linear equations via invertible matrices MathWiki Search linear_algebra:04_invertible_matrices Asymptotics The need for asymptotic notation: a case study Big Oh Big Omega Multiple variables Polynomial complexity The negligible, the noticeable and the overwhelming Divisibility and modular arithmetics Divisibility Primes and divisibility Greatest common divisor  and least common multiple Euclidean algorithm Extended Euclidean algorithm Modular arithmetics Finite fields What are rings and fields? Long division of polynomials The general way of constructing finite fields Isomorphisms, homomorphisms, automorphisms. Classification of all finite fields Computations in finite fields What is a group? Multiplicative group in finite fields Subfields Linear algebra 1. Matrices 2. Systems of linear equations and matrices 3. Gaussian elimination algorithm 4. Solving systems of linear equations via invertible matrices Number theory Probability theory Event and probability Probability of two events Conditional probability Total probability Expected value Inequalities Game notation 4. Solving systems of linear equations via invertible matrices There is a special matrix denoted by $I$ and referred to as the identity matrix .
+It's number of rows equals to it's number of columns, and it has ones down the main diagonal (from 
+upper left cornet to the lower right corner) and zeroes elsewhere. For example, $\begin{pmatrix}1\end{pmatrix},\ \begin{pmatrix}1&0\\0&1\end{pmatrix},\ \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$ are $1\times 1$ identity matrix, $2\times 2$ identity matrix, and $3\times 3$ identity matrix, respectively. The identity matrix has the following property. Lemma. Suppose that $A$ is an $m\times n$ matrix and $I_n$ is the $n\times n$ identity matrix. Then
+$AI_n=A$. If $I_m$ is the $m\times m$ identity matrix, it also follows that $I_mA=A$. Verify the lemma in case of $A=\begin{pmatrix}1&3&2&4\\-4&-2&-3&-1\\5&8&6&7\end{pmatrix}$ by calculating $\begin{pmatrix}1&3&2&4\\-4&-2&-3&-1\\5&8&6&7\end{pmatrix}
+\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1\end{pmatrix}\quad$ and
+$\quad\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}
+\begin{pmatrix}1&3&2&4\\-4&-2&-3&-1\\5&8&6&7\end{pmatrix}$. Let us have a system of linear equations $A\mathbf{x}=\mathbf{b}$, where $A=(a_{ij})$, 
+$i,j=1,\dots,n$, $\mathbf{x}=\begin{pmatrix}x_1&\dots&x_n\end{pmatrix}^T$, and 
+$\mathbf{b}=\begin{pmatrix}b_1&\dots&b_n\end{pmatrix}^T$. And suppose that there exists an $n\times n$ matrix $D$
+such that $DA=I_n$.  Then the following is true: \begin{align}
+A\mathbf{x}&=\mathbf{b}\Rightarrow\\
+DA\mathbf{x}&=D\mathbf{b}\Rightarrow\\
+I_n\mathbf{x}&=D\mathbf{b}\Rightarrow\\
+\mathbf{x}&=D\mathbf{b}.
+\end{align} It provides us with an alternative way of calculating $\mathbf{x}$.
+By knowing the matrix $D$, solving the system of linear equation 
+means just calculating the product $Db$. Let $A=\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix},\ \mathbf{b}=\begin{pmatrix}1\\2\\3\end{pmatrix}$,
+and $D=\begin{pmatrix}0&\frac{1}{2}&\frac{1}{2}\\1&-1&0\\1&-\frac{1}{2}&-\frac{1}{2}\end{pmatrix}$. Verify that $DA=I$ and solve the system $A\mathbf{x}=\mathbf{b}$ by usind the matrix $D$. Verify the obtained result by Gaussian elimination algorithm. Solving the systems of linear equations like this seems really simple, isn't it. Moreover, by knowing $D$
+we can solve the system easily for many different values of $\mathbf{b}$. Solve the system of linear equations form previous exercise for 
+$\mathbf{b}=\begin{pmatrix}0\\1\\3\end{pmatrix}$ and $\mathbf{b}=\begin{pmatrix}1\\1\\3\end{pmatrix}$. Answer $\mathbf{x}=\begin{pmatrix}0&\frac{1}{2}&\frac{1}{2}\\1&-1&0\\1&-\frac{1}{2}&-\frac{1}{2}\end{pmatrix}\begin{pmatrix}0\\1\\3\end{pmatrix}=\begin{pmatrix}2\\-1\\-2\end{pmatrix}$ and $\mathbf{x}=\begin{pmatrix}0&\frac{1}{2}&\frac{1}{2}\\1&-1&0\\1&-\frac{1}{2}&-\frac{1}{2}\end{pmatrix}\begin{pmatrix}1\\1\\3\end{pmatrix}=\begin{pmatrix}2\\0\\-1\end{pmatrix}$ But the catch is, how to find the
+matrix $D$? For answering the question, we will need the following theorem. Theorem. Suppose that $A$ and $D$ are $n\times n$ matrices such that $DA=I$. Then also $AD=I$. Thus, for solving the system $A\mathbf{x}=\mathbf{b}$, we are looking for a $n\times n$ matrix $D$
+such that $AD=I$. It is a matrix equation where $D$ is the unknown. From previous we know 
+(see Gaussian elimination algorithm ) how to solved 
+similar equations where the unknown is and $n\times 1$ vector and on the right hand side is also an vector 
+- this is were we are heading. Note, that we can express the product $AD$ in the following way $AD=\begin{pmatrix}A\mathbf{x_1}&A\mathbf{x_2}&\dots&A\mathbf{x_n}\end{pmatrix}$ where $\mathbf{x_i}$ is the $i^{th}$ column of matrix $D$ (i.e. 
+$D=\begin{pmatrix}\mathbf{x_1}&\mathbf{x_2}&\dots&\mathbf{x_n}\end{pmatrix}$). For example, $$\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}
+\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}=
+\begin{pmatrix}\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}a\\d\\g\end{pmatrix}&
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}b\\e\\h\end{pmatrix}&
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}c\\f\\i\end{pmatrix}\end{pmatrix}.
+\qquad (\ast)$$ Calculate the second column of the product $$\begin{pmatrix}1&2&2\\1&0&2\\2&2&4\end{pmatrix}\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}$$ without calculating the whole product. Answer $\begin{pmatrix}1&2&2\\1&0&2\\2&2&4\end{pmatrix}\begin{pmatrix}0\\-1\\1\end{pmatrix}=\begin{pmatrix}0\\2\\2\end{pmatrix}$ Hence, $AD=\begin{pmatrix}A\mathbf{x_1}&A\mathbf{x_2}&\dots&A\mathbf{x_n}\end{pmatrix}=
+\begin{pmatrix}\mathbf{e_1}&\mathbf{e_2}&\dots&\mathbf{e_n}\end{pmatrix}$, where  $\mathbf{e_i}$ is the $i^{th}$ column of matrix $I$
+(i.e. $I=\begin{pmatrix}\mathbf{e_1}&\mathbf{e_2}&\dots&\mathbf{e_n}\end{pmatrix}$). Since two matrices are equal if and only if all the corresponding elements (or groups of elements, e.g., column vectors) 
+are equal, solving the matrix equation $AD=I$ is equivalent to solving the following
+systems of linear equations $A\mathbf{x_1}=\mathbf{e_1},\ A\mathbf{x_2}=\mathbf{e_2},\ \dots,\ A\mathbf{x_n}=\mathbf{e_n}$. In the example $(\ast)$, the matrix equation $$\begin{pmatrix}\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}a\\d\\g\end{pmatrix}&
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}b\\e\\h\end{pmatrix}&
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}c\\f\\i\end{pmatrix}\end{pmatrix}=
+\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$$ is equivalent to solving the systems $$\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}a\\d\\g\end{pmatrix}=
+\begin{pmatrix}1\\0\\0\end{pmatrix},\ 
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}b\\e\\h\end{pmatrix}=
+\begin{pmatrix}0\\1\\0\end{pmatrix},\
+\begin{pmatrix}1&0&1\\1&-1&1\\1&1&-1\end{pmatrix}\begin{pmatrix}c\\f\\i\end{pmatrix}=
+\begin{pmatrix}0\\0\\1\end{pmatrix}.
+$$ Now, for finding the $\mathbf{x_i},\ i=1,\dots,n$, we can apply $n$ times Gaussian elimination algorithm: \begin{align}
+(A|\mathbf{e_1})&\longrightarrow (I|\mathbf{c_1})\\
+(A|\mathbf{e_2})&\longrightarrow (I|\mathbf{c_2})\\
+\dots\\
+(A|\mathbf{e_n})&\longrightarrow (I|\mathbf{c_n}).
+\end{align} Thus, the matrix $D=\begin{pmatrix}\mathbf{c_1}&\mathbf{c_2}&\dots&\mathbf{c_n}\end{pmatrix}$. Let us view how it looks like on our example $(\ast)$:
+$$
+\left(\begin{array}{rrr|r}
+1&0&1&1\\
+1&-1&1&0\\
+1&1&-1&0
+\end{array}\right)
+\overset{\color{red}{R_2-R_1}}{\overset{\color{red}{R_3-R_1}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&1&1\\
+0&-1&0&-1\\
+0&1&-2&-1
+\end{array}\right)
+\overset{\color{red}{R_3+R_2}}{\longrightarrow}
+\left(\begin{array}{rrr|r}
+1&0&1&1\\
+0&-1&0&-1\\
+0&0&-2&-2
+\end{array}\right)
+\underset{\color{red}{-\frac{1}{2}R_3},\color{red}{\ -1R_2}}{\overset{\color{red}{R_1+\frac{1}{2}R_3}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&0&\color{blue}0\\
+0&1&0&\color{blue}1\\
+0&0&1&\color{blue}1
+\end{array}\right),
+$$ $$
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+1&-1&1&1\\
+1&1&-1&0
+\end{array}\right)
+\overset{\color{red}{R_2-R_1}}{\overset{\color{red}{R_3-R_1}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+0&-1&0&1\\
+0&1&-2&0
+\end{array}\right)
+\overset{\color{red}{R_3+R_2}}{\longrightarrow}
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+0&-1&0&1\\
+0&0&-2&1
+\end{array}\right)
+\underset{\color{red}{-\frac{1}{2}R_3},\color{red}{\ -1R_2}}{\overset{\color{red}{R_1+\frac{1}{2}R_3}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&0&\color{blue}{\frac{1}{2}}\\
+0&1&0&\color{blue}{-1}\\
+0&0&1&\color{blue}{-\frac{1}{2}}
+\end{array}\right),
+$$ $$
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+1&-1&1&0\\
+1&1&-1&1
+\end{array}\right)
+\overset{\color{red}{R_2-R_1}}{\overset{\color{red}{R_3-R_1}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+0&-1&0&0\\
+0&1&-2&1
+\end{array}\right)
+\overset{\color{red}{R_3+R_2}}{\longrightarrow}
+\left(\begin{array}{rrr|r}
+1&0&1&0\\
+0&-1&0&0\\
+0&0&-2&1
+\end{array}\right)
+\underset{\color{red}{-\frac{1}{2}R_3},\color{red}{\ -1R_2}}{\overset{\color{red}{R_1+\frac{1}{2}R_3}}{\longrightarrow}}
+\left(\begin{array}{rrr|r}
+1&0&0&\color{blue}{\frac{1}{2}}\\
+0&1&0&\color{blue}0\\
+0&0&1&\color{blue}{-\frac{1}{2}}
+\end{array}\right),
+$$ $D=\begin{pmatrix}0&\frac{1}{2}&\frac{1}{2}\\1&-1&0\\1&-\frac{1}{2}&-\frac{1}{2}\end{pmatrix}$. Notice, that we repeat three times the same elementary row operations, and only the last column changes. 
+This observation allows us to solve the three systems of linear equation simultaneously by making elementary
+row operations on the matrix $$
+\left(\begin{array}{rrr|rrr}
+1&0&1&1&0&0\\
+1&-1&1&0&1&0\\
+1&1&-1&0&0&1
+\end{array}\right).
+$$ Perform the above mentioned elementary row operations on the matrix $$
+\left(\begin{array}{rrr|rrr}
+1&0&1&1&0&0\\
+1&-1&1&0&1&0\\
+1&1&-1&0&0&1
+\end{array}\right).
+$$ Compare the result with the result above obtained by solving three different systems of linear equations. Let $A$ be an $n\times n$ matrix. If $$(A|I_n)
+\qquad\overset{\text{elementary row operations}}{\longrightarrow \cdots\longrightarrow}\qquad
+(I_n|D),
+$$ then $AD=I_n$ and $DA=I_n$. Such a $D$ is called the inverse of $A$ and is denoted by $A^{-1}$. However, if it is not possible to obtain the matrix $(I_n|D)$ by using elementary row operations, then $A$ is not
+inverible (i.e. $A^{-1}$ does not exist). In the case of system of linear equations $A\mathbf{x}=\mathbf{b}$, if 
+$A$ is invertible, $\mathbf{x}=A^{-1}\mathbf{b}$. It is also often used for denoting solution of the
+system even tough $A^{-1}$ is not calculated. Find the inverse of the matrix
+\begin{align*}
+&\begin{pmatrix}
+1 &1 &1\\
+1 &2 &4\\
+1 &5 &4
+\end{pmatrix}
+\end{align*} over $\mathbb{Z}_7$. Modify your IPython script for simple Gaussian elimination algorithm for finding the inverse of a given matrix. linear_algebra/04_invertible_matrices.txt · Last modified: 2014/01/20 13:39 by marje Contact: ati.comp@ut.ee

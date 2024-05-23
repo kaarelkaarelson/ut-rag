@@ -1,0 +1,149 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice8</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 8 Sündmused. Teemad Sündmuste käsitlemine. Erinevad sündmuste klassid. Siseklass. Anonüümne siseklass. Lambda-avaldis sündmuste käsitlemisel. Pärast selle nädala läbimist üliõpilane oskab sündmuste käsitleja klassi kirjeldada eraldi klassina, siseklassina ja anonüümse siseklassina; oskab käsitleja isendi luua nii nimega kui ka ilma; oskab käsitleja määramisel kasutada nii mugavusmeetodeid kui ka meetodit addEventHandler ; oskab kasutada lambda-avaldist sündmuste käsitlemisel; oskab kasutada lisaks hiiresündmustele ka teisi tähtsamaid sündmusi; on saanud aru ka natuke suurema programmi struktuurist ja toimimisest. Sissejuhatus Eelmisel nädalal olid vaatluse all graafika ja graafilise kasutajaliidese võimalused. On muidugi selge, et näiteks nupud, millele vajutamisel midagi ei juhtu, on üsna kasutud. Käesoleval nädalal ongi teemaks võimalused, kuidas programmi kasutaja tegevustele reageerima panna. Materjali esimeses osas on sissejuhatus koos väiksemate näidetega. Teise osa aluseks on aga üks natuke suurem näide, mis põhineb trips-traps-trulli mängul. Programmide interaktiivseks muutmisel on Javas olulisel kohal sündmused ( events ). 
+Põhimõtteliselt võib sündmust (klassi Event isendit) võtta kui teadet, et midagi juhtus - võib-olla vajutati nuppu või liigutati hiirt või pandi aken kinni. Oma klass Event on olemas nii AWT-s kui Swingis. Käesolevas materjalis on vaatluse all aga JavaFX vastav klass ( javafx.event.Event ). Sellel klassil on suur hulk otseseid ja kaudseid alamklasse, mille abil on võimalik korraldada reageerimine väga erinevatele tegevustele. Klassi nimega on püütud vihjata, mislaadi sündmusega tegemist on, näiteks KeyEvent (klahvisündmus), DragEvent (lohistamissündmus), TouchEvent (puutesündmus). Käesolevas materjalis on vaadeldud neist vaid mõnda, lootuses, et nende eeskujul saab juba teistega paremini hakkama. Laias laastus saab eristada järgmisi etappe: midagi juhtub (näiteks hiirekursor liigub ringi peale); sellest teatatakse (kellele ettenähtud) ja teade liigub teatud teed pidi (mis on täis ohte ja üllatusi :-)); teatele (sündmusele) reageeritakse (näiteks värvub ring roheliseks). Igas sündmuses sisaldub info sündmuse tüübi ( event type ), allika ( source ) ja sihi ( target ) kohta. Allikast ja sihist otseselt siin materjalis ei räägita. Sündmuste tüübid on aga selles praktikumis tähtsal kohal. Sündmuse tüübina peetakse siin silmas mitte konkreetset klassi (nt. MouseEvent ), vaid selle klassi sündmused on jaotatud veel täpsemalt tüüpideks (nt. MOUSE_ENTERED , MOUSE_EXITED , MOUSE_PRESSED , MOUSE_RELEASED ). Paljude klasside puhul on üheks sündmuse tüübiks ANY , mis on siis nagu ülemtüübiks teiste tüüpide suhtes. Enesekontroll Your browser does not support including other html pages Hiire sündmuste käsitlemine Järgmises näites on kasutusel mugavusmeetod ( convenience method ) setOnMouseEntered , mis määrab MOUSE_ENTERED tüüpi sündmuse käsitleja ( event handler ). (Mugavusmeetodid on kirjeldatud klassis Node .) Meetodi argument peab olema EventHandler liidest (kirjeldab meetodi handle ) realiseeriva klassi isend. Ise EventHandlerit realiseerides saamegi määrata, kuidas sündmuse peale peaks reageerima. Enamasti reageeritakse igale sündmusele erimoodi. Kui iga reaktsiooni jaoks peaks looma uue EventHandlerit realiseeriva klassi, oleks vaja kirjutada tüütult palju erinevaid väikseid klasse. Õnneks on Javas olemas anonüümsed klassid (täpsemalt siin ) - ilma nimeta klassid, mille saab defineerida klassist isendi loomise hetkel. Selline kirjapilt on lühem ja mugavam. Allpool näites luuakse uus klass, mis realiseerib EventHandler liidest. Kui kursor läheb punase ringi peale, kutsub JavaFX meie handle meetodi, mis väljastab ekraanile vastava teate. Circle ring1 = new Circle(100, 100, 100, Color.RED);
+// setOnMouseEntered määrab sündmuse käsitleja
+// käsitleja defineeritakse anonüümse klassiga
+ring1.setOnMouseEntered(new EventHandler<MouseEvent>() {
+  public void handle(MouseEvent me) {
+    // siin saab kasutada ka ümbritsevas skoobis olevaid muutujaid, nt ring1
+    System.out.println("Hiir läks ringi peale");
+  }
+}); // loogeline sulg lõpetab klassi ja tavaline sulg meetodi väljakutse Ülesanne 1 Lisada need read meetodisse start (kus muidugi peab olema ka lava, stseen, stseenigraafi juur ja ringi juurele alluvaks lisamine ning muu vajalik) ning katsetada programmi tööd. Lisada reaktsioonid hiire lahkumisele ringilt ( MOUSE_EXITED ) ja hiireklahvivajutusele ( MOUSE_PRESSED ). Üheks reaktsiooniks peaks olema ringi värvumine roheliseks (meetodi setFill abil). Lisaks mugavusmeetodile saab kasutada ka üldisemat varianti käsitleja määramiseks, nimelt mugavusmeetodeid ei ole kõigi sündmuste klasside ja tüüpide jaoks. Nii saab kasutada meetodit addEventHandler , mille argumentidega saab määrata sündmuse tüübi ja käsitleja. Näiteks ülaltooduga analoogiliselt toimib järgmine lõik. ring1.addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+  public void handle(MouseEvent me) {
+    System.out.println("Hiir läks ringi peale");
+  }
+}); Klass, mis eelmistes näidetes on anonüümse klassina, võib olla ka nimega siseklassina või ka eraldi nö. tavalise klassina. class Käsitleja implements EventHandler<MouseEvent> {
+  public void handle(MouseEvent me) {
+    System.out.println("Hiir läks ringi peale");
+  }
+} Sellisel juhul tuleb jätkata ühega järgmistest variantidest. ring1.addEventHandler(MouseEvent.MOUSE_ENTERED, new Käsitleja()); või ring1.setOnMouseEntered(new Käsitleja()); Eraldi failis olev käsitleja klass on kasulik näiteks siis, kui sama tegevust tahetakse kasutada erinevate klasside sündmuste puhul. Enesekontroll Your browser does not support including other html pages Ülesanne 2 Proovida kõik need võimalused läbi. See juures püüda lisada, et käsitleja muudaks näiteks ringi värvi. Eraldiseisva klassi puhul tuleb selleks natuke rohkem vaeva näha, nt kui tahta klassi Käsitleja meetodis handle ringi värvi muuta, peaks tegema nii: class Käsitleja implements EventHandler<MouseEvent> {
+  private Circle circle;
+
+  public Käsitleja(Circle circle) {
+    this.circle = circle;
+  }
+
+  public void handle(MouseEvent me) {
+    circle.setFill(Color.GREEN);
+  }
+} Aga see pole veel kõik! Alates Java 8. versioonist on võimalik kasutada ka lambda-avaldisi, mis võimaldavad eeltoodut veel kompaktsemalt esitada. Näiteks ring1.setOnMouseEntered(event -> System.out.println("Hiir läks ringi peale")); Lambda-avaldiste kohta saab rohkem infot: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html . Meie oma aines piirdume hetkel vaid kasutamisega ja põhjalikumalt lambda-avaldistesse ei süüvi. Ülesanne 3 (kontroll) Katsetada lambda-avaldist vähemalt kahel erineval juhul - erinevad hiiresündmused, erinevad tegevused (nt. värvide muutmine vms.). Ülesanne 4 (kontroll) Kirjutada programm, mis loob akna ja lisab aknasse mingile kohale nupu. Sündmuste abil korraldada, et hiirega nupule liikudes "hüppab" nupp eest ära juhuslikule kohale aknas. Tagada, et nupp ei hüppaks aknast välja (ka peale akna suuruste muutmist). Näiteid erinevatest sündmuse käsitlemise võimalustest Eelmistes näidetes olid kesksel kohal hiiresündmused. Tegelikult on võimalusi muidugi palju rohkem. Järgmises näites ongi päris mitmeid neist kasutatud. Kuna sündmuste klasside hulk on üsna väike, siis väga paljude graafiliste komponentide jaoks kasutatakse hoopis "muutuste kuularit" (isendit klassist, mis realiseerib liidest ChangeListener ). Selle liidese realiseerimiseks peab olema lisatud meetod changed . Kuulata saab erinevate graafiliste komponentide erinevate omaduste ( property ) muutusi, nt. akna suuruse muutumist ( widthProperty ja heightProperty nt. klassi Stage isendi puhul). Järgmises näites on kuulatud listivaate omadust selectedItemProperty . public void start(Stage peaLava) {
+  BorderPane piir = new BorderPane();
+
+  // tekstivälja loomine ja lisamine piiripaanile (üles)
+  TextField tekst = new TextField();
+  tekst.setText("mingi tekst");
+  piir.setTop(tekst);
+
+  // sündmuse lisamine tekstiväljale (klahvisündmus reageerib
+  // ainult enter-i vajutamisele)
+  tekst.setOnKeyPressed(new EventHandler<KeyEvent>() {
+    public void handle(KeyEvent keyEvent) {
+      if (keyEvent.getCode() == KeyCode.ENTER) {
+        tekst.setText("nüüd vajutasin ENTER");
+      }
+    }
+  });
+
+  // listivaate loomine ja lisamine piiripaanile (keskele)
+  ListView<String> list = new ListView<String>();
+  ObservableList<String> items = FXCollections.observableArrayList("Esimene", "Teine",
+      "Kolmas", "Neljas");
+  list.setItems(items);
+  piir.setCenter(list);
+
+  // listivaate omaduse kuulamine (kui midagi valitakse,
+  // siis see omadus muutub)
+  list.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    public void changed(ObservableValue<? extends String> ov, String oldValue, String newValue) {
+      tekst.setText(newValue);
+    }
+  });
+
+
+  // teine piiripaan, mis pannakse esimesele piiripaanile alla
+  // teisele piiripaanile tuleb 2 nuppu, üks vasakule ja
+  // üks paremale
+  BorderPane piir2 = new BorderPane();
+  Button nupp1 = new Button("1");
+  piir2.setLeft(nupp1);
+  Button nupp2 = new Button("2");
+  piir2.setRight(nupp2);
+  piir.setBottom(piir2);
+
+
+  // hiiresündmuse lisamine teisele piiripaanile
+  piir2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    public void handle(MouseEvent me) {
+      tekst.setText("nüüd uus tekst");
+    }
+  });
+
+
+  // klahvisündmuse lisamine esimele nupule
+  nupp1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+    public void handle(KeyEvent keyEvent) {
+      if (keyEvent.getCode() == KeyCode.DIGIT1) {
+        tekst.setText("nüüd 1");
+      }
+    }
+  });
+
+
+  // hiiresündmuse lisamine teisele nupule
+  nupp2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    public void handle(MouseEvent me) {
+      tekst.setText("nüüd 2");
+    }
+  });
+
+
+  // aknasündmuse lisamine
+  peaLava.setOnHiding(new EventHandler<WindowEvent>() {
+    public void handle(WindowEvent event) {
+      // luuakse teine lava
+      Stage kusimus = new Stage();
+      // küsimuse ja kahe nupu loomine
+      Label label = new Label("Kas tõesti tahad kinni panna?");
+      Button okButton = new Button("Jah");
+      Button cancelButton = new Button("Ei");
+
+      // sündmuse lisamine nupule Jah
+      okButton.setOnAction(new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent event) {
+          kusimus.hide();
+        }
+      });
+
+      // sündmuse lisamine nupule Ei
+      cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent event) {
+          peaLava.show();
+          kusimus.hide();
+        }
+      });
+
+      // nuppude grupeerimine
+      FlowPane pane = new FlowPane(10, 10);
+      pane.setAlignment(Pos.CENTER);
+      pane.getChildren().addAll(okButton, cancelButton);
+
+      // küsimuse ja nuppude gruppi paigutamine
+      VBox vBox = new VBox(10);
+      vBox.setAlignment(Pos.CENTER);
+      vBox.getChildren().addAll(label, pane);
+
+      //stseeni loomine ja näitamine
+      Scene stseen2 = new Scene(vBox);
+      kusimus.setScene(stseen2);
+      kusimus.show();
+    }
+  }); //siin lõpeb aknasündmuse kirjeldus
+
+
+  // stseeni loomine ja näitamine
+  Scene stseen1 = new Scene(piir, 300, 150, Color.SNOW);
+  peaLava.setTitle("Sündmused");
+  peaLava.setResizable(false);
+  peaLava.setScene(stseen1);
+  peaLava.show();
+} Ülesanne 5 Panna ülaltoodud start -meetod programmi ja käivitada. Püüda mõista, kuidas rakendus toimib. Eriti tuleb vaadata, kuidas on kasutatud klasside ActionEvent , KeyEvent ja WindowEvent ning liidese ChangeListener võimalusi kasutajaliidese elementide puhul. (Vt. ka https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm .) Edasijõudnutele Kasutada sobivates kohtades lambda-avaldisi. Vihje Juhul kui aru ei saa, võite lasta tehisarul endale selgitada erinevaid koodi osasid. Ülesanne 6 (kontroll) Kirjutada programm, mis esitab valikvastustega küsimuse (kas ühe või mitme õige vastusega) ja annab vastajale tagasisidet vastuse õigsuse kohta (mitte konsooliaknas). Sõltuvalt valikvastustest (kas üks või mitu õiget) valida sobiv kasutajaliidese komponent selle realiseerimiseks. Edasijõudnutele Kirjutada programm, mis esitab mitu küsimust järjest. Trips-traps-trull - näide suuremast programmist Praktikumi järgmine osa põhineb trips-traps-trulli mängul . Proovi see oma IDEs avada ja käivitada. Projekti avamisel on abiks juhend . Ülesanne TTT1 (kontroll) Panna programm tööle ja tutvuda koodiga. Mõned asjad on kommenteeritud, aga kõik kohad mitte. Püüdke rahulikult aru saada programmi üldisemast struktuurist. Mis jäi segaseks? Püüdke nüüd detailsemalt mõista, mis mida teeb. Mis jäi segaseks? Võib-olla on alguses abiks mõned suunavad küsimused. Millist samas klassis kirjeldatud meetodit rakendab start -meetod? Mida see meetod teeb? Milliseid selles klassis olevaid meetodeid on rakendatud selleks ajaks, kui kasutajalt hakatakse käiku ootama? Millistest osadest koosneb rakenduse aken? Milliste JavaFX klasside abil see on saavutatud? Kuidas on saadud just sellise kujuga mängulaud ning iksi ja ringi kujutised? Kuidas neid muuta saaks? Milline meetod käivitatakse Start -nupule vajutades? Mida see meetod teeb? … Kodus otseselt midagi kirja panna ei ole vaja (kuigi võib muidugi). Oluline on programmist arusaamine. Praktikumi ajal peab olema valmis küsimustele vastama. Ülesanne TTT2 See ülesanne ei ole kohustuslik, aga soovitatav ikka katsetada. Kui sellega väga hoogu minna, siis võib võrdväärselt praktikumi algusest osa ülesandeid tegemata jätta. Täiendada programmi nii, et vastavat nuppu vajutades tehakse käiguloleva mängija eest reeglitega lubatud juhuslik käik. Vihjeks. Täiendada klassi Xox meetodit getButtonPane() . Nupu sündmuse töötlemisel tuleb genereerida 2 arvu vahemikust [0,2]. Tuleb vaadata, kas see väli on täidetud (meetodi game.isOccupied(x,y) abiga). Kui on, siis tuleb genereerida nii kaua, kui saame mittetäidetud välja koordinaadid. Kui kõik väljad on täidetud (meetod game.allOccupied() ), siis tuleb tsükkel lõpetada. Kui sobivad x ja y on leitud, siis tuleb kasutada meetodit react(x,y) . Edasiarendus. Tehakse (võimalikult) hea käik. Edasiarendus. Tehakse (võimalikult) halb käik. Täiendada programmi nii, et selles oleks midagi animeeritud. Näiteks joon, mis näitab võitu. Näiteks viimase tehtud käik jääb teatud ajaks värisema. Täiendada programmi nii, et kasutajal on võimalik vahetada mängulaua ja/või ikside ja ringide visuaalset kuju. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

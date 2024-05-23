@@ -1,0 +1,467 @@
+<LINK>https://courses.cs.ut.ee/2024/cpp/spring/Main/Keel2</LINK>
+Programmeerimine keeles C++ - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine keeles C++ (LTAT.03.025) EN Logi sisse Programmeerimine keeles C++ 2023/24 kevad Pealeht 1. Muutujad ja andmetüübid 2. Keele põhikonstruktsioonid I 3. Keele põhikonstruktsioonid II 4. Klass, struktuur, mallid 5. Dünaamiline mäluhaldus I 6. Dünaamiline mäluhaldus II 7. Kontrolltöö 1 Seitsmendal nädalal toimub 1. kontrolltöö 1. kontrolltöö näidis on Moodles 8. Dünaamiline mäluhaldus III 9. STL andmestruktuurid I 10. STL andmestruktuurid II 11. OOP I Klassid 12. OOP II Pärilus ja polümorfism 13. Erindite töötlemine 14. Täiendavad teemad 15. Kontrolltöö 2 Viieteistkümnendal nädalal toimub 2. kontrolltöö 16. Projekti esitlus Mõned viited - vajalikud kaaslased Vanad materjalid Juhendid Viited Keele põhikonstruktsioonid I Pärast selle praktikumi läbimist üliõpilane teab ja oskab kasutada tingimuslauseid, sh kolmepoolset tingimuslauset teab korduslausete erinevaid võimalusi ( while , for , do while ) C++ programmi koostamisel oskab kasutada käske break ja continue teab, mis on loenditüüp enum ja kuidas seda kasutada lülitis switch oskab kasutada C++ massiive ja andmekogumit vector oskab manipuleerida sõnedega (päis <string> ) oskab teisendada arvu sõneks ja vastupidi oskab genereerida juhuarve teab, mis on Makefile ja oskab seda lihtsamatel juhtudel koostada Sisukord 1. Tingimuslause 6. Väljundi formaatimine 11. Massiivid 2. Tingimusoperaator 7. while tsükkel 12. Massiiv char tüüpi elementidest 3. Kolmepoolne võrdlemine 8. do while tsükkel 13.  Dünaamiline massiiv <vector> 4. Korduslaused 9. Tsüklidirektiivid break ja continue 14. Töö sõnedega: standardnimeruumi teek <string> 5. for tsükkel 10. Lüliti switch ja enum 15. Arvu teisendamine sõneks string 16. Sõne string teisendamine arvuks 17. Juhuarvude genereerimine 18. Makefile Enesetestid Tingimuslause Avaldiste võrdlemiseks kasutatakse C++ samu operaatoreid, mis paljudes teistes keeltes: < , <= , > , >= , == , != . Loogilised operaatorid on järgmised: Operaator Tähendus Näide ! Eitus !a && AND a&&b || OR a||b Avaldisi && ja || väärtustatakse vasakult paremale. Paremal pool asuvat operandi väärtustatakse ainult siis, kui vasaku poole väärtus ei määra tulemust üheselt. Näiteks koodilõigu int a{1};
+int b{2};
+cout << boolalpha << (a == b && b > a) << "\n"; false tulemuseks on false . Kuna avaldise vasaku poole tõeväärtus on false ja tulemuseks on sõltumata paremast poolest false , siis operaatorist && paremal pool olevat avaldist b > a ei väärtustata. Märgime siin, et ümarsulud väljundvoos cout on avaldise väärtustamiseks vajalikud. NB! Pythonist tuntud ahelvõrdlemine (a < b < c) ei anna siin alati õiget tulemust. Näiteks, programmijupi int i{8};
+if (0 < i < 5){
+    cout << "Sobib!\n";
+}
+else{
+    cout << "Ei sobi!\n";
+} Sobib! väljundiks on C++-s "Sobib!", kuigi loogiline oleks "Ei sobi!". Nimelt toimub C++s võrdlemine vasakult paremale ehk (0 < i) < 5 . Avaldise (0 < i) tõeväärtus on true (ehk 1), ja seega järgmine võrdlemine (1 < 5) annab samuti tõeväärtuse true . Seega, õige tulemuse saamiseks on korrektne võrrelda if (0 < i && i < 5) if-lause põhikuju on järgmine: if (tingimus){
+    //käsud1
+}
+else{
+    //käsud2
+} Tingimus (mis võib olla keeruline loogiline avaldis) peab olema ümarsulgudes ja else osa võib puududa. Kui lausete plokk koosneb ühest käsust, siis võib loogelised sulud ära jätta. Samuti võivad if laused olla üksteise sees. int aastaaeg;
+cout << "Sisesta aastaaeg (1-4):";
+cin >> aastaaeg;
+if (aastaaeg == 1){
+    cout << "Kevad!\n";
+}
+else if (aastaaeg == 2){
+    cout << "Suvi!\n";
+}
+else if (aastaaeg == 3){
+    cout << "Sügis!\n";
+}
+else if (aastaaeg == 4){
+    cout << "Talv!\n";
+}
+else{
+    cout << "Vale aastaaeg!\n";
+} Sisesta aastaaeg (1-4):2
+Suvi!
+----
+Sisesta aastaaeg (1-4):8
+Vale aastaaeg! Alates C++17 on if -lauses võimalik kasutada eelnevat algväärtustamist if (algväärtustamine; tingimus){
+    //käsud1
+}
+else{
+    //käsud2
+} Algväärtustamine täidetakse enne tingimuse kontrolli. Järgmises näites saab muutuja kiirus enne tingimuse kontrolli väärtuseks 50. bool kas_minna {true}; // tõeväärtustüüpi muutuja
+int algkiirus{50};
+int lisa{50};
+if(int kiirus {algkiirus + lisa}; kas_minna){
+    cout << "kiirus : " << kiirus << '\n';
+    if(kiirus > 90){
+        cout << "Aeglusta!" << '\n';
+    }else{
+        cout << "Head teed!" << '\n';
+    }
+}else{
+    cout << "kiirus : " << kiirus << '\n';
+    cout << "Stop" << '\n';
+} kiirus : 100
+Aeglusta! Tegelikult võib tingimuslause olla palju keerulisem, vt https://en.cppreference.com/w/cpp/language/if . Tingimusoperaator Tingimusoperaator võimaldab lühendada teatud kujul if-else lauseid. Olgu meil tingimuslause (muutujad a, b, suurim on varem defineeritud). if (a > b){
+suurim = a;
+}
+else{
+suurim = b;
+} Tingimusoperaatoriga saab sama koodi kirja panna ühel real: suurim = (a > b) ? a : b; Avaldist omistamisoperaatorist = paremal nimetatakse tingimusoperaatori avaldiseks. Kui tingimus enne ? on tõene ( true ), siis tagastatakse esimene kahest avaldisest (antud näites a ), vastasel juhul tagastatakse teine avaldis (antud näites b ). Kolmepoolne võrdlemine <=> ( three-way comparison ) Alates C++20 saab kasutada kolmepoolse võrdlemise operaatorit <=> , mida nimetatakse ka "kosmoselaeva" operaatoriks, sest kellelegi meenutas selle operaatori kuju lendavat taldrikut. Täpsemalt, hüüdnime võttis kasutusele programmeerimiskeele Perl ekspert Randal L. Schwartz, kuna kujund meenutas talle kosmoselaeva 1970ndate tekstipõhises arvutimängus "Star Trek". Operaatoris on koos kolm võrdlemist ( < , == , > ). Avaldis a<=>b määrab, kas a on väiksem, võrdne või suurem kui b : (a <=> b) < 0 kui a < b , (a <=> b) > 0 kui a > b , (a <=> b) == 0 kui a == b ( a ja b on võrdsed). Võrdlemise tulemuse saab salvestada muutujasse, mida saab hiljem nulliga võrrelda. Vaatame näidet double a{3.2};
+double b{2.3};
+auto tulemus = a <=> b;
+if (tulemus < 0)
+    std::cout << "a < b";
+else if (tulemus > 0)
+    std::cout << "a > b";
+else if (tulemus == 0)
+    std::cout << "a == b";
+else
+    std::cout << "a ja b ei ole võrreldavad"; a > b Kolmepoolse võrdlemisega saab võrrelda ka keerulisemaid operande, nendega saab tutvuda aadressil https://en.cppreference.com/w/cpp/language/operator_comparison . Korduslaused for -tsükkel for -tsükli üldkuju on järgmine: for (eeltegevused; jätkamistingimus; sammu järeltegevused) {
+    // käsud, mida tuleb täita niikaua, kuni jätkamistingimus kehtib
+} Järgmises näites kasutatakse tsüklimuutujat, mille tüüp on unsigned int : for(unsigned int i{0} ; i < 3 ; ++i){
+    cout << i <<  " : Mulle meeldib C++!\n";
+} 0 : Mulle meeldib C++!
+1 : Mulle meeldib C++!
+2 : Mulle meeldib C++! Tavaliselt (nt massiivi läbimisel) kasutatakse tsüklimuutujat kasutades size_t (alates C++11). size_t ei ole andmetüüp, ta on standardteegis defineeritud aliasena märgita täisarvutüübile. for(size_t i{0} ; i < 3 ; ++i){
+    cout << i <<  " : Mulle meeldib C++!\n";
+} 0 : Mulle meeldib C++!
+1 : Mulle meeldib C++!
+2 : Mulle meeldib C++! Tsüklimuutuja for -tsüklis ei pea tingimata olema täisarvutüüpi. Järgmises näites arvutatakse ringi pindala raadiuse eri väärtuste korral ja tsükli täitmist juhitakse ujukomaarvuga. double pi{3.14159265};
+for (double raadius{2.0}; raadius <= 12.0; raadius += 2.5){
+    cout <<  raadius << " " << pi * raadius * raadius << "\n";
+} 2 12.5664
+4.5 63.6173
+7 153.938
+9.5 283.529
+12 452.389 for -tsüklil on mitmeid teisi vorme, nendest tuleb juttu hiljem. Väljundi formaatimine Eelmise näite väljund on raskesti loetav. C++ väljundit on võimalik käskudega juhtida. Vaatame näidet, kus on kasutatud teeki <iomanip> võimalusi väljundi formaatimiseks. Selleks tuleb teek <iomanip> programmi kaasata. Selguse mõttes esitame terve programmi. #include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main(){
+    double pi{3.14159265};
+    cout << setw(7) <<  "Raadius"  << setw(10) << "Pindala\n";
+    cout << "-----------------\n";
+    cout << right;
+    for (double raadius{2.0}; raadius <= 12.0; raadius += 2.5){
+        cout << setw(7) <<  raadius << setw(10) << pi * raadius * raadius << "\n";
+    }
+    return 0;
+} Raadius   Pindala
+-----------------
+      2   12.5664
+    4.5   63.6173
+      7   153.938
+    9.5   283.529
+     12   452.389 Käsk cout << setw(7) annab väljundile korralduse, et järgnev info on vaja paigutada väljale laiusega 7 märki. Käsk cout << right annab korralduse, et info tuleb paigutada joondatult paremale (vaikimisi on joondus vasakule). Teek <iomanip> pakub mitmeid teisi võimalusi väljundi formaatimiseks, mida saab uurida siit: https://en.cppreference.com/w/cpp/header/iomanip . Alates versioonist C++20 saab kasutada päist <format> (lisada programmi algusse käsk #include <format> ), mis võimaldab kasutada väljundi formaatimiseks funktsiooni format() . Kirjutame eelmise näite ümber, kasutades funktsiooni format : #include <iostream>
+#include <format>
+using namespace std;
+int main() {
+    double pi{3.14159265};
+    cout << format("{:>7}{:>10}\n", "Raadius", "Pindala");
+    cout << "-----------------\n";
+    for (double raadius{2.0}; raadius <= 12.0; raadius += 2.5){
+        cout << format("{:>7.1f}{: >10.3f}\n", raadius, pi*raadius*raadius);
+    }
+
+    return 0;
+} Raadius   Pindala
+-----------------
+    2.0    12.566
+    4.5    63.617
+    7.0   153.938
+    9.5   283.529
+   12.0   452.389 Funktsiooni format esimene parameeter on formaadisõne, mis võib sisaldada pesasid {} . Formaadisõnele järgnevad parameetrid asendatakse järjest pesadesse. Pesa võib sisaldada formaadi täpsustajat ( specifier ), st kuidas konkreetne väärtus pesasse sobitatakse. Kui pesa sisaldab formaadi täpsustajat, siis see algab kooloniga : . Näiteks, {: >7} - lahtri laius on 7 märki ja väärtus paigutatakse paremale serva {:>7.1f} - lahtri laius on 7 märki ja ujukomaarv (tunnus f ) paigutatakse paremale serva, täpsusega üks koht peale koma. Tegelikult võib formaadi täpsustaja olla palju keerulisem, nt [[fill]align][sign][#][0][width][.precision][type] Siin [] tähendab, et konkreetne täpsustaja võib puududa. Tutvustame siin mõnda olulisemat, täpsem info on aadressil https://en.cppreference.com/w/cpp/header/format fill - tühjaks jäänud ruumi täitemärk align - rajastamine ( < - vasakule, > - paremale, ^ - keskele) width - lahtri laius .precision - arvu kohtade arv peale koma Vaatame veel paari näidet: // Vaikimisi rajastus: arvud paremale, ülejäänud vasakule
+    std::cout << std::format("{:7}|{:7}|{:7}|{:7}|{:7}\n", 5, -2.5, "kala", 'a', true);
+    // Vasakule ja paremale; tühi ruum täidetakse märgiga *
+    std::cout << std::format("{:*<7}|{:*<7}|{:*>7}|{:*>7}|{:*>7}\n", 5,-2.5, "kala", 'a',true);
+    // Keskele 
+    std::cout << std::format("{:^7}|{:^7}|{:^7}|{:^7}|{:^7}\n", 5, -2.5, "kala", 'a', true); 5|   -2.5|kala   |a      |true   
+5******|-2.5***|***kala|******a|***true
+   5   | -2.5  | kala  |   a   | true NB! Osa kompilaatoritest ei toeta veel päist <format> . while -tsükkel while -tsükli üldkuju on sarnane nagu paljudes teistes programmeerimiskeeltes while (tingimus){
+// käsud, mida tuleb täita niikaua, kuni tingimus kehtib
+} Oluline on, et tingimus oleks ümarsulgudes ja tsükli kehas peab hoolitsema selle eest, ei tekiks lõpmatu tsükkel. Kirjutame eelmise programmi ümber kasutades while -tsüklit (programmi algus ja lõpp on ära jäetud): cout << setw(7) << "Raadius" << setw(10) << "Pindala\n";
+cout << "-----------------\n";
+cout << right;
+double pi{3.14159265};
+double raadius{2.0};
+while (raadius <= 12.0) {
+    cout << setw(7) << raadius << setw(10) << pi * raadius * raadius << "\n";
+    raadius += 2.5;
+} Raadius   Pindala
+-----------------
+      2   12.5664
+    4.5   63.6173
+      7   153.938
+    9.5   283.529
+     12   452.389 do while -tsükkel do while -tsükli üldkuju on järgmine: do{
+// käsud, mida tuleb täita niikaua, kuni tingimus kehtib
+} while (tingimus); do while -tsükli keha täidetakse alati vähemalt üks kord. Ringi pindala arvutamise programm kasutades do while -tsüklit: cout << setw(7) << "Raadius" << setw(10) << "Pindala\n";
+cout << "-----------------\n";
+cout << right;
+double pi{3.14159265};
+double raadius{2.0};
+do{
+    cout << setw(7) << raadius << setw(10) << pi * raadius * raadius << "\n";
+    raadius += 2.5;
+}while (raadius <= 12.0); Raadius   Pindala
+-----------------
+      2   12.5664
+    4.5   63.6173
+      7   153.938
+    9.5   283.529
+     12   452.389 Tsüklidirektiivid break ja continue Tsüklidirektiivi break kasutatakse tsüklist väljumiseks. Tüüpiline kasutus on näiteks lõpmatute tsüklite while (true){
+...
+} või for (; ; ;){
+...
+} töö lõpetamiseks, aga ka teistel juhtudel. Näiteks lõpmatu tsükkel kasutajalt korrektse sisendi küsimiseks: int arv;
+while(true){
+    cout << "Sisesta arv ühest kümneni:";
+    cin >> arv;
+    if (arv >= 1 && arv <= 10){
+        cout << "Sisestasid arvu " << arv;
+        break;
+    }
+} Sisesta arv ühest kümneni:15
+Sisesta arv ühest kümneni:5
+Sisestasid arvu 5 Tsüklidirektiiv continue tsükli sees lõpetab käsil oleva tsüklisammu ja täitmisele tuleb järgmine tsüklisamm. char ch{};
+cout << left << setw(10) << "Märk" << setw(10) << "Kood\n";
+do{
+    if (!isprint(ch)){
+        continue;
+    }
+    cout << left << setw(10) << ch << setw(10) << static_cast<int>(ch) << "\n";
+}while (ch++ < 127); Märk     Kood
+          32
+!         33
+"         34
+#         35
+$         36
+%         37
+&         38
+'         39 Programm kuvab ekraanile ASCII kooditabelist prinditavad märgid, mille ASCII kood on väiksem kui 127. Standardnimeruumi funktsioon isprint tagastab tõeväärtuse true , kui koodile vastab prinditav sümbol. Väljundist on toodud vaid osa. Märgime siin, et ASCII koode 0 kuni 31 kasutatakse juhtsümbolitena ja nendel prinditav kuju puudub. Koodile 32 vastab tühik. Käsk switch - lüliti switch lause põhikuju on järgmine: switch (avaldis) {
+case väärtus1:
+//käsud, mis täidetakse, kui avaldis = väärtus1
+break;
+case väärtus2:
+//käsud, mis täidetakse, kui avaldis = väärtus2
+break;
+...
+default:
+//käsud, mis täidetakse, kui ükski eelnev ei sobinud
+} Avaldise tüüp peab olema teisendatav kas char või täisarvutüübiks.    
+Aastaaegade näite saab switch abil kirja panna järgmiselt: switch (aastaaeg) {
+    case 1:
+        cout << "Kevad!\n";
+        break;
+    case 2:
+        cout << "Sisestasid: " << aastaaeg << "\n";
+        cout << "Suvi!\n";
+        break;
+    case 3:
+        cout << "Sügis!\n";
+        break;
+    case 4:
+        cout << "Talv!\n";
+        break;
+    default:
+        cout << "Vale aastaaeg!\n";
+} Sisesta aastaaeg (1-4):2
+Sisestasid: 2
+Suvi! Paneme tähele, et siin ei pea plokis mitme käsu jaoks loogelisi sulge kasutama (aga võib). Käsk break lõpetab siin switch täitmise. Käsu break võib jätta ära (näites on alates case 2: käsud break välja kommenteeritud), kuid sellel on kõrvalefekt: switch (aastaaeg) {
+    case 1:
+        cout << "Kevad!\n";
+        break;
+    case 2:
+        cout << "Sisestasid: " << aastaaeg << "\n";
+        cout << "Suvi!\n";
+        //break;
+    case 3:
+        cout << "Sügis!\n";
+        //break;
+    case 4:
+        cout << "Talv!\n";
+        //break;
+    default:
+        cout << "Vale aastaaeg!\n";
+} Sisesta aastaaeg (1-4):2
+Sisestasid: 2
+Suvi!
+Sügis!
+Talv!
+Vale aastaaeg! Loenditüüp enum ja selle kasutamine lülitis switch Loenditüüp enum (lühend sõnast enumeration ) on andmetüüp, mis grupeerib nimega seotud täisarvukonstandid. Näiteks enum nädalapäevad {
+    esmaspäev, teisipäev, kolmapäev, neljapäev, reede, laupäev, pühapäev
+}; Loendi igale elemendile vastab täisarv (indeks). Vaikimisi nummerdatakse järjest alates nullist: 0, 1, 2, jne 
+On võimalik defineerida nädalapäevad tüüpi muutuja, omistada sellele nädalapäeva nimi ja seda võrrelda nädalapäeva nimega: enum nädalapäevad {
+    esmaspäev, teisipäev, kolmapäev, neljapäev, reede, laupäev, pühapäev
+};
+nädalapäevad päev{teisipäev};
+cout << päev << " " << boolalpha << (päev == neljapäev) << '\n'; 1 false // teispäevale vastav indeks on 1 switch lauses saab kasutada loendis enum defineeritud väärtusi. Järgmises näites defineeritakse enum nädalapäevadest (0 - esmaspäev, 1 - teisipäev jne) ja kasutaja käest küsitakse nädalapäeva järjekorranumbrit. #include <iostream>
+using namespace std;
+int main() {
+    enum nädalapäevad {
+        esmaspäev, teisipäev, kolmapäev, neljapäev, reede, laupäev, pühapäev
+    };
+    nädalapäevad päev{}; // päev on loendi nädalapäevad tüüpi 
+    int i{};
+    cout << "Sisesta nädalapäeva järjekorranumber\n(0-pühapäev, 1-esmaspäev jne): ";
+    cin >> i; 
+    päev = (nädalapäevad)i; // teisendame täisarvu loenditüübiks nädalapäevad 
+    switch (päev) {        
+        case esmaspäev: 
+            cout << "Esmaspäev: C++ loeng\n";
+            break;
+        case teisipäev:
+            cout << "Teisipäev: AAR II loeng\n";
+            break;
+        case kolmapäev:
+            cout << "Kolmapäev: C++ praktikum\n";
+            break;
+        case neljapäev:
+            cout << "Neljapäev: C++ praktikum\n";
+            break;
+        case reede:
+            cout << "Reede: Elektriahelad loeng\n";
+            break;
+        case laupäev:
+            cout << "Laupäev: vaba päev\n";
+            break;
+        case pühapäev:
+            cout << "Pühapäev: pannkoogipäev!\n";
+            break;
+        default:
+            cout << "Pole õige arv!\n";
+            break;
+    }
+    return 0;
+} Sisesta nädalapäeva järjekorranumber
+(0-pühapäev, 1-esmaspäev jne): 2
+Kolmapäev: C++ praktikum Piisab, kui anname lülitile ette enum indeksi: int i{};
+cout << "Sisesta nädalapäeva järjekorranumber\n(0-pühapäev, 1-esmaspäev jne): ";
+cin >> i;
+switch (i) {... Mitu case haru on lubatud? C++ standard soovitab toetada vähemalt 16384 case haru! 
+Ka switch lausel on mitmeid eri võimalusi, lähemalt saab uurida siit https://en.cppreference.com/w/cpp/language/switch Massiivid Ühedimensionaalset massiivi saab defineerida järgmiselt: tüüp muutuja_nimi[elementide_arv]; Massiivi definitsioonis on nurksulud alati muutuja nime järel. Näites toodud lause ei väärtusta massiivi elemente. Juba defineeritud massiiv on konstantse pikkusega , st elementide arvu ei saa muuta ja indeksid algavad nullist. 
+Massiivi elementide läbivaatuseks on sobiv kasutada tsüklit. int kaheastmed[5];
+for (int i{0}; i < 5; ++i) {
+    kaheastmed[i] = exp2(i);
+}
+cout << "Kaheastmed: \n";
+for (int i{0}; i < 5; ++i) {
+    cout << i << " " << kaheastmed[i] << "\n";
+} Kaheastmed:
+0 1
+1 2
+2 4
+3 8
+4 16 Näites on kasutatud funktsiooni exp2 , mis arvutab argumendi kahe astme. Funktsioon asub teegis <cmath> , st programmi alguses peab olema käsk #include <cmath> . 
+Vaatame nüüd ujukomaarvude massiivi, mille elemente ei algväärtustata ja elementide väljastamisel minnakse indeksiga "üle otsa". Massiivi deklareerimisel määratakse massiivi muutujale mälupiirkonna algus. Ekraanile kuvamisel püütakse mälus olevat infot esitada double tüüpi arvudena. double d[3];
+for (int i{0}; i < 5; ++i) {
+    cout << i << " " << d[i] << "\n";
+} 0 7.3549e-312
+1 2.122e-314
+2 6.95148e-310
+3 6.36599e-314
+4 3.30536e-313 Massiivi elemente saab defineerimisel väärtustada, siis võib nurksulgudes elementide arvu ära jätta. int massiiv[]{3, 8, 2}; Kui nurksulgudes on suurem arv kui on defineeritud elemente, siis ülejäänutele omistatakse null. int massiiv[5]{3, 8, 2};
+for (int i{0}; i < 5; ++i) {
+    cout << i << " " << massiiv[i] << "\n";
+} 0 3
+1 8
+2 2
+3 0
+4 0 Näites massiivi elemendid indeksitega 3 ja 4 on nullid. Seni toodud näidetes on kasutatud massiivi indeksit. Kui massiivi indeksit ei vajata, siis on võimalik kasutada nn forEach tsüklit ( range-based for loop ), kus pole vaja muretseda elementide arvu pärast. int massiiv[]{3, 8, 2};
+for (int arv : massiiv) {
+    cout << arv << "\n";
+} 3
+8
+2 NB! C++ ei kontrolli massiivi indekseid, seda peab tegema programmeerija ise. Näiteks on võimalik eelmise massiivi korral omistada massiiv[5] = 12; kusjuures viga ei teki nii kompileerimisel kui ka täitmisel. Selline teguviis võib viia programmi kokkujooksmiseni. Massiivi elementide arvu määramiseks kasutatakse sageli funktsiooni sizeof , mis tagastab argumendi suuruse baitises (massiivi korral massiivi all oleva mälupiirkonna suuruse, tüübi korral tüübi suuruse baitides). int massiiv[] {3, 8, 2};
+size_t massiivi_elementide_arv = sizeof(massiiv)/sizeof(int);
+cout << massiivi_elementide_arv << "\n"; 3 Palju mugavam on kasutada teegis <array> (algselt teegis <iterator> ) defineeritud standardnimeruumi funktsiooni size (alates C++17). Mitmedimensionaalseid massiive defineeritakse analoogiliselt, kusjuures kõige vasakpoolsema dimensiooni võib ära jätta. int tabel[][3][2] = {{{1, 2}, {3, 4}, {5, 6}}, {{7, 8}, {9, 10}, {11, 12}}};
+for (size_t i{0}; i < size(tabel); ++i) {
+  for (int j{0}; j < size(tabel[0]); ++j) {
+    for (int k{0}; k < size(tabel[0][0]); ++k) {
+      cout << tabel[i][j][k] << " ";
+    }
+    cout << "\n";
+  }
+  cout << "---\n";
+} 1 2
+3 4
+5 6
+---
+7 8
+9 10
+11 12
+--- Massiiv char tüüpi elementidest Massiiv char -tüüpi elementidest võib olla kahte tüüpi. Massiiv võib olla lihtsalt märkide kogum char sõnum[]{'T', 'e', 'r', 'e'}; või märkide kogum, mille viimaseks elemendiks on nn nullmärk ( null character ) char sõnum[]{'T', 'e', 'r', 'e', '\0'}; Viimati defineeritud massiiv võib esindada ka sõnet ( string ). Nullmärk on sõne lõpu tunnus. Märgimassiivi, mille lõpus on '\0', nimetatakse C-stiilis sõneks ( string ). Standardnimeruumis on olemas ka liittüüp string , mida käsitletakse hiljem. 
+Sõne tüüpi char massiivi saab defineerida ka järgmiselt: char nimi[]{"Tuule Lohe"}; Tulemuseks luuakse C-stiilis sõne (nullmärk lisatakse siin automaatselt). Sellist massiivi saab otse ekraanile kuvada: char nimi[]{"Tuule Lohe"};
+cout << nimi << "\n"; Tuule Lohe NB! Selliselt ei saa ekraanile kuvada teisi massiive (arvumassiive või char massiive ilma nullmärgita lõpus). Näiteks, kui üritada ekraanile tuua täisarvumassiivi, siis tulemus võib olla midagi taolist: int arvud[]{1, 2, 3};
+cout << arvud << "\n"; 0x6bf1ff5e4 char massiivi läbivaatamist saab toimetada for -tsükliga. Järgmises näites on vajalik päise #include <cctype> olemasolu. Kasutaja poolt sisestatud tekst suunatakse massiivi char massiiv [max_pikkus] . Massiivi läbivaatusel loetakse kokku tähemärgid ja numbrid. Lõputunnusena kontrollitakse for -tsüklis nullmärgi ('\0') olemasolu, aga võib ka kasutada i < size(massiiv) . const int max_pikkus{20}; // Massiivi suurus (peab defineerima konstandina)
+char massiiv[max_pikkus]{}; // Massiiv, kuhu lugeda
+cout << "Sisesta tekst:\n";
+cin.getline(massiiv, max_pikkus); //cin meetod, võimalik lugeda tühikuid sisaldavat lauset 
+cout << "Sisestasid:\n" << massiiv << "\n";
+int tähemärke{};
+int numbreid{};
+for (int i{}; massiiv[i] != '\0'; i++) {
+    if (isalpha(massiiv[i])) {
+        tähemärke++;
+    }
+    if (isdigit(massiiv[i])) {
+        numbreid++;
+    }
+}
+cout << "Sisestatud lauses oli " << tähemärke << " tähemärki " << "ja " << numbreid << " numbrit.\n"; Sisesta tekst:
+254 Kolm k2
+Sisestasid:
+254 Kolm k2
+Sisestatud lauses oli 5 tähemärki ja 4 numbrit. Etteantud suurusega char massiivi saab defineerida konstantse pikkusega, seetõttu on vajalik võtmesõna const muutuja max_pikkus ees. Käsk cin.getline(massiiv, max_pikkus) võimaldab klaviatuurilt lugeda lauset (tühikutega eraldatud teksti) ühte muutujasse (massiivi). Teegi <cctype> funktsioonid isalpha ja isdigit teevad kindlaks, kas etteantud märk on vastavalt kas tähemärk või number. Teiste funktsioonidega teegist <cctype> saab tutvuda siin https://en.cppreference.com/w/cpp/header/cctype . Eriti mugav on defineerida kahedimensionaalseid C-stiilis sõnemassiive ja neid töödelda ühekordse tsükliga: char kuulsused[][30]{
+    "Erki Nool ",
+    "Ott Lepland",
+    "Birgit Sarrap",
+    "Tõnis Niinemets",
+};
+for (int i{0}; i < size(kuulsused); ++i) {
+    cout << kuulsused[i] << "\n";
+ } Erki Nool
+Ott Lepland
+Birgit Sarrap
+Tõnis Niinemets vector - dünaamiline massiiv Standardmallide teek STL ( Standard Template Library ) sisaldab teeki std::<vector> , mis võimaldab luua dünaamilist (muutuva suurusega) massiivi. Vektorisse võib elemente lisada, elemente kustutada või muuta. Selleks tuleb programmi algul kaasata teek <vector> . #include <vector> Vektorisse saab salvestada ainult sama tüüpi elemente, mille tüüp tuleb vektori loomisel näidata: u
+vector<int> m; // tühi vektor
+vector<double> arvud(10); // sisaldab 10 elementi, kõik nullid
+vector<string> sõned(5); // 5 elementi, kõik tühisõned Loogeliste sulgudega initsialiseeerimisel saab ette anda elementide loetelu: vector<int> m1{5}; // üks element: 5
+vector<double> arvud{1.1, 2.2}; // 2 elementi: 1.1 ja 2.2 Elemente saab kätte indeksi abil, elementide arvu annab funktsioon size . Läbivaatuseks saab kasutada nii for kui ka forEach tsüklit: #include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    vector<double> arvud{1.1, 2.2}; // 2 elementi: 1.1 ja 2.2
+    arvud.push_back(3.3); // lisame elemendi 3.3
+    cout << "Esialgne:\n";
+    for (size_t i{}; i < arvud.size(); ++i) {
+        cout << arvud[i] << " ";
+    }
+    for (size_t i{}; i < arvud.size(); ++i) {
+        arvud[i] += 1; // suurendame ühe võrra
+    }
+    cout << "\nÜhe võrra suurendatult:\n";
+    for (size_t i{}; i < arvud.size(); ++i) {
+        cout << arvud[i] << " ";
+    }
+    erase(arvud, 2.1); // kustutame 2.1 esinemised
+    cout << "\n2.1 on kustutatud:\n";
+    for (double d: arvud) {
+        cout << d << " ";
+    }
+    return 0;
+} Esialgne:
+1.1 2.2 3.3 
+Ühe võrra suurendatult:
+2.1 3.2 4.3 
+2.1 on kustutatud:
+3.2 4.3 Lähemalt saab <vector> võimalusi uurida aadressilt https://en.cppreference.com/w/cpp/container/vector NB! Dokumendis https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html#Rsl-arrays soovitatakse eelistada <vector> tüüpi dünaamilisi massiive fikseeritud pikkusega massiividele. Töö sõnedega: standardnimeruumi teek <string> C++ standardnimeruumis on päisefail <string> , mille kaasamine võimaldab sõnedega manipuleerida mugavamalt võrreldes C-keele märgimassiiviga. Päisefail <string> deklareerib liittüübi string . Tutvume näidete varal mõnede olulisemate võimalustega. NB! Järgmised programmilõigud ja avaldised eeldavad käsu #include <string> olemasolu. Algväärtustamiseks on mitmeid võimalusi: Avaldis Selgitus string t{}; t on tühisõne "" string s{"Tere"}; Algväärtustamine sõneliteraaliga. string u{s}; Algväärtustamine olemasoleva sõne abil. string osa{"Rahva raamat", 5}; Sõneliteraalist esimesed 5 märki: "Rahva" string lause{"Rahva raamat"}; string lause_osa{lause, 6, 3}; Sõnemuutujast alates 6ndast märgist 3 märki: "raa" Initsialiseerimine ja omistamine: string rahvas{"rahvas"};
+string raamat{"raamat"};
+rahvas = raamat; 
+cout << rahvas << "\n";
+raamat = rahvas;
+cout << raamat << "\n"; raamat
+raamat Sõnesid saab ühendada, eraldada alamsõnet, võrrelda ja märke asendada. Olgu meil kaks sõnemuutujat: string s{"Programmeerimine"};
+string t{"Kood"}; Avaldis Väärtus Selgitus s.length() 16 Sõne pikkus baitides. NB! Täpiga tähed võtavad rohkem kui ühe baidi! t + " 007" "Kood 007" Sõnede ühendamine "Viis " + "pluss" Viga! Sõneliteraale ei saa ühendada, üks operand peab olema muutuja s + 5 Viga! Sõnet ei saa arvuga ühendada. s.substr(2, 3) "ogr" Alamsõne pikkusega 3 märki alates märgist indeksiga 2 (s < t) false Sõnesid võrreldakse leksikograafiliselt to_string(234) "234" Funktsioon to_string teisendab arvu (ka ujukomaarvu) sõneks t.starts_with("Ko") true Sõne alguse kontroll s[0] = 'T'; s on nüüd "Trogrammeerimine" Märgi asendamine sõnes s.find('r') 1 Esimese märgi 'r' indeks s.find("ogr") 2 Esimese alamsõne "ogr" indeks s.find('x') 18446744073709551615 Kui ei leia, siis tulemuseks on string::npos väärtus s.find('x') == string::npos true Kontroll, kas sõnes s ei ole märki 'x' s.append(" keeles C++") s on nüüd Programmeerimine keeles C++ Lisamine lõppu t.append(s, 7, 5) t on nüüd Koodmeeri Sõnele t lisatakse lõppu sõnest s alates 7. märgist 5 märki t.replace(4, 2, " C++ ") t on nüüd Kood C++ eri Sõnes t asendatakse alates 4. märgist 2 märki sõnega " C++ " Arvu teisendamine sõneks ( string ) Toome siin eraldi välja, et arvu teisendamiseks sõneks ( string ) saab kasutada funktsiooni to_string : cout << to_string(42); << '\n'; // 42
+cout << to_string(42.25) << '\n'; // 42.250000 Ujukomaarvude korral on tulemuseks saadud sõnes täpsus 6 kohta peale koma, vt https://cplusplus.com/reference/string/to_string/ Sõne ( string ) teisendamine arvuks Sõne teisendamisel arvuks saab kasutada funktsioone, mis sõltuvad arvu tüübist: stoi - teisendamine täisarvuks ( string to int ) stof - teisendamine float tüüpi arvuks ( string to float ) stod - teisendamine double tüüpi arvuks ( string to double ) Järgmine näide illustreerib string teisendust arvutüübiks string s1{"25"};
+int a1 = stoi(s1); //int korral
+string s2{"25.2"};
+float a2 = stof(s2); //float korral
+string s3{"35.2"};
+double a3 = stod(s3); //double korral
+cout << "25 + 25.2 + 35.2 = " << a1 + a2 + a3 << '\n'; 25 + 25.2 + 25.2 = 85.2 Täpsemalt saab <string> võimalusi uurida siit: https://en.cppreference.com/w/cpp/header/string Juhuarvude genereerimine Alates C++11 -st on kasutusel teek <random> , millel on palju rohkem võimalusi: mitmed juhuslike arvude generaatorid, erinevad juhuslike arvude jaotused jne. Toome siin väikese näite: #include <iostream>
+#include <random>
+using namespace std;
+int main() {
+    default_random_engine genereerija;
+    uniform_int_distribution<int> jaotus(5, 15);
+    cout << "Teegi <random> abil genereeritud täisarvud vahemikus 5..15 (ühtlase jaotusega)\n";
+    for (size_t i{}; i < 10; ++i) {
+        cout << jaotus(genereerija) << " ";
+    }
+    return 0;
+} Teegi <random> abil genereeritud täisarvud vahemikus 5..15 (ühtlase jaotusega)
+5 6 13 10 10 7 5 12 12 15 Käivitades seda programmi mitu korda, saame iga kord sama tulemuse. Et saada iga kord erinev tulemus, on võimalik juhusliku arvu generaatorile ette anda seeme, mis garanteerib iga kord erineva tulemuste. Seemneks sobib näiteks aeg sekundites time(0) (sõltub otseselt hetkeajast), mis asub päises <ctime> . Seega, juhuarvude genereerija moodustame käsuga default_random_engine genereerija(time(0)) . Modifitseerime eelmise programmi täringu viskamiseks 10 korda ja käivitame programmi kolm korda järjest. default_random_engine genereerija(time(0));
+uniform_int_distribution<int> jaotus(1, 6);
+cout << "Täringu viskamine (ühtlase jaotusega)\n";
+for (size_t i{}; i < 10; ++i) {
+    cout << jaotus(genereerija) << " ";
+}
+cout << '\n'; 2 6 3 2 2 1 5 4 4 3
+2 2 3 3 6 2 2 1 6 2
+2 1 6 6 3 2 6 4 3 3 Täpsemalt saab <random> võimalusi uurida aadressil https://en.cppreference.com/w/cpp/numeric/random Makefile Kuidas kompileerida makefile -ga ja milliseid käske saab kasutada, saab uurida siit: https://sander-saarpere.gitlab.io/juhendid/makefile https://makefiletutorial.com/#getting-started https://makefiletutorial.com/ Kiire kokkuvõte alustamiseks: Makefile ja make tööriist on mõeldud lihtsustama programmide kompileerimist ja haldamist. C ja C++ programmid kasvavad tihti suureks ja paremaks haldamiseks eraldatakse kood mitmesse faili. Vältimaks olukorda, kus käsureal peab need failid ükshaaval kompileerima, saab need make abil taandada üheks käsuks. make ise jälgib failide ajatempleid ja kompileerib ainult need failid, milles on uuendusi tehtud, kiirendades sellega kompileerimisaega. Samuti saab make abil automatiseerida muud käsurea funktsionaalsust, nagu näiteks kaustade loomine ja failide kustutamine. make kasutamiseks peab olema projekti juurkaustas fail nimega Makefile ilma ühegi faililaiendita ja avatud terminaliaken, mis on samuti projekti juurkaustas.
+Vaatleme Makefile’i, mis prindib käsureale „Hello world!“: # Käsk prindib välja helloWorld
+hello:
+	echo "Hello World!" Käsurealt „make hello“ jooksutamine annab järgmise väljundi: PS C:\RandomComputer> make hello
+echo "Hello World!"
+Hello World!
+PS C:\RandomComputer> Vaatame täpsemalt Makefile'i süntaksit. Makefile erineb tavalisest programmist, mida täidetakse rida-rea haaval ülevalt alla. Makefile koosneb peamiselt reeglitest, mille järjekorra make paneb ise paika, et saada soovitud tulemus. Reeglite süntaks on järgnev: Sihid (Targets) : Eeltingimused (prerequisites)
+	Käsk (Command)
+	Käsk (Command)
+	... Sihiks on failinimi, mida tahetakse saada selle reegli täitmisel, või isetehtud käsunimi, mis paneb tööle reeglis kirjeldatud käskude ahela. Tavaliselt on neid üks reegli kohta. Eeltingimusteks on nimekiri tühikuga eraldatud failidest, mis peavad olemas olema juurkaustas või konkreetses alamkataloogis, või reeglitega loodud käskudest, mis peab eelnevalt ära täitma. Käsud on sammud, mis käivitatakse üksteise järel käsureal, et tavaliselt saada sihiks olev fail. Tähtis on, et kõik käsud algavad tabulaatoriga. Kommentaar on sarnaselt Pythonile #-sümboliga, kuid peab tähelepanu pöörama, et see oleks esimene sümbol real, vastasel juhul see liidetakse ülejäänud käsule juurde ning võib põhjustada vigu. Vaatame järgmise näitena C++ "Hello World!" programmi: // Minu esimene C++ programm
+#include <iostream>
+using namespace std;
+
+int main(){
+  cout << "Tere, maailm!";
+  return 0;
+} Selle kompileerimiseks oleks Makefile järgnev: a.exe: esimene.cpp
+	g++ esimene.cpp
+run: a.exe
+	./a.exe Failis on kirjeldatud reegel esimene.cpp kompileerimiseks ja ka eraldi käsk, mis nõuab a.exe 2 reegli eelnevat täitmist. Kirjutades käsureal make a.exe , kontrollib make , kas esimene.cpp eksisteerib (vastasel juhul annab veateate), ja kompileerib C++ faili a.exe failiks. Kirjutades make run tehakse kaks sammu korraga, alguses kompileeritakse ja siis kohe ka käivitatakse saadud programm. Sarnaselt teistele programmeerimiskeeltele, saab Makefile sees defineerida muutujaid korduvate tekstilõikude jaoks. Näiteks levinud muutujad: CXX := g++
+CXXFLAGS := -g Failis defineeritakse kaks muutujat, CXX määrab, mis kompilaatorit kasutatakse ja CXXFLAGS määrab kompileerimiseks kasutatavad lipud, praegusel juhul -g ütleb kompilaatorile, et lisataks silumiseks vajalik informatsioon. Kasutamaks neid ülejäänud failis, peab kasutama $ sümbolit. Näiteks Hello World programmi Makefile: a.exe: esimene.cpp
+	$(CXX) $(CXXFLAGS) esimene.cpp
+run: a.exe
+	./a.exe Kasulikud lipud: -Wall – Kompileerija näitab suuremal hulgal hoiatusi koodi kohta. -Werror – Muudab kõik hoiatused vigadeks, nii et kompileerija katkestab töö. -o – Saab nimetada väljundfaili, milleks on sellele kohe järgnev failinimi. -c – Kompileeritakse fail, aga ei lingita. Kasutada mitme lähtekoodifaili puhul. -I – Ütleb kompilaatorile, kust kaustast otsida eelprotsessori #include käsu jaoks .h faile. Kausta nimi järgneb tühikuta lipule, tavaliselt -Iinc. Enesetestid NB! Enesetestides eeldame, et on kasutatud standardnimeruumi ( using namespace std; ) << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages << Näita enesetesti >> Your browser does not support including other html pages Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

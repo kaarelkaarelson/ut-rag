@@ -1,0 +1,167 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice4</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 4 Sõnetöötlus ja tekstiline sisend/väljund, list Teemad Klassid String ja StringBuilder , tekstifailidega suhtlemine. Listid, klass ArrayList . Mähisklassid. Pärast selle nädala läbimist üliõpilane teab, et String on viittüüp, mitte lihttüüp; tunneb klassi String meetodeid ja oskab neid kasutada; tunneb klassi StringBuilder meetodeid ja oskab neid kasutada; oskab kasutada mähisklasse; oskab teksti kirjutada faili ja sealt lugeda; teab ühemõõtmelise massiivi ja listi erinevusi; oskab listi erineval moel luua ja selle elementidele uusi väärtusi anda; tunneb klassi ArrayList meetodeid ja oskab neid kasutada. Meeldetuletus: automaatkontroll Ka seekord tuleb koduülesannetele automaatkontroll, seepärast tehke palun kõik klassid vaikepaketti ning Eclipse'i kasutamise korral kontrollige üle projekti kodeering. Täpsemalt lugege 3. praktikumi materjali algusest. Sõned Erinevalt arvutüüpidest (täisarvutüübid int , byte , short , long ja reaalarvutüübid double , float ), loogilisest tüübist ( boolean ) ja sümboltüübist ( char ) pole sõnetüüp keeles Java algtüüp, vaid iga sõne on klassi String isend. Kui vaataksime näiteks Java API-st , siis näeme, et klassi String isendi loomiseks on võimalik kasutada üle kümne erineva konstruktori. Näiteks on nende hulgas konstruktor, mis nõuab argumendiks sümbolite massiivi. char[] sümboliteMassiiv = {'T','e','r','e',' ','h','o','m','m','i','k','u','s','t'};
+String teade = new String(sümboliteMassiiv);
+System.out.println(teade); On aga ka lihtsam viis klassi String isendi loomiseks, nimelt kiirloome sõneliteraali abil: String teade = "Tere hommikust"; (Literaal on konkreetse väärtuse üleskirjutus programmis. Väärtuse tüüp on määratud kirjakujuga, nt. 15 on int -tüüpi, 15L aga long -tüüpi. Sõneliteraali tähistavad jutumärgid (ülakomad tähistavad Java -s (erinevalt Python -ist) sümbolit, ehk char -tüüpi). Kui sõneliteraali sees on vaja jutumärke kasutada, siis saab seda teha langkriipsu abil, nt "\"" .) Edasi, kui klassi String isend on loodud, saab kasutada klassis String defineeritud isendimeetodeid, näiteks length , toLowerCase jne. Nagu eelmisel nädalal õppisime, kasutatakse isendimeetodit koos konkreetse isendiga. Isendi nimi ja meetodi nimi ühendatakse punktiga, näiteks sõne teade pikkus leitakse järgmiselt: teade.length() Järgnev näiteprogramm demonstreerib klassi String meetodeid. Pange tähele, et sõne sümbolite nummerdamine algab nullist (analoogiliselt massiiviindeksiga). Leidke nende meetodite täpsed kirjeldused Java API-st . Pöörake tähelepanu meetodi signatuurile (eriti parameetrite arvule ja nende tüüpidele) ning tagastustüübile. Tutvuge API-s ka teiste klassi String meetoditega. public class TestString {
+    public static void main(String[] args) {
+
+        String nimi = "Mart Mardikas";
+
+        System.out.println("Sõne pikkus on: " + nimi.length()); // 13
+        System.out.println(nimi.startsWith("Mart")); // true
+        System.out.println(nimi.endsWith("kas")); // true
+        System.out.println(nimi.endsWith("Mart")); // false
+        System.out.println("'a' esimene positsioon: " +
+                           nimi.indexOf('a')); // 1
+
+        int rIndex = nimi.indexOf('r');
+        System.out.println("'r' esimene positsioon: " + rIndex); // 2
+        System.out.println("'r' jargmine positsioon: " +
+                           nimi.indexOf('r', rIndex + 1)); // 7
+
+        int aIndex = nimi.lastIndexOf('a');
+        System.out.println("'a' viimane positsioon: " + aIndex); // 11
+        System.out.println("Alamsõne \"Mardi\" algus: " +
+                           nimi.indexOf("Mardi")); // 5
+        System.out.println("4. täht on "+nimi.charAt(3)); // 't'
+
+        //Täpne võrdsuse kontroll:
+        System.out.println(nimi.equals("Mart Mardikas")); // true
+        System.out.println(nimi.equals("mart mardikas")); // false
+
+        //Suuri-väikesi tähti mitteeristav võrdsuse kontroll:
+        System.out.println(nimi.equalsIgnoreCase("mart mardikas"));  // true
+
+        //Leksikograafiline võrdlemine:
+        System.out.println(nimi.compareTo("Jaan Jaaniste")); // >0
+        System.out.println(nimi.compareTo("Peeter Paan")); // <0
+        System.out.println(nimi.compareTo("Mart Mardikas")); // =0
+
+        System.out.println(nimi.replace('M', 'P')); // "Part Pardikas"
+        System.out.println(nimi.toUpperCase()); // "MART MARDIKAS"
+
+        //Sõne ilma alguses ja lõpus olevate tühikute ja reavahetusteta
+        String imelik = " Mart \n";
+        System.out.println(imelik.trim()); // "Mart"
+    }
+} Ülesanne 1 Kompileerige ja käivitage klass TestString . Lisa sinna rida, mis prindib välja "Harry Potter ja 'saladuste' kamber" (prindi jutumärgid ja ülakomad, nagu nad siin näha on). Sõnede tükeldamine Üsna sageli on vaja sõnesid tükeldada. Selleks on mitu võimalust (nt. klass StringTokenizer ). Siin kasutame tükeldamiseks klassi String isendimeetodit split . Selle meetodi tagastustüübiks on String[] , mis tähendab, et tulemuseks saadakse sõnede massiiv. Argumendiks on regulaaravaldis, mis määrab, milliseid sümboleid lugeda eraldajateks. Järgmises näites on eraldajaks tühik String[] tükid = nimi.split(" ");
+for (int i = 0; i<tükid.length; i++)
+    System.out.println(tükid[i]); Antud juhul saaksime siis ekraanile Mart
+ Mardikas Kui aga määrata eraldajaks täht "a" String[] tükid = nimi.split("a"); // { "M", "rt M", "rdik", "s" } Eraldaja ei pea alati ühesümboline olema, saab kasutada ka pikemaid eraldajaid. Kui näiteks määrata eraldajaks "ar" String[] tükid = nimi.split("ar"); // { "M", "t M", "dikas" } Nagu mainitud, on split meetodi argumendiks regulaaravaldis - sõne, kus teatud sümbolitel on eritähendus, mis võimaldab kirja panna keerulisemaid eraldajaid. Regulaaravaldistest ei hakka me siin kursusel rääkima. Küll aga võiks meelde jätta, et kui split meetod jagab su sõne imelikest kohtadest tükkideks, oled ilmselt kasutanud mõnda eritähendusega sümbolit (nt punkt ja erinevad sulud). Ülesanne 2 (kontroll) Klõpsa siia ülesande eesmärkide nägemiseks Ülesande põhieesmärgid on harjutada: klassi String isendimeetodite kasutamist; massiivi läbimist (tsükli abil); massiivi pikkuse kasutamist. Koosta klass SõnedeAnalüsaator , millel on: privaatne isendiväli analüüsitavSõne analüüsitava sõne jaoks; konstruktor isendivälja väärtustamiseks; parameetriteta void -tüüpi isendimeetod väljastaSõne , mis väljastab analüüsitava sõne koos tekstiga Analüüsitav sõne on ; parameetriteta double -tüüpi isendimeetod leiaKeskminePikkus , mis tagastab analüüsitavas sõnes esinevate sõnade keskmise pikkuse ( Märkus : lihtsuse huvides võib sõna osaks pidada kõiki sümboleid peale tühiku); parameetriteta String -tüüpi isendimeetod leiaPikimSõna , mis tagastab pikima sõna (kehtib sama märkus). Kui pikka sõna on mitu, siis meetod tagastab esimese neist. Klõpsa siia näite nägemiseks Kui võtta lauset Küsimus, kas arvuti suudab mõelda, on sama huvitav kui küsimus, kas allveelaev oskab ujuda , siis: sõnes esinevate sõnade keskmine pikkus on 5.5 ; pikim sõna on allveelaev . Koosta peaklass nimega SõnedeAnalüüsimine , mille peameetodis: luuakse sõnede analüüsaator mingi sõne jaoks; väljastatakse ekraanile analüüsitav sõne, kasutades isendimeetodit väljastaSõne ; väljastatakse loetaval kujul ekraanile meetodite leiaKeskminePikkus ja leiaPikimSõna tagastatud väärtused. Lisa (vabatahtlik) : muuta klassi SõnedeAnalüsaator nii, et keskmise pikkuse ja pikima sõna leidmisel peetakse sõnaks vaid analüüsitava sõne alamsõnesid, mis koosnevad üksnes tähtedest. Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Sõnede võrdlus Ülaltoodud meetodite hulgas on mitmeid, mis kaht klassi String isendit omavahel võrdlevad. Võrduse kontrolliks saab kasutada meetodit equals . Miks ei võiks kahe isendi võrdust aga kontrollida märgipaari == abil nagu arvude võrduse kontrollimiseks? Tegelikult ongi märgipaar == täiesti lubatud ja kompileerimisel veateadet ei tule. Mure allikas on selles, et võrdusmärkide puhul võrreldakse isendite viitasid, aga meetod equals arvestab isendite sisu. Olukorra selgitamiseks loome kolm sõne, esimese sümbolimassiivi ja kaks ülejäänut sõneliteraali abil. char[] sümboliteMassiiv = {'T','e','r','e'};
+String teade1 = new String(sümboliteMassiiv);
+String teade2 = "Tere";
+String teade3 = "Tere"; Püüdke ennustada, millised väärtused väljastatakse, kui kasutame järgmisi võrdlusi. System.out.println(teade1.equals(teade2));
+System.out.println(teade2.equals(teade3));
+System.out.println(teade1 == teade2);
+System.out.println(teade2 == teade3); Ülesanne 3 Võite proovida ka tehisaruga, et näha mis tema ennustab. Proovige nüüd eeltoodud võrdlemise näited läbi ja kontrollige oma ennustusi. Täpsustavalt saab öelda, et kuna sõne on Javas muutmatu ja sageli kasutatav, siis JVM (Java virtuaalmasin) säästab mälu ja kasvatab jõudlust sellega, et paneb kiirloome abil sama sõneliteraaliga loodud klassi String isendid ühte. Seda sõne nimetatakse kanooniliseks sõneks. Nii ongi viitade mõttes teade2 ja teade3 võrdsed, aga teade1 nendega mitte. Sisu mõttes on aga kõik kolm võrdsed. Kuna tavaliselt on meil just sisu mõttes võrdsust vaja kontrollida, siis kasutamegi meetodit equals . Enesekontroll Your browser does not support including other html pages Klass StringBuilder Eespool nägime palju meetodeid, mida saab rakendada klassi String isendi puhul. Tähtis on aga silmas pidada, et need meetodid ei muuda isendit ennast. Sõne on Javas muutumatu – tema sisu ei saa muuta. Ka näiteks read String s = "Soome";
+s = "Poola"; ei muuda sõne s sisu. Esimene rida loob isendi, mille sisuks on "Soome" ja omistab selle viida s -ile. Teine rida loob isendi, mille sisuks on "Poola" ja omistab selle viida s -ile. Esimene objekt jääb tegelikult (vähemalt esialgu) alles (ega muutu), aga tema poole ei saa enam pöörduda. Võime öelda, et klass String käsitleb sõne staatiliselt. Kui aga tahame sõne dünaamiliselt käsitleda (nt. muuta), siis on sobiv klass StringBuilder . Klassis StringBuilder (vt. API ) on neli konstruktorit, millest meie vaatleme kolme. Parameetriteta konstuktori abil moodustub klassi StringBuilder isend, milles on kohti 16 sümboli jaoks, aga ühtegi sümbolit (esialgu) pole. Kui isendi loomisel anda ette täisarv, siis tekibki kohti niipaljude sümbolite jaoks. Kui argumendiks on sõne, siis  vastava sõne sümbolid "puhvrisse" pannaksegi. StringBuilder()
+ StringBuilder(int)
+ StringBuilder(String) Meetodeid on mõnikümmend, mitmed neist on korduva nimega. Meie jaoks olulisemad on append (lõppu lisamine, suurendab vajadusel automaatselt puhvrit) capacity (maht) charAt (sümbol vastaval kohal) delete (kustutamine) insert (lisamine vastavale kohale) length (pikkus) setCharAt (sümboli asendamine vastaval kohal) setLength (pikkuse muutmine) indexOf (otsimine) toString (sõneks teisendamine) replace (asendamine) reverse (transponeerimine) Kõige tavalisem kasutus klassile StringBuilder on sõnede jupp haaval koostamine, näiteks nii: int[] arvud = { 3, 5, 7, 11 };
+StringBuilder sb = new StringBuilder(50); // küsime 50 tähemärgi jagu puhvrit
+sb.append("esimesed algarvud on ");
+for (int arv : arvud) {
+  sb.append(arv);
+  sb.append(' ');
+}
+String tulemus = sb.toString(); Täpselt sama tulemus on ka järgneval koodil: String tulemus = "esimesed algarvud on ";
+for (int arv : arvud) {
+  tulemus = tulemus + arv + ' ';
+} Miks siis klassi StringBuilder kasutada? Sõnede liitmist pole tegelikult olemas - see on ainult mugav süntaks, et kasutada klassi StringBuilder , mis oskab char -massiive ringi kopeerida. Kompilaator teisendab salaja eelneva koodi niisuguseks: String tulemus = "esimesed algarvud on ";
+for (int arv : arvud) {
+  StringBuilder sb = new StringBuilder();
+  sb.append(tulemus);
+  sb.append(arv);
+  sb.append(' ');
+  tulemus = sb.toString();
+} Kui täpsemalt vaadata, on näha, et kompilaator ei ole kuigi tark ja teeb vahetulemusest päris mitu ebavajalikku koopiat (meie algne kood on efektiivsem). Lisaks võimaldab StringBuilder erinevaid trikke teha, nt mugavalt sõne ümber pöörata või seal efektiivselt muudatusi teha. Näiteks saame asendada kõik tühikud komaga, ignoreerides algust: StringBuilder sb = new StringBuilder("esimesed algarvud on 3 5 7 11");
+int i = sb.indexOf(" ", "esimesed algarvud on ".length()); // tühik pärast “3”
+while (i != -1) {
+  sb.replace(i, i + 1, ",");
+  i = sb.indexOf(" ", i + 1);
+}
+System.out.println(sb); // “esimesed algarvud on 3,5,7,11” Ülesanne 4 Katsetage klassi StringBuilder meetodeid ja vahetulemuste nägemiseks lisage sobivatesse kohtadesse rida System.out.println(sb); Mähisklassid Selleks, et jõudlust paremal tasemel hoida, ei käsitleta algtüüpi suurusi Javas objektidena. Samas nõuavad paljud meetodid siiski argumentidena objekte. Sellisel puhul saame kasutada mähisklasse ( wrapper class ). Algtüüpidele vastavad mähisklassid on Boolean , Character , Double , Float , Byte , Short , Integer ja Long . Neis kõigis on meetodid doubleValue , floatValue , intValue , longValue , shortValue ja byteValue , mis tagastavad vastavat algtüüpi väärtuse. Igas arvulises mähisklassis on üks konstruktor, mis nõuab argumendiks vastavat algtüüpi suurust ja teine, mis nõuab argumendiks sõnet. Integer intObjekt1 = new Integer(15);
+Integer intObjekt2 = new Integer("17");
+int arvint2 = intObjekt2.intValue();
+double arvdouble2 = intObjekt2.doubleValue();
+System.out.println(arvdouble2); Arvulistes mähisklassides on ka konstandid MAX_VALUE ja MIN_VALUE , mis kujutavad vastava algtüübi maksimaalseid ja minimaalseid väärtusi. Täisarvuliste tüüpide puhul on MIN_VALUE üldse minimaalne arv, Float ja Double korral minimaalne positiivne arv. System.out.println(Double.MIN_VALUE);
+System.out.println(Byte.MAX_VALUE); Igas arvulises mähisklassis on staatiline meetod valueOf , mis loob uue objekti sõne põhjal. Integer intObjekt3 = Integer.valueOf("19"); Sõne põhjal saab luua algtüüpi suurusi ka vastavate parsimismeetoditega, millele täisarvude puhul saab näidata ka arvusüsteemi aluse. double arvdouble4 = Double.parseDouble("21"); 
+int arvint4 = Integer.parseInt("1CE",16); Ülesanne 5 Vaadake Java APIst mähisklasside infot ja uurige erinevaid meetodeid, konstante. Näiteks seda, kuidas on korraldatud töö lõpmatustega. Enesekontroll Your browser does not support including other html pages Tekstiline sisend/väljund (I/O) Päris mitmes praktikumis oleme põgusalt vaadanud, kuidas saada kasutajalt programmi töö alustamisel või käigus informatsiooni. Vaatluse all on olnud käsurealt programmi käivitamisel sõnemassiivina saadavad argumendid ( 2. nädal ), klassi Scanner abil klaviatuurilt saadavad väärtused ( 1. praktikum ) ja klassi JOptionPane abil korralduv dialoog ( 1. rühmatöö juhend ). Käesolevas lõigus püüame andmed saada kätte tekstifailist ja tekstifaili ka kirjutada. Failidega suhtlemise saab Javas korraldada mitmeti. Siinkohal toome vaid ühe võimaluse. Kõigepealt püüame määrata, millise failiga suhtlemine käib. Selleks loome klassi java.io.File isendi. java.io.File fail = new java.io.File("c:/temp/marsruut.txt"); Kasutada saab mitmesuguseid meetodeid (vt. API ), millest hetkel vaatleme meetodit exists , mille abil saame teada, kas antud fail eksisteerib või mitte. if (fail.exists()) 
+     System.out.println("Fail on juba olemas");
+else
+     System.out.println("Faili ei ole olemas"); Püüame nüüd sinna faili midagi kirjutada. Selleks loome klassi java.io.PrintWriter isendi. Selles klassis on mitmeid konstruktoreid (vt. API ), meie kasutame seda, mille argumendiks on fail. (Võite proovida ka varianti, kus argumendiks on failinimi sõnena.) try (java.io.PrintWriter pw = new java.io.PrintWriter(fail, "UTF-8")) {
+  // kood, mis kasutab faili
+} try on uus märksõna, mis vajab täiendavat seletust. Failide (ja võrguühenduste) kasutamiseks peab operatsioonisüsteemi kaudu vastavad failid avama (OS haldab sisemiselt lugemise/kirjutamise järjehoidjaid, puhvreid jne). Pärast failidega töötamise lõpetamist peab need sulgema, et OS saaks kasutatud vahendid uuesti vabastada. Ülal kasutatud süntaksi, kus ressurssi (antud juhul faili) avamine toimub võtmesõna try järel sulgudes, nimetatakse try-with-resources . Seda kasutades saab tagada, et ressurss saab try ploki lõpus alati korrektselt suletud. Try-with-resources süntaksi peab kasutama igal pool, kus avatakse faile. Faile on võimalik ka close meetodit kasutades käsitsi sulgeda, aga see variant ei tööta veaolukordades korrektselt (sellest täpsemalt 10. nädalal). Seetõttu nõuame ka kontrolltöös try-with-resources (ja mitte close ) kasutamist. Faili avamise koodi lisamisel tekib lisaks veateade, mis räägib käsitlemata erindist ( unhandled exception ). Erinditest tuleb hiljem eraldi praktikum, siinkohal lahendame olukorra lihtsalt peameetodi päisele kahe sõna lisamisega. public static void main(String[] args) throws Exception Klassis PrintWriter on mitmeid meetodeid, sealhulgas ka meile tuttavad print ja println , mida nüüd kasutamegi. try (java.io.PrintWriter pw = new java.io.PrintWriter(fail, "UTF-8")) {
+  pw.print("Karl Ernst von Baeri ");
+  pw.println("tänav");
+  pw.print("Johann Wilhelm Friedrich Hezeli ");
+  pw.println("tänav");
+  pw.print("Juhan Liivi ");
+  pw.println("tänav");
+} Kas teate, kus need tänavad Tartus asuvad? Hezeli tänav sai oma nime alles 22. veebruaril 2012. Ülesanne 6 Püüdke ülaltoodud programmilõikude abil vastav fail luua. Vaadake mingi tekstiredaktoriga, kas fail tõesti loodetud kujul täitus. Teksti kodeering (character encoding) Arvutis teksti esitamiseks määratakse igale tähemärgile kindel numbriline väärtus. Eesti tähestikus on neid piisavalt vähe, et üks bait (võimaldab 256 erinevat väärtust) suudab esitada ükskõik millist eesti tähemärki. Ajalooliselt ongi enamus tekstifaile koostatud nii, et üks bait tähistab ühte tähemärki. Probleem tekib siis, kui võtta kasutusse ka teised tähestikud, nt jaapani, hiina ja araabia tähestikud - tähti on liiga palju, et üks bait suudaks neid kõiki esitada. Ajalooliselt on kasutatud lahendusena kooditabeleid, nii üks number võib sõltuvalt kooditabelist tähendada erinevaid tähemärke. Tänapäeval kasutatakse erilist kooditabelit UTF-8, mis suudab esitada kõiki tähemärke, aga üks tähemärk võib võtta ruumi mitu baiti. Iga kord, kui sa tahad oma programmis faili kirjutada või lugeda, siis tuleb sul määrata ka kooditabel, mida kodeerimisel kasutada. Eelista UTF-8. Kui täpitähed loetakse vigaselt sisse, siis järelikult salvestati fail mingit ajaloolist kodeeringut kasutades või sa üritad UTF-8 kodeeringus faili vale kooditabeliga lugeda. Lisalugemine kodeeringute kohta: artikkel . Failist lugemiseks kasutame klassi Scanner (kasutasime seda tegelikult juba ka 1. praktikumis klaviatuurilt lugemiseks). Isendi konstrueerimisel saab ette anda faili. try (java.util.Scanner sc = new java.util.Scanner(fail, "UTF-8")) {
+  // kood, mis kasutab faili
+} Kasutades meetodeid hasNextLine (mis kontrollib, kas on veel võtta ridu) ja nextLine (mis võtab järgmise rea) loeb järgmine programmilõik failist andmeid ja väljastab need ekraanil nii, et eesnimed jäävad ära. while (sc.hasNextLine()) {
+    String rida = sc.nextLine();
+    String[] tükid = rida.split(" ");
+    System.out.print(tükid[tükid.length-2]+" "+tükid[tükid.length-1]);
+    System.out.println();
+} Analoogilisi meetodeid on teisigi. Näiteks lekseemide ( token ) jaoks on hasNext (mis kontrollib, kas on veel võtta lekseeme) ja next (mis võtab järgmise lekseemi). Vt. ka API . Pakettide nimede igakordse mainimise asemel võib ka vastavad paketid importida, kirjutades programmi algusesse nt. import java.util.Scanner; 
+import java.io.PrintWriter;
+import java.io.File; Siis võib try (java.util.Scanner sc = new java.util.Scanner(fail, "UTF-8")) { } asemel kirjutada try (Scanner sc = new Scanner(fail, "UTF-8")) { } Failist saadud elemendid on sõned. Kui tahame neid kasutada näiteks täisarvudena või reaalarvudena, peame neid enne teisendama. Selleks saab kasutada vastavates mähisklassides olevaid meetodeid. Näiteks sõne täisarvuks teisendamisel on kasutatav meetod Integer.parseInt , mille argumendiks tulebki sõne anda. Näiteks oletame, et kui failis on igal real reaalarv (sõnena), siis double arv = Double.parseDouble(tükid[0]); muudab selle double -tüüpi arvuks, millega saame tehteid teha. Ülesanne 7 (kontroll) Klõpsa siia ülesande eesmärkide nägemiseks Ülesande põhieesmärgid on harjutada: failist lugemist klassi File ja Scanner isendite abil; tsükli abil faili läbimist; klassi StringBuilder isendi ja isendimeetodite kasutamist; klassi String isendimeetodite kasutamist. Laurile väga meeldib osaleda erinevatel IT-võistlustel. Failis võistlused.txt on kõigi võistluste nimetused, millel ta on osalenud. Näide võimalikust faili sisust: AtCoder Grand Contest 2019
+Microsoft Imagine Cup 2019
+International Collegiate Programming Contest 2021
+Cyber Battle of Estonia 2022 Iga faili rida sisaldab võistluse nime (võib ka mitmesõnaline olla), millele järgneb ürituse toimumisaasta (neljakohaline arv). 
+Koosta peaklass Võistlused , kus on: staatiline String -tüüpi meetod lühenda , mille parameeter on üks faili rida. Meetod peab tagastama võistluse nime lühendi, võttes igast sõnast esitähe (suurtähena) ja aastaarvu kaks viimast numbrit ning asetades nende vahele ülakoma ( ' ). Näiteks võistluse " F acebook H acker C up 20 20 " puhul peab meetod tagastama lühendi FHC'20 ; peameetod, mis väljastab ekraanile kõigi failis olemasolevate võistluste nimetuste lühendid. Näide peameetodi tööst ülaltoodud faili võistlused.txt korral: AGC'19
+MIC'19
+ICPC'21
+CBOE'22 Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Enesekontroll Your browser does not support including other html pages Listid Lisaks massiivile on ka teisi andmestruktuure, mis võimaldavad erinevate elementide koos käsitlemist. Tegelikult ongi massiiv Javas suhteliselt paindumatu ja paljude ülesannete puhul sobimatu. Üheks võimaluseks on kasutada listi. Listis on elemendid teatud järjestuses. Põhilise erinevusena massiivist saab listi pikkust programmi töö käigus vabalt muuta, elemente saab erinevatesse kohtadesse lisada ja neid eemaldada. List on Javas seega dünaamiline andmestruktuur, massiiv aga staatiline andmestruktuur. Geneerilised tüübid Liste läheb vaja erinevat tüüpi objektide hoidmiseks. Sarnaselt massiividele hoiab ka iga Listi isend ainult ühte tüüpi andmeid. Java on staatiliste tüüpidega keel - kõik tüübid peab kompilaatorile teatavaks tegema - ja seda ka Listide osas. Seda ideed viivadki ellu geneerilised klassid, kus tüübimuutuja(te) abil saame vajalikud määramised teha. Näiteks ArrayList<Integer> on mõeldud täisarvudele ja ArrayList<String> sõnedele. NB! Geneerilised tüübid ei suuda primitiive (nt. int, boolean, char) väljendada, nende asemel tuleb kasutada vastavaid mähisklasse (nt. Integer, Boolean, Character). Geneerilised tüübid (e geneerikud) on Javas alates versioonist 1.5 (väljalase aastal 2004). Nii kohtab ka koodi, kus listi tüüpi (nt. ArrayList ) on kasutatud ilma täpsustava tüübiparameetrita. Taolisi tüüpe nimetatakse tooreteks ( raw ). Nende kasutamise korral on programmeerija ülesanne pidada meeles, mis tüüpi objektid kogumis on, Java arvates on sel juhul elementide tüüp Object . Siin kursusel ei tohiks mitte ühegi ülesande juures tooreid tüüpe kasutada. Et tüübiparameetrite lisamine ei ununeks, seadista kohe praegu oma IDE hoiatust näitama, kui tüübiparameetrid puudu on ( juhend siin ). Hea ülevaade geneerikutest on Java veebilehestikus. Klass ArrayList Liste on võimalik realiseerida erineval moel. Siin kasutame klassi ArrayList . Nii seda kui teisi dünaamilisi andmestruktuure käsitleme põhjalikumalt semestri teisel poolel. Praegu lihtsalt kasutame paindlikumaid võimalusi kui pakuks massiiv. Näide: import java.util.ArrayList;
+...
+ArrayList<Integer> list1 = new ArrayList<>(); Põhilised toimingud, mida saab listiga teha: elemendi võtmine indeksi järgi, nt. list.get(2) (NB! indeksid algavad 0-st) elemendi lisamine listi lõppu ( list.add(780) ) või määratud positsioonile ( list.add(3, 780) ) mitme elemendi lisamine ( list.addAll(mingiTeineList) ) elemendi eemaldamine indeksi järgi ( list.remove(3) ) mitme elemendi eemaldamine ( list.removeAll(mingiTeineList) ) sisalduvuse kontroll ( list.contains(780) ) sisalduvuse kontroll koos indeksi tagastamisega ( list.indexOf(780) ) pikkuse küsimine ( list.size() ) Näide - listi koostamine import java.util.ArrayList;
+...
+ArrayList<Integer> list1 = new ArrayList<>();
+list1.add(1);
+list1.add(2);
+list1.add(3); Alternatiivne variant sama tulemuse jaoks: import java.util.ArrayList; 
+import java.util.Arrays; 
+... 
+ArrayList<Integer> list2 = new ArrayList<>();
+list2.addAll(Arrays.asList(1,2,3)); Näide - listi väljastamine ekraanile Erinevalt massiivist ei pea (aga võib) listi väljastamiseks kasutada tsüklit: import java.util.ArrayList;
+import java.util.Arrays;
+... 
+ArrayList<Integer> list1 = new ArrayList<>();
+list1.add(1);
+list1.add(2);
+list1.add(3);
+System.out.println(list1);
+
+ArrayList<Integer> list2 = new ArrayList<>();
+list2.addAll(Arrays.asList(1,2,3));
+for (int i = 0; i < list2.size(); i++)
+    System.out.print(list2.get(i)+" ");
+System.out.println(); Alates Java 8. versioonist on võimalik kasutada listi elementide puhul ka konstruktsiooni forEach . Kes sellest võimalusest rohkem tahab teada, võib vaadata APIst . Näide - listi ümberpööramine Järgnev on näide meetodist: public static ArrayList<Integer> reverse(ArrayList<Integer> list) {
+    ArrayList<Integer> tulemus = new ArrayList<>();
+    for (int i = list.size()-1; i >= 0; i--) {
+        tulemus.add(list.get(i));
+    }
+   return tulemus;
+} Kasutada võime seda meetodit nt. järgmiselt: ArrayList<Integer> intList = new ArrayList<>();
+intList.addAll(Arrays.asList(1,2,3));
+System.out.println(reverse(intList)); Näide - elemendi lisamine listi keskele ArrayList<Integer> list3 = new ArrayList<>(); 
+list3.addAll(Arrays.asList(1,2,3)); 
+list3.add(2, 54); // '54' saab 3. elemendiks (indeksiga 2)
+System.out.println(list3); Ülesanne 8 (kontroll) Klõpsa siia ülesande eesmärkide nägemiseks Ülesande põhieesmärgid on harjutada: failist lugemist klassi File ja Scanner isendite abil; tsükli abil faili läbimist; klassi String isendimeetodite kasutamist; meetodi equals kasutamist (sõnede võrdlemisel); listi loomist ning elementide lisamist ja eemaldamist. Eesti Vabariigi 100. aastapäeva (2018. aastal) puhul otsustab Transpordiamet kodanikele kingituse teha. Nimelt on plaanis tasuta ja ilma eksamiteta väljastada juhiluba kõikidele kodanikele, kes on vähemalt 18-aastased (sh ka nendele, kes said täiskasvanuks alles 2018. aasta jooksul) ja kellel seda veel pole. Lisaks sellele tahab Transpordiamet teada, kes on kampaania raames juhiloa saanud ja kes mitte. Kampaania läbiviimiseks on olemas fail kodanikud.txt järgmise struktuuriga: Männik,Mari-Liis,47101010033,Olemas
+Jõeorg,Jaak Kristjan,38001085718,Puudub
+Pihlakas,Arno,37605030299,Olemas
+Paanika,Peeter,36908209993,Puudub
+Maasikas-Jõhvikas,Mari,61710020019,Puudub Iga faili rida koosneb neljast osast, mis on omavahel eraldatud komadega. Andmed kodaniku kohta on järgmises järjekorras: perekonnanimi (võib mitu olla); eesnimi (võib mitu olla); isikukood; sõna Olemas või Puudub vastavalt sellele, kas inimesel on juhiluba juba olemas või mitte. Koosta klass Kodanik , millel on privaatsed isendiväljad eesnime ( String ), perekonnanime ( String ), isikukoodi ( String ) ja juhiloa olemasolu ( boolean ) jaoks. Lisa konstruktor, mille abil saab kõiki isendivälju väärtustada. Lisa järgmised isendimeetodid: get -meetod isikukoodi jaoks ( getIsikukood ); parameetriteta boolean -tüüpi meetod kasJuhilubaOnOlemas ; parameetriteta boolean -tüüpi meetod kasOnTäiskasvanuAastal2018 . Näiteks kui kodanik on sündinud 1999. aastal, siis tagastab meetod true , 2000. a – true , 2001. a – false . toString -meetod, mis tagastab kodaniku eesnime ja perekonnanime (just selles järjekorras). Koosta peaklass TranspordiametiKampaania . Peaklassis peab olema staatiline abimeetod loeKodanikud , mille parameeter on faili nimi ( String ) ning mis tagastab kodanike listi ( ArrayList<Kodanik> ). Meetod peab hakkama saama suvalise failiga. Peaklassis peab olema peameetod, kus: luuakse kodanike list (eelneva abimeetodi abil) faili kodanikud.txt põhjal; väljastatakse ekraanile eraldi ridadele loetaval kujul kodanike nimed koos infoga, kas kodanik sai  juhiloa kingituseks või mitte (sel juhul tuleb väljastada ka põhjus); eemaldatakse listist need kodanikud, kes on kampaania raames juhiloa saanud. Vihje : üks võimalik variant on kasutada meetodit removeAll ; väljastatakse ekraanile ülejäänud listis olevate kodanike isikukoodid. Näide peameetodi tööst ülaltoodud faili kodanikud.txt korral: Mari-Liis Männik juhiluba kingituseks ei saanud, põhjus: juhiluba on juba olemas.
+Jaak Kristjan Jõeorg sai juhiloa kingituseks.
+Arno Pihlakas juhiluba kingituseks ei saanud, põhjus: juhiluba on juba olemas.
+Peeter Paanika sai juhiloa kingituseks.
+Mari Maasikas-Jõhvikas juhiluba kingituseks ei saanud, põhjus: pole täiskasvanu.
+
+Kodanikud, kes jäid kingitusest ilma:
+47101010033
+37605030299
+61710020019 Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Klass HashMap Javas on suur hulk sisseehitatud andmestruktuure. Nendest tuleb täpsemalt juttu kursuse teises pooles. Lisaks listile mainime siin ka ära klassi HashMap , mis on analoogne pythoni dict() struktuurile. Seda esimeses kontrolltöös ei küsita, aga võibolla on rühmatöös abiks: // esimene geneeriline parameeter on võtme tüüp, teine on väärtuse tüüp
+HashMap<String, String> numbrid = new HashMap<>(); 
+numbrid.put("hädaabi", "112");
+numbrid.put("elektritakso", "1918");
+String takso = numbrid.get("elektritakso"); // "1918" Enesekontroll Your browser does not support including other html pages 1. rühmatöö Moodle'isse esitamise tähtajaks on 4. aprill kell 18.00 . Juhend on toodud eraldi. Lahenduste esitamine Lahenduste esitamise põhimõtteid vaadake eelmise praktikumi lehe lõpust. Seekord tuleks esitada järgmised failid: SõnedeAnalüsaator.java SõnedeAnalüüsimine.java Võistlused.java Kodanik.java TranspordiametiKampaania.java valikuliste ülesannete lahendused, mille kohta soovite juhendajalt tagasisidet Kõik nõutud klassid peavad olema vaikepaketis, st. vastava java faili alguses ei tohi olla package direktiivi. NB! Kõik nõutud meetodid ja konstruktorid peavad olema avalikud (st. piiritlejaga public )! Kuna automaattestid eeldavad kõikide nõutud klasside meetodite olemasolu, siis ei jõua testimine kompileerimisest kaugemale, kui kasvõi üks nõutud meetod on puudu või vale signatuuriga. Katsuge sel juhul kompilaatori veateatest aru saada ja viga ära parandada. Kui aga teadlikult jätsite mingi osa ülesandest tegemata ja seetõttu kompileerimine ei õnnestu, siis jääte paraku automaatsest tagasisidest ilma. Esitatud failid jõuavad praktikumijuhendajani sellegipoolest ja ta saab omapoolse tagasiside siiski anda. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

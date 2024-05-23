@@ -1,0 +1,36 @@
+<LINK>https://courses.cs.ut.ee/t/akt/Main/L%c3%b5viosa</LINK>
+Automaadid, keeled ja translaatorid - Kursused - Arvutiteaduse instituut Esileht Automaadid, keeled ja translaatorid EN Logi sisse Automaadid, keeled ja translaatorid Üldinfo Ajakava Eksami näidised Imperatiivne Imp Beebiprolog Bolog Paralleelne Parm Uskumatu Hulk Dialektiline Dialoog Puhas Pullet Eestimaine Estolog Teemad 1. Soojendus 2. Regulaaravaldised 3. Automaadid 4. Avaldise struktuur 5. Grammatikad ja lekser 6. Käsitsi parsimine 7. ANTLRiga töötamine 8. Interpretaator 9. Kompilaator Vam: CMa simulaator Eksami lõviosa! Kodutöö: Analüüs Kodutöö: Kompilaator 10. Edasi! Süvendus GitHub Moodle Zulip Zoom Eksami lõviosa Eksami lõviosas genereerime CMa baitkoodi sellesama ASTi põhjal, mille jaoks oleme interpretaatori juba kirjutanud. Idee poolest peaksid nad andma sama tulemuse! Kui õpid ära, kuidas see kompileerimine käib, siis on ta peaaegu sama lihtne kui väärtustamine. Selleks peab kõigepealt meie Vam osaga tutvuma (ja tutvuda CMa käsustikuga ). Demo: KalaCompiler Praktikumides proovime Imp keele lõviosa lahendada, aga selleks, et siin lehel oleks väike näide koodi genereerimise skeemist vaatame ka Kala tippude kompileerimist. See on tegelikult listide keel ja selle AST'il on meetod sum , mis liidab tema kõik komponendid kokku. Argumendiks võtab ta keskkonna, mis seab muutujatele oma väärtusi, näiteks võisime kirjutada: KalaNode kalaAst = makeKalaAst("(kala, (x,y , null, (), (kala,()) ))");
+        Map<String, Integer> env = Map.of("kala", 1, "x", 2, "y", 3);
+        System.out.println(kalaAst.sum(env));  // 7 Kui me tahaks kompileerida seda programmiks, mis jookseb CMa peal, siis peame kuidagi ka seda keskkonda argumendina talle andma. CMa sisendiks on ainult magasin ja me saame selle kaudu vastavate muutujate väärtused ette anda. Antud näites käivitame CMa magasiniga [1, 2, 3] , aga me peame kuidagi kokku leppima, kuidas etteantud magasin on seotud muutujate nimedega. 
+Üks lihtne variant, mida me tihti kasutame on see, et fikseerime muutujate nimed ära ja kõik programmid kasutavad samu nimesid sisendiks. Meil on seega globaalne list argumentide nimedest: public static final List<String> ARGS = List.of("kala", "x", "y"); Ja nüüd kävitame kompileeritud programmi järgmiselt: public static void main(String[] args) {
+        KalaNode kalaAst = makeKalaAst("(kala, (x,y , null, (), (kala,()) ))");
+        CMaProgram program = compile(kalaAst);
+        CMaStack initialStack = new CMaStack(1, 2, 3);
+        System.out.println(CMaInterpreter.run(program, initialStack));
+   } Meie koodi genereerimise skeem on siis järgmine. Muutujate juures me vaatame lihtsalt muutujate nimede listis mitmes ta peaks olema. public static CMaProgram compile(KalaNode expr) {
+        CMaProgramWriter pw = new CMaProgramWriter();
+        new KalaAstVisitor<Void>() {
+            @Override
+            protected Void visit(KalaNull nullnode) {
+                pw.visit(LOADC, 0);
+                return null;
+            }
+
+            @Override
+            protected Void visit(KalaList list) {
+                pw.visit(LOADC, 0);
+                for (KalaNode arg : list.getArgs()) {
+                    visit(arg);
+                    pw.visit(ADD);
+                }
+                return null;
+            }
+
+            @Override
+            protected Void visit(KalaIdent ident) {
+                pw.visit(LOADA, ARGS.indexOf(ident.getName()));
+                return null;
+            }
+        }.visit(expr);
+        return pw.toProgram();
+    } Eksami ülesannete lahendamine Nüüd saab meie eksami näidiste lõviosasid lahendada. Kui saad nendega hakkama, siis oled eksamiks valmis. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

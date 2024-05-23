@@ -1,0 +1,120 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice11</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 11 Kogumid ( Collections ) Teemad Java Collections Framework. Massiiv (järjend). List (klass ArrayList ). Magasin (klass ArrayDeque ). Järjekord (klass LinkedList ). Kujutus (klass HashMap ). Geneerilised tüübid. Pärast selle nädala läbimist oskab üliõpilane kasutada põhilisi andmestruktuure. Kogumid Mitmed andmestruktuurid on Javas kasutusel olnud juba esimestest versioonidest peale. Viimastes versioonides on püütud kogumeid süstemaatiliselt käsitleda ja asjassepuutuv koondada ühte raamistikku - Java Collections Framework . Hea ülevaade on Java veebilehestikus. Java Collections Framework on ülesehitatud liidestest ja klassidest (ka abstraktsetest). Liidestes määratakse teatud kogumiliigi (nt. list või järjekord) jaoks vajalikud meetodid, mis siis konkreetsetes klassides realiseeritakse. Liidestes Collection ja Map on universaalsemad meetodid, alamliidestes tuuakse juurde spetsiifilisemad. Põhiliideste hierarhia on toodud joonisel. (Tegelikult on liideseid märksa rohkem.) Massiiv (järjend) Massiiv on mõnes mõttes kõige olulisem kogumitüüp - paljud teised kogumid on realiseeritud kasutades massiivi. Massiivi kasutamine on mugav juhul, kui elementide arv on massiivi loomisel teada ja see ei muutu. Kuna massiivi elemendid hoitakse arvuti mälus järjest, siis massiivi suurendamiseks on tarvis leida uus ja suurem vaba mälukoht ning vana massiivi elemendid sinna "ümber kolida". Käesolevas praktikumis me otseselt massiiviga (järjendiga) ei tegele, oleme ju seda varem teinud. List ( ArrayList , LinkedList ) Kuigi listidest oli juba juttu 4. praktikumis, vaatame siin neid põhjalikumalt. Listis on elemendid teatud järjestuses. Põhilise erinevusena massiivist saab listi pikkust programmi töö käigus vabalt muuta, elemente saab erinevatesse kohtadesse lisada ja neid eemaldada. Listile omased operatsioonid on määratud liideses java.util.List . import java.util.List; 
+import java.util.ArrayList; 
+import java.util.Arrays; 
+... 
+List<Integer> list1 = new ArrayList<>(); 
+list1.add(42);
+List<Integer> list2 = new ArrayList<>(); 
+list2.addAll(Arrays.asList(1,2,3)); 
+// veel lühem 
+List<Integer> list3 = Arrays.asList(1,2,3); 
+// eelnevad read juba vihjasid, et järjendi saab konvertida listiks 
+Integer[] jarjend = {1, 2, 3};
+List<Integer> list4 = Arrays.asList(jarjend); 
+// listi konvertimine järjendiks on veidi peenem töö 
+Integer[] jarjend2 = list4.toArray(new Integer[0]); 
+// listist koopia tegemine
+List<Integer> list5 = new ArrayList<>(list4); Näide: list ja lambda-avaldised Alates Java 8. versioonist on võimalik kasutada listi elementide puhul ka meetodit forEach koos lambda-avaldistega: // prindi elemendid ükshaaval välja
+list1.forEach(elem -> System.out.println(elem)); Lambda-avaldisi saab kasutada ka listi elementide sorteerimiseks. Nt. sõnede sorteerimiseks sõne pikkuse järgi: List<String> list6 = Arrays.asList("aa","ccc","b");
+// compareTo lambda, mis võtab parameetriks kaks sõne ja tagastab int
+Collections.sort(list6, (s1, s2) -> s1.length() - s2.length()); Ilma lambda avaldiseta sorteerimisel meetodiga Collections.sort(list6); sorteeritakse sõned tähestiku järjekorras. Liidese List realisatsioonid ArrayList on enamasti kõige efektiivsem viis listide realiseerimiseks - elementide hoidmiseks kasutatakse massiivi. LinkedList hoiab oma elemente mälus eraldi, kasutades listi kooshoidmiseks viitasid. LinkedList on efektiivne, kui on tarvis tihti lisada andmeid listi etteotsa või keskele (või kui on vaja elemente sealt eemaldada). Samas elemendi võtmine indeksi järgi on aeglasem kui ArrayList -i puhul. // näide listi keskele elemendi lisamisest 
+// NB! töötab ka ArrayList-iga 
+List<Integer> list2 = new LinkedList<Integer>(); 
+list2.addAll(Arrays.asList(1,2,3)); 
+list2.add(2, 54); // '54' saab 3. elemendiks (indeksiga 2) Nagu ka siin näites, on koodis alati soovitatav panna muutuja või argumendi tüübiks liides List , mitte ArrayList või LinkedList . See tagab, et meetodid, mis seda muutujat kasutavad, teavad, et nad teevad tööd listiga, aga ei tea täpselt, millise realisatsiooniga. Siis on võimalik listi loomisel valida vastavalt olukorrale sobivam realisatsioon ( ArrayList või LinkedList ) või seda vajadusel muuta, kuid ülejäänud koodi muutma ei pea. Enesekontroll Your browser does not support including other html pages Magasin ( Stack ) Magasin ( stack ) on listil põhinev andmestruktuur, mille põhimeetoditeks on pop ja push . Meetod push(x) lisab elemendi x listi lõppu (magasini tippu). Meetod pop() eemaldab magasini tipuelemendi (listi viimase elemendi) ja tagastab selle. Viimasena magasini pandud elemendid pääsevad välja kõige esimesena, seetõttu kasutatakse selle andmestruktuuri kohta ka nimetust LIFO (last-in-first-out) . // sisseehitatud liides Deque (double-ended queue) sisaldab magasini funktsionaalsust
+Deque<Integer> magasin = new ArrayDeque<>(); 
+magasin.push(1); 
+magasin.push(2); 
+magasin.push(3); 
+System.out.print(magasin.pop()); // 3
+System.out.print(magasin.pop()); // 2
+System.out.print(magasin.pop()); // 1 Magasini kasutab näiteks Java virtuaalmasin pidamaks arvet parasjagu pooleli olevate meetodi väljakutsete üle. Programmi käivitades lisatakse magasini põhja peameetodi väljakutse info (parameetrite ja lokaalsete muutujate väärtused jms). Kui koodi täitmisel jõutakse mingi abimeetodi väljakutseni, siis lisatakse magasini uus kirje tolle väljakutse info hoidmiseks. Kui abimeetod lõpetab, siis vastav kirje pop-itakse ja magasini tipp viitab jälle eelmisele meetodile. Programmi magasini on näha näiteks püüdmata erindi tekkimisel: java.lang.NullPointerException
+    at MinuProgramm.teisendaArvuks(MinuProgramm.java:27)
+    at MinuProgramm.loeFailistNumbreid(MinuProgramm.java:23)
+    at MinuProgramm.main(MinuProgramm.java:18) Järjekord ( Queue ) Järjekord ( queue ) on järjestatud elementide kogum, kus elemente lisatakse ( add ) alati järjendi lõppu ja neid eemaldatakse ( remove ) alati järjendi algusest. Sellest tulenevalt kutsutakse seda FIFO (first-in-first-out) . // sisseehitatud liides Queue sisaldab järjekorra funktsionaalsust
+Queue<String> linnadMidaKülastada = new LinkedList<>();
+linnadMidaKülastada.add("Tartu"); // lisab lõppu
+linnadMidaKülastada.add("Paide");
+linnadMidaKülastada.add("Tallinn");
+while (!linnadMidaKülastada.isEmpty()) {
+  System.out.println(linnadMidaKülastada.remove()); // eemaldab algusest
+} Järjekorda kasutatakse paljude algoritmide osana (nt graafide läbimisel), samuti saab sellega organiseerida programmi tööd (nt kasutaja sisestab käsureal käsud ja hiljem hakatakse neid täitma). Kujutus ( Map ) Kujutus ( map , pythonis dictionary ) sisaldab endas kaheosalisi kirjeid, mille esimest komponenti nimetatakse võtmeks ja teist väärtuseks. Ühes kujutuses saab sama võtmega olla vaid üks kirje. Kujutust kasutatakse siis, kui mingi identifikaatori järgi on vaja kiiresti leida üles sellele vastav info. Kujutuse (liidese Map ) realisatsiooniks on parim valik enamasti HashMap . Järgnevas näites kasutatakse HashMapi telefoniraamatu imiteerimiseks: Map<String, Integer> telefoniraamat = new HashMap<>(); 
+telefoniraamat.put("Peeter Peet", 5562356); 
+telefoniraamat.put("Mari Maasikas", 53438956); 
+System.out.println("Mari number on " + telefoniraamat.get("Mari Maasikas")); Paneme tähele, et kolmnurksulgude vahele on vaja märkida kaks tüübiparameetrit: üks võtme jaoks ( String ) ja teine väärtuse jaoks ( Integer ). Kui get -iga küsitakse mingit elementi, mida kujutuses ei leidu, siis tagastatakse null . Kujutuse kohta võidakse öelda veel sõnastik ( dictionary on Pythoni vastav andmestruktuur) või paisktabel ( hashtable ). Enesekontroll Your browser does not support including other html pages Ülesanne 1 (kontroll) Kasutades kujutust, kirjutada programm, mis loeb sisse mingi tekstifaili ning leiab failis olevate sõnade esinemiste arvud ja kuvab need lõpuks ekraanile. (Vihje: juba olemasoleva võtmega kirje lisamisel väärtus asendatakse.) Automaatkontrolli võimaldamiseks lepime kokku, et programmis peab olema klass TekstiAnalüsaator , mille üks konstruktor võtab argumendiks sõnena antud teksti. Teine konstruktor peab võtma kaks argumenti: java.io.File , mis näitab millisest failist vaja tekst lugeda ning String , mis näitab faili kodeeringut. Analüüsi tulemuse peab andma parameetriteta meetod sõnadeSagedus , mis tagastab kujutuse, kus kirje võtmeks on sõna ja väärtuseks sõna esinemiste arv. Vihje . Failist on võimalik teksti kätte saada ka ühe avaldisega. Vajalikud komponendid on: java.nio.Files#readString java.io.File#toPath Ülesanne 2 (kontroll) Tudeng soovis sünnipäeva puhul peo korraldada. Ta palus sõpradel kohale tulla ja oma sõber kaasa võtta. Kohale tuli väga palju imelikke inimesi, kelle sõprade sõbrad kaasa olid võtnud. Failis on igal real kaks nime: kutsuja ja külaline (ühesõnalised nimed, tühikuga eraldatud). Näidisfail: Malle Kalle
+Herbert Jaanus
+Kalle Pille
+Jaanus Margus
+Pille Janne Kirjuta progamm klassis Pidu , mis võtab esimeseks käsurea parameetriks failinime ja teiseks parameetriks ühe külalise nime. Programm peab otsima välja, kes oli selle külalise kutsujate ahela alguses ning kuvama vastava nime ekraanile. Võib eeldada, et kutsujate failid on alati kodeeringus UTF-8. Näide. Kui me kasutaksime seda programmi ülaltoodud näidisfailiga ja nimega Janne > java Pidu näidis.txt Janne Siis peaks ekraanile ilmuma Malle sest Janne kutsujaks oli Pille, Pille kutsujaks oli Kalle, Kalle kutsujaks oli Malle, aga Malle kutsuja kohta meil infot enam pole. Vihje. Lugeda kõigepealt andmed failist kujutusse. Mõelge järele, kumbapidi tuleks kujutust organiseerida, kas nii, et kirje võtmeks on kutsuja või hoopis kutsutu? Ülesanne 3 (raskem) Järgnev ülesanne on mõeldud eelkõige magasini ja kujutuse kasutamise harjutamiseks. Avaldise väärtustamise punkt võib tunduda esmapilgul keeruline, aga lahendus on tegelikult üpris lihtne. Tutvuda pööratud poola notatsiooniga ( Reverse Polish Notation ) http://en.wikipedia.org/wiki/Reverse_Polish_notation http://progeopik.cs.ut.ee/09_muteerimine.html#lisalugemine Kirjutada meetod, mis küsib kasutajalt RPN kujul kirjutatud aritmeetilise avaldise, jagab avaldise tühikute kohalt juppideks ja tagastab saadud jupid sõnede listina Kirjutada meetod, mis võtab argumendiks List -i salvestatud RPN avaldise jupid ning arvutab avaldise väärtuse, kasutades seejuures Integer -ide magasini Kombineerida saadud meetodid töötavaks RPN kalkulaatoriks Kirjutada meetod, mis küsib kasutajalt muutujanimesid ja neile vastavaid väärtusi (täisarvud) ja salvestab need Map<String, Integer> tüüpi andmestruktuuri, ning tagastab saadud kujutuse Täiustada kalkulaatorit nii, et see lubaks avaldises ka muutujaid, mille väärtused võetakse eelmises punktis koostatud Map -ist Võib proovida modifitseerida kalkulaatorit nii, et see töötaks tavaliste ( infix ) avaldistega (vt. http://en.wikipedia.org/wiki/Shunting-yard_algorithm ) Hulk ( Set ) Hulk ( set ) on andmestruktuur, kus ei saa esineda korduvaid elemente. Hulga elemente ei säilita sisestamise järjekorras. Põhilised hulga meetodid on elemendi lisamine ( add ), sisalduvuse kontroll ( contains ) ja hulga läbimine (tsükliga läbi vaatamine). Set<String> meiliAadressid = new HashSet<>();
+meiliAadressid.add("example@example.com");
+meiliAadressid.add("java-is-awesome@example.com");
+meiliAadressid.add("example@example.com"); // aadressi ei lisata, sest see on juba olemas
+for (String aadress : meiliAadressid) {
+  System.out.println(aadress);
+}
+
+List<String> nimed = Arrays.asList("Märt", "Taavi", "Aivar", "Marina", "Aivar");
+// loob hulga, kus on kõik nimed ühekordselt
+Set<String> unikaalsedNimed = new HashSet<>(nimed); 
+// teeme hulgast uuesti listi
+nimed = new ArrayList<>(unikaalsedNimed); Tavaliselt kasutatakse hulki unikaalsete elementide leidmiseks ja hulga-operatsioonide jaoks: ühisosa , ühend ja vahe . Andmestruktuuride kombineerimine Mõnikord on tarvis andmestruktuure kombineerida. Näiteks kui me tahaksime teada mingi teksti kohta, millised sõnad võivad üksteisele järgneda, siis me võiksime analüüsi tulemust esitada kujutusega, kus kirje võtmeks on sõna ja väärtuseks sellele vahetult järgnevate sõnade hulk: Map<String, Set<String>> järgnevused = new HashMap<>();
+järgnevused.put("kala", new HashSet<>());
+järgnevused.get("kala").add("ujub");
+järgnevused.get("kala").add("praadima"); Enesekontroll Your browser does not support including other html pages Ülesanne 4 (kontroll) Täiendada eespool mainitud klassi TekstiAnalüsaator uue parameetriteta meetodiga sõnadeJärgnevus , mis tagastab tekstis olevate sõnade järgnevuse info sobivas andmestruktuuris. Erinevalt eelmisest näitest, kus andmestruktuur ei võimaldanud edasi anda seda, kui sagedasti mingi sõna mingile teisele sõnale järgneb (nt. me ei teadnud kas "kala ujub" esines tekstis 1 või rohkem kordi), peab nüüd olema võimalik näha, mitu korda mingi sõna mingile sõnale järgnes. Vihje: võimalikud andmetüübid oleks näiteks Map<String, List<String>> või Map<String, Map<String, Integer>> . Ülesanne 5 Lisada klassi TekstiAnalüsaator veel üks meetod String genereeriSarnaneTekst(int n) , mis genereerib ja tagastab juhusliku n-sõnalise teksti, mille sõnad on võetud algse teksti sõnade hulgast ja mille sõnade järjekord arvestab algse teksti sõnade järgnevust (st. sõnad, mis on algses tekstis sagedamini järjest, satuvad uues tekstis suurema tõenäosusega järjest). Proovida näiteks, millise tulemuse saad Tammsaare "Tõe ja õiguse" 1. köite teksti põhjal . Usutavama tulemuse saamiseks lugeda ka kirjavahemärke sõnadeks. Kui see ülesanne meeldis, siis arvatavasti pakub huvi ka http://nifty.stanford.edu/2003/randomwriter/handout.html . Equals ja hashcode Vaatame lihtsat näidiskoodi listide kasutamise kohta. public class Klient {
+  private int kliendiNumber;
+  public Klient(int kliendinumber) {
+    this.kliendiNumber = kliendinumber;
+  }
+}
+
+public class Test {
+  public static void main(String[] args) {
+    Klient klient = new Klient(123);
+    Klient samaKlient = new Klient(123);
+    List<Klient> kliendid = Arrays.asList(klient);
+    System.out.println(kliendid.contains(samaKlient)); // false
+
+    Integer kliendiNumber = new Integer(123);
+    Integer samaKliendiNumber = new Integer(123);
+    List<Integer> kliendiNumbrid = Arrays.asList(kliendiNumber);
+    System.out.println(kliendiNumbrid.contains(samaKliendiNumber)); // true
+  }
+} Võrdse kliendinumbriga kliendid oleks loogiline samaväärseteks lugeda. Selle järgi peaks esimesena ekraanile ilmuma true , aga ilmub false . Miks see nii on? Miks List<Integer> puhul ilmub analoogse näite korral ekraanile true ? Listi contains meetod läbib terve listi ja võrdleb iga elementi otsitava väärtusega. Võrdlemiseks rakendatakse objektidel nende equals meetodit. Paljud Java sisseehitatud tüübid (nt String ja mähisklassid) on selle meetodi üle katnud, nii et võrreldaks andmete sisu. Klass Klient ei kata seda üle, seetõttu kasutatakse Object klassi varianti, mis võrdleb lihtsalt objektide viitasid. Sama loogikaga töötavad ka HashMap ja HashSet klassid, aga nemad kasutavad lisaks equals meetodile ka hashcode meetodit, et andmestruktuuri tööd optimeerida. Sellest, kuidas equals ja hashcode meetodid õigesti üle katta, räägitakse lähemalt Algoritmid ja andmestruktuurid aines. Praegu jäta lihtsalt meelde, et andmestruktuurid ei oska sinu objektide sisu uurida ja peavad iga isendit erinevaks. Geneerilised tüübid Praktiliselt kõik andmestruktuurid, mida oleme kasutanud, sisaldavad oma tüübis lisaks tavaliselt tüübi nimele ka <T> (näiteks List<String> ). Mida tähendab <T> ? Kas List<String> ja List<Integer> on sama liides või erinevad liidesed? Tuletame kõigepealt meelde, kuidas toimivad meetodite parameetrid ja argumendid. Meetodi defineerimisel on tihti kasulik jätta koodis mingi väärtus lahtiseks ja tähistada seda tundmatut väärtust parameetriga. See võte võimaldab meetodi erinevatel väljakutsetel määrata parameetrile erinevad väärtused (kasutada erinevaid argumente) ja muuta niimoodi kood universaalsemaks. Geneerilised tüübid ( generic types ) on liidesed või klassid, mille definitsioonis on jäetud mõned tüübid lahtiseks - konkreetse tüübi asemel on kasutatud tüübiparameetrit. Taolise klassi või liidese kasutamisel peab need parameetrid väärtustama konkreetsete tüüpidega. Näiteks List on geneeriline tüüp, millele saab anda ühe tüübiparameetri, mis määrab Listis sisalduvate elementide tüübi. Tüübiparameetrid märgitakse kolmnurksete sulgude vahel ja need võimaldavad samal klassil töötada erinevat tüüpi andmetega. Vaatame näidet klassist, mis oskab enda sees hoida suvalist teist tüüpi objekti (välja arvatud primitiivi): public class Hoidja<T> {
+
+  private T hoitavObjekt;
+
+  public T getHoitavObjekt() {
+    return hoitavObjekt;
+  }
+
+  public void setHoitavObjekt(T hoitavObjekt) {
+    this.hoitavObjekt = hoitavObjekt;
+  }
+}
+
+public class Test {
+  public static void main(String[] args) {
+    Hoidja<Integer> intHoidja = new Hoidja<>();
+    intHoidja.setHoitavObjekt(99);
+    Hoidja<String> strHoidja = new Hoidja<>();
+    strHoidja.setHoitavObjekt("hurraa!");
+  }
+} Ärge unustage, et tüübiparameeter on parameeter! Klassi deklaratsioonis on deklareeritud tüübiparameeter ja määratud parameetri nimeks T (sobib suvaline nimi, hea tava on kasutada lühikesi suurtest tähtedest koosnevaid nimesid). Objekti loomisel tuleb tüübiparameeter väärtustada. Sellest võib mõelda nii, et objektis asendatakse selle peale igal pool muutuja T etteantud konkreetse tüübiga. Näitekoodis on intHoidja puhul antud tüübiparameetriks Integer ja strHoidja puhul String . Ühel klassil saab olla ka mitu (komaga eraldatud) tüübiparameetrit. Näiteks liideses Map<K, V> määrab üks parameeter võtme tüübi ja teine parameeter väärtuse tüübi. Geneerilises klassis saab kasutada tüübiparameetri väärtust igal pool, kuhu saaks kirjutada mingi konkreetse tüübi nime - isendiväljade ja parameetrite tüübina, tagastustüübina, kohaliku muutuja tüübina jne. Ülesanne 6 (kontroll) Kirjutada klass Paar , millel on kaks tüübiparameetrit. Klassis on kumbagi tüüpi isendiväli, konstruktor nende määramiseks ja vastavad get - ja set -meetodid ( getEsimene , getTeine , setEsimene , setTeine ). Lisada toString meetod, mis kajastab väljade sisu. Luua testklass, mille peameetodis luuakse String,Integer paar (tähistab näiteks isiku nime ja vanust) ja String,String paar (tähistab näiteks isiku nime ja aadressi) ja katsetatakse paaride meetodite tööd. Piiratud tüübiparameetrid ( bounded type parameters ) Lihtne tüübiparameeter <T> laseb parameetriks määrata ükskõik millise Object alamklassi. Kompilaator lubab T tüüpi objektidel seetõttu kutsuda ainult Object klassi meetodeid. Vajadusel on võimalik piirata, mis klasside alamklasse on võimalik tüübiparameetriks määrata: public class NumbriHoidja<N extends Number> {
+
+  private N hoitavNumber;
+
+  public N getHoitavNumber() {
+    return hoitavNumber;
+  }
+
+  public void setHoitavNumber(N hoitavNumber) {
+    this.hoitavNumber = hoitavNumber;
+  }
+} Antud näites on piiratud tüübiparameeter N ainult klassi java.lang.Number alamklassideks. Kompilaator lubab kasutada NumbriHoidja<Integer> , aga mitte NumbriHoidja<String> . Piiride määramine on kasulik selle pärast, et nüüd on võimalik NumbriHoidja klassis N tüüpi muutujate peal kutsuda ka Number klassi meetodeid (kompilaator tagab, et N on alati mingi Number ). Parameetri piiriks saab kasutada nii liideseid kui ka klasse, mõlema puhul kasutatakse võtmesõna extends (imelik, aga nii see on). Ülesanne 7 (kontroll) Koostada geneeriline klass Võrdleja , mis võtab ühe tüübiparameetri. Piirata tüübiparameetrit, nii et sinna saab ainult Comparable liidest realiseerivaid tüüpe määrata (tüüp, mille isendeid on võimalik omavahel võrrelda). Lisada meetod leiaSuurem , mis võtab kaks parameetrit (tüübiparameetriga ette antud tüüpi). Meetod võrdleb objekte ja tagastab compareTo meetodi põhjal "suurema" objekti. Vihje: Jätta esialgu tüübiparameeter ära ja kirjuta kood mingit konkreetset tüüpi kasutades valmis. Seejärel lisada tüübiparameeter ja asenda tüübid. Vihje: <T extends Comparable<T>> on täiesti viisakas lahendus - T peab olema tüüp, mille isendeid saab sama tüüpi isenditega võrrelda. Geneerilised meetodid Mõnikord ei ole vaja tervele klassile tüübiparameetreid lisada. Geneeriliseks saab teha ka üksiku meetodi. Selle jaoks tuleb lihtsalt enne tagastustüüpi tüübiparameeter deklareerida: public static <T> List<T> reverse(List<T> list) {
+  List<T> tulemus = new ArrayList<T>();
+  for (int i = list.size()-1; i >= 0; i--) {
+    tulemus.add(list.get(i));
+  }
+  return tulemus;
+} Enesekontroll Your browser does not support including other html pages Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

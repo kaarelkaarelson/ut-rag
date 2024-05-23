@@ -1,0 +1,36 @@
+<LINK>https://courses.cs.ut.ee/2024/progeng/spring/Main/Homework9</LINK>
+Programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Programmeerimine (LTAT.03.001) EN Logi sisse Programmeerimine 2023/24 kevad Home Homework for Week 9 After this week you can Manipulate key-value pairs in a dictionary Loop over a dictionary Use a dictionary to store and retrieve information Use dictionary for counting items Dictionaries Dictionary is one of the most useful data structures. Since it allows us to represent a relationship between two sets of elements, it has a wide variety of applications. The most straightforward is a lookup in an actual dictionary. A dictionary contains key-value pairs. We can retrieve the value corresponding to a key from the dictionary. In a sense, dictionaries are a generalization of lists, where instead of indices, we have keys. Before the next class session, watch the videos about dictionaries: Slides in English Textbook in English Quiz Go to Moodle and take the quiz on video lectures. Examples NB! Make sure that your text files (.txt) are in the same folder as your Python code. Otherwise, Python will not find these files. Meetings The file meetings.txt contains records of meetings. Each number in the file indicates a day of the week when an appointment takes place (note that this is not the number of appointments): 1 means Monday, 2 means Tuesday, etc. The following program reads the data from the file, creates a dictionary, and prints its keys and the values on the screen. The keys contain the days of a week, and the values are the numbers of planned appointments on that day. def day_of_week(n):
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return days[n-1]
+
+ffile = open("meetings.txt")
+
+meetings = dict()
+
+for line in ffile:
+    try:
+        number = int(line)
+        day = day_of_week(number)
+        meetings[day] = meetings.get(day,0) + 1
+    except:
+        print("Invalid value")
+
+print(meetings) This is an example of how to count multiple things with a single pass over the file: put them into a dictionary. The function get returns the value corresponding to a key; if that key doesn't exist in a dictionary, it returns 0 (the second argument). The try - except block is needed only for integer conversion. Inventory This program helps compile an inventory of all fruits in a shop. Dictionary inventory contains the data about how many fruits there are in the shop (fruit names and their amounts). The program has a loop that repeatedly asks the user for a fruit. If the fruit is in the dictionary, the program outputs the amount of that fruit in the shop and asks the user if he wants to update the fruit's amount. If the fruit is not in the dictionary, the program asks the user about the fruit's amount and adds a new entry into the dictionary. The program continues asking until the user enters "done". inventory = {'apple': 430, 'banana': 312, 'orange': 525, 'pear': 217}
+
+while True:
+       fruit = input('Enter a fruit (done to quit): ')
+       if fruit == 'done':
+           break
+
+       if fruit in inventory:
+           print('Stock information for', fruit, 'is', inventory[fruit])
+           upd = input('Do you want to update it? (yes/no) ')
+           if upd == 'yes':
+               number = int(input('How many ' + fruit + ' do you have? '))
+               inventory[fruit] = number
+       else:
+           print('There is no information about', fruit, 'in the shop')
+           number = int(input('How many ' + fruit + ' do you have? '))
+           inventory[fruit] = number Note the typical branching which often appears when working with the dictionaries: if the key is in the dictionary, do something with the existing key; and if the key is not in the dictionary, then add a new key-value pair. Exercises 1. Dictionary 2. Points in a dart game The file results.txt contains the results of Mihkel's dart game, where each line represents one round, and the numbers represent the points hit by the arrow. The results are separated by semicolons. The number of rounds and the number of throws per round are not known in advance; the program must also work for other numbers of rounds or throws. Example of the possible contents of the file results.txt : 1st round;5;2;3;4
+ 2nd round;3;4;2;7
+ 3rd round;2;7;9;9 Create a function read_file which has the file name as an argument and returns a dictionary where the keys are rounds' names as strings, and the values are lists of points obtained in the corresponding rounds as integers. Example of function read_file with the file above: >>> read_file("results.txt") {'1st round': [5, 2, 3, 4], '2nd round': [3, 4, 2, 7], '3rd round': [2, 7, 9, 9]} Create a function find_average , which takes a dictionary in the form described in the previous function as an argument and returns the average result over all rounds as a floating point number, rounded to one decimal place. >>> find_average({'1st round': [5, 2, 3, 4], '2nd round': [3, 4, 2, 7], '3rd round': [2, 7, 9, 9]}) 4.8 Write the main program that asks the user for a file name, reads the data from the file into a dictionary using the read_file function, and displays the name and average result of every round on the screen. After that, the program finds the average over all rounds using the find_average function and displays it on the screen. Enter filename: results.txt The average results of the rounds are: 1st round: 3.5 2nd round: 4.0 3rd round: 6.8 The average result over all rounds is: 4.8 Submit your solutions Go to Moodle and upload your solutions under homework for Week 13. The programs of exercises 1 and 2 should have the names home1.py and home2.py , respectively. (The optional part of exercise 1 should be a separate program that can have any name.) Advice Always stick to one task at a time. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

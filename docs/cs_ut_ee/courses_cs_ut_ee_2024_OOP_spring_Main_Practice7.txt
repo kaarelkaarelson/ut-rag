@@ -1,0 +1,112 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice7</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 7 Graafika. Graafiline kasutajaliides. Teemad JavaFX. Stseenigraaf. Elementide struktuur ja paigutamine. Pärast selle nädala läbimist oskab üliõpilane JavaFX abil luua lihtsamaid graafilisi programme; koostada stseenigraafe; tuua näiteid geomeetrilise abstraktsionismi teostest; kirjeldada mõnda lippu ja liiklusmärki. Sissejuhatus ja JavaFX paigaldamine Seni on sellel kursusel põhiliselt käsitletud programme, kus tulemused ilmuvad tekstilisel kujul ja suhtlemine kasutajaga on olnud suhteliselt askeetlik. Sellel ja järgmisel nädalal käsitletakse erinevaid graafilisi võimalusi, mille abil saab programme oluliselt värvilisemaks ja interaktiivsemaks teha. Põhimõtteliselt on selles vallas muidugi väga palju ja erinevaid võimalusi, siin piirdutakse paljus vaid sissejuhatusega, mille abil aga siiski midagi on võimalik juba ära teha. Javas graafiliste liideste loomiseks on aegade jooksul kasutatud erinevaid lahendusi. Siin aines kasutame neist kõige kaasaegsemat teeki nimega JavaFX . Viimase IntelliJ -ga tuleb JavaFX plugin automaatselt kaasa (kontrolli, et see oleks sisse lülitatud: Settings -> Plugins ). Lisaks kasutame arendusvahendit nimega Gradle . Gradle seadistuses määratakse programmi poolt kasutatavad teegid ja peaklassi nimi. Seejärel laeb Gradle vajalikud teegid alla ja oskab programmi niimoodi käivitada, et Java need ka üles leiab. IntelliJ -s JavaFX projekti loomiseks hakka tavalist uut projekti looma ( New -> Project ), aga vali avanenud dialoogis vasakul servas loetelust Java asemel JavaFX . Build system -iks vali Gradle , ülejäänud võib muutmata jätta. Uue JavaFX peaklassi loomiseks saab menüüst valida File -> New -> JavaFXApplication . Kui Java ja Gradle versioonid omavahel ei sobi ( Java ja Gradle versioonide sobivust võib uurida nt siin ), siis nt klassi HelloApplication esimesel käivitamisel võib ekraanile ilmuda järgmine veateade: Unsupported Java. Your build is currently configured to use Java 21.0.2 and Gradle 8.2. Possible solution: - Use Java 19 as Gradle JVM: Open Gradle settings - Upgrade Gradle wrapper to 8.5 version and re-import the project Valige viimane variant, ehk Gradle uuendamine ( Upgrade Gradle wrapper to 8.5 version and re-import the project ). Kui teil on vanem Java versioon, siis veateadeks võib olla ainult tekst Unsupported Java . Sel juhul tuleb vasakul valida kaust gradle , siis wrapper ning muuta failis gradle-wrapper.properties reas distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip Gradle versiooni sobivaks ( Java ja Gradle versioonide sobivust võib uurida nt siin ). JavaFX puhul tuleb tähele panna, et see on täiesti eraldiseisev teek, mis ei tule Javaga kaasa. JavaFX alla laadimiseks ja IDEs seadistamiseks on kõige mõistlikum kasutada arendusvahendit nimega Gradle . Gradle seadistuses määratakse programmi poolt kasutatavad teegid ja peaklassi nimi. Seejärel laeb Gradle vajalikud teegid alla ja oskab programmi niimoodi käivitada, et Java need ka üles leiab. Projekti gradle abil käivitamiseks tuleb teha järgnevad sammud: projekti kausta peab lisama build.gradle faili, mis sisaldab gradle seadistust projekti kausta peab kopeerima gradle käsurealt käivitamiseks vajalikud failid ( gradlew ) projekti koodi peab tõstma alamkausta src/main/java/ (siiani oleme kasutanud src/ kausta) Tavaliselt ei tehta eelnevalt loetletud samme käsitsi. Uus projekt luuakse kas IDE tööriistu kasutades või gradle kodulehelt tühi projekt kopeerides. Siin aines uue JavaFX projekti loomiseks soovitame aluseks võtta eelseadistatud tühja JavaFX projekti . Projekti IDEs avamine ja käivitamine on seletatud eraldi gradle juhendis . Materjaliga jätkamiseks ava eelseadistatud projekt IDEs, leia klass oop.MustRuut ja veendu, et IDE ühtegi veateadet ei näita. Esimesed graafilised programmid Ilmunud klassi alge on üldise loogika ja struktuuri mõttes küllaltki kõnekas. public class HelloApplication extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+	//siin meetodis on juba päris palju asju, aga praegu neid ei vaata
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+} Programmi täitmine algab (nagu ikka on alanud) meetodist main . Selles käivitatud meetod launch algatabki rakenduse töö, milles on väga olulisel kohal meetod start , millest nö. kogu tegevus stardibki. See meetod on abstraktsena klassis Application , mille alamklass iga JavaFX rakendus ongi. Igal konkreetsel juhul tuleb meetod start üle katta. Meetodi argumendiks on Stage -tüüpi objekt. Käesolevas materjalis nimetatakse Stage -tüüpi objekti "lavaks", kuna teatriteemalise terminoloogia kasutamine tundub küllaltki tabav. Edasi on vastavalt muudetud ka meetodi parameetri nime. Asenda ka meetod start public void start(Stage peaLava) {
+    Group juur = new Group(); // luuakse juur
+    Rectangle ristkulik1 = new Rectangle(50, 50, 435, 435);
+    juur.getChildren().add(ristkulik1);  // ristkülik lisatakse juure alluvaks
+    Scene stseen1 = new Scene(juur, 535, 535, Color.SNOW);  // luuakse stseen	
+    peaLava.setTitle("Must ruut");  // lava tiitelribale pannakse tekst
+    peaLava.setScene(stseen1);  // lavale lisatakse stseen
+    peaLava.show();  // lava tehakse nähtavaks
+} Meetodi start sees luuakse üks Group -tüüpi isend, mis toimib juurena. Loodav ristkülik ( Rectangle -tüüpi isend) on see, mida tegelikult näha tahetakse. Ristkülik lisatakse juure alluvaks. Seejärel luuakse Scene -tüüpi isend (stseen). Lava tiitelribale pannakse tekst (meetodiga setTitle ), stseen paigutatakse lavale (meetodiga setScene ) ning lõpuks tehakse lava nähtavaks (meetodiga show ). JavaFX programmide tegemisel tuleb üsna tihti klasse importida. Seejuures võib IDE anda võimaluse valida mitme sama nimega klassi vahel. Tõenäoliselt on õige see valik, mille juures on paketi nimes javafx mainitud, näiteks ristküliku puhul import javafx.scene.shape.Rectangle; . Ülesanne 1. Proovige see programm tööle saada. Küllaltki sarnaseid pilte tehti ka sadakond aastat tagasi. https://www.wikiart.org/en/kazimir-malevich/black-square-1915 Stseenigraaf ja elementide struktuur Käeolevas materjalis nimetatakse Scene -tüüpi objekti "stseeniks". (Siin võiks ka variandid "lavapilt" või "kuliss" kõne alla tulla, aga tõenäoliselt on "stseen" sobivam.) Stseen ongi konteineriks, kuhu siis erinevad nähtavad (ja nähtamatud) elemendid paigutatakse. Stseen ise aga pannakse lavale (meetodi setScene abil) ja sellega üldse ongi võimalik, et midagi rakenduse sees paistma hakkaks. Stseeni sisemine loogika määratakse stseenigraafi ( scene graph ) abil. Kasutusel ongi graafide (just puude) terminoloogia: tipp ( node ), juurtipp e. juur ( root node ), vahetipp ( branch node ), lehttipp e. leht ( leaf node ), ülemus ( parent ), alluv ( child ). Üldine skeem võib olla näiteks selline. Stseeni loomisel antakse argumendina juur, mis on Parent -tüüpi (või tegelikult Group -, Region - või WebView -tüüpi või mingi nende alamklassi) isend. Hiljem lisatakse sellele alluvaid. Näiteks oli eelnevas näites  juurele lisatud alluvaks ristkülik. Konkreetsele tipule alluvate tippude loendi saab meetodi getChildren abil. Sellesse saab elemente lisada meetodi add abil. (Nii oli ka klassi ArrayList puhul ja on üldse listide puhul, on ju ObservableList liidese List alamliides.) Stseenigraaf on sel juhul väga lakooniline. Enam väiksem ei saakski olla, kuna klassi Rectangle isend ise juureks ei sobi, sest see klass pole klassi Parent alamklass. Kui tulla tagasi ermitaaži ja maalimise juurde, siis aastaid tagasi ja praegugi maalivad kunstnikud maale lõuendile. Lõuend ( canvas ) on olemas ka JavaFX -s - klassina Canvas . Näiteks musta ruudu joonistamine lõuendile: public void start(Stage peaLava) {
+
+    Group juur = new Group(); // luuakse juur
+
+    Canvas lõuend = new Canvas(535, 535); // luuakse lõuend
+
+    GraphicsContext gc = lõuend.getGraphicsContext2D(); // graafiline sisu
+
+    gc.fillRect(50, 50, 435, 435); // ruut
+
+    juur.getChildren().add(lõuend);  // lõuend lisatakse juure alluvaks
+
+    Scene stseen1 = new Scene(juur);  // luuakse stseen   
+
+    peaLava.setTitle("Must ruut");  // lava tiitelribale pannakse tekst
+
+    peaLava.setScene(stseen1);  // lavale lisatakse stseen
+
+    peaLava.show();  // lava tehakse nähtavaks
+} Ülesanne 2. (Kontroll) Tehke klassi Canvas abil üks (vähemalt 3 värviga või mingi keerulisema kujundiga) riigilipp ( http://www.flags.net/ ). Vajalikud näpunäited saab https://docs.oracle.com/javase/8/javafx/graphics-tutorial/canvas.htm . Järgnevad täiendused on mõeldud musta ruudu programmi muutmiseks. Muidugi saab ekraanile lisada mitmesuguseid teisi elemente . Näiteks nupu saab lisada start -meetodit vastavalt täiendades. Button nupp1 = new Button("Olen nõus"); // luuakse nupp
+
+nupp1.setLayoutX(100); // nupu paigutamine x-koordinaadi mõttes
+
+nupp1.setLayoutY(60); // nupu paigutamine y-koordinaadi mõttes
+
+juur.getChildren().add(nupp1); // nupp lisatakse juure alluvaks Ülesanne 3. Lisage see lõik sobivasse kohta programmis. Kas nupp ilmus? Kui mitte, siis püüdke see ikkagi välja paistma saada. Juhul, kui te koodist aru ei saa, võite lasta seda loogikat ka endale selgitada mingil tehisarul (ChatGPT, CoPilot või midagi muud). Enesekontroll Your browser does not support including other html pages Efektid ja animatsioon JavaFX pakub suure hulga meetodeid, mis erinevate graafikaelementidega manipuleerida aitavad. Päris palju neist on juba klassis Node toodud, aga spetsiifilisemad meetodid on alamklassides. Edasi on proovitud meetodit setEffect , mis võimaldab erinevaid efekte esile tuua. Antud juhul on nupule pandud roheline vari. DropShadow vari = new DropShadow(20, Color.GREEN);
+
+vari.setOffsetX(20);
+
+nupp1.setEffect(vari); Ülesanne 4. (Kontroll) Proovige ise mõnda teist efekti. Vaadake mõningaid näiteid . Tulles tagasi stseenigraafi juurde, siis on praegu meetodeid rakendatud pigem lehttippude puhul. Juure korral on seni rakendatud ainult alluvate lisamist. Järgmistes näidetes püütakse just juurega manipuleerida. Näiteks juur.setVisible(false) muudab nähtamatuks juure koos alluvatega, antud juhul siis ristküliku ja nupu. Edasi on üks animatsiooni näide. FadeTransition ft = new FadeTransition(Duration.millis(10000), juur);  // luuakse uus haihtumine
+
+ft.setFromValue(1.0);  // määratakse algväärtus (1.0 - täiesti selge)
+
+ft.setToValue(0.0); // määratakse lõppväärtus (0 - täiesti haihtunud)
+
+ft.setCycleCount(Timeline.INDEFINITE); // lõpmatu tsüklite arv 
+
+ft.setAutoReverse(true); // lõppu jõudes tagasi, algusest jälle edasi
+
+ft.play(); // animatsioon mängima Ülesanne 5. (Kontroll) Lisage mõni uus kujund (mõnest klassi Shape alamklassist) ja proovige ise klassi PathTransition abil kujundite liigutamist. Samuti püüdke mitut animatsiooni korraga ( Parallel Transition ) ja üksteise järel ( Sequential Transition ) rakendada.
+Abiks võiks olla https://docs.oracle.com/javase/8/javafx/visual-effects-tutorial/animations.htm . Elementide paigutamine Graafilise kasutajaliidese puhul on oluline elementide paigutus. Kui eespool kasutati stseenigraafi juurena klassi Group isendit, siis paigutuse korraldamiseks on mõistlik juure või vahetipuna kasutada klassi Region (või selle mingi alamklassi) isendit. Näiteks klassi BorderPane abil saame määrata, kas konkreetne element lehttipuna (või vahetipuga määratud elementide rühm) asub ülaservas, alaservas, vasakul, paremal või keskel. Järgnevas näites on salasõnaväli, liugur ja silt paigutatud vastavalt ülaserva, keskele ja alaserva. public void start(Stage peaLava) {
+
+    BorderPane piiriPaan = new BorderPane(); 
+
+    PasswordField salasõnaVäli = new PasswordField();
+    Slider liugur = new Slider(0, 4, 0.5);
+    Label silt = new Label("Silt");
+
+    piiriPaan.setTop(salasõnaVäli); // ülaserva
+    piiriPaan.setCenter(liugur); // keskele
+    piiriPaan.setBottom(silt);	 // alaserva
+
+    Scene stseen1 = new Scene(piiriPaan, 400, 400, Color.SNOW);
+
+    peaLava.setTitle("Paigutus");
+    peaLava.setScene(stseen1);
+    peaLava.show();
+
+} Veel üks paigutamiste näide: public void start(Stage peaLava) {
+    FlowPane flow = new FlowPane();
+
+    TextField tekst = new TextField("mingi tekst");
+    flow.getChildren().add(tekst);
+
+    ListView<String> list = new ListView<String>();
+    ObservableList<String> items =FXCollections.observableArrayList (
+	        "Esimene", "Teine", "Kolmas", "Neljas");
+    list.setMaxHeight(100);
+    list.setItems(items);
+    flow.getChildren().add(list);
+
+    BorderPane border = new BorderPane();
+    border.setMinWidth(250);
+
+    Button nupp1 = new Button("1");
+    border.setLeft(nupp1);    
+    Button nupp2 = new Button("2");
+    border.setRight(nupp2);
+
+    HBox hbox = new HBox();
+    Label silt1 = new Label("silt1");
+    Label silt2 = new Label("silt2");
+    hbox.getChildren().addAll(silt1, silt2);
+    border.setCenter(hbox);
+
+    flow.getChildren().add(border);
+
+    Scene stseen1 = new Scene(flow, 250, 150, Color.SNOW);
+    peaLava.setScene(stseen1);
+    peaLava.show();
+} Sellele aknale vastav stseenigraaf on järgmine: Ülesanne 6. Lisage veel erinevaid elemente ja proovige paigutus teha nii, et ühe klassi BorderPane isendiga määratud piirkonna (nt. Center ) sees on elemendid paigutatud klassi GridPane isendi abil. Abiks võivad olla https://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm ja https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/ui_controls.htm . Ülesanne 7. (Kontroll) Koostage programm, mis kuvab mingi (eba)reaalse seadme, skeemi, kunstiteose vms. 
+Näiteks bussipeatuse või spordivõistluse tabloo, ristmiku skeem, geomeetrilise abstraktsionismi stiilis maali reproduktsioon ... Ebareaalsuse võib sisse tuua näiteks animatsiooniga - korvpallitablool isikliku vea märgis lendab vahepeal ringi vms. Stseenigraaf peab olema vähemalt nelja tasemega. Paigutust tuleb reguleerida klassi Pane mingi alamklassi isendi abil. Midagi peab olema animeeritud. Ise ülesande väljamõtlemine ei pruugi olla lihtne, aga püüdke siiski. Ühiskond vajab loovat lähenemist! Kui tõesti ühtegi enda mõtet pole, tehke üks liiklusmärk (liiklusseaduses määratud liiklusmärke saab vaadata https://www.riigiteataja.ee/akt/103032011006 lisadest), millel näiteks nool liigub või mingid teised osad muutuvad vms. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused

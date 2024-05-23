@@ -1,0 +1,29 @@
+<LINK>https://elixir.ut.ee/data_management/fair-principles/</LINK>
+The FAIR Principles - ELIXIR Estonia Skip to content ELIXIR Estonia The FAIR Principles Initializing search News People Services Publications Training Data Management Projects Contact ELIXIR Estonia News News Archive Archive 2024 2023 2022 2021 2020 2019 2018 2017 Categories Categories Alignment Andmehaldus Andmehaldusplaan Avatud juurdepÃ¤Ã¤s Best practices Bgee Bioimaging Containers DM courses DMP DMPonline DSpace Data analysis Data visualisation DataCite Estonia Consortium DataDoi Dataverse DisProt Docker Dworkshop E-Learning EBI ELIXIR Estonia ENA ETAIS FAIR FAIR principles GDPR Git Grant Office Helis Academy Linux MOOC Machine-learning MobiDB NGS Open Access OpenRefine Patent Python R RNA-seq RStudio Reproducible Research SIB Singularity Summer school Switzerland. Tableau TalTech Data Train the Trainer course May 8-10 at the University of Basel Train-the-Trainer UT University of Tartu Unix analytics award bioinformatics charts cineca cleaning data code review command-line conference contetathon coronavirus course covid covid19 csc data data visualization data-management database demo diagnosing elixir-fi enrichment-analysis file-formats g:Profiler galaxy gene-expression ggplot2 grants hackathon horizon europe how-to hpc interoperability lecture license metabolomics metadata microbiome online open science programming proteins quality control rare diseases readme repository sars-cov2 seminar sensitive data shell single-cell single-cell-transcriptomics slurm statistics symposium tables training translational research version control visualisation visualisations visualization webinar workflow workshop People Services Publications Training Training Upcoming Trainings Past Trainings Instructors Data Management Data Management Introduction Terminology The FAIR Principles The FAIR Principles Table of contents Introduction Relevant Materials Sensitive data Projects Contact Table of contents Introduction Relevant Materials The FAIR Principles Introduction In 2014, members of the scientific community got together in a workshop called
+“Jointly Designing a Data Fairport” in Leiden, the Netherlands, to define the
+principles on how you could make your data more findable, accessible,
+interoperable, and reusable. These 15 principles are now called The FAIR Principles .
+The GO-FAIR organisation has noted
+the principles and their meaning. The idea behind these principles is that the data itself should not be used just
+once, but (if possible) many times. This gives more value to the data itself,
+and the time it took to produce these data. Following the FAIR Principles, it makes sure that your data can be found, both
+by humans and by machines. Additionally, it also makes sure that the machine
+(or human) could understand who and under what conditions can use the data
+(both in legal aspects and in a practical sense) and how the data could be used.
+What must be noted is that none of the FAIR Principles are mandatory, and you
+can apply them in any research domain. Another important aspect is not to confuse FAIR data with Open data.
+Open data (and science) idea is that all the data (or science resources in
+general) should be freely available for everybody to use in any capacity
+(this means no restrictions). However, researchers cannot always do that.
+For example, sensitive information in many cases cannot be fully open.
+This is where the FAIR Principles shine. It is understood that not all the data
+can be fully accessible for everybody, but they still can be FAIR.
+For example, the metadata (information about the dataset) can (and should) be
+findable and accessible, even when the dataset is not available, or the dataset
+has been deleted. Relevant Materials Download PDF in English Download PDF in Estonian Back to top ELIXIR Estonia ServicesÂ Terms of Use . ELIXIR Estonia follows ELIXIR Code
+              of Conduct when organising events. Content on this site is licensed under a Commons
+              Attribution 4.0 International license . Made with Material for MkDocs ELIXIR is partly funded by the European Commission within the
+              Research Infrastructures programme of Horizon 2020. The sole responsibility for the content of this webpage
+              lies with ELIXIR Estonia. It does not necessarily reflect the opinion of the European Union,
+              and the European Commission is not responsible for any use that
+              may be made of the information contained therein.

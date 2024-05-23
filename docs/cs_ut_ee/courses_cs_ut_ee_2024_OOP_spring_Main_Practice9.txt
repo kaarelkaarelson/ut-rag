@@ -1,0 +1,214 @@
+<LINK>https://courses.cs.ut.ee/2024/OOP/spring/Main/Practice9</LINK>
+Objektorienteeritud programmeerimine - Kursused - Arvutiteaduse instituut Kursused 2023/24 kevad Objektorienteeritud programmeerimine (LTAT.03.003) EN Logi sisse Objektorienteeritud programmeerimine 2023/24 kevad Kodutööd ja praktikumid Loengud Kursuse korraldus IDE juhend Süvendusrühm Silumisest Nädal 9 Vood. Failid. Teemad Pakett java.io . Klass File . Sisend- ja väljundvood. Baidivood ja märgivood. Puhverdatud vood. Failide kokkupakkimine. Pärast selle nädala läbimist oskab üliõpilane realiseerida Java vahenditega põhilisemaid failioperatsioone; luua vooge; voost lugeda ja sinna kirjutada. Selle nädala ülesannetele on automaatkontrollid, seepärast veenduge, et esitatavad klassid asuvad vaikepaketis ja et .java failide kodeering on UTF-8. Selles praktikumis õpitavad Java vood kasutavad hoolega erindite ( exception ) võimalusi. Kuidas veahaldus ja erindid toimivad, õpime täpsemalt järgmisel nädalal. Sellel nädalal proovime erindite kasutamist vältida. Selle jaoks lisage iga oma meetodi päisesse deklaratsioon throws Exception , et kompilaator erindite mittekasutamise pärast virisema ei hakkaks. (Kui IDE soovitab selle asemel try-catch plokke kasutada, siis ärge teda kuulake.) Failisüsteemi toimingud Failidega töötamiseks vajalikud klassid on koondatud paketti java.io . Selle klassid võimaldavad muuta nii failide sisu kui ka nimetada ümber, kustutada ja luua faile ning katalooge. Failide ja kataloogidega tegelemiseks vajalikud meetodid asuvad klassis File . Natuke eksitavalt tähistavad File objektid nii faile kui ka katalooge. File objekti saab luua kirjutades new File("failinimi") . Pane tähele, et see ei loo kettale uut faili vaid kõigest objekti, mis olemasolevat (või mitteolevat) faili tähistab. //Programm, mis jooksvas kataloogis leiab laiendita failid ja lisab neile laiendi
+import java.io.File;
+
+public class MuudaFailinimed {
+  public static void main(String[] args) throws Exception {
+    File dir = new File(".");
+    String[] failid = dir.list();
+    for (String fail : failid) {
+      File vana = new File(fail);
+      if (vana.isFile() && !fail.contains(".")) {
+        File uus = new File(fail + ".txt");
+        vana.renameTo(uus);
+        System.out.println("Muudetud " + vana.getName() + " -> " + uus.getName());
+      }
+    }
+  }
+} Ärge unustage, et Windows kasutab eraldajana tagurpidi kaldkriipsu \ , aga Mac ja Linux kasutavad edasipidi kaldkriipsu / . Kirjutage kood nii, et see toimiks kõigi operatsioonisüsteemidega. Ärge kirjutage koodis "somefolder/myfile" vaid "somefolder" + File.separatorChar + "myfile" või new File("somefolder", "myfile") . Sissejuhatus voogudesse Peaaegu kõik andmete lugemise ja kirjutamise operatsioonid Javas toimivad läbi voogude. Vood jaotuvad suures plaanis kaheks: sisendvood ja väljundvood. Leiduvad vastavad abstraktsed klassid InputStream ja OutputStream , mis oskavad baite sisse lugeda ja välja kirjutada. Siin on meie jaoks tähtsamad meetodid: abstract class InputStream {
+  // tagastab järgmise baidi väärtuse või -1, kui rohkem lugeda ei saa
+  int read();
+  // loeb voost 1 <= n <= buf.length baiti ja paneb need massiivi buf
+  // tagastab loetud baitide arvu või -1, kui rohkem lugeda ei saa
+  // NB! loeb täiesti ettearvamatu arvu baite! ära eelda, et buf alati täidetud saab.
+  int read(byte[] buf);
+  // vabastab vooga seotud ressurssid
+  void close();
+}
+
+abstract class OutputStream {
+  // kirjutab ühe baidi
+  void write(int b);
+  // kirjutab osa massiivist
+  void write(byte[] buf, int offset, int length);
+  // vabastab vooga seotud ressurssid
+  void close();
+} Klassid InputStream ja OutputStream on abstraktsioonid, mis keskenduvad ainult kõige tähtsamale - baitide lugemine ja kirjutamine. Keerulisemate andmetega (täisarvud, ujukomaarvud, tekst) töötamiseks on olemas erinevad abiklassid, mis meie elu lihtsamaks teevad. Sellest paar lõiku hiljem. Siin praktikumis õpime peamiselt failidest lugemist ja sinna kirjutamist. Failidesse voo avamiseks kasutage vastavaid voogude realisatsioone: try (InputStream sisse = new FileInputStream("kassipilt.jpg")) {
+  // faili kasutamine
+}
+
+try (OutputStream välja = new FileOutputStream("teine_kassipilt.jpg")) {
+  // faili kasutamine
+} Vaatame nüüd näidet voogude kasutamisest. Meetod kopeeri loeb sisendvoost tükkhaaval baite sisse ja kirjutab pärast iga tüki lugemist selle kohe väljundvoogu. Kuna baitide ükshaaval lugemine ja kirjutamine on meeletult ebaefektiivne, tõstetakse korraga kuni 1024 baiti. //Programm, mis teeb koopia etteantud failist:
+import java.io.*;
+
+public class KopeeriFail {
+
+  private static void kopeeri(String algne, String koopia) throws Exception {
+    // sulgudes semikoolonit kasutades saab mitu faili avada
+    try (InputStream sisse = new FileInputStream(algne);
+         OutputStream välja = new FileOutputStream(koopia)) {
+      byte[] puhver = new byte[1024];
+      int loetud = sisse.read(puhver);
+      while (loetud > 0) {
+        välja.write(puhver, 0, loetud); // ainult andmetega täidetud osa!
+        loetud = sisse.read(puhver); // loeme järgmise tüki
+      }
+    }
+  }
+
+  public static void main(String[] args) throws Exception {
+    if (args.length != 1) {
+      System.out.println("Kas sa andsid käsurealt faili nime?");
+      return;
+    }
+    kopeeri(args[0], args[0] + ".copy");
+  }
+} Tuletage meelde juhend käsurea parameetrite määramiseks IntelliJ jaoks . Ülaltoodud kood on üsna keeruline, aga teeb väga lihtsat asja - kopeerib faili. Miks ei saaks lihtsalt ühe käsuga kogu faili sisse lugeda ja teise käsuga see välja kirjutada? Probleem on selles, et failid saavad olla oluliselt suuremad, kui arvuti mälu. Kõike korraga sisse lugedes võib mälu lihtsalt otsa saada. Andmeid tükkhaaval töödeldes ei pea kunagi selle pärast muretsema. Ülesanne 1 (kontroll) Muuta eelmist programmi nii, et juhul, kui üritatakse kopeerida kataloogi, väljastatakse vastav teade ja programm lõpetab töö. Juhul, kui tegemist on failiga, väljastada ekraanile faili suurus ja aeg, millal faili viimati muudeti. Enesekontroll Your browser does not support including other html pages Voogude abiklass teksti kodeerimiseks Vaadeldud klassid InputStream ja OutputStream tegelevad ainult baitidega. Tihti on meil aga vaja töötada tekstiliste andmetega ja oleks ebapraktiline käsitsi teksti baitideks teisendada ja vastupidi. Selle jaoks on olemas abiklassid InputStreamReader ja OutputStreamWriter , millega saab mugavalt tähemärke baidi-voogudest lugeda ja kirjutada. Tähtis on teada järgnevaid meetodeid: class InputStreamReader {
+  // loeb ja dekodeerib baite tähemärkideks
+  // toimib nagu InputStream.read, aga puhvri tüüp on byte[] asemel char[]
+  int read(char[] cbuf);
+}
+
+class OutputStreamWriter {
+  // kodeerib sõne baitideks ja kirjutab need voogu
+  void write(String str);
+} Vastavate abiklasside kasutamiseks tuleb ette anda baidi-voog, mida "abistatakse" ja määrata teksti kodeering: try (InputStream sisse = new FileInputStream("sisend.txt");
+     InputStreamReader tekstSisse = new InputStreamReader(sisse, "UTF-8")) {
+  // faili kasutamine
+}
+
+try (OutputStream välja = new FileOutputStream("väljund.txt");
+     OutputStreamWriter tekstVälja = new OutputStreamWriter(välja, "UTF-8")) {
+  tekstVälja.write("hello world!");
+} Imestust võib tekitada asjaolu, et OutputStreamWriter i write meetod võtab väga mugavalt parameetriks sõne tüüpi muutuja, aga InputStreamReader puhul ei ole võimalik teksti mugavalt rea kaupa sisse lugeda. Tegelikult on see üsna loogiline. Nagu InputStream , nii ka InputStreamReader ei loe kogu voo sisu korraga sisse, vaid töötab sellega tükkhaaval. InputStreamReader i ülesanne on seejuures baitide tähemärkideks dekodeerimine, mitte reavahetuste otsimine ja vahepeal läbi käidud teksti puhverdamine. Õnneks on olemas eraldi abiklass, mille ülesannete hulka kuulub tekstiridade leidmine. Voogude puhverdamine Tuleb välja, et kettalt (ja mujalt) baitide lugemine on tihti üllatavalt aeglane. Paljude väiksete andmetükikeste lugemise asemel oleks mõistlik lugeda korraga suurem tükk andmeid sisse, mis võimaldab operatioonisüsteemil kasutada erinevaid optimisatsioone. Sama kehtib ka kirjutamisega. Abiks on puhverdamise abiklassid BufferedInputStream ja BufferedOutputStream : try (InputStream sisse = new BufferedInputStream(new FileInputStream("kassipilt.jpg"))) {
+  // faili kasutamine
+}
+
+try (OutputStream välja = new BufferedOutputStream(new FileOutputStream("teine_kassipilt.jpg"))) {
+  // faili kasutamine
+} Sisendvoo puhver hoiab endas vaikimisi 8KiB suurust baidimassiivi. Kui puhverdatud voost baite lugeda, siis puhver loeb enda sisemisse massiivi suure tüki andmeid ja annab neid vastavalt vajadusele välja. Niimoodi on puhverdatud voost isegi väikeste tükkide kaupa andmete küsimine kiire, sest ketta poole pöördutakse oluliselt harvem, kui seda ilma puhverdamata tehtaks. Analoogselt toimib see väljundvoogudega. Puhverdamine on eriti kasulik tekstiliste andmete lugemise puhul. Teksti lugemiseks on olemas eraldi abiklass BufferedReader , mis lisaks koodi kiiremaks muutmisele oskab puhverdatud tekstist ka tekstiridu otsida: try (InputStream baidid = new FileInputStream("sisend.txt");
+     InputStreamReader tekst = new InputStreamReader(baidid, "UTF-8");
+     BufferedReader puhverdatud = new BufferedReader(tekst)) {
+  String rida = puhverdatud.readLine();
+  while (rida != null) {
+    System.out.println("lugesin voost: " + rida);
+    rida = puhverdatud.readLine(); // loeb järgmise rea. kui ei saa, tagastab nulli
+  }
+} Kõiki vahemuutujaid ei pea välja kirjutama: try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("sisend.txt"), "UTF-8"))) {
+  // faili kasutamine
+} Enesekontroll Your browser does not support including other html pages Voogude nipid ja trikid Voogudega saab erinevaid asju lugeda Konsooli kasutamiseks saab kasutada Java standard sisend- ja väljundvoogu: InputStream sisse = System.in;
+OutputStream välja = System.out; Internetist failide/veebilehtede lugemiseks saab kasutada URL klassi: InputStream sisse = new URI("http://ut.ee/").toURL().openStream(); ZIP failidest saab pakitud failidega tegeleda ZipInputStream ja ZipOutputStream abil. Abiklassid kasutavad abstraktsioone Nii teksti kodeerimise kui ka puhverdamise klassid kasutavad InputStream ja OutputStream abstraktsioone. See võimaldab sama abiklassi erinevate baidivoogudega ja omavahel kasutada: new InputStreamReader(new FileInputStream("kassipilt.jpg"));
+new InputStreamReader(System.in);
+new InputStreamReader(new URI("http://ut.ee/").toURL().openStream()); Voo lõpuni sisse lugemine Mõnikord on mugavam või praktilisem andmeid töödelda ühes tükis, mitte voona (näiteks pildi ekraanil näitamisel või tabeli struktuuriga andmete töötlemisel). Kui andmed on kättesaadavad ainult voo kujul, on võimalik terve voo sisu korraga sisse lugeda. Seda peaks kaaluma ainult siis, kui on kindel, et voo sisu üldse mälusse ära mahub. byte[] terveFail;
+try (InputStream voog = new FileInputStream("kassipilt.jpg")) {
+  terveFail = voog.readAllBytes();
+}
+// kasuta faili sisu InputStream ja OutputStream ei ole ainsad sisend- ja väljundvood Vaatasime klasse InputStreamReader ja OutputStreamWriter . Need on vastavalt abstraktsete klasside Reader ja Writer alamklassid. Reader ja Writer moodustavad täiesti eraldiseisvad sisend- ja väljundvoogude (märgivoogude) hierarhiad, mis spetsialiseeruvad tähemärkidega töötamisele. Sealt on pärit ka meile juba 4. praktikumist tuttav klass PrintWriter . Ära unusta teksti kodeeringut määrata Teksti kirjutamisel ja lugemisel määra alati kodeering! Kui kodeering määramata jätta, siis kasutatakse operatsiooni vaikekodeeringut, mis on igas arvutis erinev. Näiteks windows ei kasuta kunagi vaikekodeeringuna UTF-8, aga linux/mac enamasti kasutavad. Vaikekodeeringu kasutamise tulemusena võib juhtuda, et programm ei suuda iseenda kirjutatud faili lugeda, kui ta teises arvutis käivitada. Voo "pikkus" ei ole määratud Sisendvoog on struktuur, kust saab baite lugeda, kuni need võibolla kunagi otsa saavad. Sisendvool ei ole meetodit size ega length , millega saaks tuvastada allesjäänud baitide arvu, sest voog saab olla lõpmatu. Voogudel on olemas meetod available() , mille keerulisest dokumentatsioonist on kerge valesti aru saada. Voo pikkuse asemel näitab see voo sisemiste puhvrite hetkeseisu. Seda meetodit pole siin kursusel vaja. Ülesanne 2 Kirjutage programm klassis Kaja , mis loeb konsoolist (st. standardvoost System.in ) järjest tekstiridu ja prindib need tagasi välja, kuni programm kinni pannakse. Kasutage ülalmainitud abiklasse. Enesekontroll Your browser does not support including other html pages Huvilistele: ZipOutputStream kasutamine Java standardteek sisaldab ka vahendeid failide kokku- ja lahtipakkimiseks. Näide faili kokkupakkimisest zip-vormingusse: import java.io.*;
+import java.util.zip.*;
+
+public class Zipper {
+  public static void zipi(String pakitavFail, String zipFail) throws Exception {
+    try (ZipOutputStream zipVäljund = new ZipOutputStream(new FileOutputStream(zipFail));
+         FileInputStream sisendFail = new FileInputStream(pakitavFail)) {
+      // ettevalmistus zip-faili väljastuseks
+      zipVäljund.putNextEntry(new ZipEntry(pakitavFail));
+      // sisendfailist lugemine ja zip-faili kirjutamine
+      byte[] buf = new byte[1024]; // andmevahetusbuhver
+      int len;
+      while ((len = sisendFail.read(buf)) > 0) { // omistamine ja kontroll kombineeritud
+        zipVäljund.write(buf, 0, len); // (andmed, nihe, pikkus)
+      }
+    }
+  }
+} Ülesanne 3 (raskem) Lisada eelmisele klassile meetod zip-vormingus faili lahtipakkimiseks. Luua testklass demonstreerimaks failide kokku- ja lahtipakkimist. Juhis: abiks võiks olla klass ZipInputStream ja selle klassi meetod getNextEntry() . Mitte-tekstiline sisend-väljund Kujutage ette kassaprogrammi, mis peab salvestama faili iga ostu info ja hiljem selle uuesti sisse lugema. Salvestame tühikutega eraldatult toote nime, koguse ja hinna ühe tekstireana faili. Hiljem loeme selle rea sisse ja jaotame käsitsi String.split ja Integer.parseInt abil tükkideks. Ülesanne on lihtne, aga koodi tuleb väga palju, sest split ja parseInt abil programmile tüüpide ja eraldajate selgeks tegemine on kohmakas. Parem oleks algusest peale andmed programmile selges formaadis salvestada ja pärast need otse õigete andmetüüpidega sisse lugeda. Sellega aitavad voogude abiklassid DataOutputStream ja DataInputStream . Vaatame, kuidas saaks faili kirjutada järgnevate objektide sisu: public class Toode {
+  private String nimi;
+  private double kogus;
+  private double tükiHind;
+
+  public Toode(String nimi, double kogus, double tükiHind) {
+    this.nimi = nimi;
+    this.kogus = kogus;
+    this.tükiHind = tükiHind;
+  }
+}
+
+public class Ostukorv {
+  private String klient;
+  private List<Toode> tooted;
+
+  public Ostukorv(String klient, List<Toode> tooted) {
+    this.klient = klient;
+    this.tooted = tooted;
+  }
+} Lõpptulemusena me tahaks teha midagi sellist: public class OstukorviTest {
+  public static void main(String[] args) throws Exception {
+    Toode shokolaad = new Toode("shokolaad", 2.0, 1.29);
+    Toode apelsin = new Toode("apelsin", 2.5, 0.89);
+    Ostukorv ostukorv = new Ostukorv("Ats", Arrays.asList(shokolaad, apelsin));
+
+    try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("andmed.bin"))) {
+      ostukorv.salvesta(dos);
+    }
+
+    try (DataInputStream dis = new DataInputStream(new FileInputStream("andmed.bin"))) {
+      Ostukorv sisseLaetud = Ostukorv.laadi(dis); // samad andmed, mis algses
+    }
+  }
+} Andmete väljakirjutamine Andmeid saab välja kirjutada klassiga DataOutputStream . Sellel on kõigi primitiivide ja sõne kirjutamise jaoks sobilikud meetodid. Lisame klassidesse Toode ja Ostukorv meetodi salvesta , mis kirjutab vastava klassi isendi kõik väljad DataOutputStream i abil voogu. Pange tähele, et Ostukorv is enne toodete salvestamist kirjutame välja ka toodete arvu. See aitab meid pärast Ostukorv i sisse lugemisel. // class Toode 
+public void salvesta(DataOutputStream dos) throws Exception {
+  dos.writeUTF(nimi); // sisuliselt writeString
+  dos.writeDouble(kogus);
+  dos.writeDouble(tükiHind);
+}
+
+// class Ostukorv 
+public void salvesta(DataOutputStream dos) throws Exception {
+  dos.writeUTF(klient);
+  dos.writeInt(tooted.size());
+  for (Toode toode : tooted) {
+    toode.salvesta(dos);
+  }
+} DataOutputStream i abil kirjutatud andmed erinevad oluliselt OutputStreamWriter i kirjutatud andmetest. OutputStreamWriter võtab sisendiks sõned ja kirjutab voogu kodeeritult vastavad tähemärkide baidid. Näiteks arv 123456 salvestatakse baitidega { 49, 50, 51, 52, 53, 54 } ehk tähemärgid '1', '2', .., '6'. DataOutputStream see-eest kirjutab primitiivide väärtused välja nii, nagu need mälus hoitakse. Arv 123456 ( int ) kujutatakse mälus baitidega { 0, 1, 226, 64 } ja täpselt nii need ka voogu kirjutatakse. Mingit tähemärkideks teisendamist ega kodeerimist ei toimu. Kõik primitiivid on Java s fikseeritud suurusega: int 4 baiti, long 8 baiti, float 4 baiti, double 8 baiti jne. DataOutputStream kirjutab iga tüüpi muutuja puhul alati vastava arvu baite voogu. DataOutputStream i writeUTF meetod oskab ka sõnesi kirjutada: kõigepealt kirjutatakse voogu short tüüpi väärtus (2 baiti), mis näitab sõne pikkust ja seejärel kirjutatakse sõne UTF-8 kodeeritud baidid. Kuna DataOutputStream i kirjutatud andmed on alati selge struktuuriga (iga tüüp on kindla suurusega), muutub selle abil kirjutatud andmete lugemine üsna lihtsalt. DataInputStream pakub meetodeid voost erinevate primitiivide ja sõnede lugemiseks. Selle lihtsustamiseks saab ta eeldada, et iga tüüpi väärtust lugedes on vaja voost võtta täpselt nii mitu baiti, kui palju vastav primitiiv mälus ruumi võtab. Näiteks voost täisarvu ( int ) ja ujukomaarvu ( double ) lugemiseks tuleb lugeda kõigepealt 4 baiti (need moodustavad täisarvu) ja siis veel 8 baiti (ujukomaarv). InputStreamReader it kasutades peaks lugema ettearvamatu koguse tähemärke, kuni leiame mingi arve eraldava tähemärgi (tühik?) ja seejärel parseInt ja parseDouble meetodeid kasutama. Andmete sisse lugemine Nüüd kirjutame koodi, mis suudab salvestatud andmed tagasi sisse lugeda. Selle juures on ainus nõue lugeda sisse andmed täpselt samas järjekorras , mis nad välja kirjutati ja kasutada täpselt samu andmetüüpe . // class Toode
+public static Toode laadi(DataInputStream dis) throws Exception {
+  String nimi = dis.readUTF();
+  double kogus = dis.readDouble();
+  double tükiHind = dis.readDouble();
+  return new Toode(nimi, kogus, tükiHind);
+}
+
+// class Ostukorv
+public static Ostukorv laadi(DataInputStream dis) throws Exception {
+  String klient = dis.readUTF();
+  List<Toode> tooted = new ArrayList<>();
+  int tooteid = dis.readInt(); // ära pane for tsükli tingimusse
+  for (int i = 0; i < tooteid; i++) { 
+    tooted.add(Toode.laadi(dis));
+  }
+  return new Ostukorv(klient, tooted);
+} Link lõpplahenduse tervele koodile: https://github.com/mbakhoff/oop-samples/tree/master/streams/sample1 Millal kasutada DataOutputStream i ja millal OutputStreamWriter it? DataOutputStream on hea siis, kui pärast on programmil vaja samad andmed sisse lugeda ja neid struktureeritud kujul hoidma ja töötlema hakata (näiteks objektides salvestada). OutputStreamWriter on hea siis, kui kirjutatav fail peab olema inimesele mugavalt loetav, käsitsi tekstiredigeerijas muudetav ja selle koodis töötlemise mugavus on vähem oluline. Enesekontroll Your browser does not support including other html pages Ülesanne 4 (kontroll) Klõpsa siia ülesande eesmärkide nägemiseks Ülesande põhieesmärgid on harjutada voogude kasutamist: tekstifaili lugemiseks; binaarfaili lugemiseks; binaarfaili kirjutamiseks. Peeter Paanika soovib luua oma Moodle’i ning tal on vaja realiseerida funktsionaalsust, mis võimaldaks faili sisu põhjal määrata ainete hindeid. Nimetame seda faili punktide failiks ( punktid.txt ). Näide faili võimalikust sisust: OOP:10,10,10,10,10,9.5,10,10,10,8
+Programmeerimine II:5,4,5,5,10,5,5,5,4,10,4,25.5
+Andmebaasid:5,10,2,7,20,2.5,8,6,5.5,3,1 Faili iga rida koosneb kahest osast, mis on omavahel eraldatud kooloniga. Esimeses neist on õppeaine nimetus. Teises on selle aine jooksul erinevate tööde eest teenitud punktid. See osa koosneb omakorda vähemalt ühest või mitmest osast, kus igaüks neist on täis- või ujukomaarv. Need on omavahel eraldatud komaga. Koosta klass AineHinne , millel on privaatsed isendiväljad aine nimetuse ( String ) ja tähelise hinde ( char ) jaoks vastavalt nimedega nimetus ja hinne . Klassis peab olema vastav konstruktor, mis võimaldab isendivälju väärtustada. Lisaks peab klassis olema: get -meetodid mõlema isendivälja jaoks; isendimeetod toString , mille tulemus sisaldab nii aine nimetust kui ka tähelist hinnet; privaatne char -tüüpi isendimeetod hinnePunktideMassiivist , mille parameeter on punktide sõnede massiiv ( String[] ). Meetod peab tagastama sümboli A , B , C , D , E või F vastavalt punktide summale. Skaala: A > 90, B > 80, C > 70, D > 60, E ≥ 51, F < 51 (vt näide 1 ); teine konstruktor, mille parameetrid on aine nimetus ( String ) ja punktide massiiv ( String[] ) ning mis väärtustab isendivälju, kasutades hinde määramiseks eelmist meetodit. Klõpsa siia näite 1 nägemiseks String[] punktid = new String[]{"29.5", "30", "28.1"}; // Summa: 87.6
+System.out.println(hinnePunktideMassiivist(punktid));
+// Väljastatakse: B Koosta klass Tudeng , millel on privaatsed isendiväljad nime ( String ) ja hinnete listi ( List<AineHinne> ) jaoks. Klassis peab olema konstruktor, mis võimaldab isendivälju väärtustada. Lisaks peab klassis olema: isendimeetod toString , mille tulemus sisaldab nii tudengi nime kui ka tema hindeid kursuste kaupa (vt näide 2 ); void -tüüpi isendimeetod salvestaBinaarfaili , mille parameeter on faili nimi ( String ). Meetod peab kasutama klassi DataOutputStream isendit. Meetod peab salvestama faili tudengi nime koos tema hinnetega. Vihje 1 : iga klassi AineHinne isend on kombinatsioon aine nimetusest ( String ) ja hindest ( char ). Mõlema tüübi jaoks on klassis DataOutputStream olemas write -isendimeetodid. Vihje 2 : hilisema sisselugemise lihtsustamiseks võiks paaride nimetus-hinne arvu faili algusesse kirjutada. staatiline Tudeng -tüüpi meetod loeBinaarfailist , mille parameeter on faili nimi ( String ). Meetod peab kasutama klassi DataInputStream isendit. Meetod peab looma ja tagastama klassi Tudeng isendi faili sisu põhjal (vt näide 2 ). Võib eeldada, et faili struktuur on sama, mis eelmise meetodi puhul. Klõpsa siia näite 2 nägemiseks // Eeldusel, et tudeng.bin juba eksisteerib
+Tudeng tudeng = Tudeng.loeBinaarfailist(“tudeng.bin”);
+
+System.out.println(tudeng);
+// Väljastatakse: 
+Peeter Paanika: [OOP: A, Programmeerimine II: B, Andmebaasid: D] Koosta peaklass TudengPeaklass , millel on: staatiline abimeetod loePunktideFail , mille parameeter on punktide faili nimi ( String , formaat on ülalpool toodud) ning mis tagastab ainete hindeid listina ( List<AineHinne> ). Meetod peab lugemiseks kasutama klassi BufferedReader isendit. peameetod, kus luuakse mingi tudeng (faili punktid.txt abil) ning testitakse meetodeid salvestaBinaarfaili ja loeBinaarfailist . Lisaülesanne (pole kohustuslik) : soovi korral uuri jadastuse (ingl serialization ) ja objektimise (ingl deserialization ) operatsioone. Esimene on isendi muutmine baidijadaks, teine – jadastuse pöördtoiming. Lingid: https://www.baeldung.com/java-serialization https://www.geeksforgeeks.org/serialization-in-java/ Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Ülesanne 5 Kirjutada programm, mis suunab klaviatuurisisendi tekstifaili. Ülesande lahendamisel kasutada sisendi lugemiseks BufferedReader klassi ja faili kirjutamiseks FileOutputStream klassi. Lahendus oleks võimalik koostada ka juba tuttava PrintWriter klassi abil, aga harjutamise eesmärgil kasutada uusi vahendeid. Vihje: Abiks on FileOutputStream meetod write(byte[]) ja String meetod getBytes(charsetName) . Ülesanne 6 Kirjutada programm, mis klaviatuurilt sisestatud ja ekraanile väljastatavas tekstivoos asendab alamsõne "x" kõik esinemised alamsõnega "ks". Ülesanne 7 (kontroll) Klõpsa siia ülesande eesmärkide nägemiseks Ülesande põhieesmärgid on harjutada voogude kasutamist: tekstifaili kirjutamiseks; baithaaval faili lugemiseks. On antud mitu faili, kuhu on peidetud mõned salafraasid (lihtsuse mõttes saab neid fraase näha faili sisust). Näiteks on 3 neist: fail1.txt – sisaldab salafraasi Objektorienteeritud programmeerimine on tore ; fail2.txt – salafraasi ei sisalda; fail3.txt – sisaldab salafraasi Hea uni on oluline . NB! Oma arvutis programmi testimiseks tasub faili sisu kopeerimisele eelistada salvestamist ( Ctrl+S ). Muidu ei pruugi toodud failide sisu täiesti samaks jääda. Koosta klass SalafraasiLeidmine , millel on: staatiline String -tüüpi meetod leiaEluUniversumiJaKõigeSalafraas , mille parameeter on faili nimi ( String ), kust tuleb salafraasi otsida. Meetod peab kasutama klassi RandomAccessFile isendit. Meetod peab tagastama salafraasi, kui see on failis olemas, muidu tagastatakse null (vt näide 1 ). On teada, et: kui salafraas on failis olemas, siis see lause algab alati 42. baidist. Vihje : klassi RandomAccessFile isendimeetod seek ; kui salafraas on failis olemas, siis see lause lõpeb alati nullbaidiga (vastava baidi lugemine klassi RandomAccessFile isendimeetodiga read tagastab 0 ); failis on nullbait olemas siis ja ainult siis, kui salafraas on failis olemas; alates 42. baidist (kaasa arvatud) kuni nullbaidini (välja arvatud) on iga loetud bait vaja teisendada tüübiks char . Nendest sümbolitest tuleb kokku panna salafraas sõnena. Vihje : char -idest sõne moodustamiseks on mugav kasutada klassi StringBuilder isendit. peameetod, milles kasutaja saab korduvalt sisestada failide nimesid, kust tuleb salafraase otsida (vt näide 2 ). Tühja sõne sisestamisel peab programm töö lõpetama (selleks ei tohi kasutada meetodit System.exit() ). Muudel juhtudel peab programm salafraase otsima (kasutades eelmist meetodit) ning salvestama need eraldi ridadele klassi BufferedWriter isendi abil faili salafraasid.txt (vt näide 3 ). Salafraasi puudumise korral väljastatakse ekraanile teade Salafraasi ei leidnud ning sel juhul faili kirjet ei teki. Klõpsa siia näite 1 nägemiseks System.out.println(leiaEluUniversumiJaKõigeSalafraas("fail1.txt"));
+// Väljastatakse: Objektorienteeritud programmeerimine on tore
+
+System.out.println(leiaEluUniversumiJaKõigeSalafraas("fail2.txt"));
+// Väljastatakse: null Klõpsa siia näite 2 nägemiseks Näide peameetodi tööst. Loetavuse huvides kasutaja sisendi jaoks mõeldud read algavad sümboliga > : Sisesta faili nimi:
+> fail1.txt
+
+Sisesta faili nimi:
+> fail2.txt
+Salafraasi ei leidnud
+
+Sisesta faili nimi:
+> fail3.txt
+
+Sisesta faili nimi:
+> Klõpsa siia näite 3 nägemiseks Näide failist salafraasid.txt pärast peameetodi käivitamist: Objektorienteeritud programmeerimine on tore
+Hea uni on oluline Kui olete juba hulk aega proovinud ülesannet iseseisvalt lahendada ja see ikka ei õnnestu, siis võib-olla saate abi murelahendajalt . Püütud on tüüpilisemaid probleemseid kohti selgitada ja anda vihjeid. Ülesanne 8 Loengus vaadeldi ka veebilehtede sisu avamist URL ja URLConnection klasside abil. Katsetada ka neid võimalusi vähemalt elementaarsel tasemel. Ühtki konkreetset ülesannet ei ole, aga tuleb valmis olla, et neid võimalusi tuleb rakendada 2. kontrolltöös. Arvutiteaduse instituut Loodus- ja täppisteaduste valdkond Tartu Ülikool Tehniliste probleemide või küsimuste korral kirjuta: Kursuse sisu ja korralduslike küsimustega pöörduge kursuse korraldajate poole. Õppematerjalide varalised autoriõigused kuuluvad Tartu Ülikoolile. Õppematerjalide kasutamine on lubatud autoriõiguse seaduses ettenähtud teose vaba kasutamise eesmärkidel ja tingimustel. Õppematerjalide kasutamisel on kasutaja kohustatud viitama õppematerjalide autorile. Õppematerjalide kasutamine muudel eesmärkidel on lubatud ainult Tartu Ülikooli eelneval kirjalikul nõusolekul. Courses’i keskkonna kasutustingimused
