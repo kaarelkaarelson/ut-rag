@@ -1,11 +1,10 @@
+llama-index 
 llama-index-readers-file 
 llama-index-embeddings-huggingface
 llama_index-vector-stores-pinecone
 llama-index-llms-openai 
 llama-index-core
-llama-index 
 openai
-chromadb
 langchain
 scrapy
 streamlit
