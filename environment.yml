@@ -4,3 +4,14 @@ channels:
   - defaults
 dependencies:
   - python=3.11
+  - pip:
+      - llama-index
+      - llama-index-readers-file
+      - llama-index-embeddings-huggingface
+      - llama_index-vector-stores-pinecone
+      - llama-index-llms-openai
+      - llama-index-core
+      - openai
+      - langchain
+      - scrapy
+      - streamlit
