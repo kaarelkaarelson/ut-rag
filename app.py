@@ -1,7 +1,6 @@
 import os 
 from dotenv import load_dotenv
 
-import chromadb
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
