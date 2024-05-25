@@ -5,8 +5,9 @@ llama-index-vector-stores-qdrant
 llama-index-readers-file 
 llama-index-embeddings-ollama
 llama-index-embeddings-huggingface
-llama_index-vector_stores-chroma 
+llama_index.vector_stores.pinecone
 llama-index-llms-openai 
+llama-index-core
 llama-index 
 openai
 chromadb
