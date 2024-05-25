@@ -1,5 +1,6 @@
 name: ut-rag
 channels:
+  - anaconda
   - conda-forge
   - defaults
 dependencies:
