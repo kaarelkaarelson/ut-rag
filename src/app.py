@@ -17,7 +17,8 @@ from pinecone import Pinecone
 
 load_dotenv()
 
-openai_api_key= os.getenv("OPENAI_API_KEY")
+# openai_api_key=os.getenv("OPENAI_API_KEY")
+openai_api_key=st.secrets["OPENAI_API_KEY"]
 
 Settings.embed_model = OpenAIEmbedding(model = 'text-embedding-3-small', api_key=openai_api_key)
 Settings.llm = OpenAI(model='gpt-3.5-turbo', api_key=openai_api_key)
@@ -56,8 +57,6 @@ class ChatbotUT:
         self.initialize()
 
     def initialize(self):
-        client = chromadb.PersistentClient(path="./chroma_db")
-
         try:
             api_key = os.environ["PINECONE_API_KEY"]
             pc = Pinecone(api_key=api_key)
