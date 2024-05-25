@@ -1,5 +1,5 @@
 import os 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.vector_stores.chroma import ChromaVectorStore
@@ -14,7 +14,7 @@ from llama_index.vector_stores.pinecone import PineconeVectorStore
 import streamlit as st
 from pinecone import Pinecone
 
-load_dotenv()
+# load_dotenv()
 
 # openai_api_key=os.getenv("OPENAI_API_KEY")
 openai_api_key=st.secrets["OPENAI_API_KEY"]
