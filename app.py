@@ -78,7 +78,7 @@ def display_chat_messages() -> None:
 
 st.set_page_config(page_title="University of Tartu Chatbot")
 
-st.header("UT RAG 🎓🐬")
+st.header("UT Chatbot 🎓🐬")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "assistant", "avatar": "🐬", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything!"}]
