@@ -89,35 +89,41 @@ options = [
     {"title": "What telescopes does university of Tartu have?"}
 ]
 
+prompt_option = ""
 user_prompt = ""
+st.session_state.response_status = "completed"
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
     if st.button(options[0]["title"]):
-        user_prompt = options[0]["title"]
+        prompt_option = options[0]["title"]
 with col2:
     if st.button(options[1]["title"]):
-        user_prompt = options[1]["title"]
+        prompt_option = options[1]["title"]
 with col3:
     if st.button(options[2]["title"]):
-        user_prompt = options[2]["title"]
+        prompt_option = options[2]["title"]
 
 display_chat_messages()
-
 if "current_response" not in st.session_state:
     st.session_state.current_response = ""
 
-if user_prompt := st.chat_input("Ask question here", key="user_input") or user_prompt:
-
+if user_prompt := st.chat_input("Ask question here", key="user_input", disabled=st.session_state.response_status == "processing") or prompt_option:
+    print('STATUS', st.session_state.response_status, "Prompt option", prompt_option)
+    if prompt_option:
+        prompt_option = ""
+    
+    st.session_state.response_status = "processing"
     with st.chat_message("user", avatar="🎓"):
         st.markdown(user_prompt)
 
     st.session_state.messages.append({"role": "user", "avatar":"🎓", "content": user_prompt})
 
     streaming_response = chatbot_ut.stream_chat(user_prompt)
-    with st.chat_message("assistant", avatar="🐬"): 
+    with st.chat_message("assistant", avatar="🐬",): 
         st.write_stream(streaming_response.response_gen)
 
     st.session_state.messages.append({"role": "assistant", "avatar":"🐬", "content": streaming_response})
-        
+    st.session_state.response_status = "completed"
     st.rerun()

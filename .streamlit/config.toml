@@ -3,4 +3,4 @@ showErrorDetails = true
 
 [theme]
 base="dark"
-primaryColor="blue"
+primaryColor="#00A6F9"
