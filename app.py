@@ -9,7 +9,7 @@ from langchain_core.callbacks import BaseCallbackManager
 from pinecone import Pinecone
 
 openai_api_key = st.secrets["OPENAI_API_KEY"]
-pinecone_api_key = os.environ["PINECONE_API_KEY"]
+pinecone_api_key = st.secrets["PINECONE_API_KEY"]
 
 Settings.embed_model = OpenAIEmbedding(model='text-embedding-3-small', api_key=openai_api_key)
 Settings.llm = OpenAI(model='gpt-3.5-turbo', api_key=openai_api_key)
@@ -79,6 +79,14 @@ def display_chat_messages() -> None:
 st.set_page_config(page_title="University of Tartu Chatbot")
 
 st.header("UT Chatbot 🎓🐬")
+
+st.markdown("""
+<center>
+<a href="https://github.com/kaarelkaarelson/ut-rag" target="_blank">contribute to open-source project</a>
+</center>
+""", unsafe_allow_html=True)
+
+st.text(" ")
 
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "assistant", "avatar": "🐬", "content": "I am a helpful student assistant who knows everything about University of Tartu, ask me anything!"}]
