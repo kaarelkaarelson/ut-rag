@@ -1,0 +1,165 @@
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,227 - __main__ - DEBUG - initialized chatbot!
+2024-06-05 20:29:15,236 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,236 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,239 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,239 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,239 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,243 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,244 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,244 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,245 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,261 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,261 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,261 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,261 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,263 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,263 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,263 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,923 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,923 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,924 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,925 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,933 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,940 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,940 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,940 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,941 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,941 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,949 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,949 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,955 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:15,955 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,957 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:15,957 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,583 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,587 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,620 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,622 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,622 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,623 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,623 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,623 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,642 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,643 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,658 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,660 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,670 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,670 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:16,673 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:16,673 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,789 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,791 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,794 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,795 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,808 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,811 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,837 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,839 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,886 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,889 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,900 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,904 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,930 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,930 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-06-05 20:29:17,932 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:17,933 - httpx - DEBUG - load_verify_locations cafile='C:\\Users\\kaarelso\\AppData\\Local\\anaconda3\\envs\\ut-rag\\Lib\\site-packages\\certifi\\cacert.pem'
+2024-06-05 20:29:39,913 - langchain_core.tracers.base - DEBUG - Parent run bc42d6dd-e3fd-42d2-b04d-ab03eb9ec981 not found for run 1217a780-6ec7-45a7-a695-6f9d60281c93. Treating as a root run.
+2024-06-05 20:29:40,599 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x0000028042C19A80>, 'json_data': {'input': [[42, 288, 389, 23720, 276, 1676, 84, 30]], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-06-05 20:29:40,612 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-06-05 20:29:40,612 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2024-06-05 20:29:40,679 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000280576CFD90>
+2024-06-05 20:29:40,679 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028055331760> server_hostname='api.openai.com' timeout=None
+2024-06-05 20:29:40,707 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000280579E6E90>
+2024-06-05 20:29:40,708 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:40,708 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-06-05 20:29:40,708 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-06-05 20:29:40,708 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-06-05 20:29:40,708 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:41,037 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 05 Jun 2024 17:29:42 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'user-xrtszi97uq0kiunznwjnbafz'), (b'openai-processing-ms', b'26'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15724800; includeSubDomains'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999992'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'0s'), (b'x-request-id', b'req_89981fb65ca9df00868c0ac7b4bb961a'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=KhUJ0a88FKP8xp7ErtW0QaTg.Tb0ic7EJgLzP3a7M.k-1717608582-1.0.1.1-KISXI9RP0f4.sKxw5fRg68ROKbpE7sfl.f0NQkUh6stw3JO4Lyx53g4ZuvJ4ESNS1eCTHPakvRlnkuze6.iQOQ; path=/; expires=Wed, 05-Jun-24 17:59:42 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Set-Cookie', b'_cfuvid=df7H0BLVESkb90g5f1pqpfdUAgcYGtrv2JETY9n3tiA-1717608582690-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'88f1e2e87e587124-TLL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-06-05 20:29:41,037 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-06-05 20:29:41,037 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-06-05 20:29:41,037 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-06-05 20:29:41,037 - httpcore.http11 - DEBUG - response_closed.started
+2024-06-05 20:29:41,037 - httpcore.http11 - DEBUG - response_closed.complete
+2024-06-05 20:29:41,037 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers([('date', 'Wed, 05 Jun 2024 17:29:42 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-allow-origin', '*'), ('openai-model', 'text-embedding-3-small'), ('openai-organization', 'user-xrtszi97uq0kiunznwjnbafz'), ('openai-processing-ms', '26'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15724800; includeSubDomains'), ('x-ratelimit-limit-requests', '3000'), ('x-ratelimit-limit-tokens', '1000000'), ('x-ratelimit-remaining-requests', '2999'), ('x-ratelimit-remaining-tokens', '999992'), ('x-ratelimit-reset-requests', '20ms'), ('x-ratelimit-reset-tokens', '0s'), ('x-request-id', 'req_89981fb65ca9df00868c0ac7b4bb961a'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=KhUJ0a88FKP8xp7ErtW0QaTg.Tb0ic7EJgLzP3a7M.k-1717608582-1.0.1.1-KISXI9RP0f4.sKxw5fRg68ROKbpE7sfl.f0NQkUh6stw3JO4Lyx53g4ZuvJ4ESNS1eCTHPakvRlnkuze6.iQOQ; path=/; expires=Wed, 05-Jun-24 17:59:42 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('set-cookie', '_cfuvid=df7H0BLVESkb90g5f1pqpfdUAgcYGtrv2JETY9n3tiA-1717608582690-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '88f1e2e87e587124-TLL'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-06-05 20:29:41,053 - openai._base_client - DEBUG - request_id: req_89981fb65ca9df00868c0ac7b4bb961a
+2024-06-05 20:29:42,731 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-06-05 20:29:42,731 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2024-06-05 20:29:42,778 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028057922B90>
+2024-06-05 20:29:42,779 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000280551BF4A0> server_hostname='api.openai.com' timeout=None
+2024-06-05 20:29:42,812 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000280578DAE10>
+2024-06-05 20:29:42,812 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:42,812 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-06-05 20:29:42,812 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-06-05 20:29:42,812 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-06-05 20:29:42,812 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:45,328 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 05 Jun 2024 17:29:47 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'openai-organization', b'user-xrtszi97uq0kiunznwjnbafz'), (b'openai-processing-ms', b'2197'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15724800; includeSubDomains'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'60000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'58308'), (b'x-ratelimit-reset-requests', b'8.64s'), (b'x-ratelimit-reset-tokens', b'1.692s'), (b'x-request-id', b'req_15ceb2610dc9999cc11f82d0eb195432'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=_YKgFJz3O4FhbiubhOucFncV6St0TA0dVI2M2VmVY44-1717608587-1.0.1.1-Hu_O1_IrtbbUQ3Dw7wXHXx36CnD4EJBUfD.hWNeGkp7h4a0dJWPLLL0ViwIvZ67Sz9KKORxXzZsw5UXrMQ5Dvw; path=/; expires=Wed, 05-Jun-24 17:59:47 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Set-Cookie', b'_cfuvid=mf_Y5y3svDyTXSU0AJpRKXaCUSQl7KEgyQoeUmX934c-1717608587048-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'88f1e2f599ccc7e7-TLL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-06-05 20:29:45,328 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-05 20:29:45,328 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-06-05 20:29:45,343 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-06-05 20:29:45,343 - httpcore.http11 - DEBUG - response_closed.started
+2024-06-05 20:29:45,343 - httpcore.http11 - DEBUG - response_closed.complete
+2024-06-05 20:29:45,343 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Wed, 05 Jun 2024 17:29:47 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('openai-organization', 'user-xrtszi97uq0kiunznwjnbafz'), ('openai-processing-ms', '2197'), ('openai-version', '2020-10-01'), ('strict-transport-security', 'max-age=15724800; includeSubDomains'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '60000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '58308'), ('x-ratelimit-reset-requests', '8.64s'), ('x-ratelimit-reset-tokens', '1.692s'), ('x-request-id', 'req_15ceb2610dc9999cc11f82d0eb195432'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=_YKgFJz3O4FhbiubhOucFncV6St0TA0dVI2M2VmVY44-1717608587-1.0.1.1-Hu_O1_IrtbbUQ3Dw7wXHXx36CnD4EJBUfD.hWNeGkp7h4a0dJWPLLL0ViwIvZ67Sz9KKORxXzZsw5UXrMQ5Dvw; path=/; expires=Wed, 05-Jun-24 17:59:47 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('set-cookie', '_cfuvid=mf_Y5y3svDyTXSU0AJpRKXaCUSQl7KEgyQoeUmX934c-1717608587048-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '88f1e2f599ccc7e7-TLL'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2024-06-05 20:29:45,343 - openai._base_client - DEBUG - request_id: req_15ceb2610dc9999cc11f82d0eb195432
+2024-06-05 20:29:50,213 - langchain_core.tracers.base - DEBUG - Parent run 6f0098a9-e223-41ef-9eb9-3ad62f8b77bf not found for run 543f479f-d663-42c0-9e4d-bf1efc6d0100. Treating as a root run.
+2024-06-05 20:29:50,261 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'content': 'Given a chat history and the latest user question which might reference context in the chat history, formulate a standalone question which can be understood without the chat history. Do NOT answer the question, just reformulate it if needed and otherwise return it as is', 'role': 'system'}, {'content': 'Kes on Jaan Aru?', 'role': 'user'}, {'content': 'Jaan Aru on Eesti Teadus- ja Kunstiakadeemia liige, kes on lõpetanud psühholoogia õpingud Berliinis ning omab doktorikraadi Max Plancki Ajuuuringute Instituudist. Hetkel töötab ta arvutiteaduse instituudi dotsendina Tartu Ülikoolis. Lisaks on ta avaldanud kaks populaarteaduslikku raamatut ning saanud mitmeid teaduskommunikatsiooni auhindu.', 'role': 'assistant'}, {'content': 'Mis on ta email?', 'role': 'user'}], 'model': 'gpt-3.5-turbo', 'n': 1, 'stream': False, 'temperature': 0.7}}
+2024-06-05 20:29:50,261 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-06-05 20:29:50,275 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:50,277 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-06-05 20:29:50,277 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-06-05 20:29:50,277 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-06-05 20:29:50,277 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:51,065 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 05 Jun 2024 17:29:52 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'openai-organization', b'user-xrtszi97uq0kiunznwjnbafz'), (b'openai-processing-ms', b'472'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15724800; includeSubDomains'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'60000'), (b'x-ratelimit-remaining-requests', b'9998'), (b'x-ratelimit-remaining-tokens', b'59817'), (b'x-ratelimit-reset-requests', b'9.825s'), (b'x-ratelimit-reset-tokens', b'183ms'), (b'x-request-id', b'req_8b429ac159dd20d3e15c96d387efae0b'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'88f1e3243d33c7e7-TLL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-06-05 20:29:51,070 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-05 20:29:51,070 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-06-05 20:29:51,073 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-06-05 20:29:51,073 - httpcore.http11 - DEBUG - response_closed.started
+2024-06-05 20:29:51,073 - httpcore.http11 - DEBUG - response_closed.complete
+2024-06-05 20:29:51,073 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 05 Jun 2024 17:29:52 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'openai-organization': 'user-xrtszi97uq0kiunznwjnbafz', 'openai-processing-ms': '472', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=15724800; includeSubDomains', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '60000', 'x-ratelimit-remaining-requests': '9998', 'x-ratelimit-remaining-tokens': '59817', 'x-ratelimit-reset-requests': '9.825s', 'x-ratelimit-reset-tokens': '183ms', 'x-request-id': 'req_8b429ac159dd20d3e15c96d387efae0b', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '88f1e3243d33c7e7-TLL', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-06-05 20:29:51,073 - openai._base_client - DEBUG - request_id: req_8b429ac159dd20d3e15c96d387efae0b
+2024-06-05 20:29:51,081 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'post_parser': <function Embeddings.create.<locals>.parser at 0x00000280552B8EA0>, 'json_data': {'input': [[42, 300, 779, 869, 635, 1028, 2649, 23720, 276, 1676, 84, 384, 25414, 72, 264, 83336, 72, 30]], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2024-06-05 20:29:51,084 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2024-06-05 20:29:51,084 - httpcore.connection - DEBUG - close.started
+2024-06-05 20:29:51,085 - httpcore.connection - DEBUG - close.complete
+2024-06-05 20:29:51,086 - httpcore.connection - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2024-06-05 20:29:51,103 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000280579FBB90>
+2024-06-05 20:29:51,104 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028055331760> server_hostname='api.openai.com' timeout=None
+2024-06-05 20:29:51,128 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002805795A090>
+2024-06-05 20:29:51,128 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:51,128 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-06-05 20:29:51,128 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-06-05 20:29:51,134 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-06-05 20:29:51,134 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:51,366 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 05 Jun 2024 17:29:53 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-allow-origin', b'*'), (b'openai-model', b'text-embedding-3-small'), (b'openai-organization', b'user-xrtszi97uq0kiunznwjnbafz'), (b'openai-processing-ms', b'21'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15724800; includeSubDomains'), (b'x-ratelimit-limit-requests', b'3000'), (b'x-ratelimit-limit-tokens', b'1000000'), (b'x-ratelimit-remaining-requests', b'2999'), (b'x-ratelimit-remaining-tokens', b'999981'), (b'x-ratelimit-reset-requests', b'20ms'), (b'x-ratelimit-reset-tokens', b'1ms'), (b'x-request-id', b'req_110e7efeb61dd62947bcf9c6951a6d8f'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'88f1e3298d1b543e-TLL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-06-05 20:29:51,366 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2024-06-05 20:29:51,366 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-06-05 20:29:51,381 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-06-05 20:29:51,381 - httpcore.http11 - DEBUG - response_closed.started
+2024-06-05 20:29:51,382 - httpcore.http11 - DEBUG - response_closed.complete
+2024-06-05 20:29:51,383 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 05 Jun 2024 17:29:53 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-xrtszi97uq0kiunznwjnbafz', 'openai-processing-ms': '21', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=15724800; includeSubDomains', 'x-ratelimit-limit-requests': '3000', 'x-ratelimit-limit-tokens': '1000000', 'x-ratelimit-remaining-requests': '2999', 'x-ratelimit-remaining-tokens': '999981', 'x-ratelimit-reset-requests': '20ms', 'x-ratelimit-reset-tokens': '1ms', 'x-request-id': 'req_110e7efeb61dd62947bcf9c6951a6d8f', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '88f1e3298d1b543e-TLL', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-06-05 20:29:51,383 - openai._base_client - DEBUG - request_id: req_110e7efeb61dd62947bcf9c6951a6d8f
+2024-06-05 20:29:51,719 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2024-06-05 20:29:51,719 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:51,719 - httpcore.http11 - DEBUG - send_request_headers.complete
+2024-06-05 20:29:51,719 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2024-06-05 20:29:51,719 - httpcore.http11 - DEBUG - send_request_body.complete
+2024-06-05 20:29:51,719 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2024-06-05 20:29:52,446 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Wed, 05 Jun 2024 17:29:54 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'openai-organization', b'user-xrtszi97uq0kiunznwjnbafz'), (b'openai-processing-ms', b'397'), (b'openai-version', b'2020-10-01'), (b'strict-transport-security', b'max-age=15724800; includeSubDomains'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'60000'), (b'x-ratelimit-remaining-requests', b'9998'), (b'x-ratelimit-remaining-tokens', b'57067'), (b'x-ratelimit-reset-requests', b'17.021s'), (b'x-ratelimit-reset-tokens', b'2.933s'), (b'x-request-id', b'req_3af22520fb8406a59dd36f113d1f100d'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'88f1e32d4908c7e7-TLL'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2024-06-05 20:29:52,446 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-05 20:29:52,446 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2024-06-05 20:29:52,446 - httpcore.http11 - DEBUG - receive_response_body.complete
+2024-06-05 20:29:52,446 - httpcore.http11 - DEBUG - response_closed.started
+2024-06-05 20:29:52,446 - httpcore.http11 - DEBUG - response_closed.complete
+2024-06-05 20:29:52,446 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Wed, 05 Jun 2024 17:29:54 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'openai-organization': 'user-xrtszi97uq0kiunznwjnbafz', 'openai-processing-ms': '397', 'openai-version': '2020-10-01', 'strict-transport-security': 'max-age=15724800; includeSubDomains', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '60000', 'x-ratelimit-remaining-requests': '9998', 'x-ratelimit-remaining-tokens': '57067', 'x-ratelimit-reset-requests': '17.021s', 'x-ratelimit-reset-tokens': '2.933s', 'x-request-id': 'req_3af22520fb8406a59dd36f113d1f100d', 'cf-cache-status': 'DYNAMIC', 'server': 'cloudflare', 'cf-ray': '88f1e32d4908c7e7-TLL', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2024-06-05 20:29:52,446 - openai._base_client - DEBUG - request_id: req_3af22520fb8406a59dd36f113d1f100d
+2024-06-05 20:32:00,454 - httpcore.connection - DEBUG - close.started
+2024-06-05 20:32:00,456 - httpcore.connection - DEBUG - close.complete
+2024-06-05 20:32:00,457 - httpcore.connection - DEBUG - close.started
+2024-06-05 20:32:00,458 - httpcore.connection - DEBUG - close.complete
